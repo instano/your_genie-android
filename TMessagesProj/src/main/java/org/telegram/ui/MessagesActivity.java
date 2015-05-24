@@ -62,7 +62,7 @@ import org.telegram.ui.ActionBar.MenuDrawable;
 import java.util.ArrayList;
 
 public class MessagesActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
-    private static final String TAG = "MessageActivity";
+    private static final String TAG = "MessagesActivity";
     private ListView messagesListView;
     private DialogsAdapter dialogsAdapter;
     private DialogsSearchAdapter dialogsSearchAdapter;
@@ -376,7 +376,7 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
             searchEmptyView.setVisibility(View.INVISIBLE);
             progressView.setVisibility(View.INVISIBLE);
         }
-//TODO messageList on click
+        //TODO messageList on click
         messagesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

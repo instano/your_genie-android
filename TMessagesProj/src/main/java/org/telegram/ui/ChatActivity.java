@@ -278,9 +278,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public boolean onFragmentCreate() {
         Log.v(TAG, "onFragmentCreate");
         final int chatId = arguments.getInt("chat_id", 0);
+        Log.v(TAG, "chat_id"+arguments.getInt("chat_id", 0));
         final int userId = arguments.getInt("user_id", 0);
+        Log.v(TAG, "user_id : "+arguments.getInt("user_id", 0));
         final int encId = arguments.getInt("enc_id", 0);
+        Log.v(TAG, "enc_id : "+arguments.getInt("enc_id", 0));
         startLoadFromMessageId = arguments.getInt("message_id", 0);
+        Log.v(TAG, "message_id : "+arguments.getInt("message_id", 0));
         scrollToTopOnResume = arguments.getBoolean("scrollToTopOnResume", false);
 
         if (chatId != 0) {
@@ -4449,20 +4453,20 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    @Override
-    public boolean onBackPressed() {
-        if (actionBar.isActionModeShowed()) {
-            selectedMessagesIds.clear();
-            selectedMessagesCanCopyIds.clear();
-            actionBar.hideActionMode();
-            updateVisibleRows();
-            return false;
-        } else if (chatActivityEnterView.isEmojiPopupShowing()) {
-            chatActivityEnterView.hideEmojiPopup();
-            return false;
-        }
-        return true;
-    }
+//    @Override
+//    public boolean onBackPressed() {
+//        if (actionBar.isActionModeShowed()) {
+//            selectedMessagesIds.clear();
+//            selectedMessagesCanCopyIds.clear();
+//            actionBar.hideActionMode();
+//            updateVisibleRows();
+//            return false;
+//        } else if (chatActivityEnterView.isEmojiPopupShowing()) {
+//            chatActivityEnterView.hideEmojiPopup();
+//            return false;
+//        }
+//        return true;
+//    }
 
     public boolean isGoogleMapsInstalled() {
         try {
