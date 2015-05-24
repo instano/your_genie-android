@@ -62,6 +62,7 @@ import org.telegram.android.SecretChatHelper;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.query.ReplyMessageQuery;
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.RPCRequest;
 import org.telegram.messenger.SerializedData;
@@ -271,11 +272,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     };
 
     public ChatActivity(Bundle args) {
-        super(args);
+        super(BuildVars.DEFAULT_NEW_CHAT_ARGS);
+        new RuntimeException(String.valueOf(args)).printStackTrace();
     }
 
     @Override
     public boolean onFragmentCreate() {
+        if (arguments == null)
+            return false;
         Log.v(TAG, "onFragmentCreate");
         final int chatId = arguments.getInt("chat_id", 0);
         Log.v(TAG, "chat_id"+arguments.getInt("chat_id", 0));
@@ -4424,6 +4428,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         args.putInt("chat_id", -lower_part);
                     }
                     ChatActivity chatActivity = new ChatActivity(args);
+                    FileLog.d(BuildVars.TAG, "new ChatActivity(args): " + args);
                     if (presentFragment(chatActivity, true)) {
                         chatActivity.showReplyPanel(true, null, fmessages, null, false, false);
                         if (!AndroidUtilities.isTablet()) {

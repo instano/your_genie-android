@@ -32,10 +32,6 @@ android {
     signingConfigs {
         debug {
             // automatically use the default debug one.
-            keyPassword 'hello123'
-            storeFile file('debug.keystore')
-            storePassword 'hello123'
-            keyAlias 'retailer'
         }
 
         release {

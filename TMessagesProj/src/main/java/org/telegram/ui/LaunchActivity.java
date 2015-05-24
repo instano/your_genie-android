@@ -351,12 +351,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 drawerLayoutContainer.setAllowOpenDrawer(false, false);
             } else {
                 //TODO: Adding Fragment
-                Bundle args = new Bundle();
-                args.putInt("chat_id", BuildVars.CHAT_ID);
-                args.putInt("user_id", BuildVars.USER_ID);
-                args.putInt("message_id", BuildVars.MESSAGE_ID);
-                args.putInt("enc_id", BuildVars.ENC_ID);
-                actionBarLayout.addFragmentToStack(new ChatActivity(args));
+
+                actionBarLayout.addFragmentToStack(new ChatActivity(null));
                 drawerLayoutContainer.setAllowOpenDrawer(true, false);
             }
 
@@ -369,6 +365,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             case "chat":
                                 if (args != null) {
                                     ChatActivity chat = new ChatActivity(args);
+                                    FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
                                     if (actionBarLayout.addFragmentToStack(chat)) {
                                         chat.restoreSelfArgs(savedInstanceState);
                                     }
@@ -727,6 +724,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                                         Bundle args = new Bundle();
                                                         args.putInt("user_id", user.id);
                                                         ChatActivity fragment = new ChatActivity(args);
+                                                        FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
                                                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
                                                         actionBarLayout.presentFragment(fragment, false, true, true);
                                                     }
@@ -793,6 +791,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     Bundle args = new Bundle();
                     args.putInt("user_id", push_user_id);
                     ChatActivity fragment = new ChatActivity(args);
+                    FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
                     if (actionBarLayout.presentFragment(fragment, false, true, true)) {
                         pushOpened = true;
                     }
@@ -801,6 +800,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 Bundle args = new Bundle();
                 args.putInt("chat_id", push_chat_id);
                 ChatActivity fragment = new ChatActivity(args);
+                FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
                 if (actionBarLayout.presentFragment(fragment, false, true, true)) {
                     pushOpened = true;
                 }
@@ -808,6 +808,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 Bundle args = new Bundle();
                 args.putInt("enc_id", push_enc_id);
                 ChatActivity fragment = new ChatActivity(args);
+                FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
                 if (actionBarLayout.presentFragment(fragment, false, true, true)) {
                     pushOpened = true;
                 }
@@ -939,6 +940,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 args.putInt("enc_id", high_id);
             }
             ChatActivity fragment = new ChatActivity(args);
+
+            FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
 
             if (videoPath != null) {
                 if(android.os.Build.VERSION.SDK_INT >= 16) {
