@@ -29,6 +29,7 @@ import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -114,6 +115,7 @@ import java.util.concurrent.Semaphore;
 public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate,
         PhotoViewer.PhotoViewerProvider {
 
+    private static final String TAG = "ChatActivity";
     private TLRPC.Chat currentChat;
     private TLRPC.User currentUser;
     private TLRPC.EncryptedChat currentEncryptedChat;
@@ -274,10 +276,15 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     @Override
     public boolean onFragmentCreate() {
+        Log.v(TAG, "onFragmentCreate");
         final int chatId = arguments.getInt("chat_id", 0);
+        Log.v(TAG, "chat_id"+arguments.getInt("chat_id", 0));
         final int userId = arguments.getInt("user_id", 0);
+        Log.v(TAG, "user_id : "+arguments.getInt("user_id", 0));
         final int encId = arguments.getInt("enc_id", 0);
+        Log.v(TAG, "enc_id : "+arguments.getInt("enc_id", 0));
         startLoadFromMessageId = arguments.getInt("message_id", 0);
+        Log.v(TAG, "message_id : "+arguments.getInt("message_id", 0));
         scrollToTopOnResume = arguments.getBoolean("scrollToTopOnResume", false);
 
         if (chatId != 0) {
@@ -4446,20 +4453,20 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    @Override
-    public boolean onBackPressed() {
-        if (actionBar.isActionModeShowed()) {
-            selectedMessagesIds.clear();
-            selectedMessagesCanCopyIds.clear();
-            actionBar.hideActionMode();
-            updateVisibleRows();
-            return false;
-        } else if (chatActivityEnterView.isEmojiPopupShowing()) {
-            chatActivityEnterView.hideEmojiPopup();
-            return false;
-        }
-        return true;
-    }
+//    @Override
+//    public boolean onBackPressed() {
+//        if (actionBar.isActionModeShowed()) {
+//            selectedMessagesIds.clear();
+//            selectedMessagesCanCopyIds.clear();
+//            actionBar.hideActionMode();
+//            updateVisibleRows();
+//            return false;
+//        } else if (chatActivityEnterView.isEmojiPopupShowing()) {
+//            chatActivityEnterView.hideEmojiPopup();
+//            return false;
+//        }
+//        return true;
+//    }
 
     public boolean isGoogleMapsInstalled() {
         try {
