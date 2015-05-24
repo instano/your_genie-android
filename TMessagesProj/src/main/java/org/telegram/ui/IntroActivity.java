@@ -87,13 +87,13 @@ public class IntroActivity extends Activity {
             };
         } else {
             icons = new int[] {
-                    R.drawable.intro1,
+                    R.drawable.intro7,
                     R.drawable.intro2,
                     R.drawable.intro3,
                     R.drawable.intro4,
                     R.drawable.intro5,
                     R.drawable.intro6,
-                    R.drawable.intro7
+                    R.drawable.intro1
             };
             titles = new int[] {
                     R.string.Page1Title,
@@ -116,7 +116,7 @@ public class IntroActivity extends Activity {
         }
         viewPager = (ViewPager)findViewById(R.id.intro_view_pager);
         TextView startMessagingButton = (TextView) findViewById(R.id.start_messaging_button);
-        startMessagingButton.setText(LocaleController.getString("StartMessaging", R.string.StartMessaging).toUpperCase());
+        startMessagingButton.setText(LocaleController.getString("StartMessaging", R.string.GetStarted).toUpperCase());
         if (Build.VERSION.SDK_INT >= 21) {
             StateListAnimator animator = new StateListAnimator();
             animator.addState(new int[] {android.R.attr.state_pressed}, ObjectAnimator.ofFloat(startMessagingButton, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));

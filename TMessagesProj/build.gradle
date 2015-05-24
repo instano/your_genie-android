@@ -83,7 +83,7 @@ android {
         applicationId "com.yourgenie"
         minSdkVersion 8
         targetSdkVersion 22
-        versionCode 492
-        versionName "2.7.0"
+        versionCode 1
+        versionName "1.0"
     }
 }
