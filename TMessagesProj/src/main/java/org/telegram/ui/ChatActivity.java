@@ -29,6 +29,7 @@ import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -114,6 +115,7 @@ import java.util.concurrent.Semaphore;
 public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate,
         PhotoViewer.PhotoViewerProvider {
 
+    private static final String TAG = "ChatActivity";
     private TLRPC.Chat currentChat;
     private TLRPC.User currentUser;
     private TLRPC.EncryptedChat currentEncryptedChat;
@@ -274,6 +276,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     @Override
     public boolean onFragmentCreate() {
+        Log.v(TAG, "onFragmentCreate");
         final int chatId = arguments.getInt("chat_id", 0);
         final int userId = arguments.getInt("user_id", 0);
         final int encId = arguments.getInt("enc_id", 0);
