@@ -62,9 +62,9 @@ public class IntroActivity extends Activity {
                     R.drawable.intro7,
                     R.drawable.intro6,
                     R.drawable.intro5,
-                    R.drawable.intro4,
+                    R.drawable.secure,
                     R.drawable.intro3,
-                    R.drawable.intro2,
+                    R.drawable.clock,
                     R.drawable.intro1
             };
             titles = new int[] {
@@ -88,12 +88,12 @@ public class IntroActivity extends Activity {
         } else {
             icons = new int[] {
                     R.drawable.intro1,
-                    R.drawable.intro2,
+                    R.drawable.clock,
                     R.drawable.intro3,
-                    R.drawable.intro4,
+                    R.drawable.secure,
                     R.drawable.intro5,
                     R.drawable.intro6,
-                    R.drawable.intro7
+                    R.drawable.intro7,
             };
             titles = new int[] {
                     R.string.Page1Title,
