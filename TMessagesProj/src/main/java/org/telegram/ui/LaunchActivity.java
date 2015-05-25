@@ -69,6 +69,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * The base activity with navigation drawer. Usually other classes are added as fragments
+ * though their class name ends with ...Activity
+ */
 public class LaunchActivity extends Activity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate {
     private static final String TAG = "LaunchActivity";
     private boolean finished;
@@ -269,31 +273,32 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                if (position == 2) {
+//                    if (!MessagesController.isFeatureEnabled("chat_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
+//                        return;
+//                    }
+//                    presentFragment(new GroupCreateActivity());
+//                    drawerLayoutContainer.closeDrawer(false);
+//                } else if (position == 3) {
+//                    Bundle args = new Bundle();
+//                    args.putBoolean("onlyUsers", true);
+//                    args.putBoolean("destroyAfterSelect", true);
+//                    args.putBoolean("createSecretChat", true);
+//                    presentFragment(new ContactsActivity(args));
+//                    drawerLayoutContainer.closeDrawer(false);
+//                } else if (position == 4) {
+//                    if (!MessagesController.isFeatureEnabled("broadcast_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
+//                        return;
+//                    }
+//                    Bundle args = new Bundle();
+//                    args.putBoolean("broadcast", true);
+//                    presentFragment(new GroupCreateActivity(args));
+//                    drawerLayoutContainer.closeDrawer(false);
+//                } else if (position == 6) {
+//                    presentFragment(new ContactsActivity(null));
+//                    drawerLayoutContainer.closeDrawer(false);
+//                } else
                 if (position == 2) {
-                    if (!MessagesController.isFeatureEnabled("chat_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
-                        return;
-                    }
-                    presentFragment(new GroupCreateActivity());
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 3) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("onlyUsers", true);
-                    args.putBoolean("destroyAfterSelect", true);
-                    args.putBoolean("createSecretChat", true);
-                    presentFragment(new ContactsActivity(args));
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 4) {
-                    if (!MessagesController.isFeatureEnabled("broadcast_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
-                        return;
-                    }
-                    Bundle args = new Bundle();
-                    args.putBoolean("broadcast", true);
-                    presentFragment(new GroupCreateActivity(args));
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 6) {
-                    presentFragment(new ContactsActivity(null));
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 7) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
@@ -303,10 +308,11 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 8) {
+                } else if (position == 3) {
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 9) {
+                } else if (position == 4) {
+                    // TODO: make into an about us:
                     try {
                         Intent pickIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl)));
                         startActivityForResult(pickIntent, 500);
@@ -369,6 +375,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             case "chat":
                                 if (args != null) {
                                     ChatActivity chat = new ChatActivity(args);
+                                    FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
                                     if (actionBarLayout.addFragmentToStack(chat)) {
                                         chat.restoreSelfArgs(savedInstanceState);
                                     }
@@ -454,7 +461,16 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         });
     }
 
+    /**
+     *
+     * @param intent
+     * @param isNew true if intent is from {@link #onNewIntent(Intent)}
+     * @param restore
+     * @param fromPassword true if called from {@link #showPasscodeActivity()}
+     * @return
+     */
     private boolean handleIntent(Intent intent, boolean isNew, boolean restore, boolean fromPassword) {
+        FileLog.d(TAG, ".handleIntent: " + intent);
         int flags = intent.getFlags();
         if (!fromPassword && (AndroidUtilities.needShowPasscode(true) || UserConfig.isWaitingForPasscodeEnter)) {
             showPasscodeActivity();
@@ -793,6 +809,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     Bundle args = new Bundle();
                     args.putInt("user_id", push_user_id);
                     ChatActivity fragment = new ChatActivity(args);
+                    FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
                     if (actionBarLayout.presentFragment(fragment, false, true, true)) {
                         pushOpened = true;
                     }
@@ -801,6 +818,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 Bundle args = new Bundle();
                 args.putInt("chat_id", push_chat_id);
                 ChatActivity fragment = new ChatActivity(args);
+                FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
                 if (actionBarLayout.presentFragment(fragment, false, true, true)) {
                     pushOpened = true;
                 }
@@ -808,6 +826,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 Bundle args = new Bundle();
                 args.putInt("enc_id", push_enc_id);
                 ChatActivity fragment = new ChatActivity(args);
+                FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
                 if (actionBarLayout.presentFragment(fragment, false, true, true)) {
                     pushOpened = true;
                 }
@@ -880,6 +899,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         }
                     } else {
                         if (actionBarLayout.fragmentsStack.isEmpty()) {
+                            // FATAL: app crashing code:
                             actionBarLayout.addFragmentToStack(new ChatActivity(null));
                             drawerLayoutContainer.setAllowOpenDrawer(true, false);
                         }
@@ -890,6 +910,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             actionBarLayout.addFragmentToStack(new LoginActivity());
                             drawerLayoutContainer.setAllowOpenDrawer(false, false);
                         } else {
+                            // FATAL: app crashing code:
                             actionBarLayout.addFragmentToStack(new ChatActivity(null));
                             drawerLayoutContainer.setAllowOpenDrawer(true, false);
                         }
@@ -939,6 +960,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 args.putInt("enc_id", high_id);
             }
             ChatActivity fragment = new ChatActivity(args);
+
+            FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
 
             if (videoPath != null) {
                 if(android.os.Build.VERSION.SDK_INT >= 16) {

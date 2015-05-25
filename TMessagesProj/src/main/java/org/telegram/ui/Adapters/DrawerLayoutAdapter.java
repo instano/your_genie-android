@@ -18,9 +18,8 @@ import org.telegram.android.MessagesController;
 import org.telegram.messenger.R;
 import org.telegram.messenger.UserConfig;
 import org.telegram.ui.Cells.DrawerActionCell;
-import org.telegram.ui.Cells.DividerCell;
-import org.telegram.ui.Cells.EmptyCell;
 import org.telegram.ui.Cells.DrawerProfileCell;
+import org.telegram.ui.Cells.EmptyCell;
 
 public class DrawerLayoutAdapter extends BaseAdapter {
 
@@ -37,12 +36,12 @@ public class DrawerLayoutAdapter extends BaseAdapter {
 
     @Override
     public boolean isEnabled(int i) {
-        return !(i == 0 || i == 1 || i == 5);
+        return !(i == 0 || i == 1 /*|| i == 5*/);
     }
 
     @Override
     public int getCount() {
-        return UserConfig.isClientActivated() ? 10 : 0;
+        return UserConfig.isClientActivated() ? 5 : 0;
     }
 
     @Override
@@ -72,28 +71,29 @@ public class DrawerLayoutAdapter extends BaseAdapter {
             if (view == null) {
                 view = new EmptyCell(mContext, 8);
             }
+//        } else if (type == 2) {
+//            if (view == null) {
+//                view = new DividerCell(mContext);
+//            }
         } else if (type == 2) {
-            if (view == null) {
-                view = new DividerCell(mContext);
-            }
-        } else if (type == 3) {
             if (view == null) {
                 view = new DrawerActionCell(mContext);
             }
             DrawerActionCell actionCell = (DrawerActionCell) view;
+//            if (i == 2) {
+//                actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_newgroup);
+//            } else if (i == 3) {
+//                actionCell.setTextAndIcon(LocaleController.getString("NewSecretChat", R.string.NewSecretChat), R.drawable.menu_secret);
+//            } else if (i == 4) {
+//                actionCell.setTextAndIcon(LocaleController.getString("NewBroadcastList", R.string.NewBroadcastList), R.drawable.menu_broadcast);
+//            } else if (i == 6) {
+//                actionCell.setTextAndIcon(LocaleController.getString("Contacts", R.string.Contacts), R.drawable.menu_contacts);
+//            } else
             if (i == 2) {
-                actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_newgroup);
-            } else if (i == 3) {
-                actionCell.setTextAndIcon(LocaleController.getString("NewSecretChat", R.string.NewSecretChat), R.drawable.menu_secret);
-            } else if (i == 4) {
-                actionCell.setTextAndIcon(LocaleController.getString("NewBroadcastList", R.string.NewBroadcastList), R.drawable.menu_broadcast);
-            } else if (i == 6) {
-                actionCell.setTextAndIcon(LocaleController.getString("Contacts", R.string.Contacts), R.drawable.menu_contacts);
-            } else if (i == 7) {
                 actionCell.setTextAndIcon(LocaleController.getString("InviteFriends", R.string.InviteFriends), R.drawable.menu_invite);
-            } else if (i == 8) {
+            } else if (i == 3) {
                 actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
-            } else if (i == 9) {
+            } else if (i == 4) {
                 actionCell.setTextAndIcon(LocaleController.getString("TelegramFaq", R.string.TelegramFaq), R.drawable.menu_help);
             }
         }
@@ -104,18 +104,18 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     @Override
     public int getItemViewType(int i) {
         if (i == 0) {
-            return 0;
+            return 0; // profile
         } else if (i == 1) {
-            return 1;
-        } else if (i == 5) {
-            return 2;
+            return 1; // empty cell
+//        } else if (i == 5) {
+//            return 2; // divider
         }
-        return 3;
+        return 2; // action cell (i.e. clickable icon)
     }
 
     @Override
     public int getViewTypeCount() {
-        return 4;
+        return 3;
     }
 
     @Override

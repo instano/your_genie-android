@@ -28,9 +28,13 @@ import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildConfig;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.DispatchQueue;
 import org.telegram.messenger.FileLog;
@@ -39,7 +43,6 @@ import org.telegram.messenger.RPCRequest;
 import org.telegram.messenger.TLObject;
 import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.ApplicationLoader;
 import org.telegram.ui.LaunchActivity;
 import org.telegram.ui.PopupNotificationActivity;
 
@@ -348,6 +351,13 @@ public class NotificationsController {
                 user_id = lastMessageObject.messageOwner.from_id;
             }
 
+            if (user_id != BuildVars.USER_ID) {
+                FileLog.d(BuildVars.TAG, "skipping notification from uid:" + user_id);
+                if (BuildConfig.DEBUG)
+                    Toast.makeText(ApplicationLoader.applicationContext, "skipping notification from uid:" + user_id, Toast.LENGTH_LONG).show();
+                return;
+            }
+
             TLRPC.User user = MessagesController.getInstance().getUser(user_id);
             TLRPC.Chat chat = null;
             if (chat_id != 0) {
@@ -618,6 +628,7 @@ public class NotificationsController {
                 mBuilder.setVibrate(new long[]{0, 0});
             }
 
+            // notify is called only once from here:
             notificationManager.notify(1, mBuilder.build());
             if (preferences.getBoolean("EnablePebbleNotifications", false)) {
                 sendAlertToPebble(lastMessageFull);

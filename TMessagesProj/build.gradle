@@ -32,10 +32,6 @@ android {
     signingConfigs {
         debug {
             // automatically use the default debug one.
-            keyPassword 'hello123'
-            storeFile file('debug.keystore')
-            storePassword 'hello123'
-            keyAlias 'retailer'
         }
 
         release {
@@ -88,10 +84,10 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.yourgenie"
+        applicationId "com.instano.buyer"
         minSdkVersion 8
         targetSdkVersion 22
-        versionCode 492
-        versionName "2.7.0"
+        versionCode 17
+        versionName "1.0"
     }
 }
