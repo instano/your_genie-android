@@ -356,7 +356,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 actionBarLayout.addFragmentToStack(new LoginActivity());
                 drawerLayoutContainer.setAllowOpenDrawer(false, false);
             } else {
-                //TODO: Adding Fragment
+                // TODO: Adding Fragment
                 Bundle args = new Bundle();
                 args.putInt("chat_id", BuildVars.CHAT_ID);
                 args.putInt("user_id", BuildVars.USER_ID);

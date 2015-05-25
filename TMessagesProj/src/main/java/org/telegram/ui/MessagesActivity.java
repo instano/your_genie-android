@@ -38,6 +38,7 @@ import android.widget.TextView;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MessageObject;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.TLRPC;
 import org.telegram.android.ContactsController;
@@ -103,12 +104,19 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
 
     public MessagesActivity(Bundle args) {
         super(args);
+        new RuntimeException(String.valueOf(args)).printStackTrace();
     }
 
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
         Log.v(TAG, "onFragmentCreate");
+        Bundle args = new Bundle();
+        args.putInt("chat_id", BuildVars.CHAT_ID);
+        args.putInt("user_id", BuildVars.USER_ID);
+        args.putInt("message_id", BuildVars.MESSAGE_ID);
+        args.putInt("enc_id", BuildVars.ENC_ID);
+        presentFragment(new ChatActivity(args));
 
         if (getArguments() != null) {
             onlySelect = arguments.getBoolean("onlySelect", false);
