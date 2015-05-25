@@ -76,7 +76,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.concurrent.Semaphore;
 
-public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate, PhotoViewer.PhotoViewerProvider {
+public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, PhotoViewer.PhotoViewerProvider {
 
     private ListView listView;
     private ListAdapter listAdapter;
@@ -268,9 +268,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     Bundle args = new Bundle();
                     args.putBoolean("onlySelect", true);
                     args.putBoolean("serverOnly", true);
-                    MessagesActivity fragment = new MessagesActivity(args);
-                    fragment.setDelegate(ProfileActivity.this);
-                    presentFragment(fragment);
+//                    MessagesActivity fragment = new MessagesActivity(args);
+//                    fragment.setDelegate(ProfileActivity.this);
+//                    presentFragment(fragment);
                 } else if (id == edit_contact) {
                     Bundle args = new Bundle();
                     args.putInt("user_id", user_id);
@@ -1186,8 +1186,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
     }
 
-    @Override
-    public void didSelectDialog(MessagesActivity messageFragment, long dialog_id, boolean param) {
+
+    public void didSelectDialog(ChatActivity messageFragment, long dialog_id, boolean param) {
         if (dialog_id != 0) {
             Bundle args = new Bundle();
             args.putBoolean("scrollToTopOnResume", true);

@@ -397,7 +397,7 @@ public class LoginActivity extends BaseFragment {
      */
     public void needFinishActivity() {
         clearCurrentState();
-        presentFragment(new MessagesActivity(null), true);
+        presentFragment(new ChatActivity(null), true);
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
     }
 

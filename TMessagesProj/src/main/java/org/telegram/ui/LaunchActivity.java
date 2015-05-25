@@ -69,7 +69,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class LaunchActivity extends Activity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate {
+public class LaunchActivity extends Activity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate{
     private static final String TAG = "LaunchActivity";
     private boolean finished;
     private String videoPath;
@@ -85,7 +85,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     private static ArrayList<BaseFragment> layerFragmentsStack = new ArrayList<>();
     private static ArrayList<BaseFragment> rightFragmentsStack = new ArrayList<>();
 
-    private ActionBarLayout actionBarLayout;
+    public  ActionBarLayout actionBarLayout;
     private ActionBarLayout layersActionBarLayout;
     private ActionBarLayout rightActionBarLayout;
     private FrameLayout shadowTablet;
@@ -829,22 +829,33 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 if (!AndroidUtilities.isTablet()) {
                     NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
                 }
+//                Bundle args = new Bundle();
+//                args.putBoolean("onlySelect", true);
+//                args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
+//                args.putString("selectAlertStringGroup", LocaleController.getString("SendMessagesToGroup", R.string.SendMessagesToGroup));
+//
+//                MessagesActivity fragment = new MessagesActivity(args);
+
+
                 Bundle args = new Bundle();
-                args.putBoolean("onlySelect", true);
-                args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
-                args.putString("selectAlertStringGroup", LocaleController.getString("SendMessagesToGroup", R.string.SendMessagesToGroup));
-                MessagesActivity fragment = new MessagesActivity(args);
+                args.putInt("chat_id", BuildVars.CHAT_ID);
+                args.putInt("user_id", BuildVars.USER_ID);
+                args.putInt("message_id", BuildVars.MESSAGE_ID);
+                args.putInt("enc_id", BuildVars.ENC_ID);
+                ChatActivity fragment = new ChatActivity(args);
 //                ChatActivity fragment = new ChatActivity(args);
-                fragment.setDelegate(this);
+//                fragment.setDelegate(this);
                 boolean removeLast = false;
                 if (AndroidUtilities.isTablet()) {
-                    removeLast = layersActionBarLayout.fragmentsStack.size() > 0
-                            && layersActionBarLayout.fragmentsStack.get(layersActionBarLayout
-                            .fragmentsStack.size() - 1) instanceof MessagesActivity;
+                    removeLast = false;
+//                            layersActionBarLayout.fragmentsStack.size() > 0
+//                            && layersActionBarLayout.fragmentsStack.get(layersActionBarLayout
+//                            .fragmentsStack.size() - 1) instanceof MessagesActivity;
                 } else {
-                    removeLast = actionBarLayout.fragmentsStack.size() > 1
-                            && actionBarLayout.fragmentsStack.get(actionBarLayout
-                            .fragmentsStack.size() - 1) instanceof MessagesActivity;
+                    removeLast = false;
+//                            actionBarLayout.fragmentsStack.size() > 1
+//                            && actionBarLayout.fragmentsStack.get(actionBarLayout
+//                            .fragmentsStack.size() - 1) instanceof MessagesActivity;
                 }
                 actionBarLayout.presentFragment(fragment, removeLast, true, true);
                 pushOpened = true;
@@ -914,8 +925,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         handleIntent(intent, true, false, false);
     }
 
-    @Override
-    public void didSelectDialog(MessagesActivity messageFragment, long dialog_id, boolean param) {
+
+    public void didSelectDialog(ChatActivity chatActivityFragment, long dialog_id, boolean param) {
         if (dialog_id != 0) {
             int lower_part = (int)dialog_id;
             int high_id = (int)(dialog_id >> 32);
@@ -952,7 +963,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
                     if (!fragment.openVideoEditor(videoPath, true)) {
                         if (!AndroidUtilities.isTablet()) {
-                            messageFragment.finishFragment(true);
+                            chatActivityFragment.finishFragment(true);
                         }
                     }
                 } else {
@@ -1429,22 +1440,22 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     public boolean needPresentFragment(BaseFragment fragment, boolean removeLast, boolean forceWithoutAnimation, ActionBarLayout layout) {
         if (AndroidUtilities.isTablet()) {
             drawerLayoutContainer.setAllowOpenDrawer(!(fragment instanceof LoginActivity) && layersActionBarLayout.getVisibility() != View.VISIBLE, true);
-            if (fragment instanceof MessagesActivity) {
-                MessagesActivity messagesActivity = (MessagesActivity)fragment;
-                if (messagesActivity.isMainDialogList() && layout != actionBarLayout) {
-                    actionBarLayout.removeAllFragments();
-                    actionBarLayout.presentFragment(fragment, removeLast, forceWithoutAnimation, false);
-                    layersActionBarLayout.removeAllFragments();
-                    layersActionBarLayout.setVisibility(View.GONE);
-                    drawerLayoutContainer.setAllowOpenDrawer(true, false);
-                    if (!tabletFullSize) {
-                        shadowTabletSide.setVisibility(View.VISIBLE);
-                        if (rightActionBarLayout.fragmentsStack.isEmpty()) {
-                            backgroundTablet.setVisibility(View.VISIBLE);
-                        }
-                    }
-                    return false;
-                }
+            if (false) {
+//                MessagesActivity messagesActivity = (MessagesActivity)fragment;
+//                if (messagesActivity.isMainDialogList() && layout != actionBarLayout) {
+//                    actionBarLayout.removeAllFragments();
+//                    actionBarLayout.presentFragment(fragment, removeLast, forceWithoutAnimation, false);
+//                    layersActionBarLayout.removeAllFragments();
+//                    layersActionBarLayout.setVisibility(View.GONE);
+//                    drawerLayoutContainer.setAllowOpenDrawer(true, false);
+//                    if (!tabletFullSize) {
+//                        shadowTabletSide.setVisibility(View.VISIBLE);
+//                        if (rightActionBarLayout.fragmentsStack.isEmpty()) {
+//                            backgroundTablet.setVisibility(View.VISIBLE);
+//                        }
+//                    }
+//                    return false;
+//                }
             }
 //            if (fragment instanceof ChatActivity) {
 //                ChatActivity chatActivity = (ChatActivity) fragment;
@@ -1535,22 +1546,22 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     public boolean needAddFragmentToStack(BaseFragment fragment, ActionBarLayout layout) {
         if (AndroidUtilities.isTablet()) {
             drawerLayoutContainer.setAllowOpenDrawer(!(fragment instanceof LoginActivity) && layersActionBarLayout.getVisibility() != View.VISIBLE, true);
-            if (fragment instanceof MessagesActivity) {
-                MessagesActivity messagesActivity = (MessagesActivity)fragment;
-                if (messagesActivity.isMainDialogList() && layout != actionBarLayout) {
-                    actionBarLayout.removeAllFragments();
-                    actionBarLayout.addFragmentToStack(fragment);
-                    layersActionBarLayout.removeAllFragments();
-                    layersActionBarLayout.setVisibility(View.GONE);
-                    drawerLayoutContainer.setAllowOpenDrawer(true, false);
-                    if (!tabletFullSize) {
-                        shadowTabletSide.setVisibility(View.VISIBLE);
-                        if (rightActionBarLayout.fragmentsStack.isEmpty()) {
-                            backgroundTablet.setVisibility(View.VISIBLE);
-                        }
-                    }
-                    return false;
-                }
+            if (false) {
+//                MessagesActivity messagesActivity = (MessagesActivity)fragment;
+//                if (messagesActivity.isMainDialogList() && layout != actionBarLayout) {
+//                    actionBarLayout.removeAllFragments();
+//                    actionBarLayout.addFragmentToStack(fragment);
+//                    layersActionBarLayout.removeAllFragments();
+//                    layersActionBarLayout.setVisibility(View.GONE);
+//                    drawerLayoutContainer.setAllowOpenDrawer(true, false);
+//                    if (!tabletFullSize) {
+//                        shadowTabletSide.setVisibility(View.VISIBLE);
+//                        if (rightActionBarLayout.fragmentsStack.isEmpty()) {
+//                            backgroundTablet.setVisibility(View.VISIBLE);
+//                        }
+//                    }
+//                    return false;
+//                }
             } else if (fragment instanceof ChatActivity) {
                 if (!tabletFullSize && layout != rightActionBarLayout) {
                     rightActionBarLayout.setVisibility(View.VISIBLE);

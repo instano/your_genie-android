@@ -40,23 +40,25 @@ import android.widget.TextView;
 
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.LocaleController;
+import org.telegram.android.MessageObject;
 import org.telegram.android.MessagesController;
+import org.telegram.android.NotificationCenter;
 import org.telegram.android.query.SharedMediaQuery;
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
+import org.telegram.messenger.R;
 import org.telegram.messenger.RPCRequest;
 import org.telegram.messenger.TLObject;
 import org.telegram.messenger.TLRPC;
-import org.telegram.android.MessageObject;
-import org.telegram.android.NotificationCenter;
-import org.telegram.messenger.R;
 import org.telegram.messenger.Utilities;
+import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.ActionBar.ActionBarPopupWindow;
-import org.telegram.ui.ActionBar.ActionBar;
+import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.Adapters.BaseSectionsAdapter;
 import org.telegram.ui.AnimationCompat.AnimatorSetProxy;
@@ -67,12 +69,10 @@ import org.telegram.ui.Cells.SharedDocumentCell;
 import org.telegram.ui.Cells.SharedMediaSectionCell;
 import org.telegram.ui.Cells.SharedPhotoVideoCell;
 import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Components.SectionsListView;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -280,54 +280,62 @@ public class MediaActivity extends BaseFragment implements NotificationCenter.No
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showAlertDialog(builder);
                 } else if (id == forward) {
+//                    Bundle args = new Bundle();
+//                    args.putBoolean("onlySelect", true);
+//                    args.putBoolean("serverOnly", true);
+
                     Bundle args = new Bundle();
-                    args.putBoolean("onlySelect", true);
-                    args.putBoolean("serverOnly", true);
-                    MessagesActivity fragment = new MessagesActivity(args);
-                    fragment.setDelegate(new MessagesActivity.MessagesActivityDelegate() {
-                        @Override
-                        public void didSelectDialog(MessagesActivity fragment, long did, boolean param) {
-                            int lower_part = (int) did;
-                            if (lower_part != 0) {
-                                Bundle args = new Bundle();
-                                args.putBoolean("scrollToTopOnResume", true);
-                                if (lower_part > 0) {
-                                    args.putInt("user_id", lower_part);
-                                } else if (lower_part < 0) {
-                                    args.putInt("chat_id", -lower_part);
-                                }
+                    args.putInt("chat_id", BuildVars.CHAT_ID);
+                    args.putInt("user_id", BuildVars.USER_ID);
+                    args.putInt("message_id", BuildVars.MESSAGE_ID);
+                    args.putInt("enc_id", BuildVars.ENC_ID);
 
-                                ArrayList<MessageObject> fmessages = new ArrayList<>();
-                                ArrayList<Integer> ids = new ArrayList<>(selectedFiles.keySet());
-                                Collections.sort(ids);
-                                for (Integer id : ids) {
-                                    if (id > 0) {
-                                        fmessages.add(selectedFiles.get(id));
-                                    }
-                                }
-                                selectedFiles.clear();
-                                actionBar.hideActionMode();
-
-                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                                ChatActivity chatActivity = new ChatActivity(args);
-                                presentFragment(chatActivity, true);
-                                chatActivity.showReplyPanel(true, null, fmessages, null, false, false);
-
-                                if (!AndroidUtilities.isTablet()) {
-                                    removeSelfFromStack();
-                                    Activity parentActivity = getParentActivity();
-                                    if (parentActivity == null) {
-                                        parentActivity = chatActivity.getParentActivity();
-                                    }
-                                    if (parentActivity != null) {
-                                        parentActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-                                    }
-                                }
-                            } else {
-                                fragment.finishFragment();
-                            }
-                        }
-                    });
+                    ChatActivity fragment = new ChatActivity(args);
+//                    MessagesActivity fragment = new MessagesActivity(args);
+//                    fragment.setDelegate(new MessagesActivity.MessagesActivityDelegate() {
+//                        @Override
+//                        public void didSelectDialog(MessagesActivity fragment, long did, boolean param) {
+//                            int lower_part = (int) did;
+//                            if (lower_part != 0) {
+//                                Bundle args = new Bundle();
+//                                args.putBoolean("scrollToTopOnResume", true);
+//                                if (lower_part > 0) {
+//                                    args.putInt("user_id", lower_part);
+//                                } else if (lower_part < 0) {
+//                                    args.putInt("chat_id", -lower_part);
+//                                }
+//
+//                                ArrayList<MessageObject> fmessages = new ArrayList<>();
+//                                ArrayList<Integer> ids = new ArrayList<>(selectedFiles.keySet());
+//                                Collections.sort(ids);
+//                                for (Integer id : ids) {
+//                                    if (id > 0) {
+//                                        fmessages.add(selectedFiles.get(id));
+//                                    }
+//                                }
+//                                selectedFiles.clear();
+//                                actionBar.hideActionMode();
+//
+//                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
+//                                ChatActivity chatActivity = new ChatActivity(args);
+//                                presentFragment(chatActivity, true);
+//                                chatActivity.showReplyPanel(true, null, fmessages, null, false, false);
+//
+//                                if (!AndroidUtilities.isTablet()) {
+//                                    removeSelfFromStack();
+//                                    Activity parentActivity = getParentActivity();
+//                                    if (parentActivity == null) {
+//                                        parentActivity = chatActivity.getParentActivity();
+//                                    }
+//                                    if (parentActivity != null) {
+//                                        parentActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+//                                    }
+//                                }
+//                            } else {
+//                                fragment.finishFragment();
+//                            }
+//                        }
+//                    });
                     presentFragment(fragment);
                 }
             }

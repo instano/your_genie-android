@@ -62,6 +62,7 @@ import org.telegram.android.SecretChatHelper;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.query.ReplyMessageQuery;
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.RPCRequest;
 import org.telegram.messenger.SerializedData;
@@ -112,7 +113,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.concurrent.Semaphore;
 
-public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate,
+public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate,
         PhotoViewer.PhotoViewerProvider {
 
     private static final String TAG = "ChatActivity";
@@ -272,6 +273,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     public ChatActivity(Bundle args) {
         super(args);
+        Bundle bundle = new Bundle();
+        bundle.putInt("chat_id", BuildVars.CHAT_ID);
+        bundle.putInt("user_id", BuildVars.USER_ID);
+        bundle.putInt("message_id", BuildVars.MESSAGE_ID);
+        bundle.putInt("enc_id", BuildVars.ENC_ID);
+        arguments = bundle;
     }
 
     @Override
@@ -714,12 +721,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showAlertDialog(builder);
                 } else if (id == forward) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("onlySelect", true);
-                    args.putBoolean("serverOnly", true);
-                    MessagesActivity fragment = new MessagesActivity(args);
-                    fragment.setDelegate(ChatActivity.this);
-                    presentFragment(fragment);
+//                    Bundle args = new Bundle();
+//                    args.putBoolean("onlySelect", true);
+//                    args.putBoolean("serverOnly", true);
+//                    MessagesActivity fragment = new MessagesActivity(args);
+//                    fragment.setDelegate(ChatActivity.this);
+//                    presentFragment(fragment);
                 } else if (id == chat_enc_timer) {
                     if (getParentActivity() == null) {
                         return;
@@ -4238,9 +4245,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             Bundle args = new Bundle();
             args.putBoolean("onlySelect", true);
             args.putBoolean("serverOnly", true);
-            MessagesActivity fragment = new MessagesActivity(args);
-            fragment.setDelegate(this);
-            presentFragment(fragment);
+//            MessagesActivity fragment = new MessagesActivity(args);
+//            fragment.setDelegate(this);
+//            presentFragment(fragment);
         } else if (option == 3) {
             if (Build.VERSION.SDK_INT < 11) {
                 android.text.ClipboardManager clipboard = (android.text.ClipboardManager) ApplicationLoader.applicationContext.getSystemService(Context.CLIPBOARD_SERVICE);
@@ -4388,70 +4395,70 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    @Override
-    public void didSelectDialog(MessagesActivity activity, long did, boolean param) {
-        if (dialog_id != 0 && (forwaringMessage != null || !selectedMessagesIds.isEmpty())) {
-            if (isBroadcast) {
-                param = true;
-            }
-
-            ArrayList<MessageObject> fmessages = new ArrayList<>();
-            if (forwaringMessage != null) {
-                fmessages.add(forwaringMessage);
-                forwaringMessage = null;
-            } else {
-                ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
-                Collections.sort(ids);
-                for (Integer id : ids) {
-                    MessageObject message = selectedMessagesIds.get(id);
-                    if (message != null && id > 0) {
-                        fmessages.add(message);
-                    }
-                }
-                selectedMessagesCanCopyIds.clear();
-                selectedMessagesIds.clear();
-                actionBar.hideActionMode();
-            }
-
-            if (did != dialog_id) {
-                int lower_part = (int) did;
-                if (lower_part != 0) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("scrollToTopOnResume", scrollToTopOnResume);
-                    if (lower_part > 0) {
-                        args.putInt("user_id", lower_part);
-                    } else if (lower_part < 0) {
-                        args.putInt("chat_id", -lower_part);
-                    }
-                    ChatActivity chatActivity = new ChatActivity(args);
-                    if (presentFragment(chatActivity, true)) {
-                        chatActivity.showReplyPanel(true, null, fmessages, null, false, false);
-                        if (!AndroidUtilities.isTablet()) {
-                            removeSelfFromStack();
-                            Activity parentActivity = getParentActivity();
-                            if (parentActivity == null) {
-                                parentActivity = chatActivity.getParentActivity();
-                            }
-                            if (parentActivity != null) {
-                                parentActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-                            }
-                        }
-                    } else {
-                        activity.finishFragment();
-                    }
-                } else {
-                    activity.finishFragment();
-                }
-            } else {
-                activity.finishFragment();
-                moveScrollToLastMessage();
-                showReplyPanel(true, null, fmessages, null, false, AndroidUtilities.isTablet());
-                if (AndroidUtilities.isTablet()) {
-                    actionBar.hideActionMode();
-                }
-            }
-        }
-    }
+//    @Override
+//    public void didSelectDialog(MessagesActivity activity, long did, boolean param) {
+//        if (dialog_id != 0 && (forwaringMessage != null || !selectedMessagesIds.isEmpty())) {
+//            if (isBroadcast) {
+//                param = true;
+//            }
+//
+//            ArrayList<MessageObject> fmessages = new ArrayList<>();
+//            if (forwaringMessage != null) {
+//                fmessages.add(forwaringMessage);
+//                forwaringMessage = null;
+//            } else {
+//                ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
+//                Collections.sort(ids);
+//                for (Integer id : ids) {
+//                    MessageObject message = selectedMessagesIds.get(id);
+//                    if (message != null && id > 0) {
+//                        fmessages.add(message);
+//                    }
+//                }
+//                selectedMessagesCanCopyIds.clear();
+//                selectedMessagesIds.clear();
+//                actionBar.hideActionMode();
+//            }
+//
+//            if (did != dialog_id) {
+//                int lower_part = (int) did;
+//                if (lower_part != 0) {
+//                    Bundle args = new Bundle();
+//                    args.putBoolean("scrollToTopOnResume", scrollToTopOnResume);
+//                    if (lower_part > 0) {
+//                        args.putInt("user_id", lower_part);
+//                    } else if (lower_part < 0) {
+//                        args.putInt("chat_id", -lower_part);
+//                    }
+//                    ChatActivity chatActivity = new ChatActivity(args);
+//                    if (presentFragment(chatActivity, true)) {
+//                        chatActivity.showReplyPanel(true, null, fmessages, null, false, false);
+//                        if (!AndroidUtilities.isTablet()) {
+//                            removeSelfFromStack();
+//                            Activity parentActivity = getParentActivity();
+//                            if (parentActivity == null) {
+//                                parentActivity = chatActivity.getParentActivity();
+//                            }
+//                            if (parentActivity != null) {
+//                                parentActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+//                            }
+//                        }
+//                    } else {
+//                        activity.finishFragment();
+//                    }
+//                } else {
+//                    activity.finishFragment();
+//                }
+//            } else {
+//                activity.finishFragment();
+//                moveScrollToLastMessage();
+//                showReplyPanel(true, null, fmessages, null, false, AndroidUtilities.isTablet());
+//                if (AndroidUtilities.isTablet()) {
+//                    actionBar.hideActionMode();
+//                }
+//            }
+//        }
+//    }
 
 //    @Override
 //    public boolean onBackPressed() {
@@ -4755,9 +4762,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             if (url.startsWith("@")) {
                                 openProfileWithUsername(url.substring(1));
                             } else if (url.startsWith("#")) {
-                                MessagesActivity fragment = new MessagesActivity(null);
-                                fragment.setSearchString(url);
-                                presentFragment(fragment);
+//                                MessagesActivity fragment = new MessagesActivity(null);
+//                                fragment.setSearchString(url);
+//                                presentFragment(fragment);
                             }
                         }
 
