@@ -79,6 +79,9 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+    *LoginActivity does Registration, Recovery
+    */
 public class LoginActivity extends BaseFragment {
 
     private int currentViewNum = 0;
@@ -389,6 +392,9 @@ public class LoginActivity extends BaseFragment {
         }
     }
 
+    /**
+     * Opens next activity i.e. MessagesActivity(default) after any operation like register or recover, etc
+     */
     public void needFinishActivity() {
         clearCurrentState();
         presentFragment(new MessagesActivity(null), true);
