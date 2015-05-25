@@ -273,31 +273,32 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                if (position == 2) {
+//                    if (!MessagesController.isFeatureEnabled("chat_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
+//                        return;
+//                    }
+//                    presentFragment(new GroupCreateActivity());
+//                    drawerLayoutContainer.closeDrawer(false);
+//                } else if (position == 3) {
+//                    Bundle args = new Bundle();
+//                    args.putBoolean("onlyUsers", true);
+//                    args.putBoolean("destroyAfterSelect", true);
+//                    args.putBoolean("createSecretChat", true);
+//                    presentFragment(new ContactsActivity(args));
+//                    drawerLayoutContainer.closeDrawer(false);
+//                } else if (position == 4) {
+//                    if (!MessagesController.isFeatureEnabled("broadcast_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
+//                        return;
+//                    }
+//                    Bundle args = new Bundle();
+//                    args.putBoolean("broadcast", true);
+//                    presentFragment(new GroupCreateActivity(args));
+//                    drawerLayoutContainer.closeDrawer(false);
+//                } else if (position == 6) {
+//                    presentFragment(new ContactsActivity(null));
+//                    drawerLayoutContainer.closeDrawer(false);
+//                } else
                 if (position == 2) {
-                    if (!MessagesController.isFeatureEnabled("chat_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
-                        return;
-                    }
-                    presentFragment(new GroupCreateActivity());
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 3) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("onlyUsers", true);
-                    args.putBoolean("destroyAfterSelect", true);
-                    args.putBoolean("createSecretChat", true);
-                    presentFragment(new ContactsActivity(args));
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 4) {
-                    if (!MessagesController.isFeatureEnabled("broadcast_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
-                        return;
-                    }
-                    Bundle args = new Bundle();
-                    args.putBoolean("broadcast", true);
-                    presentFragment(new GroupCreateActivity(args));
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 6) {
-                    presentFragment(new ContactsActivity(null));
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 7) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
@@ -307,10 +308,11 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 8) {
+                } else if (position == 3) {
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 9) {
+                } else if (position == 4) {
+                    // TODO: make into an about us:
                     try {
                         Intent pickIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl)));
                         startActivityForResult(pickIntent, 500);
@@ -897,6 +899,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         }
                     } else {
                         if (actionBarLayout.fragmentsStack.isEmpty()) {
+                            // FATAL: app crashing code:
                             actionBarLayout.addFragmentToStack(new ChatActivity(null));
                             drawerLayoutContainer.setAllowOpenDrawer(true, false);
                         }
@@ -907,6 +910,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             actionBarLayout.addFragmentToStack(new LoginActivity());
                             drawerLayoutContainer.setAllowOpenDrawer(false, false);
                         } else {
+                            // FATAL: app crashing code:
                             actionBarLayout.addFragmentToStack(new ChatActivity(null));
                             drawerLayoutContainer.setAllowOpenDrawer(true, false);
                         }

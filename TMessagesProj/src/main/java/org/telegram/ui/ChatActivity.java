@@ -272,8 +272,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     };
 
     public ChatActivity(Bundle args) {
-        super(BuildVars.DEFAULT_NEW_CHAT_ARGS);
-        new RuntimeException(String.valueOf(args)).printStackTrace();
+        super(args);
     }
 
     @Override
