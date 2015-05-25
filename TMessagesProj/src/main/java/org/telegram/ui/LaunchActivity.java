@@ -355,8 +355,12 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 drawerLayoutContainer.setAllowOpenDrawer(false, false);
             } else {
                 //TODO: Adding Fragment
-
-                actionBarLayout.addFragmentToStack(new ChatActivity(null));
+                Bundle args = new Bundle();
+                args.putInt("chat_id", BuildVars.CHAT_ID);
+                args.putInt("user_id", BuildVars.USER_ID);
+                args.putInt("message_id", BuildVars.MESSAGE_ID);
+                args.putInt("enc_id", BuildVars.ENC_ID);
+                actionBarLayout.addFragmentToStack(new ChatActivity(args));
                 drawerLayoutContainer.setAllowOpenDrawer(true, false);
             }
 
@@ -455,7 +459,16 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         });
     }
 
+    /**
+     *
+     * @param intent
+     * @param isNew true if intent is from {@link #onNewIntent(Intent)}
+     * @param restore
+     * @param fromPassword true if called from {@link #showPasscodeActivity()}
+     * @return
+     */
     private boolean handleIntent(Intent intent, boolean isNew, boolean restore, boolean fromPassword) {
+        FileLog.d(TAG, ".handleIntent: " + intent);
         int flags = intent.getFlags();
         if (!fromPassword && (AndroidUtilities.needShowPasscode(true) || UserConfig.isWaitingForPasscodeEnter)) {
             showPasscodeActivity();
