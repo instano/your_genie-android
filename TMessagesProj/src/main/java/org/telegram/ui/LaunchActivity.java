@@ -69,6 +69,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * The base activity with navigation drawer. Usually other classes are added as fragments
+ * though their class name ends with ...Activity
+ */
 public class LaunchActivity extends Activity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate {
     private static final String TAG = "LaunchActivity";
     private boolean finished;
