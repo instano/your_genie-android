@@ -724,7 +724,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                                         Bundle args = new Bundle();
                                                         args.putInt("user_id", user.id);
                                                         ChatActivity fragment = new ChatActivity(args);
-                                                        FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
                                                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
                                                         actionBarLayout.presentFragment(fragment, false, true, true);
                                                     }

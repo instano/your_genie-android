@@ -61,6 +61,9 @@ import org.telegram.ui.ActionBar.MenuDrawable;
 
 import java.util.ArrayList;
 
+/**
+ * list of chats
+ */
 public class MessagesActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
     private static final String TAG = "MessagesActivity";
     private ListView messagesListView;
