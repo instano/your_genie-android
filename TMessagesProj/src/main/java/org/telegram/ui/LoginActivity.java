@@ -1203,6 +1203,7 @@ public class LoginActivity extends BaseFragment {
                                 MessagesController.getInstance().putUser(res.user, false);
                                 ContactsController.getInstance().checkAppAccount();
                                 MessagesController.getInstance().getBlockedUsers(true);
+                                // called just after login in
                                 needFinishActivity();
                                 ConnectionsManager.getInstance().initPushConnection();
                                 Utilities.stageQueue.postRunnable(new Runnable() {

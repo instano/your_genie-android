@@ -28,12 +28,10 @@ import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildConfig;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.DispatchQueue;
@@ -353,8 +351,6 @@ public class NotificationsController {
 
             if (user_id != BuildVars.USER_ID) {
                 FileLog.d(BuildVars.TAG, "skipping notification from uid:" + user_id);
-                if (BuildConfig.DEBUG)
-                    Toast.makeText(ApplicationLoader.applicationContext, "skipping notification from uid:" + user_id, Toast.LENGTH_LONG).show();
                 return;
             }
 
