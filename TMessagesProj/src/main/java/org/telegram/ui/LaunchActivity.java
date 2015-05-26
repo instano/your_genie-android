@@ -22,7 +22,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -111,7 +110,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ApplicationLoader.postInitApplication();
-        Log.v(TAG, "LaunchActivity onCreate");
+        FileLog.d(TAG, "LaunchActivity onCreate");
 
         if (!UserConfig.isClientActivated()) {
             Intent intent = getIntent();
@@ -1197,8 +1196,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         } else {
             passcodeView.onResume();
         }
-        Utilities.checkForCrashes(this);
-        Utilities.checkForUpdates(this);
+//        Utilities.checkForCrashes(this);
+//        Utilities.checkForUpdates(this);
         ApplicationLoader.mainInterfacePaused = false;
         ConnectionsManager.getInstance().setAppPaused(false, false);
         updateCurrentConnectionState();

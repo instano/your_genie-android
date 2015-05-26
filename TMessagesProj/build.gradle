@@ -20,7 +20,6 @@ repositories {
 dependencies {
     compile 'com.android.support:support-v4:22.0.+'
     compile 'com.google.android.gms:play-services:3.2.+'
-    compile 'net.hockeyapp.android:HockeySDK:3.5.+'
     compile 'com.googlecode.mp4parser:isoparser:1.0.+'
     compile 'com.android.support:recyclerview-v7:+'
     compile('com.crashlytics.sdk.android:crashlytics:2.2.4@aar') {

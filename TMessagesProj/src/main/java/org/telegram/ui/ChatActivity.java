@@ -29,7 +29,6 @@ import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -51,7 +50,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.android.Emoji;
@@ -279,15 +277,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public boolean onFragmentCreate() {
         if (arguments == null)
             return false;
-        Log.v(TAG, "onFragmentCreate");
         final int chatId = arguments.getInt("chat_id", 0);
-        Log.v(TAG, "chat_id"+arguments.getInt("chat_id", 0));
         final int userId = arguments.getInt("user_id", 0);
-        Log.v(TAG, "user_id : "+arguments.getInt("user_id", 0));
         final int encId = arguments.getInt("enc_id", 0);
-        Log.v(TAG, "enc_id : "+arguments.getInt("enc_id", 0));
         startLoadFromMessageId = arguments.getInt("message_id", 0);
-        Log.v(TAG, "message_id : "+arguments.getInt("message_id", 0));
         scrollToTopOnResume = arguments.getBoolean("scrollToTopOnResume", false);
 
         if (chatId != 0) {
