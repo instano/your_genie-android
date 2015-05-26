@@ -105,7 +105,6 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
 
     public MessagesActivity(Bundle args) {
         super(args);
-        new RuntimeException(String.valueOf(args)).printStackTrace();
     }
 
     @Override

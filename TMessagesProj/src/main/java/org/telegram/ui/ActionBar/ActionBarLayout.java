@@ -551,11 +551,9 @@ public class ActionBarLayout extends FrameLayout {
     }
 
     public boolean presentFragment(final BaseFragment fragment, final boolean removeLast, boolean forceWithoutAnimation, boolean check) {
-        new RuntimeException().printStackTrace();
         if (checkTransitionAnimation() || delegate != null && check && !delegate.needPresentFragment(fragment, removeLast, forceWithoutAnimation, this) || !fragment.onFragmentCreate()) {
             return false;
         }
-        new RuntimeException().printStackTrace();
         if (parentActivity.getCurrentFocus() != null) {
             AndroidUtilities.hideKeyboard(parentActivity.getCurrentFocus());
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.hideEmojiKeyboard);

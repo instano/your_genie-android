@@ -716,13 +716,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showAlertDialog(builder);
-                } else if (id == forward) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("onlySelect", true);
-                    args.putBoolean("serverOnly", true);
-                    MessagesActivity fragment = new MessagesActivity(args);
-                    fragment.setDelegate(ChatActivity.this);
-                    presentFragment(fragment);
+//                } else if (id == forward) {
+//                    Bundle args = new Bundle();
+//                    args.putBoolean("onlySelect", true);
+//                    args.putBoolean("serverOnly", true);
+//                    MessagesActivity fragment = new MessagesActivity(args);
+//                    fragment.setDelegate(ChatActivity.this);
+//                    presentFragment(fragment);
                 } else if (id == chat_enc_timer) {
                     if (getParentActivity() == null) {
                         return;
@@ -1050,7 +1050,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (!isBroadcast) {
                 actionModeViews.add(actionMode.addItem(reply, R.drawable.ic_ab_reply, R.drawable.bar_selector_mode, null, AndroidUtilities.dp(54)));
             }
-            actionModeViews.add(actionMode.addItem(forward, R.drawable.ic_ab_fwd_forward, R.drawable.bar_selector_mode, null, AndroidUtilities.dp(54)));
+//            actionModeViews.add(actionMode.addItem(forward, R.drawable.ic_ab_fwd_forward, R.drawable.bar_selector_mode, null, AndroidUtilities.dp(54)));
             actionModeViews.add(actionMode.addItem(delete, R.drawable.ic_ab_fwd_delete, R.drawable.bar_selector_mode, null, AndroidUtilities.dp(54)));
         } else {
             actionModeViews.add(actionMode.addItem(copy, R.drawable.ic_ab_fwd_copy, R.drawable.bar_selector_mode, null, AndroidUtilities.dp(54)));
@@ -4103,44 +4103,44 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (currentEncryptedChat == null) {
                         if (!isBroadcast && !(currentChat != null && (currentChat instanceof TLRPC.TL_chatForbidden || currentChat.left))) {
                             if (type == 2) {
-                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{8, 2, 1};
                             } else if (type == 3) {
-                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Copy", R.string.Copy), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Copy", R.string.Copy), LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{8, 2, 3, 1};
                             } else if (type == 4) {
                                 if (selectedObject.messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
-                                    items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                    items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 } else {
-                                    items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                    items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("SaveToGallery", R.string.SaveToGallery), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 }
                                 options = new int[]{8, 4, 2, 1};
                             } else if (type == 5) {
-                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile), LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile), LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{8, 5, 4, 2, 1};
                             } else if (type == 6) {
-                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{8, 7, 6, 2, 1};
                             }
                         } else {
                             if (type == 2) {
-                                items = new CharSequence[]{LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{/*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{2, 1};
                             } else if (type == 3) {
-                                items = new CharSequence[]{LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Copy", R.string.Copy), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{/*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Copy", R.string.Copy), LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{2, 3, 1};
                             } else if (type == 4) {
                                 if (selectedObject.messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
-                                    items = new CharSequence[]{LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                    items = new CharSequence[]{LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 } else {
-                                    items = new CharSequence[]{LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                    items = new CharSequence[]{LocaleController.getString("SaveToGallery", R.string.SaveToGallery), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 }
                                 options = new int[]{4, 2, 1};
                             } else if (type == 5) {
-                                items = new CharSequence[]{LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile), LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile), LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{5, 4, 2, 1};
                             } else if (type == 6) {
-                                items = new CharSequence[]{LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{7, 6, 2, 1};
                             }
                         }
