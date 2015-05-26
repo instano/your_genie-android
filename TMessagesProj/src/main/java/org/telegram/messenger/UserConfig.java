@@ -12,6 +12,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Base64;
 
+import com.appvirality.android.AppviralityAPI;
+
 import org.telegram.android.MessagesStorage;
 
 import java.io.File;
@@ -114,6 +116,22 @@ public class UserConfig {
     public static void setCurrentUser(TLRPC.User user) {
         synchronized (sync) {
             currentUser = user;
+        }
+        SharedPreferences prefs = ApplicationLoader.applicationContext
+                .getSharedPreferences(ApplicationLoader.class.getSimpleName(), Context.MODE_PRIVATE);
+        String registrationId = prefs.getString(ApplicationLoader.PROPERTY_REG_ID, "");
+        if (registrationId !=null) {
+            AppviralityAPI.UserDetails.setInstance(ApplicationLoader.applicationContext)
+                    .setUserName(user.username)
+                    .setPhoneNumber(user.phone)
+                    .setPushRegID(registrationId)
+                    .Update();
+        } else {
+            AppviralityAPI.UserDetails.setInstance(ApplicationLoader.applicationContext)
+                    .setUserName(user.username)
+                    .setPhoneNumber(user.phone)
+                    .setPushRegID("not registered")
+                    .Update();
         }
     }
 

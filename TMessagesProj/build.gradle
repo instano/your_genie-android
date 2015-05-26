@@ -14,6 +14,7 @@ apply plugin: 'io.fabric'
 repositories {
     mavenCentral()
     maven { url 'https://maven.fabric.io/public' }
+    jcenter()
 }
 
 dependencies {
@@ -25,6 +26,8 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.2.4@aar') {
         transitive = true;
     }
+    compile 'com.appvirality:AppviralityUI:1.1.8'
+    compile "com.mixpanel.android:mixpanel-android:4.5.3"
 }
 
 android {
@@ -39,6 +42,10 @@ android {
     signingConfigs {
         debug {
             // automatically use the default debug one.
+            keyPassword 'hello123'
+            storeFile file('debug.keystore')
+            storePassword 'hello123'
+            keyAlias 'retailer'
         }
 
         release {
@@ -92,7 +99,7 @@ android {
 
     defaultConfig {
         applicationId "com.instano.buyer"
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 22
         versionCode 17
         versionName "1.0"
