@@ -372,14 +372,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 actionBarLayout.addFragmentToStack(new LoginActivity());
                 drawerLayoutContainer.setAllowOpenDrawer(false, false);
             } else {
-                // TODO: Adding Fragment
-//                Bundle args = new Bundle();
-//                args.putInt("chat_id", BuildVars.CHAT_ID);
-//                args.putInt("user_id", BuildVars.USER_ID);
-//                args.putInt("message_id", BuildVars.MESSAGE_ID);
-//                args.putInt("enc_id", BuildVars.ENC_ID);
-//                actionBarLayout.addFragmentToStack(new ChatActivity(args));
-                actionBarLayout.addFragmentToStack(new MessagesActivity(null));
+                actionBarLayout.addFragmentToStack(new ChatActivity(BuildVars.args));
+//                actionBarLayout.addFragmentToStack(new MessagesActivity(null));
                 drawerLayoutContainer.setAllowOpenDrawer(true, false);
             }
 
