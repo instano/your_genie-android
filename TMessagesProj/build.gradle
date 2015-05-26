@@ -28,7 +28,7 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 21
     buildToolsVersion '22.0.1'
 
     compileOptions {
@@ -38,7 +38,7 @@ android {
 
     signingConfigs {
         debug {
-//            storeFile file("config/debug.keystore")
+            // automatically use the default debug one.
         }
 
         release {
@@ -87,9 +87,10 @@ android {
     }
 
     defaultConfig {
+        applicationId "com.yourgenie"
         minSdkVersion 8
         targetSdkVersion 22
-        versionCode 492
-        versionName "2.7.0"
+        versionCode 1
+        versionName "1.0"
     }
 }

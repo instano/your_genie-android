@@ -303,6 +303,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 9) {
+
                     presentFragment(new AboutUsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 }
