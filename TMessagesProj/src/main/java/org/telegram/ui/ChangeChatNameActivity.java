@@ -66,6 +66,7 @@ public class ChangeChatNameActivity extends BaseFragment {
                 if (id == -1) {
                     finishFragment();
                 } else if (id == done_button) {
+
                     if (firstNameField.getText().length() != 0) {
                         saveName();
                         finishFragment();
