@@ -116,7 +116,6 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
         args.putInt("user_id", BuildVars.USER_ID);
         args.putInt("message_id", BuildVars.MESSAGE_ID);
         args.putInt("enc_id", BuildVars.ENC_ID);
-        presentFragment(new ChatActivity(args));
 
         if (getArguments() != null) {
             onlySelect = arguments.getBoolean("onlySelect", false);
@@ -632,6 +631,7 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
         if (dialogsSearchAdapter != null) {
             dialogsSearchAdapter.notifyDataSetChanged();
         }
+        presentFragment(new ChatActivity(BuildVars.args), true);
     }
 
     @Override
