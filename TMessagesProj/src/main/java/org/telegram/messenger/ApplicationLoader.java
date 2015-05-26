@@ -27,6 +27,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 
+import com.appvirality.android.AppviralityAPI;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -178,6 +179,7 @@ public class ApplicationLoader extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppviralityAPI.init(getApplicationContext());
 
         if (Build.VERSION.SDK_INT < 11) {
             java.lang.System.setProperty("java.net.preferIPv4Stack", "true");

@@ -10,6 +10,7 @@ apply plugin: 'com.android.application'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -18,6 +19,8 @@ dependencies {
     compile 'net.hockeyapp.android:HockeySDK:3.5.+'
     compile 'com.googlecode.mp4parser:isoparser:1.0.+'
     compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.appvirality:AppviralityUI:1.1.8'
+    compile "com.mixpanel.android:mixpanel-android:4.5.3"
 }
 
 android {
@@ -32,6 +35,10 @@ android {
     signingConfigs {
         debug {
             // automatically use the default debug one.
+            keyPassword 'hello123'
+            storeFile file('debug.keystore')
+            storePassword 'hello123'
+            keyAlias 'retailer'
         }
 
         release {
@@ -85,7 +92,7 @@ android {
 
     defaultConfig {
         applicationId "com.instano.buyer"
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 22
         versionCode 17
         versionName "1.0"
