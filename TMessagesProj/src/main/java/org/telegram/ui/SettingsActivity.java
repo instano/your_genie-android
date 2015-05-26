@@ -491,7 +491,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     showAlertDialog(builder);
                 } else if (i == telegramFaqRow) {
                     try {
-                        Intent pickIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl)));
+                        Intent pickIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(LocaleController.getString("TelegramFaqUrl", R.string.InstanoFaqUrl)));
                         getParentActivity().startActivityForResult(pickIntent, 500);
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
@@ -1101,7 +1101,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == switchBackendButtonRow) {
                     textCell.setText("Switch Backend", true);
                 } else if (i == telegramFaqRow) {
-                    textCell.setText(LocaleController.getString("TelegramFAQ", R.string.TelegramFaq), true);
+                    textCell.setText(LocaleController.getString("TelegramFAQ", R.string.InstanoFaq), true);
                 } else if (i == contactsReimportRow) {
                     textCell.setText(LocaleController.getString("ImportContacts", R.string.ImportContacts), true);
                 }
