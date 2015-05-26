@@ -523,6 +523,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         lastStatus = null;
         hasOwnBackground = true;
 
+        actionBar.setTitleOverlayText(BuildVars.ACTIONBAR_TITLE);
         actionBar.setBackButtonImage(R.drawable.ic_menu);
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -2648,11 +2649,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             return;
         }
         if (currentChat != null) {
-            nameTextView.setText(currentChat.title);
+//            nameTextView.setText(currentChat.title);
+            nameTextView.setText(BuildVars.ACTIONBAR_TITLE);
         } else if (currentUser != null) {
             if (currentUser.id / 1000 != 777 && currentUser.id / 1000 != 333 && ContactsController.getInstance().contactsDict.get(currentUser.id) == null && (ContactsController.getInstance().contactsDict.size() != 0 || !ContactsController.getInstance().isLoadingContacts())) {
                 if (currentUser.phone != null && currentUser.phone.length() != 0) {
-                    nameTextView.setText(PhoneFormat.getInstance().format("+" + currentUser.phone));
+//                    nameTextView.setText(PhoneFormat.getInstance().format("+" + currentUser.phone));
+                    nameTextView.setText(BuildVars.ACTIONBAR_TITLE);
                 } else {
                     if (currentUser instanceof TLRPC.TL_userDeleted) {
                         nameTextView.setText(LocaleController.getString("HiddenName", R.string.HiddenName));
@@ -2661,7 +2664,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 }
             } else {
-                nameTextView.setText(ContactsController.formatName(currentUser.first_name, currentUser.last_name));
+//                nameTextView.setText(ContactsController.formatName(currentUser.first_name, currentUser.last_name));
+                nameTextView.setText(BuildVars.ACTIONBAR_TITLE);
             }
         }
     }
