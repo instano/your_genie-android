@@ -22,7 +22,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -111,7 +110,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ApplicationLoader.postInitApplication();
-        Log.v(TAG, "LaunchActivity onCreate");
+        FileLog.d(TAG, "LaunchActivity onCreate");
 
         if (!UserConfig.isClientActivated()) {
             Intent intent = getIntent();
@@ -334,13 +333,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 4) {
-                    // TODO: make into an about us:
-                    try {
-                        Intent pickIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl)));
-                        startActivityForResult(pickIntent, 500);
-                    } catch (Exception e) {
-                        FileLog.e("tmessages", e);
-                    }
+                    presentFragment(new AboutUsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 }
             }
@@ -378,14 +371,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 actionBarLayout.addFragmentToStack(new LoginActivity());
                 drawerLayoutContainer.setAllowOpenDrawer(false, false);
             } else {
-                // TODO: Adding Fragment
-//                Bundle args = new Bundle();
-//                args.putInt("chat_id", BuildVars.CHAT_ID);
-//                args.putInt("user_id", BuildVars.USER_ID);
-//                args.putInt("message_id", BuildVars.MESSAGE_ID);
-//                args.putInt("enc_id", BuildVars.ENC_ID);
-//                actionBarLayout.addFragmentToStack(new ChatActivity(args));
-                actionBarLayout.addFragmentToStack(new MessagesActivity(null));
+                actionBarLayout.addFragmentToStack(new ChatActivity(BuildVars.args));
+//                actionBarLayout.addFragmentToStack(new MessagesActivity(null));
                 drawerLayoutContainer.setAllowOpenDrawer(true, false);
             }
 
@@ -1209,8 +1196,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         } else {
             passcodeView.onResume();
         }
-        Utilities.checkForCrashes(this);
-        Utilities.checkForUpdates(this);
+//        Utilities.checkForCrashes(this);
+//        Utilities.checkForUpdates(this);
         ApplicationLoader.mainInterfacePaused = false;
         ConnectionsManager.getInstance().setAppPaused(false, false);
         updateCurrentConnectionState();

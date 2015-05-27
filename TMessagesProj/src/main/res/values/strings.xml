@@ -3,7 +3,9 @@
 
 
 <resources>
-    <string name="AppName">Your Genie</string>
+
+    <string name="AppName">Instano</string>
+
     <string name="LanguageName">English</string>
     <string name="LanguageNameInEnglish">English</string>
     <string name="LanguageCode">en</string>
@@ -14,7 +16,7 @@
     <string name="WrongCountry">Wrong country code</string>
     <!--code enter view-->
     <string name="YourCode">Your code</string>
-    <string name="SentSmsCode">We\'ve sent an SMS with a telegram code to your phone</string>
+    <string name="SentSmsCode">We\'ve sent an SMS with a Instano code to your phone</string>
     <string name="CallText">We will call you in %1$d:%2$02d</string>
     <string name="Calling">Calling you...</string>
     <string name="Code">Code</string>
@@ -50,7 +52,7 @@
     <string name="HiddenName">Deleted Account</string>
     <string name="SelectChat">Select Chat</string>
     <string name="PhotoTip">Tap and hold to view</string>
-    <string name="CompatibilityChat">%1$s is using an older version of Telegram, so secret photos will be shown in compatibility mode.\n\nOnce %2$s updates Telegram, photos with timers for 1 minute or less will start working in \'Tap and hold to view\' mode, and you will be notified whenever the other party takes a screenshot.</string>
+    <string name="CompatibilityChat">%1$s is using an older version of Instano, so secret photos will be shown in compatibility mode.\n\nOnce %2$s updates Instano, photos with timers for 1 minute or less will start working in \'Tap and hold to view\' mode, and you will be notified whenever the other party takes a screenshot.</string>
     <string name="SearchMessages">MESSAGES</string>
     <string name="Search">Search</string>
     <string name="MuteNotifications">Mute notifications</string>
@@ -89,7 +91,7 @@
     <string name="IsSendingPhoto">%1$s is sending photo...</string>
     <string name="IsSendingVideo">%1$s is sending video...</string>
     <string name="IsSendingFile">%1$s is sending file...</string>
-    <string name="GotAQuestion">Got a question\nabout Telegram?</string>
+    <string name="GotAQuestion">Got a question\nabout Instano?</string>
     <string name="ChatTakePhoto">Take photo</string>
     <string name="ChatGallery">Gallery</string>
     <string name="ChatLocation">Location</string>
@@ -154,8 +156,8 @@
     <string name="NotificationGroupKickMember">%1$s removed %3$s from the group %2$s</string>
     <string name="NotificationGroupKickYou">%1$s removed you from the group %2$s</string>
     <string name="NotificationGroupLeftMember">%1$s has left the group %2$s</string>
-    <string name="NotificationContactJoined">%1$s joined Telegram!</string>
-    <string name="NotificationUnrecognizedDevice">%1$s,\nWe detected a login into your account from a new device on %2$s\n\nDevice: %3$s\nLocation: %4$s\n\nIf this wasn\'t you, you can go to Settings - Privacy and Security - Sessions and terminate that session.\n\nIf you think that somebody logged in to your account against your will, you can enable two-step verification in Privacy and Security settings.\n\nSincerely,\nThe Telegram Team</string>
+    <string name="NotificationContactJoined">%1$s joined Instano!</string>
+    <string name="NotificationUnrecognizedDevice">%1$s,\nWe detected a login into your account from a new device on %2$s\n\nDevice: %3$s\nLocation: %4$s\n\nIf this wasn\'t you, you can go to Settings - Privacy and Security - Sessions and terminate that session.\n\nIf you think that somebody logged in to your account against your will, you can enable two-step verification in Privacy and Security settings.\n\nSincerely,\nThe Instano Team</string>
     <string name="NotificationContactNewPhoto">%1$s updated profile photo</string>
     <string name="Reply">Reply</string>
     <string name="ReplyToGroup">Reply to %1$s</string>
@@ -164,7 +166,7 @@
     <!--contacts view-->
     <string name="SelectContact">Select Contact</string>
     <string name="NoContacts">No contacts yet</string>
-    <string name="InviteText">Hey, let\'s switch to Telegram: https://telegram.org/dl</string>
+    <string name="InviteText">Hey, let\'s switch to Instano: https://www.Instano.in</string>
     <string name="TodayAt">at</string>
     <string name="YesterdayAt">yesterday at</string>
     <string name="Online">online</string>
@@ -206,7 +208,7 @@
     <string name="EncryptionKey">Encryption Key</string>
     <string name="MessageLifetime">Self-Destruct Timer</string>
     <string name="ShortMessageLifetimeForever">Off</string>
-    <string name="EncryptionKeyDescription">This image is a visualization of the encryption key for this secret chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.<![CDATA[<br><br>]]>If this image looks the same on <![CDATA[<b>]]>%2$s\'s<![CDATA[</b>]]> phone, your chat is 200%% secure.<![CDATA[<br><br>]]>Learn more at telegram.org</string>
+    <string name="EncryptionKeyDescription">This image is a visualization of the encryption key for this secret chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.<![CDATA[<br><br>]]>If this image looks the same on <![CDATA[<b>]]>%2$s\'s<![CDATA[</b>]]> phone, your chat is 200%% secure.<![CDATA[<br><br>]]>Learn more at Instano.</string>
     <string name="NumberUnknown">Unknown</string>
     <string name="Info">Info</string>
     <string name="Phone">Phone</string>
@@ -218,7 +220,7 @@
     <string name="UsernameInvalidShort">A username must have at least 5 characters.</string>
     <string name="UsernameInvalidLong">The username must not exceed 32 characters.</string>
     <string name="UsernameInvalidStartNumber">Sorry, a username can\'t start with a number.</string>
-    <string name="UsernameHelp">You can choose a username on <![CDATA[<b>]]>Telegram<![CDATA[</b>]]>. If you do, other people will be able to find you by this username and contact you without knowing your phone number.<![CDATA[<br><br>]]>You can use <![CDATA[<b>]]>a–z<![CDATA[</b>]]>, <![CDATA[<b>]]>0–9<![CDATA[</b>]]> and underscores. Minimum length is <![CDATA[<b>]]>5<![CDATA[</b>]]> characters.</string>
+    <string name="UsernameHelp">You can choose a username on <![CDATA[<b>]]>Instano<![CDATA[</b>]]>. If you do, other people will be able to find you by this username and contact you without knowing your phone number.<![CDATA[<br><br>]]>You can use <![CDATA[<b>]]>a–z<![CDATA[</b>]]>, <![CDATA[<b>]]>0–9<![CDATA[</b>]]> and underscores. Minimum length is <![CDATA[<b>]]>5<![CDATA[</b>]]> characters.</string>
     <string name="UsernameChecking">Checking username...</string>
     <string name="UsernameAvailable">%1$s is available.</string>
     <string name="UsernameEmpty">None</string>
@@ -256,13 +258,15 @@
     <string name="SendByEnter">Send by Enter</string>
     <string name="TerminateAllSessions">Terminate All Other Sessions</string>
     <string name="Events">Events</string>
-    <string name="ContactJoined">Contact joined Telegram</string>
+    <string name="ContactJoined">Contact joined Instano</string>
     <string name="Pebble">PEBBLE</string>
     <string name="Language">Language</string>
-    <string name="AskAQuestionInfo">Please note that Telegram Support is done by volunteers. We try to respond as quickly as possible, but it may take a while.<![CDATA[<br><br>]]>Please take a look at the <![CDATA[<a href=\"http://telegram.org/faq#general\">Telegram FAQ</a>]]>: it has answers to most questions and important tips for <![CDATA[<a href=\"http://telegram.org/faq#troubleshooting\">troubleshooting</a>]]>.</string>
+    <string name="AskAQuestionInfo">Please note that Instano Support is done by volunteers. We try to respond as quickly as possible, but it may take a while.<![CDATA[<br><br>]]>Please take a look at the <![CDATA[<a href=\"http://Instano.in\">Instano FAQ</a>]]>: it has answers to most questions and important tips for <![CDATA[<a href=\"http://instano.in#troubleshooting\">troubleshooting</a>]]>.</string>
     <string name="AskButton">Ask a volunteer</string>
-    <string name="TelegramFaq">Telegram FAQ</string>
+
+    <string name="TelegramFaq">About Us</string>
     <string name="TelegramFaqUrl">https://telegram.org/faq</string>
+
     <string name="DeleteLocalization">Delete localization?</string>
     <string name="IncorrectLocalization">Incorrect localization file</string>
     <string name="Enabled">Enabled</string>
@@ -298,12 +302,12 @@
     <string name="NotificationsPriorityMax">Max</string>
     <string name="RepeatNotificationsNever">Never</string>
     <string name="RepeatNotifications">Repeat Notifications</string>
-    <string name="PhoneNumberHelp">You can change your Telegram number here. Your account and all your cloud data — messages, media, contacts, etc. will be moved to the new number.\n\n<![CDATA[<b>Important:</b>]]> all your Telegram contacts will get your <![CDATA[<b>new number</b>]]> added to their address book, provided they had your old number and you haven\'t blocked them in Telegram.</string>
-    <string name="PhoneNumberAlert">All your Telegram contacts will get your new number added to their address book, provided they had your old number and you haven\'t blocked them in Telegram.</string>
+    <string name="PhoneNumberHelp">You can change your Instano number here. Your account and all your cloud data — messages, media, contacts, etc. will be moved to the new number.\n\n<![CDATA[<b>Important:</b>]]> all your Instano contacts will get your <![CDATA[<b>new number</b>]]> added to their address book, provided they had your old number and you haven\'t blocked them in Instano.</string>
+    <string name="PhoneNumberAlert">All your Instano contacts will get your new number added to their address book, provided they had your old number and you haven\'t blocked them in Instano.</string>
     <string name="PhoneNumberChange">CHANGE NUMBER</string>
     <string name="ChangePhoneNewNumber">New number</string>
-    <string name="ChangePhoneHelp">We will send an SMS with a telegram code to your number.</string>
-    <string name="ChangePhoneNumberOccupied">The number %1$s is already connected to a Telegram account. Please delete that account before migrating to the new number.</string>
+    <string name="ChangePhoneHelp">We will send an SMS with a Instano code to your number.</string>
+    <string name="ChangePhoneNumberOccupied">The number %1$s is already connected to a Instano account. Please delete that account before migrating to the new number.</string>
     <string name="NotificationsOther">Other</string>
     <string name="NotificationsDisabled">Disabled</string>
     <string name="VibrationDisabled">Disabled</string>
@@ -315,7 +319,7 @@
     <string name="SessionsTitle">Active Sessions</string>
     <string name="CurrentSession">Current session</string>
     <string name="NoOtherSessions">No other active sessions</string>
-    <string name="NoOtherSessionsInfo">You can log in to Telegram from other mobile, tablet and desktop devices, using the same phone number. All your data will be instantly synchronized.</string>
+    <string name="NoOtherSessionsInfo">You can log in to Instano from other mobile, tablet and desktop devices, using the same phone number. All your data will be instantly synchronized.</string>
     <string name="OtherSessions">Active Sessions</string>
     <string name="SessionsInfo">Control your sessions on other devices.</string>
     <string name="TerminateSessionInfo">Tap on a session to terminate.</string>
@@ -324,8 +328,8 @@
     <!--passcode view-->
     <string name="Passcode">Passcode Lock</string>
     <string name="ChangePasscode">Change Passcode</string>
-    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock and unlock your Telegram app.\n\nNote: if you forget the passcode, you\'ll need to delete and reinstall the app. All secret chats will be lost.</string>
-    <string name="ChangePasscodeAlert">You will now see a lock icon on the chats page. Tap it to lock your Telegram app with your new passcode.</string>
+    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock and unlock your Instano app.\n\nNote: if you forget the passcode, you\'ll need to delete and reinstall the app. All secret chats will be lost.</string>
+    <string name="ChangePasscodeAlert">You will now see a lock icon on the chats page. Tap it to lock your Instano app with your new passcode.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Password</string>
     <string name="EnterCurrentPasscode">Enter your current passcode</string>
@@ -402,7 +406,7 @@
     <string name="YourEmailInfo">Please add your valid e-mail. It is the only way to recover a forgotten password.</string>
     <string name="YourEmailSkip">Skip</string>
     <string name="YourEmailSkipWarning">Warning</string>
-    <string name="YourEmailSkipWarningText">No, seriously.\n\nIf you forget your password, you will lose access to your Telegram account. There will be no way to restore it.</string>
+    <string name="YourEmailSkipWarningText">No, seriously.\n\nIf you forget your password, you will lose access to your Instano account. There will be no way to restore it.</string>
     <string name="YourEmailAlmostThere">Almost there!</string>
     <string name="YourEmailAlmostThereText">Please check your e-mail (don\'t forget the spam folder) to complete Two-Step Verification setup.</string>
     <string name="YourPasswordSuccess">Success!</string>
@@ -436,7 +440,7 @@
     <string name="PasswordRecovery">Password Recovery</string>
     <string name="PasswordCode">Code</string>
     <string name="PasswordReset">Password deactivated</string>
-    <string name="EnabledPasswordText">You have enabled Two-Step verification.\nYou\'ll need the password you set up here to log in to your Telegram account.</string>
+    <string name="EnabledPasswordText">You have enabled Two-Step verification.\nYou\'ll need the password you set up here to log in to your Instano account.</string>
     <string name="PendingEmailText">Your recovery e-mail %1$s is not yet active and pending confirmation.</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy and Security</string>
@@ -514,7 +518,7 @@
     <string name="ActionKickUserYou">un1 removed you</string>
     <string name="ActionAddUserYou">un1 added you</string>
     <string name="ActionAddUserSelf">un1 returned to the group</string>
-    <string name="UnsuppotedMedia">This message is not supported on your version of Telegram. Update the app to view: http://telegram.org/update</string>
+    <string name="UnsuppotedMedia">This message is not supported on your version of Instano. Update the app to view: http://Instano.in/update</string>
     <string name="AttachPhoto">Photo</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachLocation">Location</string>
@@ -537,12 +541,12 @@
     <string name="NoPlayerInstalled">You don\'t have a video player, please install one to continue</string>
     <string name="NoMailInstalled">Please send an email to sms@stel.com and tell us about your problem.</string>
     <string name="NoHandleAppInstalled">You don\'t have applications that can handle the file type \'%1$s\', please install one to continue</string>
-    <string name="InviteUser">This user does not have Telegram yet, send an invitation?</string>
+    <string name="InviteUser">This user does not have Instano yet, send an invitation?</string>
     <string name="AreYouSure">Are you sure?</string>
     <string name="AddToTheGroup">Add %1$s to the group?\n\nNumber of last messages to forward:</string>
     <string name="ForwardMessagesTo">Forward messages to %1$s?</string>
     <string name="SendMessagesTo">Send messages to %1$s?</string>
-    <string name="AreYouSureLogout">Are you sure you want to log out?\n\nNote that you can seamlessly use Telegram on all your devices at once.\n\nRemember, logging out kills all your Secret Chats.</string>
+    <string name="AreYouSureLogout">Are you sure you want to log out?\n\nNote that you can seamlessly use Instano on all your devices at once.\n\nRemember, logging out kills all your Secret Chats.</string>
     <string name="AreYouSureSessions">Are you sure you want to terminate all other sessions?</string>
     <string name="AreYouSureDeleteAndExit">Are you sure you want to delete and leave the group?</string>
     <string name="AreYouSureDeleteThisChat">Are you sure you want to delete this chat?</string>
@@ -558,21 +562,25 @@
     <string name="ForwardMessagesToGroup">Forward messages to %1$s?</string>
     <string name="FeatureUnavailable">Sorry, this feature is currently not available in your country.</string>
     <!--Intro view-->
-    <string name="Page1Title">Your Genie</string>
+
+    <string name="StartMessaging">Start Messaging</string>
+
+    <string name="Page1Title">Instano</string>
     <string name="Page2Title">Convenient</string>
     <string name="Page3Title">Fast</string>
     <string name="Page4Title">Secure</string>
     <string name="Page5Title">Bangalore</string>
     <string name="Page6Title">Free</string>
     <string name="Page7Title">Robust</string>
-    <string name="Page1Message">Need anything? Make a wish and <![CDATA[<b>Genie</b>]]> will get it for you.</string>
-    <string name="Page2Message"><![CDATA[<b>Your genie</b>]]> delivers <![CDATA[<b>anything</b>]]> (Just don\'t make us deliver anything illegal).</string>
-    <string name="Page3Message"><![CDATA[<b>Your genie</b>]]> delivers within 30 minutes, though it varies on the service you order.</string>
-    <string name="Page4Message"><![CDATA[<b>Your genie</b>]]> We use only secure payment methods.</string>
-    <string name="Page5Message"><![CDATA[<b>Your genie</b>]]> delivers <![CDATA[<b>anywhere</b>]]> in bangalore. <![CDATA[<br/>]]> More cities to be added soon</string>
-    <string name="Page6Message"><![CDATA[<b>Your genie</b>]]> is free to use. We only charge a nominal <![CDATA[<b>(₹20 to 50)</b>]]> if it involves delivery.</string>
-    <string name="Page7Message"><![CDATA[<b>Your genie</b>]]> uses <![CDATA[<b>Telegram</b>]]> at its backend. Its <![CDATA[<b>Open source</b>]]> and <![CDATA[<b>Secure</b>]]></string>
+    <string name="Page1Message">Need anything? Make a wish and <![CDATA[<b>Instano</b>]]> will get it for you.</string>
+    <string name="Page2Message"><![CDATA[<b>Instano</b>]]> delivers <![CDATA[<b>anything</b>]]> (Just don\'t make us deliver anything illegal).</string>
+    <string name="Page3Message"><![CDATA[<b>Instano</b>]]> delivers within 30 minutes, though it varies on the service you order.</string>
+    <string name="Page4Message"><![CDATA[<b>Instano</b>]]> We use only secure payment methods.</string>
+    <string name="Page5Message"><![CDATA[<b>Instano</b>]]> delivers <![CDATA[<b>anywhere</b>]]> in bangalore. <![CDATA[<br/>]]> More cities to be added soon</string>
+    <string name="Page6Message"><![CDATA[<b>Instano</b>]]> is free to use. We only charge a nominal <![CDATA[<b>(₹20 to 50)</b>]]> if it involves delivery.</string>
+    <string name="Page7Message"><![CDATA[<b>Instano</b>]]> uses <![CDATA[<b>Telegram</b>]]> at its backend. Its <![CDATA[<b>Open source</b>]]> and <![CDATA[<b>Secure</b>]]></string>
     <string name="GetStarted">Get started</string>
+
     <!--plural-->
     <string name="Online_zero">%1$d online</string>
     <string name="Online_one">%1$d online</string>

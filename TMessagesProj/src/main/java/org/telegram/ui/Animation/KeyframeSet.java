@@ -16,14 +16,15 @@
 
 package org.telegram.ui.Animation;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import android.util.Log;
 import android.view.animation.Interpolator;
 
-import org.telegram.ui.Animation.Keyframe.IntKeyframe;
+import org.telegram.messenger.FileLog;
 import org.telegram.ui.Animation.Keyframe.FloatKeyframe;
+import org.telegram.ui.Animation.Keyframe.IntKeyframe;
 import org.telegram.ui.Animation.Keyframe.ObjectKeyframe;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 class KeyframeSet {
 
@@ -79,7 +80,7 @@ class KeyframeSet {
             }
         }
         if (badValue) {
-            Log.w("Animator", "Bad value (NaN) in float animator");
+            FileLog.w("Animator", "Bad value (NaN) in float animator");
         }
         return new FloatKeyframeSet(keyframes);
     }

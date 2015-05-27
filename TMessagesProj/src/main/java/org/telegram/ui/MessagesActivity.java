@@ -105,13 +105,11 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
 
     public MessagesActivity(Bundle args) {
         super(args);
-        new RuntimeException(String.valueOf(args)).printStackTrace();
     }
 
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
-        Log.v(TAG, "onFragmentCreate");
         Bundle args = new Bundle();
         args.putInt("chat_id", BuildVars.CHAT_ID);
         args.putInt("user_id", BuildVars.USER_ID);

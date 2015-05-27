@@ -24,10 +24,6 @@ import android.provider.MediaStore;
 import android.text.SpannableStringBuilder;
 import android.util.Base64;
 
-import net.hockeyapp.android.CrashManager;
-import net.hockeyapp.android.CrashManagerListener;
-import net.hockeyapp.android.UpdateManager;
-
 import org.telegram.android.AndroidUtilities;
 
 import java.io.ByteArrayInputStream;
@@ -755,20 +751,5 @@ public class Utilities {
             FileLog.e("tmessages", e);
         }
         return array;
-    }
-
-    public static void checkForCrashes(Activity context) {
-        CrashManager.register(context, BuildVars.HOCKEY_APP_HASH, new CrashManagerListener() {
-            @Override
-            public boolean includeDeviceData() {
-                return true;
-            }
-        });
-    }
-
-    public static void checkForUpdates(Activity context) {
-        if (BuildVars.DEBUG_VERSION) {
-            UpdateManager.register(context, BuildVars.HOCKEY_APP_HASH);
-        }
     }
 }

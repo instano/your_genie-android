@@ -27,12 +27,14 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 
+import com.crashlytics.android.Crashlytics;
 import com.appvirality.android.AppviralityAPI;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
+import io.fabric.sdk.android.Fabric;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.android.LocaleController;
@@ -366,5 +368,6 @@ public class ApplicationLoader extends Application {
         editor.putString(PROPERTY_REG_ID, regId);
         editor.putInt(PROPERTY_APP_VERSION, appVersion);
         editor.commit();
+
     }
 }

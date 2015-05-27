@@ -30,7 +30,6 @@ import android.widget.TextView;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.LocaleController;
 import org.telegram.messenger.R;
-import org.telegram.messenger.Utilities;
 
 public class IntroActivity extends Activity {
     private ViewPager viewPager;
@@ -87,13 +86,15 @@ public class IntroActivity extends Activity {
             };
         } else {
             icons = new int[] {
-                    R.drawable.intro7,
+
+                    R.drawable.intro1,
                     R.drawable.intro2,
                     R.drawable.intro3,
                     R.drawable.intro4,
                     R.drawable.intro5,
                     R.drawable.intro6,
-                    R.drawable.intro1
+                    R.drawable.intro7
+
             };
             titles = new int[] {
                     R.string.Page1Title,
@@ -236,8 +237,8 @@ public class IntroActivity extends Activity {
             }
             justCreated = false;
         }
-        Utilities.checkForCrashes(this);
-        Utilities.checkForUpdates(this);
+//        Utilities.checkForCrashes(this);
+//        Utilities.checkForUpdates(this);
     }
 
     private class IntroAdapter extends PagerAdapter {
