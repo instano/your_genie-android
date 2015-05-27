@@ -29,6 +29,7 @@ import android.os.PowerManager;
 
 import com.crashlytics.android.Crashlytics;
 import com.appvirality.android.AppviralityAPI;
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -36,17 +37,19 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import io.fabric.sdk.android.Fabric;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
-import org.telegram.android.MediaController;
-import org.telegram.android.NotificationsService;
-import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.LocaleController;
+import org.telegram.android.MediaController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.NativeLoader;
+import org.telegram.android.NotificationsService;
 import org.telegram.android.ScreenReceiver;
+import org.telegram.android.SendMessagesHelper;
 import org.telegram.ui.Components.ForegroundDetector;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import io.fabric.sdk.android.Fabric;
 
 public class ApplicationLoader extends Application {
 

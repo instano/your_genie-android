@@ -521,7 +521,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         lastStatus = null;
         hasOwnBackground = true;
 
-        actionBar.setTitleOverlayText(BuildVars.ACTIONBAR_TITLE);
+//        actionBar.setTitleOverlayText(true);
         actionBar.setBackButtonImage(R.drawable.ic_menu);
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
