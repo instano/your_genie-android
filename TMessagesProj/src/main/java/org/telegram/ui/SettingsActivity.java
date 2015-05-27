@@ -435,9 +435,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == privacyRow) {
                     presentFragment(new PrivacySettingsActivity());
                 } else if (i == languageRow) {
-                    presentFragment(new LanguageSelectActivity());
-                } else if (i == contactsReimportRow) {
-
+//                    presentFragment(new LanguageSelectActivity());
                 } else if (i == contactsSortRow) {
                     if (getParentActivity() == null) {
                         return;

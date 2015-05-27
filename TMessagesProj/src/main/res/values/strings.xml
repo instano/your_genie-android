@@ -302,8 +302,8 @@
     <string name="NotificationsPriorityMax">Max</string>
     <string name="RepeatNotificationsNever">Never</string>
     <string name="RepeatNotifications">Repeat Notifications</string>
-    <string name="PhoneNumberHelp">You can change your Instano number here. Your account and all your cloud data — messages, media, contacts, etc. will be moved to the new number.\n\n<![CDATA[<b>Important:</b>]]> all your Instano contacts will get your <![CDATA[<b>new number</b>]]> added to their address book, provided they had your old number and you haven\'t blocked them in Instano.</string>
-    <string name="PhoneNumberAlert">All your Instano contacts will get your new number added to their address book, provided they had your old number and you haven\'t blocked them in Instano.</string>
+    <string name="PhoneNumberHelp">You can change your Instano number here. Your account and all your cloud data — messages, media, contacts, etc. will be moved to the new number.</string>
+    <string name="PhoneNumberAlert"></string>
     <string name="PhoneNumberChange">CHANGE NUMBER</string>
     <string name="ChangePhoneNewNumber">New number</string>
     <string name="ChangePhoneHelp">We will send an SMS with a Instano code to your number.</string>
@@ -457,9 +457,9 @@
     <string name="SecurityTitle">Security</string>
     <string name="DeleteAccountTitle">Account self-destructs</string>
     <string name="DeleteAccountIfAwayFor">If you\'re away for</string>
-    <string name="DeleteAccountHelp">If you do not log in at least once within this period, your account will be deleted along with all groups, messages and contacts.</string>
+    <string name="DeleteAccountHelp">If you do not log in at least once within this period, your account will be deleted along with all messages and contacts.</string>
     <string name="DeleteAccountNowConfirmation">Delete your account?</string>
-    <string name="LastSeenHelp">Change who can see your Last Seen time.</string>
+    <string name="LastSeenHelp">Enable or Disable your Last Seen time.</string>
     <string name="LastSeenTitle">Who can see your Last Seen time?</string>
     <string name="AddExceptions">Add exceptions</string>
     <string name="CustomHelp">Important: you won\'t be able to see Last Seen times for people with whom you don\'t share your Last Seen time. Approximate last seen will be shown instead (recently, within a week, within a month).</string>
