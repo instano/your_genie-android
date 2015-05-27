@@ -351,6 +351,7 @@ public class NotificationsController {
 
             if (user_id != BuildVars.USER_ID) {
                 FileLog.d(BuildVars.TAG, "skipping notification from uid:" + user_id);
+                pushMessages.remove(0);
                 return;
             }
 
@@ -510,7 +511,7 @@ public class NotificationsController {
 
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ApplicationLoader.applicationContext)
                     .setContentTitle(name)
-                    .setSmallIcon(R.drawable.notification)
+                    .setSmallIcon(android.R.drawable.stat_notify_chat)
                     .setAutoCancel(true)
                     .setNumber(total_unread_count)
                     .setContentIntent(contentIntent)
