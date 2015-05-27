@@ -255,12 +255,16 @@
     <string name="OnlyIfSilent">Only if silent</string>
     <string name="ChatBackground">Chat Background</string>
     <string name="MessagesSettings">Messages</string>
+    <string name="Security">Security</string>
+    <string name="Account">Account self-destructs</string>
     <string name="SendByEnter">Send by Enter</string>
     <string name="TerminateAllSessions">Terminate All Other Sessions</string>
     <string name="Events">Events</string>
     <string name="ContactJoined">Contact joined Instano</string>
     <string name="Pebble">PEBBLE</string>
     <string name="Language">Language</string>
+    <string name="Verification">Two-Step Verification</string>
+    <string name="Session">Active Session</string>
     <string name="AskAQuestionInfo">Please note that Instano Support is done by volunteers. We try to respond as quickly as possible, but it may take a while.<![CDATA[<br><br>]]>Please take a look at the <![CDATA[<a href=\"http://Instano.in\">Instano FAQ</a>]]>: it has answers to most questions and important tips for <![CDATA[<a href=\"http://instano.in#troubleshooting\">troubleshooting</a>]]>.</string>
     <string name="AskButton">Ask a volunteer</string>
 
@@ -443,7 +447,7 @@
     <string name="EnabledPasswordText">You have enabled Two-Step verification.\nYou\'ll need the password you set up here to log in to your Instano account.</string>
     <string name="PendingEmailText">Your recovery e-mail %1$s is not yet active and pending confirmation.</string>
     <!--privacy settings-->
-    <string name="PrivacySettings">Privacy and Security</string>
+    <string name="PrivacySettings">Security</string>
     <string name="PrivacyTitle">Privacy</string>
     <string name="PrivacyLastSeen">Last Seen</string>
     <string name="LastSeenEverybody">Everybody</string>

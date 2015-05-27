@@ -73,6 +73,7 @@ import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.ShadowSectionCell;
 import org.telegram.ui.Cells.TextCheckCell;
 import org.telegram.ui.Cells.TextDetailSettingsCell;
+import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
@@ -119,16 +120,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     private int messagesSectionRow2;
     private int textSizeRow;
     private int sendByEnterRow;
-    private int supportSectionRow;
-    private int supportSectionRow2;
-    private int askQuestionRow;
-    private int telegramFaqRow;
-    private int sendLogsRow;
-    private int clearLogsRow;
-    private int switchBackendButtonRow;
     private int versionRow;
-    private int contactsSectionRow;
-    private int contactsReimportRow;
     private int contactsSortRow;
     private int rowCount;
 
@@ -853,7 +845,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             return i == textSizeRow || i == enableAnimationsRow || i == notificationRow || i == backgroundRow ||
                 i == numberRow || i == sendByEnterRow || i == privacyRow || i == wifiDownloadRow ||
                 i == mobileDownloadRow || i == roamingDownloadRow || i == languageRow || i == usernameRow ||
-                i == contactsSortRow || i == contactsReimportRow || i == saveToGalleryRow;
+                i == contactsSortRow || i == saveToGalleryRow;
         }
 
         @Override
@@ -903,7 +895,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     textCell.setTextAndValue(LocaleController.getString("TextSize", R.string.TextSize), String.format("%d", size), true);
                 } else if (i == languageRow) {
                     textCell.setTextAndValue(LocaleController.getString("Language", R.string.Language), LocaleController.getCurrentLanguageName(), true);
-                } else if (i == contactsSortRow) {
+                }  else if (i == contactsSortRow) {
                     String value;
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     int sort = preferences.getInt("sortContactsBy", 0);
@@ -920,9 +912,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == backgroundRow) {
                     textCell.setText(LocaleController.getString("ChatBackground", R.string.ChatBackground), true);
                 } else if (i == privacyRow) {
-                    textCell.setText(LocaleController.getString("PrivacySettings", R.string.PrivacySettings), true);
-                } else if (i == contactsReimportRow) {
-                    textCell.setText(LocaleController.getString("ImportContacts", R.string.ImportContacts), true);
+                    textCell.setText(LocaleController.getString("SecuritySettings", R.string.PrivacySettings), true);
                 }
             } else if (type == 3) {
                 if (view == null) {
@@ -1030,17 +1020,17 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         public int getItemViewType(int i) {
             if (i == emptyRow || i == overscrollRow) {
                 return 0;
-            } if (i == settingsSectionRow || i == messagesSectionRow || i == mediaDownloadSection || i == contactsSectionRow) {
+            } if (i == settingsSectionRow || i == messagesSectionRow || i == mediaDownloadSection ) {
                 return 1;
             } else if (i == enableAnimationsRow || i == sendByEnterRow || i == saveToGalleryRow) {
                 return 3;
-            } else if (i == notificationRow || i == backgroundRow || i == privacyRow || i == contactsReimportRow || i == textSizeRow || i == languageRow || i == contactsSortRow) {
+            } else if (i == notificationRow || i == backgroundRow || i == privacyRow || i == textSizeRow || i == languageRow || i == contactsSortRow) {
                 return 2;
             } else if (i == versionRow) {
                 return 5;
             } else if (i == wifiDownloadRow || i == mobileDownloadRow || i == roamingDownloadRow || i == numberRow || i == usernameRow) {
                 return 6;
-            } else if (i == settingsSectionRow2 || i == messagesSectionRow2 || i == numberSectionRow || i == mediaDownloadSection2) {
+            } else if (i == settingsSectionRow2 || i == messagesSectionRow2 || i == numberSectionRow || i == mediaDownloadSection2 ) {
                 return 4;
             } else {
                 return 2;
@@ -1049,7 +1039,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
         @Override
         public int getViewTypeCount() {
-            return 7;
+            return 8;
         }
 
         @Override

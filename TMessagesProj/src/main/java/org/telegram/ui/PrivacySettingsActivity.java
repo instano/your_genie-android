@@ -48,9 +48,6 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
 
     private ListAdapter listAdapter;
 
-    private int privacySectionRow;
-    private int lastSeenRow;
-    private int lastSeenDetailRow;
     private int securitySectionRow;
     private int sessionsRow;
     private int passwordRow;
@@ -67,9 +64,6 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         ContactsController.getInstance().loadPrivacySettings();
 
         rowCount = 0;
-        privacySectionRow = rowCount++;
-        lastSeenRow = rowCount++;
-        lastSeenDetailRow = rowCount++;
         securitySectionRow = rowCount++;
         passwordRow = rowCount++;
         sessionsRow = rowCount++;
@@ -93,7 +87,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
     public View createView(Context context, LayoutInflater inflater) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("PrivacySettings", R.string.PrivacySettings));
+        actionBar.setTitle(LocaleController.getString("Security", R.string.Security));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -182,17 +176,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showAlertDialog(builder);
-                } else if (i == lastSeenRow) {
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                    boolean last_seen = preferences.getBoolean("last_seen", false);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putBoolean("last_seen", !last_seen);
-                    editor.commit();
-                    if (view instanceof TextCheckCell) {
-                        ((TextCheckCell) view).setChecked(!last_seen);
-                    }
-//                    presentFragment(new LastSeenActivity());
-                } else if (i == passwordRow) {
+                }  else if (i == passwordRow) {
                     presentFragment(new TwoStepVerificationActivity(0));
                 }
             }
@@ -281,7 +265,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
 
         @Override
         public boolean isEnabled(int i) {
-            return i == passwordRow || i == sessionsRow || i == lastSeenRow && !ContactsController.getInstance().getLoadingLastSeenInfo() || i == deleteAccountRow && !ContactsController.getInstance().getLoadingDeleteInfo();
+            return i == passwordRow || i == sessionsRow && !ContactsController.getInstance().getLoadingLastSeenInfo() || i == deleteAccountRow && !ContactsController.getInstance().getLoadingDeleteInfo();
         }
 
         @Override
@@ -314,9 +298,6 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 }
                 TextCheckCell textCell = (TextCheckCell) view;
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                if(i == lastSeenRow){
-                    textCell.setTextAndCheck(LocaleController.getString("Last Seen", R.string.PrivacyLastSeen), preferences.getBoolean("last_seen", true), false);
-                }
             } else if (type == 1) {
                 if (view == null) {
                     view = new TextSettingsCell(mContext);
@@ -350,9 +331,6 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 if (i == deleteAccountDetailRow) {
                     ((TextInfoPrivacyCell) view).setText(LocaleController.getString("DeleteAccountHelp", R.string.DeleteAccountHelp));
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
-                } else if (i == lastSeenDetailRow) {
-                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("LastSeenHelp", R.string.LastSeenHelp));
-                    view.setBackgroundResource(R.drawable.greydivider);
                 } else if (i == sessionsDetailRow) {
                     ((TextInfoPrivacyCell) view).setText(LocaleController.getString("SessionsInfo", R.string.SessionsInfo));
                     view.setBackgroundResource(R.drawable.greydivider);
@@ -362,9 +340,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     view = new HeaderCell(mContext);
                     view.setBackgroundColor(0xffffffff);
                 }
-                if (i == privacySectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("PrivacyTitle", R.string.PrivacyTitle));
-                } else if (i == securitySectionRow) {
+                if (i == securitySectionRow) {
                     ((HeaderCell) view).setText(LocaleController.getString("SecurityTitle", R.string.SecurityTitle));
                 } else if (i == deleteAccountSectionRow) {
                     ((HeaderCell) view).setText(LocaleController.getString("DeleteAccountTitle", R.string.DeleteAccountTitle));
@@ -375,13 +351,11 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
 
         @Override
         public int getItemViewType(int i) {
-            if(i == lastSeenRow){
-                return 0;
-            }else if ( i == deleteAccountRow || i == sessionsRow || i == passwordRow ) {
+            if ( i == deleteAccountRow || i == sessionsRow || i == passwordRow ) {
                 return 1;
-            } else if (i == deleteAccountDetailRow || i == lastSeenDetailRow || i == sessionsDetailRow) {
+            } else if (i == deleteAccountDetailRow || i == sessionsDetailRow) {
                 return 2;
-            } else if (i == securitySectionRow || i == deleteAccountSectionRow || i == privacySectionRow) {
+            } else if (i == securitySectionRow || i == deleteAccountSectionRow ) {
                 return 3;
             }
             return 0;
