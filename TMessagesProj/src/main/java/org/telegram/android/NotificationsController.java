@@ -28,6 +28,7 @@ import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -326,6 +327,7 @@ public class NotificationsController {
     }
 
     private void showOrUpdateNotification(boolean notifyAboutLast) {
+        Log.v("NotificationsController", " showOrUpdateNotification");
         if (!UserConfig.isClientActivated() || pushMessages.isEmpty()) {
             dismissNotification();
             return;
@@ -961,6 +963,7 @@ public class NotificationsController {
     }
 
     public void processNewMessages(ArrayList<MessageObject> messageObjects, boolean isLast) {
+        Log.v("NotificationsController", "process message");
         if (messageObjects.isEmpty()) {
             return;
         }
