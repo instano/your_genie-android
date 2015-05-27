@@ -270,8 +270,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             public void onItemClick(int id) {
                 if (id == -1) {
                     finishFragment();
-                } else if (id == edit_name) {
-                    presentFragment(new ChangeNameActivity());
                 } else if (id == logout) {
                     if (getParentActivity() == null) {
                         return;
@@ -301,7 +299,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         });
         ActionBarMenu menu = actionBar.createMenu();
         ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_other);
-        item.addSubItem(edit_name, LocaleController.getString("EditName", R.string.EditName), 0);
         item.addSubItem(logout, LocaleController.getString("LogOut", R.string.LogOut), 0);
 
         listAdapter = new ListAdapter(context);
@@ -421,28 +418,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     presentFragment(new NotificationsSettingsActivity());
                 } else if (i == backgroundRow) {
                     presentFragment(new WallpapersActivity());
-                } else if (i == askQuestionRow) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    final TextView message = new TextView(getParentActivity());
-                    message.setText(Html.fromHtml(LocaleController.getString("AskAQuestionInfo", R.string.AskAQuestionInfo)));
-                    message.setTextSize(18);
-                    message.setPadding(AndroidUtilities.dp(8), AndroidUtilities.dp(5), AndroidUtilities.dp(8), AndroidUtilities.dp(6));
-                    message.setMovementMethod(new LinkMovementMethodMy());
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setView(message);
-                    builder.setPositiveButton(LocaleController.getString("AskButton", R.string.AskButton), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            performAskAQuestion();
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
-                } else if (i == clearLogsRow) {
-                    FileLog.cleanupLogs();
                 } else if (i == sendByEnterRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     boolean send = preferences.getBoolean("send_by_enter", false);
@@ -557,7 +532,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     builder.setNegativeButton(LocaleController.getString("OK", R.string.OK), null);
                     showAlertDialog(builder);
                 } else if (i == usernameRow) {
-                    presentFragment(new ChangeUsernameActivity());
+                    presentFragment(new ChangeNameActivity());
                 } else if (i == numberRow) {
                     presentFragment(new ChangePhoneHelpActivity());
                 }
@@ -723,91 +698,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
     @Override
     public int getSelectedCount() { return 0; }
-
-    public void performAskAQuestion() {
-        final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        int uid = preferences.getInt("support_id", 0);
-        TLRPC.User supportUser = null;
-        if (uid != 0) {
-            supportUser = MessagesController.getInstance().getUser(uid);
-            if (supportUser == null) {
-                String userString = preferences.getString("support_user", null);
-                if (userString != null) {
-                    try {
-                        byte[] datacentersBytes = Base64.decode(userString, Base64.DEFAULT);
-                        if (datacentersBytes != null) {
-                            SerializedData data = new SerializedData(datacentersBytes);
-                            supportUser = (TLRPC.User)TLClassStore.Instance().TLdeserialize(data, data.readInt32());
-                            if (supportUser != null && supportUser.id == 333000) {
-                                supportUser = null;
-                            }
-                            data.cleanup();
-                        }
-                    } catch (Exception e) {
-                        FileLog.e("tmessages", e);
-                        supportUser = null;
-                    }
-                }
-            }
-        }
-        if (supportUser == null) {
-            final ProgressDialog progressDialog = new ProgressDialog(getParentActivity());
-            progressDialog.setMessage(LocaleController.getString("Loading", R.string.Loading));
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-            TLRPC.TL_help_getSupport req = new TLRPC.TL_help_getSupport();
-            ConnectionsManager.getInstance().performRpc(req, new RPCRequest.RPCRequestDelegate() {
-                @Override
-                public void run(TLObject response, TLRPC.TL_error error) {
-                    if (error == null) {
-
-                        final TLRPC.TL_help_support res = (TLRPC.TL_help_support)response;
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                SharedPreferences.Editor editor = preferences.edit();
-                                editor.putInt("support_id", res.user.id);
-                                SerializedData data = new SerializedData();
-                                res.user.serializeToStream(data);
-                                editor.putString("support_user", Base64.encodeToString(data.toByteArray(), Base64.DEFAULT));
-                                editor.commit();
-                                data.cleanup();
-                                try {
-                                    progressDialog.dismiss();
-                                } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
-                                }
-                                ArrayList<TLRPC.User> users = new ArrayList<>();
-                                users.add(res.user);
-                                MessagesStorage.getInstance().putUsersAndChats(users, null, true, true);
-                                MessagesController.getInstance().putUser(res.user, false);
-                                Bundle args = new Bundle();
-                                args.putInt("user_id", res.user.id);
-                                presentFragment(new ChatActivity(args));
-                            }
-                        });
-                    } else {
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    progressDialog.dismiss();
-                                } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
-                                }
-                            }
-                        });
-                    }
-                }
-            });
-        } else {
-            MessagesController.getInstance().putUser(supportUser, true);
-            Bundle args = new Bundle();
-            args.putInt("user_id", supportUser.id);
-            presentFragment(new ChatActivity(args));
-        }
-    }
 
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
@@ -1131,12 +1021,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == usernameRow) {
                     TLRPC.User user = UserConfig.getCurrentUser();
                     String value;
-                    if (user != null && user.username != null && user.username.length() != 0) {
-                        value = "@" + user.username;
-                    } else {
-                        value = LocaleController.getString("UsernameEmpty", R.string.UsernameEmpty);
-                    }
-                    textCell.setTextAndValue(value, LocaleController.getString("Username", R.string.Username), false);
+                    value = ContactsController.formatName(user.first_name, user.last_name);
+                    textCell.setTextAndValue(value, LocaleController.getString("Name", R.string.Username), false);
                 }
             }
             return view;
