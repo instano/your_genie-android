@@ -22,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -114,11 +115,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
         if (!UserConfig.isClientActivated()) {
             Intent intent = getIntent();
-            if (intent != null && intent.getAction() != null && (Intent.ACTION_SEND.equals(intent.getAction()) || intent.getAction().equals(Intent.ACTION_SEND_MULTIPLE))) {
-                super.onCreate(savedInstanceState);
-                finish();
-                return;
-            }
             if (intent != null && !intent.getBooleanExtra("fromIntro", false)) {
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("logininfo", MODE_PRIVATE);
                 Map<String, ?> state = preferences.getAll();
@@ -793,8 +789,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     } else if (intent.getAction().equals("org.telegram.messenger.OPEN_ACCOUNT")) {
                         open_settings = 1;
                     } else if (intent.getAction().startsWith("com.tmessages.openchat")) {
+                        Log.v("LaunchActivity", " chatId :"+intent.getIntExtra("chatId", 0)+"\n userId "+intent.getIntExtra("chatId", 0));
                         int chatId = intent.getIntExtra("chatId", 0);
-                        int userId = intent.getIntExtra("userId", 0);
+//                        int userId = intent.getIntExtra("userId", 0);
+                        int userId = BuildVars.USER_ID;
                         int encId = intent.getIntExtra("encId", 0);
                         if (chatId != 0) {
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
