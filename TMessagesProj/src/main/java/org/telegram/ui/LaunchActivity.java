@@ -122,6 +122,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     return;
                 }
             }
+
         }
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);

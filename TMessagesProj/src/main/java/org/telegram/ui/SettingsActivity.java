@@ -232,19 +232,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         messagesSectionRow2 = rowCount++;
         textSizeRow = rowCount++;
         sendByEnterRow = rowCount++;
-        supportSectionRow = rowCount++;
-        supportSectionRow2 = rowCount++;
-        askQuestionRow = rowCount++;
-        telegramFaqRow = rowCount++;
-        if (BuildVars.DEBUG_VERSION) {
-            sendLogsRow = rowCount++;
-            clearLogsRow = rowCount++;
-            switchBackendButtonRow = rowCount++;
-        }
+
         versionRow = rowCount++;
-        //contactsSectionRow = rowCount++;
-        //contactsReimportRow = rowCount++;
-        //contactsSortRow = rowCount++;
 
         MessagesController.getInstance().loadFullUser(UserConfig.getCurrentUser(), classGuid);
 
@@ -452,8 +441,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showAlertDialog(builder);
-                } else if (i == sendLogsRow) {
-                    sendLogs();
                 } else if (i == clearLogsRow) {
                     FileLog.cleanupLogs();
                 } else if (i == sendByEnterRow) {
@@ -474,28 +461,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     presentFragment(new PrivacySettingsActivity());
                 } else if (i == languageRow) {
                     presentFragment(new LanguageSelectActivity());
-                } else if (i == switchBackendButtonRow) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(LocaleController.getString("AreYouSure", R.string.AreYouSure));
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            ConnectionsManager.getInstance().switchBackend();
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
-                } else if (i == telegramFaqRow) {
-                    try {
-                        Intent pickIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl)));
-                        getParentActivity().startActivityForResult(pickIntent, 500);
-                    } catch (Exception e) {
-                        FileLog.e("tmessages", e);
-                    }
                 } else if (i == contactsReimportRow) {
 
                 } else if (i == contactsSortRow) {
@@ -983,30 +948,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         }
     }
 
-    private void sendLogs() {
-        try {
-            ArrayList<Uri> uris = new ArrayList<>();
-            File sdCard = ApplicationLoader.applicationContext.getExternalFilesDir(null);
-            File dir = new File (sdCard.getAbsolutePath() + "/logs");
-            File[] files = dir.listFiles();
-            for (File file : files) {
-                uris.add(Uri.fromFile(file));
-            }
-
-            if (uris.isEmpty()) {
-                return;
-            }
-            Intent i = new Intent(Intent.ACTION_SEND_MULTIPLE);
-            i.setType("message/rfc822") ;
-            i.putExtra(Intent.EXTRA_EMAIL, new String[]{BuildVars.SEND_LOGS_EMAIL});
-            i.putExtra(Intent.EXTRA_SUBJECT, "last logs");
-            i.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-            getParentActivity().startActivityForResult(Intent.createChooser(i, "Select email application."), 500);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private class ListAdapter extends BaseFragmentAdapter {
         private Context mContext;
 
@@ -1021,10 +962,10 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
         @Override
         public boolean isEnabled(int i) {
-            return i == textSizeRow || i == enableAnimationsRow || i == notificationRow || i == backgroundRow || i == numberRow ||
-                    i == askQuestionRow || i == sendLogsRow || i == sendByEnterRow || i == privacyRow || i == wifiDownloadRow ||
-                    i == mobileDownloadRow || i == clearLogsRow || i == roamingDownloadRow || i == languageRow || i == usernameRow ||
-                    i == switchBackendButtonRow || i == telegramFaqRow || i == contactsSortRow || i == contactsReimportRow || i == saveToGalleryRow;
+            return i == textSizeRow || i == enableAnimationsRow || i == notificationRow || i == backgroundRow ||
+                i == numberRow || i == sendByEnterRow || i == privacyRow || i == wifiDownloadRow ||
+                i == mobileDownloadRow || i == roamingDownloadRow || i == languageRow || i == usernameRow ||
+                i == contactsSortRow || i == contactsReimportRow || i == saveToGalleryRow;
         }
 
         @Override
@@ -1090,18 +1031,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     textCell.setText(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds), true);
                 } else if (i == backgroundRow) {
                     textCell.setText(LocaleController.getString("ChatBackground", R.string.ChatBackground), true);
-                } else if (i == sendLogsRow) {
-                    textCell.setText("Send Logs", true);
-                } else if (i == clearLogsRow) {
-                    textCell.setText("Clear Logs", true);
-                } else if (i == askQuestionRow) {
-                    textCell.setText(LocaleController.getString("AskAQuestion", R.string.AskAQuestion), true);
                 } else if (i == privacyRow) {
                     textCell.setText(LocaleController.getString("PrivacySettings", R.string.PrivacySettings), true);
-                } else if (i == switchBackendButtonRow) {
-                    textCell.setText("Switch Backend", true);
-                } else if (i == telegramFaqRow) {
-                    textCell.setText(LocaleController.getString("TelegramFAQ", R.string.TelegramFaq), true);
                 } else if (i == contactsReimportRow) {
                     textCell.setText(LocaleController.getString("ImportContacts", R.string.ImportContacts), true);
                 }
@@ -1125,8 +1056,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 }
                 if (i == settingsSectionRow2) {
                     ((HeaderCell) view).setText(LocaleController.getString("SETTINGS", R.string.SETTINGS));
-                } else if (i == supportSectionRow2) {
-                    ((HeaderCell) view).setText(LocaleController.getString("Support", R.string.Support));
                 } else if (i == messagesSectionRow2) {
                     ((HeaderCell) view).setText(LocaleController.getString("MessagesSettings", R.string.MessagesSettings));
                 } else if (i == mediaDownloadSection2) {
@@ -1139,7 +1068,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     view = new TextInfoCell(mContext);
                     try {
                         PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
-                        ((TextInfoCell) view).setText(String.format(Locale.US, "Telegram for Android v%s (%d)", pInfo.versionName, pInfo.versionCode));
+                        ((TextInfoCell) view).setText(String.format(Locale.US, "Instano for Android v%s (%d)", pInfo.versionName, pInfo.versionCode));
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }
@@ -1217,17 +1146,17 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         public int getItemViewType(int i) {
             if (i == emptyRow || i == overscrollRow) {
                 return 0;
-            } if (i == settingsSectionRow || i == supportSectionRow || i == messagesSectionRow || i == mediaDownloadSection || i == contactsSectionRow) {
+            } if (i == settingsSectionRow || i == messagesSectionRow || i == mediaDownloadSection || i == contactsSectionRow) {
                 return 1;
             } else if (i == enableAnimationsRow || i == sendByEnterRow || i == saveToGalleryRow) {
                 return 3;
-            } else if (i == notificationRow || i == backgroundRow || i == askQuestionRow || i == sendLogsRow || i == privacyRow || i == clearLogsRow || i == switchBackendButtonRow || i == telegramFaqRow || i == contactsReimportRow || i == textSizeRow || i == languageRow || i == contactsSortRow) {
+            } else if (i == notificationRow || i == backgroundRow || i == privacyRow || i == contactsReimportRow || i == textSizeRow || i == languageRow || i == contactsSortRow) {
                 return 2;
             } else if (i == versionRow) {
                 return 5;
             } else if (i == wifiDownloadRow || i == mobileDownloadRow || i == roamingDownloadRow || i == numberRow || i == usernameRow) {
                 return 6;
-            } else if (i == settingsSectionRow2 || i == messagesSectionRow2 || i == supportSectionRow2 || i == numberSectionRow || i == mediaDownloadSection2) {
+            } else if (i == settingsSectionRow2 || i == messagesSectionRow2 || i == numberSectionRow || i == mediaDownloadSection2) {
                 return 4;
             } else {
                 return 2;
