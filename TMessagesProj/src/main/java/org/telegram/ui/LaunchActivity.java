@@ -47,6 +47,7 @@ import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
 import org.telegram.android.NotificationCenter;
+import org.telegram.android.NotificationsController;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
@@ -792,7 +793,11 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         Log.v("LaunchActivity", " chatId :"+intent.getIntExtra("chatId", 0)+"\n userId "+intent.getIntExtra("chatId", 0));
                         int chatId = intent.getIntExtra("chatId", 0);
 //                        int userId = intent.getIntExtra("userId", 0);
+                        /**
+                         * Clearing notification
+                         */
                         int userId = BuildVars.USER_ID;
+                        NotificationsController.getInstance().cleanup();
                         int encId = intent.getIntExtra("encId", 0);
                         if (chatId != 0) {
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);

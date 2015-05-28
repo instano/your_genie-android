@@ -27,14 +27,13 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 
-import com.crashlytics.android.Crashlytics;
 import com.appvirality.android.AppviralityAPI;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
-import io.fabric.sdk.android.Fabric;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.android.LocaleController;
@@ -56,6 +55,8 @@ public class ApplicationLoader extends Application {
     private GoogleCloudMessaging gcm;
     private AtomicInteger msgId = new AtomicInteger();
     private String regid;
+
+    public static MixpanelAPI mixpanel;
     public static final String EXTRA_MESSAGE = "message";
     public static final String PROPERTY_REG_ID = "registration_id";
     private static final String PROPERTY_APP_VERSION = "appVersion";
@@ -186,6 +187,10 @@ public class ApplicationLoader extends Application {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
         AppviralityAPI.init(getApplicationContext());
+        // Initialize the library with your
+        // Mixpanel project token, MIXPANEL_TOKEN, and a reference
+        // to your application context.
+         mixpanel = MixpanelAPI.getInstance(applicationContext, BuildVars.MIXPANEL_TOKEN);
 
         if (Build.VERSION.SDK_INT < 11) {
             java.lang.System.setProperty("java.net.preferIPv4Stack", "true");
