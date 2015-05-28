@@ -17,6 +17,8 @@ import android.content.res.Configuration;
 import android.graphics.Outline;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -35,32 +37,37 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import org.telegram.android.AndroidUtilities;
+import org.telegram.android.ContactsController;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MessageObject;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.TLRPC;
-import org.telegram.android.ContactsController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
 import org.telegram.android.NotificationCenter;
+import org.telegram.messenger.BuildVars;
+import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
+import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
-import org.telegram.ui.Adapters.BaseFragmentAdapter;
-import org.telegram.ui.Adapters.DialogsAdapter;
-import org.telegram.ui.Adapters.DialogsSearchAdapter;
-import org.telegram.ui.AnimationCompat.ObjectAnimatorProxy;
-import org.telegram.ui.AnimationCompat.ViewProxy;
-import org.telegram.ui.Cells.UserCell;
-import org.telegram.ui.Cells.DialogCell;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.MenuDrawable;
+import org.telegram.ui.Adapters.BaseFragmentAdapter;
+import org.telegram.ui.Adapters.DialogsAdapter;
+import org.telegram.ui.Adapters.DialogsSearchAdapter;
+import org.telegram.ui.AnimationCompat.ObjectAnimatorProxy;
+import org.telegram.ui.AnimationCompat.ViewProxy;
+import org.telegram.ui.Cells.DialogCell;
+import org.telegram.ui.Cells.UserCell;
 
 import java.util.ArrayList;
 
+/**
+ * list of chats
+ */
 public class MessagesActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
+    private static final String TAG = "MessagesActivity";
     private ListView messagesListView;
     private DialogsAdapter dialogsAdapter;
     private DialogsSearchAdapter dialogsSearchAdapter;
@@ -103,6 +110,11 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
+        Bundle args = new Bundle();
+        args.putInt("chat_id", BuildVars.CHAT_ID);
+        args.putInt("user_id", BuildVars.USER_ID);
+        args.putInt("message_id", BuildVars.MESSAGE_ID);
+        args.putInt("enc_id", BuildVars.ENC_ID);
 
         if (getArguments() != null) {
             onlySelect = arguments.getBoolean("onlySelect", false);
@@ -373,7 +385,7 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
             searchEmptyView.setVisibility(View.INVISIBLE);
             progressView.setVisibility(View.INVISIBLE);
         }
-
+        //TODO messageList on click
         messagesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -617,6 +629,19 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
         }
         if (dialogsSearchAdapter != null) {
             dialogsSearchAdapter.notifyDataSetChanged();
+        }
+        openChatActivity();
+    }
+
+    private void openChatActivity() {
+        if (!presentFragment(new ChatActivity(BuildVars.args), true)) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (!presentFragment(new ChatActivity(BuildVars.args), true))
+                        openChatActivity();
+                }
+            }, 50);
         }
     }
 

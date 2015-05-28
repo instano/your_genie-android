@@ -51,31 +51,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.telegram.android.AndroidUtilities;
-import org.telegram.PhoneFormat.PhoneFormat;
+import org.telegram.android.ContactsController;
 import org.telegram.android.Emoji;
+import org.telegram.android.ImageReceiver;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MediaController;
+import org.telegram.android.MessageObject;
+import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
+import org.telegram.android.NotificationCenter;
 import org.telegram.android.NotificationsController;
 import org.telegram.android.SecretChatHelper;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.query.ReplyMessageQuery;
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
+import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLoader;
+import org.telegram.messenger.FileLog;
+import org.telegram.messenger.R;
 import org.telegram.messenger.RPCRequest;
 import org.telegram.messenger.SerializedData;
 import org.telegram.messenger.TLClassStore;
 import org.telegram.messenger.TLObject;
 import org.telegram.messenger.TLRPC;
-import org.telegram.android.ContactsController;
-import org.telegram.messenger.FileLog;
-import org.telegram.android.MessageObject;
-import org.telegram.messenger.ConnectionsManager;
-import org.telegram.android.MessagesController;
-import org.telegram.android.NotificationCenter;
-import org.telegram.messenger.R;
 import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.Utilities;
+import org.telegram.ui.ActionBar.ActionBar;
+import org.telegram.ui.ActionBar.ActionBarMenu;
+import org.telegram.ui.ActionBar.ActionBarMenuItem;
+import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.Adapters.MentionsAdapter;
 import org.telegram.ui.Adapters.StickersAdapter;
@@ -89,14 +94,9 @@ import org.telegram.ui.Cells.ChatBaseCell;
 import org.telegram.ui.Cells.ChatContactCell;
 import org.telegram.ui.Cells.ChatMediaCell;
 import org.telegram.ui.Cells.ChatMessageCell;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.ActionBarMenu;
-import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Components.ChatActivityEnterView;
-import org.telegram.android.ImageReceiver;
 import org.telegram.ui.Components.FrameLayoutFixed;
 import org.telegram.ui.Components.LayoutListView;
 import org.telegram.ui.Components.RecyclerListView;
@@ -114,6 +114,7 @@ import java.util.concurrent.Semaphore;
 public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate,
         PhotoViewer.PhotoViewerProvider {
 
+    private static final String TAG = "ChatActivity";
     private TLRPC.Chat currentChat;
     private TLRPC.User currentUser;
     private TLRPC.EncryptedChat currentEncryptedChat;
@@ -274,6 +275,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     @Override
     public boolean onFragmentCreate() {
+        if (arguments == null)
+            return false;
         final int chatId = arguments.getInt("chat_id", 0);
         final int userId = arguments.getInt("user_id", 0);
         final int encId = arguments.getInt("enc_id", 0);
@@ -513,7 +516,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         lastStatus = null;
         hasOwnBackground = true;
 
-        actionBar.setBackButtonImage(R.drawable.ic_ab_back);
+        actionBar.setTitleOverlayText(BuildVars.ACTIONBAR_TITLE);
+        actionBar.setBackButtonImage(R.drawable.ic_menu);
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(final int id) {
@@ -545,7 +549,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 }
                 if (id == -1) {
-                    finishFragment();
+                   parentLayout.getDrawerLayoutContainer().openDrawer(false);
                 } else if (id == -2) {
                     selectedMessagesIds.clear();
                     selectedMessagesCanCopyIds.clear();
@@ -706,13 +710,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showAlertDialog(builder);
-                } else if (id == forward) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("onlySelect", true);
-                    args.putBoolean("serverOnly", true);
-                    MessagesActivity fragment = new MessagesActivity(args);
-                    fragment.setDelegate(ChatActivity.this);
-                    presentFragment(fragment);
+//                } else if (id == forward) {
+//                    Bundle args = new Bundle();
+//                    args.putBoolean("onlySelect", true);
+//                    args.putBoolean("serverOnly", true);
+//                    MessagesActivity fragment = new MessagesActivity(args);
+//                    fragment.setDelegate(ChatActivity.this);
+//                    presentFragment(fragment);
                 } else if (id == chat_enc_timer) {
                     if (getParentActivity() == null) {
                         return;
@@ -1040,7 +1044,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (!isBroadcast) {
                 actionModeViews.add(actionMode.addItem(reply, R.drawable.ic_ab_reply, R.drawable.bar_selector_mode, null, AndroidUtilities.dp(54)));
             }
-            actionModeViews.add(actionMode.addItem(forward, R.drawable.ic_ab_fwd_forward, R.drawable.bar_selector_mode, null, AndroidUtilities.dp(54)));
+//            actionModeViews.add(actionMode.addItem(forward, R.drawable.ic_ab_fwd_forward, R.drawable.bar_selector_mode, null, AndroidUtilities.dp(54)));
             actionModeViews.add(actionMode.addItem(delete, R.drawable.ic_ab_fwd_delete, R.drawable.bar_selector_mode, null, AndroidUtilities.dp(54)));
         } else {
             actionModeViews.add(actionMode.addItem(copy, R.drawable.ic_ab_fwd_copy, R.drawable.bar_selector_mode, null, AndroidUtilities.dp(54)));
@@ -2638,11 +2642,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             return;
         }
         if (currentChat != null) {
-            nameTextView.setText(currentChat.title);
+//            nameTextView.setText(currentChat.title);
+            nameTextView.setText(BuildVars.ACTIONBAR_TITLE);
         } else if (currentUser != null) {
             if (currentUser.id / 1000 != 777 && currentUser.id / 1000 != 333 && ContactsController.getInstance().contactsDict.get(currentUser.id) == null && (ContactsController.getInstance().contactsDict.size() != 0 || !ContactsController.getInstance().isLoadingContacts())) {
                 if (currentUser.phone != null && currentUser.phone.length() != 0) {
-                    nameTextView.setText(PhoneFormat.getInstance().format("+" + currentUser.phone));
+//                    nameTextView.setText(PhoneFormat.getInstance().format("+" + currentUser.phone));
+                    nameTextView.setText(BuildVars.ACTIONBAR_TITLE);
                 } else {
                     if (currentUser instanceof TLRPC.TL_userDeleted) {
                         nameTextView.setText(LocaleController.getString("HiddenName", R.string.HiddenName));
@@ -2651,7 +2657,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 }
             } else {
-                nameTextView.setText(ContactsController.formatName(currentUser.first_name, currentUser.last_name));
+//                nameTextView.setText(ContactsController.formatName(currentUser.first_name, currentUser.last_name));
+                nameTextView.setText(BuildVars.ACTIONBAR_TITLE);
             }
         }
     }
@@ -4093,44 +4100,44 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (currentEncryptedChat == null) {
                         if (!isBroadcast && !(currentChat != null && (currentChat instanceof TLRPC.TL_chatForbidden || currentChat.left))) {
                             if (type == 2) {
-                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{8, 2, 1};
                             } else if (type == 3) {
-                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Copy", R.string.Copy), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Copy", R.string.Copy), LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{8, 2, 3, 1};
                             } else if (type == 4) {
                                 if (selectedObject.messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
-                                    items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                    items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 } else {
-                                    items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                    items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("SaveToGallery", R.string.SaveToGallery), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 }
                                 options = new int[]{8, 4, 2, 1};
                             } else if (type == 5) {
-                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile), LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile), LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{8, 5, 4, 2, 1};
                             } else if (type == 6) {
-                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("Reply", R.string.Reply), LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{8, 7, 6, 2, 1};
                             }
                         } else {
                             if (type == 2) {
-                                items = new CharSequence[]{LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{/*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{2, 1};
                             } else if (type == 3) {
-                                items = new CharSequence[]{LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Copy", R.string.Copy), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{/*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Copy", R.string.Copy), LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{2, 3, 1};
                             } else if (type == 4) {
                                 if (selectedObject.messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
-                                    items = new CharSequence[]{LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                    items = new CharSequence[]{LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 } else {
-                                    items = new CharSequence[]{LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                    items = new CharSequence[]{LocaleController.getString("SaveToGallery", R.string.SaveToGallery), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 }
                                 options = new int[]{4, 2, 1};
                             } else if (type == 5) {
-                                items = new CharSequence[]{LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile), LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile), LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{5, 4, 2, 1};
                             } else if (type == 6) {
-                                items = new CharSequence[]{LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("ShareFile", R.string.ShareFile), LocaleController.getString("Forward", R.string.Forward), LocaleController.getString("Delete", R.string.Delete)};
+                                items = new CharSequence[]{LocaleController.getString("SaveToGallery", R.string.SaveToGallery), LocaleController.getString("ShareFile", R.string.ShareFile), /*LocaleController.getString("Forward", R.string.Forward),*/ LocaleController.getString("Delete", R.string.Delete)};
                                 options = new int[]{7, 6, 2, 1};
                             }
                         }
@@ -4417,6 +4424,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         args.putInt("chat_id", -lower_part);
                     }
                     ChatActivity chatActivity = new ChatActivity(args);
+                    FileLog.d(BuildVars.TAG, "new ChatActivity(args): " + args);
                     if (presentFragment(chatActivity, true)) {
                         chatActivity.showReplyPanel(true, null, fmessages, null, false, false);
                         if (!AndroidUtilities.isTablet()) {
@@ -4446,20 +4454,20 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    @Override
-    public boolean onBackPressed() {
-        if (actionBar.isActionModeShowed()) {
-            selectedMessagesIds.clear();
-            selectedMessagesCanCopyIds.clear();
-            actionBar.hideActionMode();
-            updateVisibleRows();
-            return false;
-        } else if (chatActivityEnterView.isEmojiPopupShowing()) {
-            chatActivityEnterView.hideEmojiPopup();
-            return false;
-        }
-        return true;
-    }
+//    @Override
+//    public boolean onBackPressed() {
+//        if (actionBar.isActionModeShowed()) {
+//            selectedMessagesIds.clear();
+//            selectedMessagesCanCopyIds.clear();
+//            actionBar.hideActionMode();
+//            updateVisibleRows();
+//            return false;
+//        } else if (chatActivityEnterView.isEmojiPopupShowing()) {
+//            chatActivityEnterView.hideEmojiPopup();
+//            return false;
+//        }
+//        return true;
+//    }
 
     public boolean isGoogleMapsInstalled() {
         try {

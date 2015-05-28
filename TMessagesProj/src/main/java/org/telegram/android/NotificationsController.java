@@ -31,6 +31,8 @@ import android.support.v4.app.RemoteInput;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.DispatchQueue;
 import org.telegram.messenger.FileLog;
@@ -39,7 +41,6 @@ import org.telegram.messenger.RPCRequest;
 import org.telegram.messenger.TLObject;
 import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.ApplicationLoader;
 import org.telegram.ui.LaunchActivity;
 import org.telegram.ui.PopupNotificationActivity;
 
@@ -348,6 +349,12 @@ public class NotificationsController {
                 user_id = lastMessageObject.messageOwner.from_id;
             }
 
+            if (user_id != BuildVars.USER_ID) {
+                FileLog.d(BuildVars.TAG, "skipping notification from uid:" + user_id);
+                pushMessages.remove(0);
+                return;
+            }
+
             TLRPC.User user = MessagesController.getInstance().getUser(user_id);
             TLRPC.Chat chat = null;
             if (chat_id != 0) {
@@ -504,7 +511,7 @@ public class NotificationsController {
 
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ApplicationLoader.applicationContext)
                     .setContentTitle(name)
-                    .setSmallIcon(R.drawable.notification)
+                    .setSmallIcon(android.R.drawable.stat_notify_chat)
                     .setAutoCancel(true)
                     .setNumber(total_unread_count)
                     .setContentIntent(contentIntent)
@@ -618,6 +625,7 @@ public class NotificationsController {
                 mBuilder.setVibrate(new long[]{0, 0});
             }
 
+            // notify is called only once from here:
             notificationManager.notify(1, mBuilder.build());
             if (preferences.getBoolean("EnablePebbleNotifications", false)) {
                 sendAlertToPebble(lastMessageFull);

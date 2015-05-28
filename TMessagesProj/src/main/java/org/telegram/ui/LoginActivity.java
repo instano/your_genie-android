@@ -79,6 +79,9 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+    *LoginActivity does Registration, Recovery
+    */
 public class LoginActivity extends BaseFragment {
 
     private int currentViewNum = 0;
@@ -389,6 +392,9 @@ public class LoginActivity extends BaseFragment {
         }
     }
 
+    /**
+     * Opens next activity i.e. MessagesActivity(default) after any operation like register or recover, etc
+     */
     public void needFinishActivity() {
         clearCurrentState();
         presentFragment(new MessagesActivity(null), true);
@@ -1197,6 +1203,7 @@ public class LoginActivity extends BaseFragment {
                                 MessagesController.getInstance().putUser(res.user, false);
                                 ContactsController.getInstance().checkAppAccount();
                                 MessagesController.getInstance().getBlockedUsers(true);
+                                // called just after login in
                                 needFinishActivity();
                                 ConnectionsManager.getInstance().initPushConnection();
                                 Utilities.stageQueue.postRunnable(new Runnable() {

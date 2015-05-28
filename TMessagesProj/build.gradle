@@ -14,21 +14,23 @@ apply plugin: 'io.fabric'
 repositories {
     mavenCentral()
     maven { url 'https://maven.fabric.io/public' }
+    jcenter()
 }
 
 dependencies {
     compile 'com.android.support:support-v4:22.0.+'
     compile 'com.google.android.gms:play-services:3.2.+'
-    compile 'net.hockeyapp.android:HockeySDK:3.5.+'
     compile 'com.googlecode.mp4parser:isoparser:1.0.+'
     compile 'com.android.support:recyclerview-v7:+'
     compile('com.crashlytics.sdk.android:crashlytics:2.2.4@aar') {
         transitive = true;
     }
+    compile 'com.appvirality:AppviralityUI:1.1.8'
+    compile "com.mixpanel.android:mixpanel-android:4.5.3"
 }
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 22
     buildToolsVersion '22.0.1'
 
     compileOptions {
@@ -39,6 +41,10 @@ android {
     signingConfigs {
         debug {
             // automatically use the default debug one.
+            keyPassword 'hello123'
+            storeFile file('debug.keystore')
+            storePassword 'hello123'
+            keyAlias 'retailer'
         }
 
         release {
@@ -46,6 +52,10 @@ android {
 //            storePassword RELEASE_STORE_PASSWORD
 //            keyAlias RELEASE_KEY_ALIAS
 //            keyPassword RELEASE_KEY_PASSWORD
+            keyPassword 'hello123'
+            storeFile file('debug.keystore')
+            storePassword 'hello123'
+            keyAlias 'retailer'
         }
     }
 
@@ -87,10 +97,10 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.yourgenie"
-        minSdkVersion 8
+        applicationId "com.instano.buyer"
+        minSdkVersion 9
         targetSdkVersion 22
-        versionCode 1
+        versionCode 17
         versionName "1.0"
     }
 }

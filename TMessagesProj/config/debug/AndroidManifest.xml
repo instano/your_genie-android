@@ -14,6 +14,13 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Optional permissions. GET_ACCOUNTS is used to pre-populate customer's email in form fields. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- Optional permissions. WRITE_EXTERNAL_STORAGE is used to improve the performance by storing campaign images. -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <!--<permission android:name="org.telegram.messenger.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>-->
     <!--<permission android:name="org.telegram.messenger.permission.C2D_MESSAGE" android:protectionLevel="signature" />-->
@@ -28,8 +35,6 @@
         android:largeHeap="true">
 
         <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCTNmNqbWovP9ETcAob98YlrfOQEAC0CJ4" />
-
-        <activity android:name="net.hockeyapp.android.UpdateActivity" />
 
         <receiver
             android:name="org.telegram.android.GcmBroadcastReceiver"
