@@ -192,6 +192,8 @@ public class ApplicationLoader extends Application {
         // to your application context.
          mixpanel = MixpanelAPI.getInstance(applicationContext, BuildVars.MIXPANEL_TOKEN);
 
+        assert mixpanel != null;
+
         if (Build.VERSION.SDK_INT < 11) {
             java.lang.System.setProperty("java.net.preferIPv4Stack", "true");
             java.lang.System.setProperty("java.net.preferIPv6Addresses", "false");

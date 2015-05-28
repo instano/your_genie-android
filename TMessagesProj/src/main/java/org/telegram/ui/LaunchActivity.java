@@ -1182,6 +1182,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     protected void onDestroy() {
         PhotoViewer.getInstance().destroyPhotoViewer();
         SecretPhotoViewer.getInstance().destroyPhotoViewer();
+        if (ApplicationLoader.mixpanel != null)
+            ApplicationLoader.mixpanel.flush();
         super.onDestroy();
         onFinish();
     }
@@ -1199,8 +1201,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         } else {
             passcodeView.onResume();
         }
-//        Utilities.checkForCrashes(this);
-//        Utilities.checkForUpdates(this);
         ApplicationLoader.mainInterfacePaused = false;
         ConnectionsManager.getInstance().setAppPaused(false, false);
         updateCurrentConnectionState();

@@ -29,6 +29,10 @@ import android.widget.TextView;
 
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.LocaleController;
+import org.telegram.instano.MixPanelEvents;
+import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
+import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
 
 public class IntroActivity extends Activity {
@@ -222,6 +226,8 @@ public class IntroActivity extends Activity {
         });
 
         justCreated = true;
+        ApplicationLoader.mixpanel.track(MixPanelEvents.FIRST_TIME, null);
+        FileLog.d(BuildVars.TAG, "ApplicationLoader.mixpanel.track(MixPanelEvents.FIRST_TIME, null)");
     }
 
     @Override

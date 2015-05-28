@@ -64,6 +64,7 @@ import org.telegram.android.NotificationsController;
 import org.telegram.android.SecretChatHelper;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.query.ReplyMessageQuery;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
@@ -3838,6 +3839,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @Override
     public void onResume() {
         super.onResume();
+
+        ApplicationLoader.mixpanel.track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
+        FileLog.d(TAG, "ApplicationLoader.mixpanel.track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null)");
 
         if (!AndroidUtilities.isTablet()) {
             getParentActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
