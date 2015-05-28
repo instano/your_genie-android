@@ -73,6 +73,12 @@ public class FileLog {
         }
     }
 
+    public static void trace() {
+        if (BuildVars.DEBUG_VERSION) {
+            new RuntimeException().printStackTrace();
+        }
+    }
+
     public static void e(final String tag, final String message, final Throwable exception) {
         if (!BuildVars.DEBUG_VERSION) {
             return;

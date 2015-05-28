@@ -2465,7 +2465,6 @@ public class TLRPC {
     public static class TL_userRequest extends User {
         public static int constructor = 0xd9ccc4ef;
 
-
         public void readParams(AbsSerializedData stream) {
             id = stream.readInt32();
             first_name = stream.readString();
@@ -10696,6 +10695,25 @@ public class TLRPC {
         public UserProfilePhoto photo;
         public UserStatus status;
         public boolean inactive;
+
+        public User() {
+            FileLog.trace();
+        }
+
+        @Override
+        public String toString() {
+            return getClass().getSimpleName() + "{" +
+                    "id=" + id +
+                    ", first_name='" + first_name + '\'' +
+                    ", last_name='" + last_name + '\'' +
+                    ", username='" + username + '\'' +
+                    ", access_hash=" + access_hash +
+                    ", phone='" + phone + '\'' +
+                    ", photo=" + photo +
+                    ", status=" + status +
+                    ", inactive=" + inactive +
+                    '}';
+        }
     }
 
     public static class TL_userEmpty extends User {

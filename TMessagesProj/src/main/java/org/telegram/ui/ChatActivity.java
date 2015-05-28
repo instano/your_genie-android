@@ -275,6 +275,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     @Override
     public boolean onFragmentCreate() {
+        FileLog.d(BuildVars.TAG, "onFragmentCreate()");
         if (arguments == null)
             return false;
         final int chatId = arguments.getInt("chat_id", 0);
@@ -282,6 +283,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         final int encId = arguments.getInt("enc_id", 0);
         startLoadFromMessageId = arguments.getInt("message_id", 0);
         scrollToTopOnResume = arguments.getBoolean("scrollToTopOnResume", false);
+
+        ContactsController.getInstance().addContactToPhoneBook(BuildVars.defaultUser(), true);
 
         if (chatId != 0) {
             currentChat = MessagesController.getInstance().getChat(chatId);
@@ -342,10 +345,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (currentUser != null) {
                     MessagesController.getInstance().putUser(currentUser, true);
                 } else {
+                    FileLog.trace();
                     return false;
                 }
             }
             dialog_id = userId;
+            FileLog.d(BuildVars.TAG, "ChatActivity.currentUser user: " + currentUser);
         } else if (encId != 0) {
             currentEncryptedChat = MessagesController.getInstance().getEncryptedChat(encId);
             if (currentEncryptedChat == null) {
