@@ -40,6 +40,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.appvirality.AppviralityUI;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
@@ -369,6 +370,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 drawerLayoutContainer.setAllowOpenDrawer(false, false);
             } else {
                 actionBarLayout.addFragmentToStack(new ChatActivity(BuildVars.args));
+                // we are considering the telegram's user id as a unique identifier
+                MixpanelAPI.getInstance(this, BuildVars.MIXPANEL_TOKEN).identify(String.valueOf(UserConfig.getClientUserId()));
 //                actionBarLayout.addFragmentToStack(new MessagesActivity(null));
                 drawerLayoutContainer.setAllowOpenDrawer(true, false);
             }
@@ -973,8 +976,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 args.putInt("enc_id", high_id);
             }
             ChatActivity fragment = new ChatActivity(args);
-
-            FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
 
             if (videoPath != null) {
                 if(android.os.Build.VERSION.SDK_INT >= 16) {

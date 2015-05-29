@@ -16,7 +16,7 @@ import android.os.Build;
 import android.util.Base64;
 import android.util.SparseArray;
 
-import org.telegram.messenger.BuildVars;
+import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
@@ -28,7 +28,6 @@ import org.telegram.messenger.TLObject;
 import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.Utilities;
-import org.telegram.messenger.ApplicationLoader;
 import org.telegram.ui.ActionBar.BaseFragment;
 
 import java.util.ArrayList;
@@ -248,8 +247,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         user.status = null;
         user.photo = new TLRPC.TL_userProfilePhotoEmpty();
         putUser(user, true);
-
-        putUser(BuildVars.defaultUser(), true);
     }
 
     public static TLRPC.InputUser getInputUser(TLRPC.User user) {
@@ -467,7 +464,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
 
     public boolean putUser(TLRPC.User user, boolean fromCache) {
-        FileLog.d(BuildVars.TAG, "ContactsController.addContact user: " + user);
         if (user == null) {
             return false;
         }

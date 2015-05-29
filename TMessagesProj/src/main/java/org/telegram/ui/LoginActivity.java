@@ -388,7 +388,7 @@ public class LoginActivity extends BaseFragment {
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear();
             putBundleToEditor(bundle, editor, null);
-            editor.commit();
+            editor.apply();
         } catch (Exception e) {
             FileLog.e("tmessages", e);
         }
@@ -404,6 +404,8 @@ public class LoginActivity extends BaseFragment {
         if (UserConfig.isClientActivated()) {
             MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).alias(
                     String.valueOf(UserConfig.getClientUserId()), null);
+            // we are considering the telegram's user id as a unique identifier
+            MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).identify(String.valueOf(UserConfig.getClientUserId()));
         }
     }
 

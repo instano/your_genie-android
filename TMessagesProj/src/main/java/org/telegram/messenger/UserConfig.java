@@ -15,7 +15,6 @@ import android.util.Base64;
 import com.appvirality.android.AppviralityAPI;
 
 import org.telegram.android.MessagesStorage;
-import org.telegram.instano.MixPanelEvents;
 
 import java.io.File;
 
@@ -126,8 +125,6 @@ public class UserConfig {
                 .setPhoneNumber(user.phone)
                 .setPushRegID(registrationId)
                 .Update();
-        // we are considering the telegram's user id as a unique identifier
-        MixPanelEvents.api().identify(String.valueOf(user.id));
     }
 
     public static void loadConfig() {
