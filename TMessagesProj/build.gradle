@@ -50,54 +50,38 @@ android {
             storePassword 'hello123'
             keyAlias 'retailer'
         }
-
-        release {
-//            storeFile file("config/release.keystore")
-//            storePassword RELEASE_STORE_PASSWORD
-//            keyAlias RELEASE_KEY_ALIAS
-//            keyPassword RELEASE_KEY_PASSWORD
-            keyPassword 'hello123'
-            storeFile file('debug.keystore')
-            storePassword 'hello123'
-            keyAlias 'retailer'
-        }
     }
 
+    // do **NOT** change buildTypes name. Mixpanel uses it and events will go out of sync otherwise.
     buildTypes {
         debug {
             debuggable true
             jniDebuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
 
         release {
             debuggable false
             jniDebuggable false
-            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
 
-        foss {
+        beta {
             debuggable false
             jniDebuggable false
-            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
 
     sourceSets.main {
         jniLibs.srcDir 'libs'
         jni.srcDirs = [] //disable automatic ndk-build call
-    }
-
-    sourceSets.debug {
-        manifest.srcFile 'config/debug/AndroidManifest.xml'
-    }
-
-    sourceSets.release {
-        manifest.srcFile 'config/release/AndroidManifest.xml'
-    }
-
-    sourceSets.foss {
-        manifest.srcFile 'config/foss/AndroidManifest.xml'
     }
 
     defaultConfig {
