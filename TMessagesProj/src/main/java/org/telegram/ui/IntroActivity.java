@@ -289,10 +289,9 @@ public class IntroActivity extends Activity {
 
     private boolean numberExists(String number) {
         /// number is the phone number
-        Uri lookupUri = Uri.withAppendedPath(
-                ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
+        Uri lookupUri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI,
                 Uri.encode(number));
-        String[] mPhoneNumberProjection = { ContactsContract.PhoneLookup._ID, ContactsContract.PhoneLookup.NUMBER, ContactsContract.PhoneLookup.DISPLAY_NAME };
+        String[] mPhoneNumberProjection = { ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME };
         Cursor cur = getContentResolver().query(lookupUri,mPhoneNumberProjection, null, null, null);
         try {
             if (cur.moveToFirst()) {
