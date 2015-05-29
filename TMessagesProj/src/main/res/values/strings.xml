@@ -225,6 +225,7 @@
     <string name="UsernameAvailable">%1$s is available.</string>
     <string name="UsernameEmpty">None</string>
     <string name="ErrorOccurred">An error occurred.</string>
+    <string name="Error"> Oops, It seems like an error occured !!! \nYou can still place order using</string>
     <!--settings view-->
     <string name="ResetNotificationsText">Reset all notification settings to default</string>
     <string name="TextSize">Messages Text Size</string>

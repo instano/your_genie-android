@@ -121,7 +121,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int settingsKeyRow;
     private int settingsNotificationsRow;
     private int sharedMediaRow;
-    private int startSecretChatRow;
     private int sectionRow;
     private int membersSectionRow;
     private int membersEndRow;
@@ -455,19 +454,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         args.putLong("dialog_id", -chat_id);
                     }
                     presentFragment(new ProfileNotificationsActivity(args));
-                } else if (i == startSecretChatRow) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(LocaleController.getString("AreYouSureSecretChat", R.string.AreYouSureSecretChat));
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            creatingChat = true;
-                            SecretChatHelper.getInstance().startSecretChat(getParentActivity(), MessagesController.getInstance().getUser(user_id));
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
                 } else if (i == phoneRow) {
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null || user.phone == null || user.phone.length() == 0 || getParentActivity() == null) {
@@ -1062,11 +1048,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 settingsTimerRow = -1;
                 settingsKeyRow = -1;
             }
-            if (currentEncryptedChat == null) {
-                startSecretChatRow = rowCount++;
-            } else {
-                startSecretChatRow = -1;
-            }
         } else if (chat_id != 0) {
             if (chat_id > 0) {
                 emptyRow = rowCount++;
@@ -1225,7 +1206,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         @Override
         public boolean isEnabled(int i) {
             if (user_id != 0) {
-                return i == phoneRow || i == settingsTimerRow || i == settingsKeyRow || i == settingsNotificationsRow || i == sharedMediaRow || i == startSecretChatRow;
+                return i == phoneRow || i == settingsTimerRow || i == settingsKeyRow || i == settingsNotificationsRow || i == sharedMediaRow;
             } else if (chat_id != 0) {
                 return i == settingsNotificationsRow || i == sharedMediaRow || i > emptyRowChat2 && i < membersEndRow;
             }
@@ -1321,9 +1302,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     textCell.setTextAndValue(LocaleController.getString("MessageLifetime", R.string.MessageLifetime), value);
                 } else if (i == settingsNotificationsRow) {
                     textCell.setTextAndIcon(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds), R.drawable.profile_list);
-                } else if (i == startSecretChatRow) {
-                    textCell.setText(LocaleController.getString("StartEncryptedChat", R.string.StartEncryptedChat));
-                    textCell.setTextColor(0xff37a919);
                 } else if (i == settingsKeyRow) {
                     IdenticonDrawable identiconDrawable = new IdenticonDrawable();
                     TLRPC.EncryptedChat encryptedChat = MessagesController.getInstance().getEncryptedChat((int)(dialog_id >> 32));
@@ -1353,7 +1331,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return 1;
             } else if (i == phoneRow || i == usernameRow) {
                 return 2;
-            } else if (i == sharedMediaRow || i == settingsTimerRow || i == settingsNotificationsRow || i == startSecretChatRow || i == settingsKeyRow) {
+            } else if (i == sharedMediaRow || i == settingsTimerRow || i == settingsNotificationsRow || i == settingsKeyRow) {
                 return 3;
             } else if (i > emptyRowChat2 && i < membersEndRow) {
                 return 4;

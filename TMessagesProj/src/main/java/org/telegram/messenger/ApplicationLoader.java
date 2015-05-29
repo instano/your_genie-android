@@ -42,7 +42,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
-import io.fabric.sdk.android.Fabric;
+//import io.fabric.sdk.android.Fabric;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.android.MediaController;
@@ -60,6 +60,8 @@ import org.telegram.ui.SettingsActivity;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import io.fabric.sdk.android.Fabric;
 
 public class ApplicationLoader extends Application {
 
@@ -213,24 +215,25 @@ public class ApplicationLoader extends Application {
 
         startPushService();
 
-        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread thread, Throwable e) {
-                Crashlytics.logException(e);
-                HandleCrashes(thread, e);
-            }
-        });
+//        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+//            @Override
+//            public void uncaughtException(Thread thread, Throwable e) {
+//                Crashlytics.logException(e);
+//                HandleCrashes(thread, e);
+//            }
+//        });
 
     }
 
-    public void HandleCrashes(Thread t, Throwable e) {
-        e.printStackTrace();
-        Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        System.exit(1);
-    }
+//    public void HandleCrashes(Thread t, Throwable e) {
+//        FileLog.e(BuildVars.TAG, e);
+//        FileLog.d(BuildVars.TAG, t.getName());
+//        Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(intent);
+//        System.exit(1);
+//    }
 
     public static void startPushService() {
         SharedPreferences preferences = applicationContext.getSharedPreferences("Notifications", MODE_PRIVATE);

@@ -3,8 +3,50 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Error"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:id="@+id/ErrorText"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sms"
+        android:layout_below="@id/ErrorText"
+        android:clickable="true"
+        android:drawableLeft="@drawable/sms"
+        android:id="@+id/buttonSendSms"
+        style="@style/LinkTypeButton"
+        android:layout_marginTop="10dp"
+/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Whatsapp"
+        android:drawableLeft="@drawable/wa"
+        android:id="@+id/buttonSendWhatsapp"
+        android:layout_below="@id/buttonSendSms"
+        style="@style/LinkTypeButton"
+        android:layout_margin="2dp"
+        android:layout_marginBottom="10dp"
+    />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Twitter"
+        android:drawableLeft="@drawable/twitter"
+        android:id="@+id/buttonSendTwitter"
+        android:layout_below="@id/buttonSendWhatsapp"
+        style="@style/LinkTypeButton"
+        android:layout_margin="2dp"
+        android:layout_marginBottom="10dp"
+        />
 
 </RelativeLayout>

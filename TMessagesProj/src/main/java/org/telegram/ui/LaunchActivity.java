@@ -343,8 +343,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     Bundle args = new Bundle();
                     actionBarLayout.addFragmentToStack(new ChatActivity(args));
                 }
-             throw new RuntimeException("This is a crash");
-            }
+                 }
         });
 
         drawerLayoutContainer.setParentActionBarLayout(actionBarLayout);
