@@ -9,6 +9,7 @@
 package org.telegram.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -22,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -336,7 +338,12 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 } else if (position == 4) {
                     presentFragment(new AboutUsActivity());
                     drawerLayoutContainer.closeDrawer(false);
+                } else if (position == 5){
+                    drawerLayoutContainer.closeDrawer(false);
+                    Bundle args = new Bundle();
+                    actionBarLayout.addFragmentToStack(new ChatActivity(args));
                 }
+             throw new RuntimeException("This is a crash");
             }
         });
 

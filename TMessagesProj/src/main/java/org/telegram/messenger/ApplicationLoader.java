@@ -10,10 +10,15 @@ package org.telegram.messenger;
 
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.Application;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -24,8 +29,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.util.Log;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.appvirality.android.AppviralityAPI;
@@ -44,6 +53,10 @@ import org.telegram.android.MessagesController;
 import org.telegram.android.NativeLoader;
 import org.telegram.android.ScreenReceiver;
 import org.telegram.ui.Components.ForegroundDetector;
+import org.telegram.ui.CrashActivity;
+import org.telegram.ui.LaunchActivity;
+import org.telegram.ui.PopupNotificationActivity;
+import org.telegram.ui.SettingsActivity;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -199,6 +212,24 @@ public class ApplicationLoader extends Application {
         applicationHandler = new Handler(applicationContext.getMainLooper());
 
         startPushService();
+
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread thread, Throwable e) {
+                Crashlytics.logException(e);
+                HandleCrashes(thread, e);
+            }
+        });
+
+    }
+
+    public void HandleCrashes(Thread t, Throwable e) {
+        e.printStackTrace();
+        Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        System.exit(1);
     }
 
     public static void startPushService() {
