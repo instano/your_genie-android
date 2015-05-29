@@ -50,6 +50,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.android.Emoji;
@@ -3840,8 +3842,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public void onResume() {
         super.onResume();
 
-        ApplicationLoader.mixpanel.track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
-        FileLog.d(TAG, "ApplicationLoader.mixpanel.track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null)");
+        MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
 
         if (!AndroidUtilities.isTablet()) {
             getParentActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);

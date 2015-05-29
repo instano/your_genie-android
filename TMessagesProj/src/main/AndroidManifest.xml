@@ -137,6 +137,12 @@
         <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:value="598dp" />
         <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:value="632dp" />
         <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598dp" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ca1794916bb5f45eaec046aa169c1eaabe92f41b" />
+        <meta-data
+            android:name="com.mixpanel.android.MPConfig.ResourcePackageName"
+            android:value="org.telegram.messenger" />
     </application>
 
 </manifest>

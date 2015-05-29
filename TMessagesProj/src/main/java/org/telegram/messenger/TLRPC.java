@@ -10696,10 +10696,6 @@ public class TLRPC {
         public UserStatus status;
         public boolean inactive;
 
-        public User() {
-            FileLog.trace();
-        }
-
         @Override
         public String toString() {
             return getClass().getSimpleName() + "{" +
