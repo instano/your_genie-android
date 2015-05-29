@@ -44,9 +44,12 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
+import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
 import org.telegram.android.NotificationCenter;
@@ -54,7 +57,6 @@ import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLog;
-import org.telegram.android.LocaleController;
 import org.telegram.messenger.R;
 import org.telegram.messenger.RPCRequest;
 import org.telegram.messenger.TLObject;
@@ -386,7 +388,7 @@ public class LoginActivity extends BaseFragment {
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear();
             putBundleToEditor(bundle, editor, null);
-            editor.commit();
+            editor.apply();
         } catch (Exception e) {
             FileLog.e("tmessages", e);
         }
@@ -399,6 +401,12 @@ public class LoginActivity extends BaseFragment {
         clearCurrentState();
         presentFragment(new MessagesActivity(null), true);
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
+        if (UserConfig.isClientActivated()) {
+            MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).alias(
+                    String.valueOf(UserConfig.getClientUserId()), null);
+            // we are considering the telegram's user id as a unique identifier
+            MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).identify(String.valueOf(UserConfig.getClientUserId()));
+        }
     }
 
     public class PhoneView extends SlideView implements AdapterView.OnItemSelectedListener {

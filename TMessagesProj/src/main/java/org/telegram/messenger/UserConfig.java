@@ -120,19 +120,11 @@ public class UserConfig {
         SharedPreferences prefs = ApplicationLoader.applicationContext
                 .getSharedPreferences(ApplicationLoader.class.getSimpleName(), Context.MODE_PRIVATE);
         String registrationId = prefs.getString(ApplicationLoader.PROPERTY_REG_ID, "");
-        if (registrationId !=null) {
-            AppviralityAPI.UserDetails.setInstance(ApplicationLoader.applicationContext)
-                    .setUserName(user.username)
-                    .setPhoneNumber(user.phone)
-                    .setPushRegID(registrationId)
-                    .Update();
-        } else {
-            AppviralityAPI.UserDetails.setInstance(ApplicationLoader.applicationContext)
-                    .setUserName(user.username)
-                    .setPhoneNumber(user.phone)
-                    .setPushRegID("not registered")
-                    .Update();
-        }
+        AppviralityAPI.UserDetails.setInstance(ApplicationLoader.applicationContext)
+                .setUserName(user.first_name + (user.last_name == null? "":" " + user.last_name))
+                .setPhoneNumber(user.phone)
+                .setPushRegID(registrationId)
+                .Update();
     }
 
     public static void loadConfig() {

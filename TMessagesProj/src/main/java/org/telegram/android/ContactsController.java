@@ -1497,7 +1497,6 @@ public class ContactsController {
     }
 
     public void addContact(TLRPC.User user) {
-        FileLog.d(BuildVars.TAG, "ContactsController.addContact user: " + user);
         if (user == null || user.phone == null) {
             return;
         }

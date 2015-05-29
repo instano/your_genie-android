@@ -50,6 +50,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.android.Emoji;
@@ -64,6 +66,7 @@ import org.telegram.android.NotificationsController;
 import org.telegram.android.SecretChatHelper;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.query.ReplyMessageQuery;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
@@ -276,15 +279,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @Override
     public boolean onFragmentCreate() {
         FileLog.d(BuildVars.TAG, "onFragmentCreate()");
-        if (arguments == null)
-            return false;
         final int chatId = arguments.getInt("chat_id", 0);
         final int userId = arguments.getInt("user_id", 0);
         final int encId = arguments.getInt("enc_id", 0);
         startLoadFromMessageId = arguments.getInt("message_id", 0);
         scrollToTopOnResume = arguments.getBoolean("scrollToTopOnResume", false);
-
-        ContactsController.getInstance().addContactToPhoneBook(BuildVars.defaultUser(), true);
 
         if (chatId != 0) {
             currentChat = MessagesController.getInstance().getChat(chatId);
@@ -329,6 +328,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else if (userId != 0) {
             currentUser = MessagesController.getInstance().getUser(userId);
             if (currentUser == null) {
+                FileLog.d(TAG, "currentUser == null, trying to fetch by semaphore");
                 final Semaphore semaphore = new Semaphore(0);
                 MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                     @Override
@@ -345,7 +345,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (currentUser != null) {
                     MessagesController.getInstance().putUser(currentUser, true);
                 } else {
-                    FileLog.trace();
                     return false;
                 }
             }
@@ -3838,6 +3837,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @Override
     public void onResume() {
         super.onResume();
+
+        MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
 
         if (!AndroidUtilities.isTablet()) {
             getParentActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
