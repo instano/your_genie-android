@@ -84,6 +84,7 @@ import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.ActionBar.BaseFragment;
+import org.telegram.ui.ActionBar.MenuDrawable;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.Adapters.MentionsAdapter;
 import org.telegram.ui.Adapters.StickersAdapter;
@@ -521,7 +522,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         hasOwnBackground = true;
 
 //        actionBar.setTitleOverlayText(true);
-        actionBar.setBackButtonImage(R.drawable.ic_menu);
+        actionBar.setBackButtonDrawable(new MenuDrawable());
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(final int id) {
