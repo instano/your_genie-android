@@ -15958,18 +15958,14 @@ org.telegram.messenger.BuildVars -> org.telegram.messenger.e:
     boolean DEBUG_VERSION -> a
     int APP_ID -> b
     java.lang.String APP_HASH -> c
-    java.lang.String HOCKEY_APP_HASH -> d
-    java.lang.String GCM_SENDER_ID -> e
-    java.lang.String SEND_LOGS_EMAIL -> f
-    java.lang.String BING_SEARCH_KEY -> g
-    java.lang.String TAG -> h
-    int USER_ID -> i
-    int CHAT_ID -> j
-    int ENC_ID -> k
-    int MESSAGE_ID -> l
-    android.os.Bundle args -> m
-    java.lang.String ACTIONBAR_TITLE -> n
-    java.lang.String PHONE -> o
+    java.lang.String GCM_SENDER_ID -> d
+    java.lang.String SEND_LOGS_EMAIL -> e
+    java.lang.String BING_SEARCH_KEY -> f
+    int USER_ID -> g
+    int CHAT_ID -> h
+    int ENC_ID -> i
+    int MESSAGE_ID -> j
+    android.os.Bundle args -> k
 org.telegram.messenger.ByteBufferDesc -> org.telegram.messenger.f:
     java.nio.ByteBuffer buffer -> a
     boolean justCalc -> b

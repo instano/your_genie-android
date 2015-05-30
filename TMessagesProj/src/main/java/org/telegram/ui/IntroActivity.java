@@ -61,11 +61,7 @@ public class IntroActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-
-        String name = "Instano Operator";
-        String mobileNumber = "7899704294";
         ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
-        int rawContactInsertIndex = ops.size();
 
         if(numberExists(BuildVars.PHONE)) {
 
@@ -76,13 +72,13 @@ public class IntroActivity extends Activity {
             ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                     .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                     .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                    .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, name)
+                    .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, BuildVars.CONTACT_NAME)
                     .build());
 
             ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                     .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                     .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
-                    .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, mobileNumber)
+                    .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, BuildVars.PHONE)
                     .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
                     .build());
             try {
