@@ -39,11 +39,11 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.appvirality.AppviralityUI;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
+import org.telegram.android.ContactsController;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
@@ -298,31 +298,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 //                } else
                 if (position == 2) {
                     try {
-                        AppviralityUI.showGrowthHack(LaunchActivity.this, AppviralityUI.GH.Word_of_Mouth);
-
-//Below commented code is for handling Campaign Manually incase if no campaign is on Air.
-
-//                        AppviralityAPI.setCampaignHandler(LaunchActivity.this, AppviralityAPI.GH.Word_of_Mouth,
-//                                new AppviralityAPI.CampaignReadyListner() {
-//                                    @Override
-//                                    public void onCampaignReady(CampaignDetails campaignDetails) {
-////campaignDetails will be null if there is no active campaigns.
-//                                        if (campaignDetails != null) {
-////Here you can set your custom button/label visibility
-////findViewById(R.id.btnInviteFriend).setVisibility(View.VISIBLE);
-//
-//// Now campaign details are ready, pass details to the handler
-//                                            CampaignHandler.setCampaignDetails(campaignDetails);
-//
-//// Launch the Growth Hack directly or you can launch on btnInviteFriend click event
-//                                            CampaignHandler.showGrowthHack(LaunchActivity.this, CampaignHandler.getCampiagnDetails());
-//                                        }
-//                                    }
-//                                });
-//                        Intent intent = new Intent(Intent.ACTION_SEND);
-//                        intent.setType("text/plain");
-//                        intent.putExtra(Intent.EXTRA_TEXT, ContactsController.getInstance().getInviteText());
-//                        startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteFriends", R.string.InviteFriends)), 500);
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        intent.putExtra(Intent.EXTRA_TEXT, ContactsController.getInstance().getInviteText());
+                        startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteFriends", R.string.InviteFriends)), 500);
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }

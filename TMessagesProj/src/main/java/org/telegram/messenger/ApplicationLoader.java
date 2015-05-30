@@ -27,13 +27,14 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 
-import com.appvirality.android.AppviralityAPI;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.android.LocaleController;
@@ -43,6 +44,7 @@ import org.telegram.android.NativeLoader;
 import org.telegram.android.NotificationsService;
 import org.telegram.android.ScreenReceiver;
 import org.telegram.android.SendMessagesHelper;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.ui.Components.ForegroundDetector;
 
 import java.io.File;
@@ -186,10 +188,16 @@ public class ApplicationLoader extends Application {
     public void onCreate() {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
-        AppviralityAPI.init(getApplicationContext());
         // Initialize the library with your
         // Mixpanel project token, MIXPANEL_TOKEN, and a reference
         // to your application context.
+        JSONObject superProperties = new JSONObject();
+        try {
+            superProperties.put(MixPanelEvents.PROPERTY_BUILD_TYPE, BuildConfig.BUILD_TYPE);
+        } catch (JSONException e) {
+            FileLog.e(BuildVars.TAG, e);
+        }
+        MixpanelAPI.getInstance(this, BuildVars.MIXPANEL_TOKEN).registerSuperProperties(superProperties);
 
         if (Build.VERSION.SDK_INT < 11) {
             java.lang.System.setProperty("java.net.preferIPv4Stack", "true");
