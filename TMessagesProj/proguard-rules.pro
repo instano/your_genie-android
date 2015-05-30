@@ -25,6 +25,7 @@ public ** get*();
 }
 
 -dontwarn java.lang.invoke**
+-dontwarn com.googlecode.mp4parser**
 
 -keep class * extends java.util.ListResourceBundle {
     protected Object[][] getContents();
@@ -42,4 +43,6 @@ public ** get*();
 -keepnames class * implements android.os.Parcelable {
     public static final ** CREATOR;
 }
+
+-keep class org.telegram.SQLite.* {*;}
 
