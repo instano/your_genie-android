@@ -3950,7 +3950,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("dialog_" + dialog_id, text);
-                editor.commit();
+                editor.apply();
             }
             chatActivityEnterView.setFieldFocused(false);
         }
@@ -3968,7 +3968,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 editor.remove("reply_" + dialog_id);
                 FileLog.e("tmessages", e);
             }
-            editor.commit();
+            editor.apply();
         }
 
         MessagesController.getInstance().cancelTyping(dialog_id);

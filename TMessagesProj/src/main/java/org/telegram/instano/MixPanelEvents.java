@@ -20,6 +20,10 @@ public class MixPanelEvents {
     public static final String FIRST_TIME = "First Time";
     public static final String CHAT_ACTIVITY_OPENED = "Chat Activity Opened";
 
+    public static final String USER_USER_ID = "User user Id";
+    public static final String USER_NAME = "User name";
+    public static final String USER_PHONE = "User phone";
+
     public static MixpanelAPI api() {
         return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.MIXPANEL_TOKEN);
     }
