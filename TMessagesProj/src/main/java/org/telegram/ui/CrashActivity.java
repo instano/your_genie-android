@@ -1,5 +1,6 @@
 package org.telegram.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -25,6 +26,8 @@ public class CrashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crashactivity_background);
+        ActionBar actionBar = getActionBar();
+        actionBar.setTitle(null);
 
         ErrorDialog dialog = new ErrorDialog(context);
         dialog.setCancelable(false);
