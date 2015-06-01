@@ -241,7 +241,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int attach_document = 9;
     private final static int attach_location = 10;
     private final static int clear_history = 11;
-    private final static int delete_chat = 12;
     private final static int share_contact = 13;
     private final static int mute = 14;
     private final static int reply = 15;
@@ -722,35 +721,19 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         return;
                     }
                     showAlertDialog(AndroidUtilities.buildTTLAlert(getParentActivity(), currentEncryptedChat));
-                } else if (id == clear_history || id == delete_chat) {
+                } else if (id == clear_history ) {
                     if (getParentActivity() == null) {
                         return;
                     }
                     final boolean isChat = (int) dialog_id < 0 && (int) (dialog_id >> 32) != 1;
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    if (id == clear_history) {
-                        builder.setMessage(LocaleController.getString("AreYouSureClearHistory", R.string.AreYouSureClearHistory));
-                    } else {
-                        if (isChat) {
-                            builder.setMessage(LocaleController.getString("AreYouSureDeleteAndExit", R.string.AreYouSureDeleteAndExit));
-                        } else {
-                            builder.setMessage(LocaleController.getString("AreYouSureDeleteThisChat", R.string.AreYouSureDeleteThisChat));
-                        }
-                    }
+                    builder.setMessage(LocaleController.getString("AreYouSureClearHistory", R.string.AreYouSureClearHistory));
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            if (id != clear_history) {
-                                if (isChat) {
-                                    MessagesController.getInstance().deleteUserFromChat((int) -dialog_id, MessagesController.getInstance().getUser(UserConfig.getClientUserId()), null);
-                                } else {
-                                    MessagesController.getInstance().deleteDialog(dialog_id, 0, false);
-                                }
-                                finishFragment();
-                            } else {
-                                MessagesController.getInstance().deleteDialog(dialog_id, 0, true);
-                            }
+                            MessagesController.getInstance().deleteDialog(dialog_id, 0, true);
+
                         }
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -980,11 +963,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             timeItem2 = headerItem.addSubItem(chat_enc_timer, LocaleController.getString("SetTimer", R.string.SetTimer), 0);
         }
         headerItem.addSubItem(clear_history, LocaleController.getString("ClearHistory", R.string.ClearHistory), 0);
-        if (currentChat != null && !isBroadcast) {
-            headerItem.addSubItem(delete_chat, LocaleController.getString("DeleteAndExit", R.string.DeleteAndExit), 0);
-        } else {
-            headerItem.addSubItem(delete_chat, LocaleController.getString("DeleteChatUser", R.string.DeleteChatUser), 0);
-        }
         muteItem = headerItem.addSubItem(mute, null, 0);
 
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) headerItem.getLayoutParams();

@@ -331,34 +331,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     presentFragment(new AboutUsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 5){
-                    drawerLayoutContainer.closeDrawer(false);
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(ApplicationLoader.applicationContext);
-//                    builder.setTitle(LocaleController.getString("TextSize", R.string.TextSize));
-//                    final NumberPicker numberPicker = new NumberPicker(ApplicationLoader.applicationContext);
-//                    numberPicker.setMinValue(12);
-//                    numberPicker.setMaxValue(30);
-//                    numberPicker.setValue(MessagesController.getInstance().fontSize);
-//                    builder.setView(numberPicker);
-//                    builder.setNegativeButton(LocaleController.getString("Done", R.string.Done), new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-//                            SharedPreferences.Editor editor = preferences.edit();
-//                            editor.putInt("fons_size", numberPicker.getValue());
-//                            MessagesController.getInstance().fontSize = numberPicker.getValue();
-//                            editor.commit();
-//                        }
-//                    });
-//                    AlertDialog alertDialog = builder.create();
-//                    alertDialog.show();
-//                    builder.show();
-//                    ContactUsDialog cd = new ContactUsDialog(ApplicationLoader.applicationContext);
-//                    cd.show();
-//                    Intent intent = new Intent(ApplicationLoader.applicationContext,ContactUsActivity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    startActivity(intent);
-//                    drawerLayoutContainer.closeDrawer(false);
+                    ContactUsDialog cd = new ContactUsDialog(LaunchActivity.this);
+                    cd.show();
                 }
                  }
         });
