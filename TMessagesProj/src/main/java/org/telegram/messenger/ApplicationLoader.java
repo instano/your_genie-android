@@ -219,7 +219,6 @@ public class ApplicationLoader extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread thread, Throwable e) {
-                Log.e("Handler", "hello");
                 Crashlytics.logException(e);
                 HandleCrashes(thread, e);
             }
@@ -228,10 +227,11 @@ public class ApplicationLoader extends Application {
     }
 
     public void HandleCrashes(Thread t, Throwable e) {
-        e.printStackTrace();
+//        e.printStackTrace();
         Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Log.e("Handler", "Code is reaching here");
         startActivity(intent);
         System.exit(1);
     }

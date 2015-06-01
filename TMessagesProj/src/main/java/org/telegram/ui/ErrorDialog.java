@@ -1,27 +1,15 @@
 package org.telegram.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import org.telegram.messenger.BuildVars;
-import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
-
-import java.util.List;
 
 public class ErrorDialog extends Dialog implements View.OnClickListener {
 
@@ -32,7 +20,7 @@ public class ErrorDialog extends Dialog implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crash);
+        setContentView(R.layout.error_dialog);
         setTitle("Instano");
 
         Button buttonSendSms = (Button) findViewById(R.id.buttonSendSms);

@@ -240,6 +240,11 @@
             android:name="io.fabric.ApiKey"
             android:value="33cb6341400cf9323777cfaaf0aa3163830bb486" />
 
+        <activity
+            android:name="org.telegram.ui.CrashActivity"
+            android:label="@string/title_activity_crash" >
+
+        </activity>
     </application>
 
 </manifest>
