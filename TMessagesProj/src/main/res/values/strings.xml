@@ -16,7 +16,7 @@
     <string name="WrongCountry">Wrong country code</string>
     <!--code enter view-->
     <string name="YourCode">Your code</string>
-    <string name="SentSmsCode">We\'ve sent an SMS with a Instano code to your phone</string>
+    <string name="SentSmsCode">We\'ve sent an SMS with a Telegram code to your phone</string>
     <string name="CallText">We will call you in %1$d:%2$02d</string>
     <string name="Calling">Calling you...</string>
     <string name="Code">Code</string>
@@ -213,7 +213,7 @@
     <string name="Info">Info</string>
     <string name="Phone">Phone</string>
     <!--usernames-->
-    <string name="Username">Username</string>
+    <string name="Username">Name</string>
     <string name="UsernamePlaceholder">Your Username</string>
     <string name="UsernameInUse">Sorry, this username is already taken.</string>
     <string name="UsernameInvalid">Sorry, this username is invalid.</string>
@@ -225,6 +225,7 @@
     <string name="UsernameAvailable">%1$s is available.</string>
     <string name="UsernameEmpty">None</string>
     <string name="ErrorOccurred">An error occurred.</string>
+    <string name="Error"> Oops, It seems like an error occured !!! \nYou can still place order using</string>
     <!--settings view-->
     <string name="ResetNotificationsText">Reset all notification settings to default</string>
     <string name="TextSize">Messages Text Size</string>
@@ -255,12 +256,16 @@
     <string name="OnlyIfSilent">Only if silent</string>
     <string name="ChatBackground">Chat Background</string>
     <string name="MessagesSettings">Messages</string>
+    <string name="Security">Security</string>
+    <string name="Account">Account self-destructs</string>
     <string name="SendByEnter">Send by Enter</string>
     <string name="TerminateAllSessions">Terminate All Other Sessions</string>
     <string name="Events">Events</string>
     <string name="ContactJoined">Contact joined Instano</string>
     <string name="Pebble">PEBBLE</string>
     <string name="Language">Language</string>
+    <string name="Verification">Two-Step Verification</string>
+    <string name="Session">Active Session</string>
     <string name="AskAQuestionInfo">Please note that Instano Support is done by volunteers. We try to respond as quickly as possible, but it may take a while.<![CDATA[<br><br>]]>Please take a look at the <![CDATA[<a href=\"http://Instano.in\">Instano FAQ</a>]]>: it has answers to most questions and important tips for <![CDATA[<a href=\"http://instano.in#troubleshooting\">troubleshooting</a>]]>.</string>
     <string name="AskButton">Ask a volunteer</string>
 
@@ -302,11 +307,11 @@
     <string name="NotificationsPriorityMax">Max</string>
     <string name="RepeatNotificationsNever">Never</string>
     <string name="RepeatNotifications">Repeat Notifications</string>
-    <string name="PhoneNumberHelp">You can change your Instano number here. Your account and all your cloud data — messages, media, contacts, etc. will be moved to the new number.\n\n<![CDATA[<b>Important:</b>]]> all your Instano contacts will get your <![CDATA[<b>new number</b>]]> added to their address book, provided they had your old number and you haven\'t blocked them in Instano.</string>
-    <string name="PhoneNumberAlert">All your Instano contacts will get your new number added to their address book, provided they had your old number and you haven\'t blocked them in Instano.</string>
+    <string name="PhoneNumberHelp">You can change your Instano number here. Your account and all your cloud data — messages, media, contacts, etc. will be moved to the new number.</string>
+    <string name="PhoneNumberAlert"></string>
     <string name="PhoneNumberChange">CHANGE NUMBER</string>
     <string name="ChangePhoneNewNumber">New number</string>
-    <string name="ChangePhoneHelp">We will send an SMS with a Instano code to your number.</string>
+    <string name="ChangePhoneHelp">We will send an SMS with a Telegram code to your number.</string>
     <string name="ChangePhoneNumberOccupied">The number %1$s is already connected to a Instano account. Please delete that account before migrating to the new number.</string>
     <string name="NotificationsOther">Other</string>
     <string name="NotificationsDisabled">Disabled</string>
@@ -443,7 +448,7 @@
     <string name="EnabledPasswordText">You have enabled Two-Step verification.\nYou\'ll need the password you set up here to log in to your Instano account.</string>
     <string name="PendingEmailText">Your recovery e-mail %1$s is not yet active and pending confirmation.</string>
     <!--privacy settings-->
-    <string name="PrivacySettings">Privacy and Security</string>
+    <string name="PrivacySettings">Security</string>
     <string name="PrivacyTitle">Privacy</string>
     <string name="PrivacyLastSeen">Last Seen</string>
     <string name="LastSeenEverybody">Everybody</string>
@@ -457,9 +462,9 @@
     <string name="SecurityTitle">Security</string>
     <string name="DeleteAccountTitle">Account self-destructs</string>
     <string name="DeleteAccountIfAwayFor">If you\'re away for</string>
-    <string name="DeleteAccountHelp">If you do not log in at least once within this period, your account will be deleted along with all groups, messages and contacts.</string>
+    <string name="DeleteAccountHelp">If you do not log in at least once within this period, your account will be deleted along with all messages and contacts.</string>
     <string name="DeleteAccountNowConfirmation">Delete your account?</string>
-    <string name="LastSeenHelp">Change who can see your Last Seen time.</string>
+    <string name="LastSeenHelp">Enable or Disable your Last Seen time.</string>
     <string name="LastSeenTitle">Who can see your Last Seen time?</string>
     <string name="AddExceptions">Add exceptions</string>
     <string name="CustomHelp">Important: you won\'t be able to see Last Seen times for people with whom you don\'t share your Last Seen time. Approximate last seen will be shown instead (recently, within a week, within a month).</string>
@@ -727,6 +732,7 @@
     <string name="AndOther_few">and %1$d others</string>
     <string name="AndOther_many">and %1$d others</string>
     <string name="AndOther_other">and %1$d others</string>
+    <string name="Contact">You can contact us by</string>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">MMM dd</string>
@@ -738,4 +744,10 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s at %2$s</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_crash">CrashActivity</string>
+    <string name="title_activity_contact_us">ContactUsActivity</string>
 </resources>

@@ -25327,7 +25327,11 @@ org.telegram.ui.IntroActivity -> org.telegram.ui.IntroActivity:
     int[] messages -> j
     void onCreate(android.os.Bundle) -> onCreate
     void onResume() -> onResume
+<<<<<<< HEAD
     void contactExists(java.lang.String) -> a
+=======
+    boolean contactExists(java.lang.String) -> a
+>>>>>>> eb5b097096e8927042fa99fe38d417ee5a7f0a27
     int access$100(org.telegram.ui.IntroActivity) -> a
     android.support.v4.view.ViewPager access$200(org.telegram.ui.IntroActivity) -> b
     int access$102(org.telegram.ui.IntroActivity,int) -> a

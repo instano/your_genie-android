@@ -73,6 +73,7 @@ import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.ShadowSectionCell;
 import org.telegram.ui.Cells.TextCheckCell;
 import org.telegram.ui.Cells.TextDetailSettingsCell;
+import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
@@ -119,16 +120,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     private int messagesSectionRow2;
     private int textSizeRow;
     private int sendByEnterRow;
-    private int supportSectionRow;
-    private int supportSectionRow2;
-    private int askQuestionRow;
-    private int telegramFaqRow;
-    private int sendLogsRow;
-    private int clearLogsRow;
-    private int switchBackendButtonRow;
     private int versionRow;
-    private int contactsSectionRow;
-    private int contactsReimportRow;
     private int contactsSortRow;
     private int rowCount;
 
@@ -232,19 +224,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         messagesSectionRow2 = rowCount++;
         textSizeRow = rowCount++;
         sendByEnterRow = rowCount++;
-        supportSectionRow = rowCount++;
-        supportSectionRow2 = rowCount++;
-        askQuestionRow = rowCount++;
-        telegramFaqRow = rowCount++;
-        if (BuildVars.DEBUG_VERSION) {
-            sendLogsRow = rowCount++;
-            clearLogsRow = rowCount++;
-            switchBackendButtonRow = rowCount++;
-        }
+
         versionRow = rowCount++;
-        //contactsSectionRow = rowCount++;
-        //contactsReimportRow = rowCount++;
-        //contactsSortRow = rowCount++;
 
         MessagesController.getInstance().loadFullUser(UserConfig.getCurrentUser(), classGuid);
 
@@ -281,8 +262,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             public void onItemClick(int id) {
                 if (id == -1) {
                     finishFragment();
-                } else if (id == edit_name) {
-                    presentFragment(new ChangeNameActivity());
                 } else if (id == logout) {
                     if (getParentActivity() == null) {
                         return;
@@ -312,7 +291,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         });
         ActionBarMenu menu = actionBar.createMenu();
         ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_other);
-        item.addSubItem(edit_name, LocaleController.getString("EditName", R.string.EditName), 0);
         item.addSubItem(logout, LocaleController.getString("LogOut", R.string.LogOut), 0);
 
         listAdapter = new ListAdapter(context);
@@ -432,30 +410,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     presentFragment(new NotificationsSettingsActivity());
                 } else if (i == backgroundRow) {
                     presentFragment(new WallpapersActivity());
-                } else if (i == askQuestionRow) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    final TextView message = new TextView(getParentActivity());
-                    message.setText(Html.fromHtml(LocaleController.getString("AskAQuestionInfo", R.string.AskAQuestionInfo)));
-                    message.setTextSize(18);
-                    message.setPadding(AndroidUtilities.dp(8), AndroidUtilities.dp(5), AndroidUtilities.dp(8), AndroidUtilities.dp(6));
-                    message.setMovementMethod(new LinkMovementMethodMy());
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setView(message);
-                    builder.setPositiveButton(LocaleController.getString("AskButton", R.string.AskButton), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            performAskAQuestion();
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
-                } else if (i == sendLogsRow) {
-                    sendLogs();
-                } else if (i == clearLogsRow) {
-                    FileLog.cleanupLogs();
                 } else if (i == sendByEnterRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     boolean send = preferences.getBoolean("send_by_enter", false);
@@ -473,31 +427,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == privacyRow) {
                     presentFragment(new PrivacySettingsActivity());
                 } else if (i == languageRow) {
-                    presentFragment(new LanguageSelectActivity());
-                } else if (i == switchBackendButtonRow) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(LocaleController.getString("AreYouSure", R.string.AreYouSure));
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            ConnectionsManager.getInstance().switchBackend();
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
-                } else if (i == telegramFaqRow) {
-                    try {
-                        Intent pickIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl)));
-                        getParentActivity().startActivityForResult(pickIntent, 500);
-                    } catch (Exception e) {
-                        FileLog.e("tmessages", e);
-                    }
-                } else if (i == contactsReimportRow) {
-
+//                    presentFragment(new LanguageSelectActivity());
                 } else if (i == contactsSortRow) {
                     if (getParentActivity() == null) {
                         return;
@@ -592,7 +522,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     builder.setNegativeButton(LocaleController.getString("OK", R.string.OK), null);
                     showAlertDialog(builder);
                 } else if (i == usernameRow) {
-                    presentFragment(new ChangeUsernameActivity());
+                    presentFragment(new ChangeNameActivity());
                 } else if (i == numberRow) {
                     presentFragment(new ChangePhoneHelpActivity());
                 }
@@ -759,91 +689,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     @Override
     public int getSelectedCount() { return 0; }
 
-    public void performAskAQuestion() {
-        final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        int uid = preferences.getInt("support_id", 0);
-        TLRPC.User supportUser = null;
-        if (uid != 0) {
-            supportUser = MessagesController.getInstance().getUser(uid);
-            if (supportUser == null) {
-                String userString = preferences.getString("support_user", null);
-                if (userString != null) {
-                    try {
-                        byte[] datacentersBytes = Base64.decode(userString, Base64.DEFAULT);
-                        if (datacentersBytes != null) {
-                            SerializedData data = new SerializedData(datacentersBytes);
-                            supportUser = (TLRPC.User)TLClassStore.Instance().TLdeserialize(data, data.readInt32());
-                            if (supportUser != null && supportUser.id == 333000) {
-                                supportUser = null;
-                            }
-                            data.cleanup();
-                        }
-                    } catch (Exception e) {
-                        FileLog.e("tmessages", e);
-                        supportUser = null;
-                    }
-                }
-            }
-        }
-        if (supportUser == null) {
-            final ProgressDialog progressDialog = new ProgressDialog(getParentActivity());
-            progressDialog.setMessage(LocaleController.getString("Loading", R.string.Loading));
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-            TLRPC.TL_help_getSupport req = new TLRPC.TL_help_getSupport();
-            ConnectionsManager.getInstance().performRpc(req, new RPCRequest.RPCRequestDelegate() {
-                @Override
-                public void run(TLObject response, TLRPC.TL_error error) {
-                    if (error == null) {
-
-                        final TLRPC.TL_help_support res = (TLRPC.TL_help_support)response;
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                SharedPreferences.Editor editor = preferences.edit();
-                                editor.putInt("support_id", res.user.id);
-                                SerializedData data = new SerializedData();
-                                res.user.serializeToStream(data);
-                                editor.putString("support_user", Base64.encodeToString(data.toByteArray(), Base64.DEFAULT));
-                                editor.commit();
-                                data.cleanup();
-                                try {
-                                    progressDialog.dismiss();
-                                } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
-                                }
-                                ArrayList<TLRPC.User> users = new ArrayList<>();
-                                users.add(res.user);
-                                MessagesStorage.getInstance().putUsersAndChats(users, null, true, true);
-                                MessagesController.getInstance().putUser(res.user, false);
-                                Bundle args = new Bundle();
-                                args.putInt("user_id", res.user.id);
-                                presentFragment(new ChatActivity(args));
-                            }
-                        });
-                    } else {
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    progressDialog.dismiss();
-                                } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
-                                }
-                            }
-                        });
-                    }
-                }
-            });
-        } else {
-            MessagesController.getInstance().putUser(supportUser, true);
-            Bundle args = new Bundle();
-            args.putInt("user_id", supportUser.id);
-            presentFragment(new ChatActivity(args));
-        }
-    }
-
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
         avatarUpdater.onActivityResult(requestCode, resultCode, data);
@@ -983,30 +828,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         }
     }
 
-    private void sendLogs() {
-        try {
-            ArrayList<Uri> uris = new ArrayList<>();
-            File sdCard = ApplicationLoader.applicationContext.getExternalFilesDir(null);
-            File dir = new File (sdCard.getAbsolutePath() + "/logs");
-            File[] files = dir.listFiles();
-            for (File file : files) {
-                uris.add(Uri.fromFile(file));
-            }
-
-            if (uris.isEmpty()) {
-                return;
-            }
-            Intent i = new Intent(Intent.ACTION_SEND_MULTIPLE);
-            i.setType("message/rfc822") ;
-            i.putExtra(Intent.EXTRA_EMAIL, new String[]{BuildVars.SEND_LOGS_EMAIL});
-            i.putExtra(Intent.EXTRA_SUBJECT, "last logs");
-            i.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
-            getParentActivity().startActivityForResult(Intent.createChooser(i, "Select email application."), 500);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private class ListAdapter extends BaseFragmentAdapter {
         private Context mContext;
 
@@ -1021,10 +842,10 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
         @Override
         public boolean isEnabled(int i) {
-            return i == textSizeRow || i == enableAnimationsRow || i == notificationRow || i == backgroundRow || i == numberRow ||
-                    i == askQuestionRow || i == sendLogsRow || i == sendByEnterRow || i == privacyRow || i == wifiDownloadRow ||
-                    i == mobileDownloadRow || i == clearLogsRow || i == roamingDownloadRow || i == languageRow || i == usernameRow ||
-                    i == switchBackendButtonRow || i == telegramFaqRow || i == contactsSortRow || i == contactsReimportRow || i == saveToGalleryRow;
+            return i == textSizeRow || i == enableAnimationsRow || i == notificationRow || i == backgroundRow ||
+                i == numberRow || i == sendByEnterRow || i == privacyRow || i == wifiDownloadRow ||
+                i == mobileDownloadRow || i == roamingDownloadRow || i == languageRow || i == usernameRow ||
+                i == contactsSortRow || i == saveToGalleryRow;
         }
 
         @Override
@@ -1074,7 +895,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     textCell.setTextAndValue(LocaleController.getString("TextSize", R.string.TextSize), String.format("%d", size), true);
                 } else if (i == languageRow) {
                     textCell.setTextAndValue(LocaleController.getString("Language", R.string.Language), LocaleController.getCurrentLanguageName(), true);
-                } else if (i == contactsSortRow) {
+                }  else if (i == contactsSortRow) {
                     String value;
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     int sort = preferences.getInt("sortContactsBy", 0);
@@ -1090,20 +911,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     textCell.setText(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds), true);
                 } else if (i == backgroundRow) {
                     textCell.setText(LocaleController.getString("ChatBackground", R.string.ChatBackground), true);
-                } else if (i == sendLogsRow) {
-                    textCell.setText("Send Logs", true);
-                } else if (i == clearLogsRow) {
-                    textCell.setText("Clear Logs", true);
-                } else if (i == askQuestionRow) {
-                    textCell.setText(LocaleController.getString("AskAQuestion", R.string.AskAQuestion), true);
                 } else if (i == privacyRow) {
-                    textCell.setText(LocaleController.getString("PrivacySettings", R.string.PrivacySettings), true);
-                } else if (i == switchBackendButtonRow) {
-                    textCell.setText("Switch Backend", true);
-                } else if (i == telegramFaqRow) {
-                    textCell.setText(LocaleController.getString("TelegramFAQ", R.string.TelegramFaq), true);
-                } else if (i == contactsReimportRow) {
-                    textCell.setText(LocaleController.getString("ImportContacts", R.string.ImportContacts), true);
+                    textCell.setText(LocaleController.getString("SecuritySettings", R.string.PrivacySettings), true);
                 }
             } else if (type == 3) {
                 if (view == null) {
@@ -1125,8 +934,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 }
                 if (i == settingsSectionRow2) {
                     ((HeaderCell) view).setText(LocaleController.getString("SETTINGS", R.string.SETTINGS));
-                } else if (i == supportSectionRow2) {
-                    ((HeaderCell) view).setText(LocaleController.getString("Support", R.string.Support));
                 } else if (i == messagesSectionRow2) {
                     ((HeaderCell) view).setText(LocaleController.getString("MessagesSettings", R.string.MessagesSettings));
                 } else if (i == mediaDownloadSection2) {
@@ -1139,7 +946,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     view = new TextInfoCell(mContext);
                     try {
                         PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
-                        ((TextInfoCell) view).setText(String.format(Locale.US, "Telegram for Android v%s (%d)", pInfo.versionName, pInfo.versionCode));
+                        ((TextInfoCell) view).setText(String.format(Locale.US, "Instano for Android v%s (%d)", pInfo.versionName, pInfo.versionCode));
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }
@@ -1202,12 +1009,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == usernameRow) {
                     TLRPC.User user = UserConfig.getCurrentUser();
                     String value;
-                    if (user != null && user.username != null && user.username.length() != 0) {
-                        value = "@" + user.username;
-                    } else {
-                        value = LocaleController.getString("UsernameEmpty", R.string.UsernameEmpty);
-                    }
-                    textCell.setTextAndValue(value, LocaleController.getString("Username", R.string.Username), false);
+                    value = ContactsController.formatName(user.first_name, user.last_name);
+                    textCell.setTextAndValue(value, LocaleController.getString("Name", R.string.Username), false);
                 }
             }
             return view;
@@ -1217,17 +1020,17 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         public int getItemViewType(int i) {
             if (i == emptyRow || i == overscrollRow) {
                 return 0;
-            } if (i == settingsSectionRow || i == supportSectionRow || i == messagesSectionRow || i == mediaDownloadSection || i == contactsSectionRow) {
+            } if (i == settingsSectionRow || i == messagesSectionRow || i == mediaDownloadSection ) {
                 return 1;
             } else if (i == enableAnimationsRow || i == sendByEnterRow || i == saveToGalleryRow) {
                 return 3;
-            } else if (i == notificationRow || i == backgroundRow || i == askQuestionRow || i == sendLogsRow || i == privacyRow || i == clearLogsRow || i == switchBackendButtonRow || i == telegramFaqRow || i == contactsReimportRow || i == textSizeRow || i == languageRow || i == contactsSortRow) {
+            } else if (i == notificationRow || i == backgroundRow || i == privacyRow || i == textSizeRow || i == languageRow || i == contactsSortRow) {
                 return 2;
             } else if (i == versionRow) {
                 return 5;
             } else if (i == wifiDownloadRow || i == mobileDownloadRow || i == roamingDownloadRow || i == numberRow || i == usernameRow) {
                 return 6;
-            } else if (i == settingsSectionRow2 || i == messagesSectionRow2 || i == supportSectionRow2 || i == numberSectionRow || i == mediaDownloadSection2) {
+            } else if (i == settingsSectionRow2 || i == messagesSectionRow2 || i == numberSectionRow || i == mediaDownloadSection2 ) {
                 return 4;
             } else {
                 return 2;
@@ -1236,7 +1039,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
         @Override
         public int getViewTypeCount() {
-            return 7;
+            return 8;
         }
 
         @Override

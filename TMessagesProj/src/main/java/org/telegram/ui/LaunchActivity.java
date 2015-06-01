@@ -9,6 +9,7 @@
 package org.telegram.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -37,6 +38,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
@@ -64,6 +66,7 @@ import org.telegram.ui.ActionBar.ActionBarLayout;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.DrawerLayoutContainer;
 import org.telegram.ui.Adapters.DrawerLayoutAdapter;
+import org.telegram.ui.Components.NumberPicker;
 import org.telegram.ui.Components.PasscodeView;
 
 import java.io.BufferedReader;
@@ -128,6 +131,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     return;
                 }
             }
+
         }
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -284,16 +288,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 //                    args.putBoolean("createSecretChat", true);
 //                    presentFragment(new ContactsActivity(args));
 //                    drawerLayoutContainer.closeDrawer(false);
-//                } else if (position == 4) {
-//                    if (!MessagesController.isFeatureEnabled("broadcast_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
-//                        return;
-//                    }
-//                    Bundle args = new Bundle();
-//                    args.putBoolean("broadcast", true);
-//                    presentFragment(new GroupCreateActivity(args));
-//                    drawerLayoutContainer.closeDrawer(false);
-//                } else if (position == 6) {
-//                    presentFragment(new ContactsActivity(null));
 //                    drawerLayoutContainer.closeDrawer(false);
 //                } else
                 if (position == 2) {
@@ -312,6 +306,9 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 } else if (position == 4) {
                     presentFragment(new AboutUsActivity());
                     drawerLayoutContainer.closeDrawer(false);
+                } else if (position == 5){
+                    ContactUsDialog cd = new ContactUsDialog(LaunchActivity.this);
+                    cd.show();
                 }
             }
         });
