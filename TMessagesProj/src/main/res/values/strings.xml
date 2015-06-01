@@ -16,7 +16,7 @@
     <string name="WrongCountry">Wrong country code</string>
     <!--code enter view-->
     <string name="YourCode">Your code</string>
-    <string name="SentSmsCode">We\'ve sent an SMS with a Instano code to your phone</string>
+    <string name="SentSmsCode">We\'ve sent an SMS with a Telegram code to your phone</string>
     <string name="CallText">We will call you in %1$d:%2$02d</string>
     <string name="Calling">Calling you...</string>
     <string name="Code">Code</string>
@@ -306,7 +306,7 @@
     <string name="PhoneNumberAlert">All your Instano contacts will get your new number added to their address book, provided they had your old number and you haven\'t blocked them in Instano.</string>
     <string name="PhoneNumberChange">CHANGE NUMBER</string>
     <string name="ChangePhoneNewNumber">New number</string>
-    <string name="ChangePhoneHelp">We will send an SMS with a Instano code to your number.</string>
+    <string name="ChangePhoneHelp">We will send an SMS with a Telegram code to your number.</string>
     <string name="ChangePhoneNumberOccupied">The number %1$s is already connected to a Instano account. Please delete that account before migrating to the new number.</string>
     <string name="NotificationsOther">Other</string>
     <string name="NotificationsDisabled">Disabled</string>
