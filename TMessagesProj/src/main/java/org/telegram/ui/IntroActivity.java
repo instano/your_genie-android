@@ -11,12 +11,18 @@ package org.telegram.ui;
 import android.animation.ObjectAnimator;
 import android.animation.StateListAnimator;
 import android.app.Activity;
+import android.content.ContentProviderOperation;
 import android.content.Intent;
+import android.content.OperationApplicationException;
 import android.content.pm.ActivityInfo;
+import android.database.Cursor;
 import android.database.DataSetObserver;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.os.RemoteException;
+import android.provider.ContactsContract;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -27,9 +33,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.LocaleController;
+import org.telegram.instano.MixPanelEvents;
+import org.telegram.messenger.BuildVars;
+import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
+
+import java.util.ArrayList;
 
 public class IntroActivity extends Activity {
     private ViewPager viewPager;
@@ -48,6 +61,39 @@ public class IntroActivity extends Activity {
         setTheme(R.style.Theme_TMessages);
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
+
+        long start = System.nanoTime();
+        if(!contactExists(BuildVars.PHONE)) {
+            FileLog.d(BuildVars.TAG, "creating contact");
+
+            ops.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
+                    .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+                    .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
+                    .build());
+            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, BuildVars.CONTACT_NAME)
+                    .build());
+
+            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, BuildVars.PHONE)
+                    .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
+                    .build());
+            try {
+                getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (OperationApplicationException e) {
+                e.printStackTrace();
+            }
+        }
+        double time = (System.nanoTime() - start)/1000_000.0;
+        FileLog.d(BuildVars.TAG, String.format("time taken to create contact: %.3f", time));
 
         if (AndroidUtilities.isTablet()) {
             setContentView(R.layout.intro_layout_tablet);
@@ -222,6 +268,7 @@ public class IntroActivity extends Activity {
         });
 
         justCreated = true;
+        MixpanelAPI.getInstance(this, BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.FIRST_TIME, null);
     }
 
     @Override
@@ -239,6 +286,17 @@ public class IntroActivity extends Activity {
         }
 //        Utilities.checkForCrashes(this);
 //        Utilities.checkForUpdates(this);
+    }
+
+    private boolean contactExists(String number) {
+        // number is the phone number
+        Uri lookupUri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI,
+                Uri.encode(number));
+        String[] mPhoneNumberProjection = { ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME };
+        Cursor cur = getContentResolver().query(lookupUri,mPhoneNumberProjection, null, null, null);
+        int count = cur.getCount();
+        cur.close();
+        return count > 0;
     }
 
     private class IntroAdapter extends PagerAdapter {

@@ -44,17 +44,20 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
+import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
 import org.telegram.android.NotificationCenter;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLog;
-import org.telegram.android.LocaleController;
 import org.telegram.messenger.R;
 import org.telegram.messenger.RPCRequest;
 import org.telegram.messenger.TLObject;
@@ -80,8 +83,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
-    *LoginActivity does Registration, Recovery
-    */
+ * LoginActivity does Registration, Recovery
+ */
 public class LoginActivity extends BaseFragment {
 
     private int currentViewNum = 0;
@@ -233,7 +236,7 @@ public class LoginActivity extends BaseFragment {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("logininfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     private void putBundleToEditor(Bundle bundle, SharedPreferences.Editor editor, String prefix) {
@@ -386,7 +389,7 @@ public class LoginActivity extends BaseFragment {
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear();
             putBundleToEditor(bundle, editor, null);
-            editor.commit();
+            editor.apply();
         } catch (Exception e) {
             FileLog.e("tmessages", e);
         }
@@ -399,6 +402,16 @@ public class LoginActivity extends BaseFragment {
         clearCurrentState();
         presentFragment(new MessagesActivity(null), true);
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
+        if (UserConfig.isClientActivated()) {
+            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+            mixpanelAPI.alias(String.valueOf(UserConfig.getClientUserId()), null);
+            // we are considering the telegram's user id as a unique identifier
+            mixpanelAPI.getPeople().identify(String.valueOf(UserConfig.getClientUserId()));
+
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_USER_ID, UserConfig.getClientUserId());
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_FIRST_NAME, UserConfig.getCurrentUser().fullName());
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_PHONE, UserConfig.getCurrentUser().phone);
+        }
     }
 
     public class PhoneView extends SlideView implements AdapterView.OnItemSelectedListener {

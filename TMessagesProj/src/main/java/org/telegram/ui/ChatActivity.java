@@ -50,6 +50,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.android.Emoji;
@@ -64,6 +66,7 @@ import org.telegram.android.NotificationsController;
 import org.telegram.android.SecretChatHelper;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.query.ReplyMessageQuery;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
@@ -81,6 +84,7 @@ import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.ActionBar.BaseFragment;
+import org.telegram.ui.ActionBar.MenuDrawable;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.Adapters.MentionsAdapter;
 import org.telegram.ui.Adapters.StickersAdapter;
@@ -274,8 +278,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     @Override
     public boolean onFragmentCreate() {
-        if (arguments == null)
-            return false;
+        FileLog.d(BuildVars.TAG, "onFragmentCreate()");
         final int chatId = arguments.getInt("chat_id", 0);
         final int userId = arguments.getInt("user_id", 0);
         final int encId = arguments.getInt("enc_id", 0);
@@ -325,6 +328,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else if (userId != 0) {
             currentUser = MessagesController.getInstance().getUser(userId);
             if (currentUser == null) {
+                FileLog.d(TAG, "currentUser == null, trying to fetch by semaphore");
                 final Semaphore semaphore = new Semaphore(0);
                 MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                     @Override
@@ -345,6 +349,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             }
             dialog_id = userId;
+            FileLog.d(BuildVars.TAG, "ChatActivity.currentUser user: " + currentUser);
         } else if (encId != 0) {
             currentEncryptedChat = MessagesController.getInstance().getEncryptedChat(encId);
             if (currentEncryptedChat == null) {
@@ -451,6 +456,20 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             SecretChatHelper.getInstance().sendNotifyLayerMessage(currentEncryptedChat, null);
         }
 
+        MixpanelAPI mixpanelAPI = MixPanelEvents.api();
+        if (UserConfig.isClientActivated() && mixpanelAPI.getPeople().getDistinctId() == null) {
+            FileLog.d(BuildVars.TAG, "ChatActivity. updating mix panel people");
+            mixpanelAPI.alias(String.valueOf(UserConfig.getClientUserId()), null);
+            // we are considering the telegram's user id as a unique identifier
+            mixpanelAPI.getPeople().identify(String.valueOf(UserConfig.getClientUserId()));
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_USER_ID, UserConfig.getClientUserId());
+            TLRPC.User currentUser = UserConfig.getCurrentUser();
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_FIRST_NAME, currentUser.first_name);
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_LAST_NAME, currentUser.last_name);
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_PHONE, currentUser.phone);
+        } else
+            FileLog.d(BuildVars.TAG, "ChatActivity. using mix panel people.getDistinctId(): " + mixpanelAPI.getPeople().getDistinctId());
+
         return true;
     }
 
@@ -515,8 +534,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         lastStatus = null;
         hasOwnBackground = true;
 
-        actionBar.setTitleOverlayText(BuildVars.ACTIONBAR_TITLE);
-        actionBar.setBackButtonImage(R.drawable.ic_menu);
+//        actionBar.setTitleOverlayText(true);
+        actionBar.setBackButtonDrawable(new MenuDrawable());
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(final int id) {
@@ -3812,6 +3831,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public void onResume() {
         super.onResume();
 
+        MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
+
         if (!AndroidUtilities.isTablet()) {
             getParentActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         }
@@ -3921,7 +3942,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("dialog_" + dialog_id, text);
-                editor.commit();
+                editor.apply();
             }
             chatActivityEnterView.setFieldFocused(false);
         }
@@ -3939,7 +3960,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 editor.remove("reply_" + dialog_id);
                 FileLog.e("tmessages", e);
             }
-            editor.commit();
+            editor.apply();
         }
 
         MessagesController.getInstance().cancelTyping(dialog_id);

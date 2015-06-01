@@ -41,14 +41,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.appvirality.AppviralityUI;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
+import org.telegram.android.ContactsController;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
 import org.telegram.android.NotificationCenter;
+import org.telegram.android.NotificationsController;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
@@ -118,11 +120,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
         if (!UserConfig.isClientActivated()) {
             Intent intent = getIntent();
-            if (intent != null && intent.getAction() != null && (Intent.ACTION_SEND.equals(intent.getAction()) || intent.getAction().equals(Intent.ACTION_SEND_MULTIPLE))) {
-                super.onCreate(savedInstanceState);
-                finish();
-                return;
-            }
             if (intent != null && !intent.getBooleanExtra("fromIntro", false)) {
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("logininfo", MODE_PRIVATE);
                 Map<String, ?> state = preferences.getAll();
@@ -295,31 +292,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 //                } else
                 if (position == 2) {
                     try {
-                        AppviralityUI.showGrowthHack(LaunchActivity.this, AppviralityUI.GH.Word_of_Mouth);
-
-//Below commented code is for handling Campaign Manually incase if no campaign is on Air.
-
-//                        AppviralityAPI.setCampaignHandler(LaunchActivity.this, AppviralityAPI.GH.Word_of_Mouth,
-//                                new AppviralityAPI.CampaignReadyListner() {
-//                                    @Override
-//                                    public void onCampaignReady(CampaignDetails campaignDetails) {
-////campaignDetails will be null if there is no active campaigns.
-//                                        if (campaignDetails != null) {
-////Here you can set your custom button/label visibility
-////findViewById(R.id.btnInviteFriend).setVisibility(View.VISIBLE);
-//
-//// Now campaign details are ready, pass details to the handler
-//                                            CampaignHandler.setCampaignDetails(campaignDetails);
-//
-//// Launch the Growth Hack directly or you can launch on btnInviteFriend click event
-//                                            CampaignHandler.showGrowthHack(LaunchActivity.this, CampaignHandler.getCampiagnDetails());
-//                                        }
-//                                    }
-//                                });
-//                        Intent intent = new Intent(Intent.ACTION_SEND);
-//                        intent.setType("text/plain");
-//                        intent.putExtra(Intent.EXTRA_TEXT, ContactsController.getInstance().getInviteText());
-//                        startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteFriends", R.string.InviteFriends)), 500);
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        intent.putExtra(Intent.EXTRA_TEXT, ContactsController.getInstance().getInviteText());
+                        startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteFriends", R.string.InviteFriends)), 500);
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }
@@ -372,6 +348,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 drawerLayoutContainer.setAllowOpenDrawer(false, false);
             } else {
                 actionBarLayout.addFragmentToStack(new ChatActivity(BuildVars.args));
+                // we are considering the telegram's user id as a unique identifier
+                MixpanelAPI.getInstance(this, BuildVars.MIXPANEL_TOKEN).identify(String.valueOf(UserConfig.getClientUserId()));
 //                actionBarLayout.addFragmentToStack(new MessagesActivity(null));
                 drawerLayoutContainer.setAllowOpenDrawer(true, false);
             }
@@ -793,8 +771,14 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     } else if (intent.getAction().equals("org.telegram.messenger.OPEN_ACCOUNT")) {
                         open_settings = 1;
                     } else if (intent.getAction().startsWith("com.tmessages.openchat")) {
+                        Log.v("LaunchActivity", " chatId :"+intent.getIntExtra("chatId", 0)+"\n userId "+intent.getIntExtra("chatId", 0));
                         int chatId = intent.getIntExtra("chatId", 0);
-                        int userId = intent.getIntExtra("userId", 0);
+//                        int userId = intent.getIntExtra("userId", 0);
+                        /**
+                         * Clearing notification
+                         */
+                        int userId = BuildVars.USER_ID;
+                        NotificationsController.getInstance().cleanup();
                         int encId = intent.getIntExtra("encId", 0);
                         if (chatId != 0) {
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
@@ -970,8 +954,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 args.putInt("enc_id", high_id);
             }
             ChatActivity fragment = new ChatActivity(args);
-
-            FileLog.d(BuildVars.TAG, "new ChatActivity(args)" + args);
 
             if (videoPath != null) {
                 if(android.os.Build.VERSION.SDK_INT >= 16) {
@@ -1179,6 +1161,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     protected void onDestroy() {
         PhotoViewer.getInstance().destroyPhotoViewer();
         SecretPhotoViewer.getInstance().destroyPhotoViewer();
+        if (ApplicationLoader.mixpanel != null)
+            ApplicationLoader.mixpanel.flush();
         super.onDestroy();
         onFinish();
     }
@@ -1196,8 +1180,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         } else {
             passcodeView.onResume();
         }
-//        Utilities.checkForCrashes(this);
-//        Utilities.checkForUpdates(this);
         ApplicationLoader.mainInterfacePaused = false;
         ConnectionsManager.getInstance().setAppPaused(false, false);
         updateCurrentConnectionState();

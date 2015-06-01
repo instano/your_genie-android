@@ -28,6 +28,7 @@ import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -326,6 +327,7 @@ public class NotificationsController {
     }
 
     private void showOrUpdateNotification(boolean notifyAboutLast) {
+        Log.v("NotificationsController", " showOrUpdateNotification");
         if (!UserConfig.isClientActivated() || pushMessages.isEmpty()) {
             dismissNotification();
             return;
@@ -962,6 +964,7 @@ public class NotificationsController {
     }
 
     public void processNewMessages(ArrayList<MessageObject> messageObjects, boolean isLast) {
+        Log.v("NotificationsController", "process message");
         if (messageObjects.isEmpty()) {
             return;
         }
@@ -1191,7 +1194,8 @@ public class NotificationsController {
     }
 
     public void setBadgeEnabled(boolean enabled) {
-        setBadge(ApplicationLoader.applicationContext, enabled ? total_unread_count : 0);
+//        setBadge(ApplicationLoader.applicationContext, enabled ? total_unread_count : 0);
+        setBadge(ApplicationLoader.applicationContext, 0);
     }
 
     private void setBadge(final Context context, final int count) {
@@ -1201,7 +1205,8 @@ public class NotificationsController {
                 try {
                     ContentValues cv = new ContentValues();
                     cv.put("tag", "org.telegram.messenger/org.telegram.ui.LaunchActivity");
-                    cv.put("count", count);
+//                    cv.put("count", count);
+                    cv.put("count", 0);
                     context.getContentResolver().insert(Uri.parse("content://com.teslacoilsw.notifier/unread_count"), cv);
                 } catch (Throwable e) {
                      //ignore
@@ -1212,7 +1217,8 @@ public class NotificationsController {
                         return;
                     }
                     Intent intent = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
-                    intent.putExtra("badge_count", count);
+//                    intent.putExtra("badge_count", count);
+                    intent.putExtra("badge_count", 0);
                     intent.putExtra("badge_count_package_name", context.getPackageName());
                     intent.putExtra("badge_count_class_name", launcherClassName);
                     context.sendBroadcast(intent);

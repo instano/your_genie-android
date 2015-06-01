@@ -16,6 +16,7 @@ import android.os.Build;
 import android.util.Base64;
 import android.util.SparseArray;
 
+import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
@@ -27,7 +28,6 @@ import org.telegram.messenger.TLObject;
 import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.Utilities;
-import org.telegram.messenger.ApplicationLoader;
 import org.telegram.ui.ActionBar.BaseFragment;
 
 import java.util.ArrayList;

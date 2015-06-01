@@ -13,8 +13,8 @@ apply plugin: 'io.fabric'
 
 repositories {
     mavenCentral()
-    maven { url 'https://maven.fabric.io/public' }
     jcenter()
+    maven { url 'https://maven.fabric.io/public' }
 }
 
 dependencies {
@@ -22,11 +22,10 @@ dependencies {
     compile 'com.google.android.gms:play-services:3.2.+'
     compile 'com.googlecode.mp4parser:isoparser:1.0.+'
     compile 'com.android.support:recyclerview-v7:+'
-    compile('com.crashlytics.sdk.android:crashlytics:2.2.4@aar') {
+    compile "com.mixpanel.android:mixpanel-android:4.5.3"
+    compile('com.crashlytics.sdk.android:crashlytics:2.3.0@aar') {
         transitive = true;
     }
-    compile 'com.appvirality:AppviralityUI:1.1.8'
-    compile "com.mixpanel.android:mixpanel-android:4.5.3"
 }
 
 android {
@@ -46,36 +45,32 @@ android {
             storePassword 'hello123'
             keyAlias 'retailer'
         }
-
-        release {
-//            storeFile file("config/release.keystore")
-//            storePassword RELEASE_STORE_PASSWORD
-//            keyAlias RELEASE_KEY_ALIAS
-//            keyPassword RELEASE_KEY_PASSWORD
-            keyPassword 'hello123'
-            storeFile file('debug.keystore')
-            storePassword 'hello123'
-            keyAlias 'retailer'
-        }
     }
 
+    // do **NOT** change buildTypes name. Mixpanel uses it and events will go out of sync otherwise.
     buildTypes {
         debug {
             debuggable true
             jniDebuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
 
         release {
             debuggable false
             jniDebuggable false
-            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
 
-        foss {
+        beta {
             debuggable false
             jniDebuggable false
-            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -84,23 +79,11 @@ android {
         jni.srcDirs = [] //disable automatic ndk-build call
     }
 
-    sourceSets.debug {
-        manifest.srcFile 'config/debug/AndroidManifest.xml'
-    }
-
-    sourceSets.release {
-        manifest.srcFile 'config/release/AndroidManifest.xml'
-    }
-
-    sourceSets.foss {
-        manifest.srcFile 'config/foss/AndroidManifest.xml'
-    }
-
     defaultConfig {
         applicationId "com.instano.buyer"
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 17
-        versionName "1.0"
+        versionCode 19
+        versionName "1.0.2"
     }
 }

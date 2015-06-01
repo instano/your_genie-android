@@ -37,21 +37,23 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
-import com.appvirality.android.AppviralityAPI;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 //import io.fabric.sdk.android.Fabric;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
-import org.telegram.android.MediaController;
-import org.telegram.android.NotificationsService;
-import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.LocaleController;
+import org.telegram.android.MediaController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.NativeLoader;
+import org.telegram.android.NotificationsService;
 import org.telegram.android.ScreenReceiver;
+import org.telegram.android.SendMessagesHelper;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.ui.Components.ForegroundDetector;
 import org.telegram.ui.CrashActivity;
 import org.telegram.ui.ErrorDialog;
@@ -69,6 +71,8 @@ public class ApplicationLoader extends Application {
     private GoogleCloudMessaging gcm;
     private AtomicInteger msgId = new AtomicInteger();
     private String regid;
+
+    public static MixpanelAPI mixpanel;
     public static final String EXTRA_MESSAGE = "message";
     public static final String PROPERTY_REG_ID = "registration_id";
     private static final String PROPERTY_APP_VERSION = "appVersion";
@@ -198,7 +202,16 @@ public class ApplicationLoader extends Application {
     public void onCreate() {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
-        AppviralityAPI.init(getApplicationContext());
+        // Initialize the library with your
+        // Mixpanel project token, MIXPANEL_TOKEN, and a reference
+        // to your application context.
+        JSONObject superProperties = new JSONObject();
+        try {
+            superProperties.put(MixPanelEvents.PROPERTY_BUILD_TYPE, BuildConfig.BUILD_TYPE);
+        } catch (JSONException e) {
+            FileLog.e(BuildVars.TAG, e);
+        }
+        MixpanelAPI.getInstance(this, BuildVars.MIXPANEL_TOKEN).registerSuperProperties(superProperties);
 
         if (Build.VERSION.SDK_INT < 11) {
             java.lang.System.setProperty("java.net.preferIPv4Stack", "true");
