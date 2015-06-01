@@ -310,9 +310,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     ContactUsDialog cd = new ContactUsDialog(LaunchActivity.this);
                     cd.show();
                 }
-
-                throw new RuntimeException();
-                 }
+            }
         });
 
         drawerLayoutContainer.setParentActionBarLayout(actionBarLayout);
