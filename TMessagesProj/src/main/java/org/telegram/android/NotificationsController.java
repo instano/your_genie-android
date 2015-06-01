@@ -1194,7 +1194,8 @@ public class NotificationsController {
     }
 
     public void setBadgeEnabled(boolean enabled) {
-        setBadge(ApplicationLoader.applicationContext, enabled ? total_unread_count : 0);
+//        setBadge(ApplicationLoader.applicationContext, enabled ? total_unread_count : 0);
+        setBadge(ApplicationLoader.applicationContext, 0);
     }
 
     private void setBadge(final Context context, final int count) {
@@ -1204,7 +1205,8 @@ public class NotificationsController {
                 try {
                     ContentValues cv = new ContentValues();
                     cv.put("tag", "org.telegram.messenger/org.telegram.ui.LaunchActivity");
-                    cv.put("count", count);
+//                    cv.put("count", count);
+                    cv.put("count", 0);
                     context.getContentResolver().insert(Uri.parse("content://com.teslacoilsw.notifier/unread_count"), cv);
                 } catch (Throwable e) {
                      //ignore
@@ -1215,7 +1217,8 @@ public class NotificationsController {
                         return;
                     }
                     Intent intent = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
-                    intent.putExtra("badge_count", count);
+//                    intent.putExtra("badge_count", count);
+                    intent.putExtra("badge_count", 0);
                     intent.putExtra("badge_count_package_name", context.getPackageName());
                     intent.putExtra("badge_count_class_name", launcherClassName);
                     context.sendBroadcast(intent);
