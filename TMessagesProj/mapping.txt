@@ -14724,9 +14724,8 @@ org.telegram.android.NotificationsController$3 -> org.telegram.android.bl$3:
     org.telegram.android.NotificationsController this$0 -> a
     void run() -> run
 org.telegram.android.NotificationsController$4 -> org.telegram.android.bl$4:
-    int val$count -> a
-    android.content.Context val$context -> b
-    org.telegram.android.NotificationsController this$0 -> c
+    android.content.Context val$context -> a
+    org.telegram.android.NotificationsController this$0 -> b
     void run() -> run
 org.telegram.android.NotificationsController$5 -> org.telegram.android.bl$5:
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
@@ -15873,6 +15872,8 @@ org.telegram.android.volley.toolbox.PoolingByteArrayOutputStream -> org.telegram
 org.telegram.android.volley.toolbox.Volley -> org.telegram.android.d.a.o:
     org.telegram.android.volley.RequestQueue newRequestQueue(android.content.Context,org.telegram.android.volley.toolbox.HttpStack) -> a
     org.telegram.android.volley.RequestQueue newRequestQueue(android.content.Context) -> a
+org.telegram.instano.MixPanelEvents -> org.telegram.b.a:
+    com.mixpanel.android.mpmetrics.MixpanelAPI api() -> a
 org.telegram.messenger.AbsSerializedData -> org.telegram.messenger.a:
     void writeInt32(int) -> a
     void writeInt64(long) -> a
@@ -25321,7 +25322,7 @@ org.telegram.ui.IntroActivity -> org.telegram.ui.IntroActivity:
     int[] messages -> j
     void onCreate(android.os.Bundle) -> onCreate
     void onResume() -> onResume
-    boolean numberExists(java.lang.String) -> a
+    boolean contactExists(java.lang.String) -> a
     int access$100(org.telegram.ui.IntroActivity) -> a
     android.support.v4.view.ViewPager access$200(org.telegram.ui.IntroActivity) -> b
     int access$102(org.telegram.ui.IntroActivity,int) -> a

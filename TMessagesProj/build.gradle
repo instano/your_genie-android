@@ -83,7 +83,7 @@ android {
         applicationId "com.instano.buyer"
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 18
-        versionName "1.0.1"
+        versionCode 19
+        versionName "1.0.2"
     }
 }
