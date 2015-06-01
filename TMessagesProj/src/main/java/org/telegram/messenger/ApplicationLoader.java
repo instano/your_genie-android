@@ -54,6 +54,7 @@ import org.telegram.android.NativeLoader;
 import org.telegram.android.ScreenReceiver;
 import org.telegram.ui.Components.ForegroundDetector;
 import org.telegram.ui.CrashActivity;
+import org.telegram.ui.ErrorDialog;
 import org.telegram.ui.LaunchActivity;
 import org.telegram.ui.PopupNotificationActivity;
 import org.telegram.ui.SettingsActivity;
@@ -215,25 +216,25 @@ public class ApplicationLoader extends Application {
 
         startPushService();
 
-//        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-//            @Override
-//            public void uncaughtException(Thread thread, Throwable e) {
-//                Crashlytics.logException(e);
-//                HandleCrashes(thread, e);
-//            }
-//        });
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread thread, Throwable e) {
+                Log.e("Handler", "hello");
+                Crashlytics.logException(e);
+                HandleCrashes(thread, e);
+            }
+        });
 
     }
 
-//    public void HandleCrashes(Thread t, Throwable e) {
-//        FileLog.e(BuildVars.TAG, e);
-//        FileLog.d(BuildVars.TAG, t.getName());
-//        Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(intent);
-//        System.exit(1);
-//    }
+    public void HandleCrashes(Thread t, Throwable e) {
+        e.printStackTrace();
+        Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        System.exit(1);
+    }
 
     public static void startPushService() {
         SharedPreferences preferences = applicationContext.getSharedPreferences("Notifications", MODE_PRIVATE);

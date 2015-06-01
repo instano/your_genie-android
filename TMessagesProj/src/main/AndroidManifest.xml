@@ -63,7 +63,7 @@
         android:largeHeap="true"
         android:theme="@style/Theme.TMessages.Start" >
         <activity
-            android:name="org.telegram.ui.CrashActivity"
+            android:name="org.telegram.ui.LaunchActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:hardwareAccelerated="@bool/useHardwareAcceleration"
             android:launchMode="singleTask"
@@ -240,10 +240,14 @@
             android:name="io.fabric.ApiKey"
             android:value="33cb6341400cf9323777cfaaf0aa3163830bb486" />
 
-        <!--<activity-->
-            <!--android:name="org.telegram.ui.CrashActivity"-->
-            <!--android:label="@string/title_activity_crash" >-->
-        <!--</activity>-->
+        <activity
+            android:name="org.telegram.ui.CrashActivity"
+            android:label="@string/title_activity_crash" >
+        </activity>
+        <activity
+            android:name="org.telegram.ui.ContactUsActivity"
+            android:label="@string/title_activity_contact_us" >
+        </activity>
     </application>
 
 </manifest>

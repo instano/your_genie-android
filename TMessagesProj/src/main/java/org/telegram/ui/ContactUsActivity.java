@@ -10,23 +10,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
 
-public class CrashActivity extends Activity {
+public class ContactUsActivity extends Activity {
 
     final Context context = this ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ErrorDialog dialog = new ErrorDialog(context);
-        dialog.setCancelable(false);
-        dialog.show();
+//
+//        ContactUsDialog dialog = new ContactUsDialog(context);
+//        dialog.setCancelable(true);
+//        dialog.show();
 
     }
 
