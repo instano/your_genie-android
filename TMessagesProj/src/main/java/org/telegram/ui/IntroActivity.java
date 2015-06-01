@@ -18,6 +18,7 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -62,38 +63,7 @@ public class IntroActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
-
-        long start = System.nanoTime();
-        if(!contactExists(BuildVars.PHONE)) {
-            FileLog.d(BuildVars.TAG, "creating contact");
-
-            ops.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
-                    .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
-                    .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
-                    .build());
-            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                    .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, BuildVars.CONTACT_NAME)
-                    .build());
-
-            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
-                    .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, BuildVars.PHONE)
-                    .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
-                    .build());
-            try {
-                getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            } catch (OperationApplicationException e) {
-                e.printStackTrace();
-            }
-        }
-        double time = (System.nanoTime() - start)/1000_000.0;
-        FileLog.d(BuildVars.TAG, String.format("time taken to create contact: %.3f", time));
+        contactExists(BuildVars.PHONE);
 
         if (AndroidUtilities.isTablet()) {
             setContentView(R.layout.intro_layout_tablet);
@@ -288,15 +258,56 @@ public class IntroActivity extends Activity {
 //        Utilities.checkForUpdates(this);
     }
 
-    private boolean contactExists(String number) {
+    private void contactExists(final String number) {
         // number is the phone number
-        Uri lookupUri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI,
-                Uri.encode(number));
-        String[] mPhoneNumberProjection = { ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME };
-        Cursor cur = getContentResolver().query(lookupUri,mPhoneNumberProjection, null, null, null);
-        int count = cur.getCount();
-        cur.close();
-        return count > 0;
+        final long start = System.nanoTime();
+
+        new AsyncTask<Void, Void, Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                Uri lookupUri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI,
+                        Uri.encode(number));
+                String[] mPhoneNumberProjection = { ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME };
+                Cursor cur = getContentResolver().query(lookupUri,mPhoneNumberProjection, null, null, null);
+                FileLog.d(BuildVars.TAG, "checking contacts : "+ cur.getCount());
+                int count = cur.getCount();
+                cur.close();
+
+                ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
+
+                if(count == 0) {
+                    FileLog.d(BuildVars.TAG, "creating contact");
+
+                    ops.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
+                            .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+                            .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
+                            .build());
+                    ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                            .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                            .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                            .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, BuildVars.CONTACT_NAME)
+                            .build());
+
+                    ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                            .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                            .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                            .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, BuildVars.PHONE)
+                            .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
+                            .build());
+
+                    try {
+                        getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    } catch (OperationApplicationException e) {
+                        e.printStackTrace();
+                    }
+                }
+                double time = (System.nanoTime() - start)/1000_000.0;
+                FileLog.d(BuildVars.TAG, String.format("time taken to create contact: %.3f", time));
+                return null;
+            }
+        }.execute();
     }
 
     private class IntroAdapter extends PagerAdapter {

@@ -14724,9 +14724,8 @@ org.telegram.android.NotificationsController$3 -> org.telegram.android.bl$3:
     org.telegram.android.NotificationsController this$0 -> a
     void run() -> run
 org.telegram.android.NotificationsController$4 -> org.telegram.android.bl$4:
-    int val$count -> a
-    android.content.Context val$context -> b
-    org.telegram.android.NotificationsController this$0 -> c
+    android.content.Context val$context -> a
+    org.telegram.android.NotificationsController this$0 -> b
     void run() -> run
 org.telegram.android.NotificationsController$5 -> org.telegram.android.bl$5:
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
@@ -15873,6 +15872,8 @@ org.telegram.android.volley.toolbox.PoolingByteArrayOutputStream -> org.telegram
 org.telegram.android.volley.toolbox.Volley -> org.telegram.android.d.a.o:
     org.telegram.android.volley.RequestQueue newRequestQueue(android.content.Context,org.telegram.android.volley.toolbox.HttpStack) -> a
     org.telegram.android.volley.RequestQueue newRequestQueue(android.content.Context) -> a
+org.telegram.instano.MixPanelEvents -> org.telegram.b.a:
+    com.mixpanel.android.mpmetrics.MixpanelAPI api() -> a
 org.telegram.messenger.AbsSerializedData -> org.telegram.messenger.a:
     void writeInt32(int) -> a
     void writeInt64(long) -> a
@@ -15970,14 +15971,18 @@ org.telegram.messenger.BuildVars -> org.telegram.messenger.e:
     boolean DEBUG_VERSION -> a
     int APP_ID -> b
     java.lang.String APP_HASH -> c
-    java.lang.String GCM_SENDER_ID -> d
-    java.lang.String SEND_LOGS_EMAIL -> e
-    java.lang.String BING_SEARCH_KEY -> f
-    int USER_ID -> g
-    int CHAT_ID -> h
-    int ENC_ID -> i
-    int MESSAGE_ID -> j
-    android.os.Bundle args -> k
+    java.lang.String HOCKEY_APP_HASH -> d
+    java.lang.String GCM_SENDER_ID -> e
+    java.lang.String SEND_LOGS_EMAIL -> f
+    java.lang.String BING_SEARCH_KEY -> g
+    java.lang.String TAG -> h
+    int USER_ID -> i
+    int CHAT_ID -> j
+    int ENC_ID -> k
+    int MESSAGE_ID -> l
+    android.os.Bundle args -> m
+    java.lang.String ACTIONBAR_TITLE -> n
+    java.lang.String PHONE -> o
 org.telegram.messenger.ByteBufferDesc -> org.telegram.messenger.f:
     java.nio.ByteBuffer buffer -> a
     boolean justCalc -> b
@@ -25321,7 +25326,7 @@ org.telegram.ui.IntroActivity -> org.telegram.ui.IntroActivity:
     int[] messages -> j
     void onCreate(android.os.Bundle) -> onCreate
     void onResume() -> onResume
-    boolean numberExists(java.lang.String) -> a
+    void contactExists(java.lang.String) -> a
     int access$100(org.telegram.ui.IntroActivity) -> a
     android.support.v4.view.ViewPager access$200(org.telegram.ui.IntroActivity) -> b
     int access$102(org.telegram.ui.IntroActivity,int) -> a
@@ -25353,6 +25358,12 @@ org.telegram.ui.IntroActivity$1$2 -> org.telegram.ui.IntroActivity$1$2:
 org.telegram.ui.IntroActivity$2 -> org.telegram.ui.IntroActivity$2:
     org.telegram.ui.IntroActivity this$0 -> a
     void onClick(android.view.View) -> onClick
+org.telegram.ui.IntroActivity$3 -> org.telegram.ui.IntroActivity$3:
+    java.lang.String val$number -> a
+    long val$start -> b
+    org.telegram.ui.IntroActivity this$0 -> c
+    java.lang.Void doInBackground(java.lang.Void[]) -> a
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 org.telegram.ui.IntroActivity$IntroAdapter -> org.telegram.ui.ac:
     org.telegram.ui.IntroActivity this$0 -> a
     int getCount() -> a
