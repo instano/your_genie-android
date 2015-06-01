@@ -9699,15 +9699,18 @@ com.mixpanel.android.mpmetrics.MixpanelAPI -> com.mixpanel.android.mpmetrics.v:
     com.mixpanel.android.viewcrawler.TrackingDebug constructTrackingDebug() -> i
     boolean sendAppOpen() -> j
     void recordPeopleMessage(org.json.JSONObject) -> b
+    void pushWaitingPeopleRecord() -> k
     void sendAllPeopleRecords(org.json.JSONArray) -> a
     void registerAppLinksListeners(android.content.Context,com.mixpanel.android.mpmetrics.MixpanelAPI) -> a
     void checkIntentForInboundAppLink(android.content.Context) -> a
     void access$100(com.mixpanel.android.mpmetrics.MixpanelAPI,org.json.JSONArray) -> a
     com.mixpanel.android.mpmetrics.PersistentIdentity access$400(com.mixpanel.android.mpmetrics.MixpanelAPI) -> a
     com.mixpanel.android.mpmetrics.DecideMessages access$500(com.mixpanel.android.mpmetrics.MixpanelAPI) -> b
+    void access$600(com.mixpanel.android.mpmetrics.MixpanelAPI) -> c
+    java.util.Map access$700(com.mixpanel.android.mpmetrics.MixpanelAPI) -> d
     void access$800(com.mixpanel.android.mpmetrics.MixpanelAPI,org.json.JSONObject) -> a
-    com.mixpanel.android.mpmetrics.MPConfig access$900(com.mixpanel.android.mpmetrics.MixpanelAPI) -> c
-    java.lang.String access$1200(com.mixpanel.android.mpmetrics.MixpanelAPI) -> d
+    com.mixpanel.android.mpmetrics.MPConfig access$900(com.mixpanel.android.mpmetrics.MixpanelAPI) -> e
+    java.lang.String access$1200(com.mixpanel.android.mpmetrics.MixpanelAPI) -> f
 com.mixpanel.android.mpmetrics.MixpanelAPI$1 -> com.mixpanel.android.mpmetrics.v$1:
     com.mixpanel.android.mpmetrics.MixpanelAPI this$0 -> a
     void onPrefsLoaded(android.content.SharedPreferences) -> a
@@ -9719,32 +9722,39 @@ com.mixpanel.android.mpmetrics.MixpanelAPI$3 -> com.mixpanel.android.mpmetrics.v
 com.mixpanel.android.mpmetrics.MixpanelAPI$InstanceProcessor -> com.mixpanel.android.mpmetrics.w:
     void process(com.mixpanel.android.mpmetrics.MixpanelAPI) -> a
 com.mixpanel.android.mpmetrics.MixpanelAPI$People -> com.mixpanel.android.mpmetrics.x:
-    void append(java.lang.String,java.lang.Object) -> a
-    void setPushRegistrationId(java.lang.String) -> a
+    void identify(java.lang.String) -> a
+    void set(java.lang.String,java.lang.Object) -> a
+    void append(java.lang.String,java.lang.Object) -> b
+    void setPushRegistrationId(java.lang.String) -> b
+    java.lang.String getDistinctId() -> a
     void showSurveyIfAvailable(android.app.Activity) -> a
     void showNotificationIfAvailable(android.app.Activity) -> b
     void trackNotification(java.lang.String,com.mixpanel.android.mpmetrics.InAppNotification) -> a
-    com.mixpanel.android.mpmetrics.MixpanelAPI$People withIdentity(java.lang.String) -> b
+    com.mixpanel.android.mpmetrics.MixpanelAPI$People withIdentity(java.lang.String) -> c
 com.mixpanel.android.mpmetrics.MixpanelAPI$PeopleImpl -> com.mixpanel.android.mpmetrics.y:
     com.mixpanel.android.mpmetrics.MixpanelAPI this$0 -> a
-    void append(java.lang.String,java.lang.Object) -> a
+    void identify(java.lang.String) -> a
+    void set(org.json.JSONObject) -> a
+    void set(java.lang.String,java.lang.Object) -> a
+    void append(java.lang.String,java.lang.Object) -> b
     void union(java.lang.String,org.json.JSONArray) -> a
-    com.mixpanel.android.mpmetrics.InAppNotification getNotificationIfAvailable() -> a
+    com.mixpanel.android.mpmetrics.InAppNotification getNotificationIfAvailable() -> b
     void trackNotificationSeen(com.mixpanel.android.mpmetrics.InAppNotification) -> a
-    com.mixpanel.android.mpmetrics.Survey getSurveyIfAvailable() -> b
+    com.mixpanel.android.mpmetrics.Survey getSurveyIfAvailable() -> c
     void showSurveyIfAvailable(android.app.Activity) -> a
     void showNotificationIfAvailable(android.app.Activity) -> b
     void trackNotification(java.lang.String,com.mixpanel.android.mpmetrics.InAppNotification) -> a
-    void setPushRegistrationId(java.lang.String) -> a
-    java.lang.String getDistinctId() -> c
-    com.mixpanel.android.mpmetrics.MixpanelAPI$People withIdentity(java.lang.String) -> b
-    org.json.JSONObject stdPeopleMessage(java.lang.String,java.lang.Object) -> b
+    void setPushRegistrationId(java.lang.String) -> b
+    java.lang.String getDistinctId() -> a
+    com.mixpanel.android.mpmetrics.MixpanelAPI$People withIdentity(java.lang.String) -> c
+    org.json.JSONObject stdPeopleMessage(java.lang.String,java.lang.Object) -> c
     void showGivenOrAvailableSurvey(com.mixpanel.android.mpmetrics.Survey,android.app.Activity) -> a
     void showGivenOrAvailableNotification(com.mixpanel.android.mpmetrics.InAppNotification,android.app.Activity) -> a
 com.mixpanel.android.mpmetrics.MixpanelAPI$PeopleImpl$2 -> com.mixpanel.android.mpmetrics.y$1:
     java.lang.String val$distinctId -> b
     com.mixpanel.android.mpmetrics.MixpanelAPI$PeopleImpl this$1 -> c
-    java.lang.String getDistinctId() -> c
+    java.lang.String getDistinctId() -> a
+    void identify(java.lang.String) -> a
 com.mixpanel.android.mpmetrics.MixpanelAPI$PeopleImpl$3 -> com.mixpanel.android.mpmetrics.y$2:
     com.mixpanel.android.mpmetrics.UpdateDisplayState$DisplayState$SurveyState val$surveyDisplay -> a
     android.app.Activity val$parent -> b
@@ -9799,16 +9809,18 @@ com.mixpanel.android.mpmetrics.PersistentIdentity -> com.mixpanel.android.mpmetr
     java.lang.String getEventsDistinctId() -> c
     void setEventsDistinctId(java.lang.String) -> a
     java.lang.String getPeopleDistinctId() -> d
+    void setPeopleDistinctId(java.lang.String) -> b
     void storeWaitingPeopleRecord(org.json.JSONObject) -> a
+    org.json.JSONArray waitingPeopleRecordsForSending() -> e
     void registerSuperProperties(org.json.JSONObject) -> b
-    void storePushId(java.lang.String) -> b
-    void readSuperProperties() -> f
-    void readReferrerProperties() -> g
-    void storeSuperProperties() -> h
-    void readIdentities() -> i
-    void writeIdentities() -> j
+    void storePushId(java.lang.String) -> c
+    void readSuperProperties() -> g
+    void readReferrerProperties() -> h
+    void storeSuperProperties() -> i
+    void readIdentities() -> j
+    void writeIdentities() -> k
     void writeEdits(android.content.SharedPreferences$Editor) -> a
-    java.lang.Object access$000() -> e
+    java.lang.Object access$000() -> f
     void access$100(com.mixpanel.android.mpmetrics.PersistentIdentity) -> a
     boolean access$202(boolean) -> a
 com.mixpanel.android.mpmetrics.PersistentIdentity$1 -> com.mixpanel.android.mpmetrics.af$1:
@@ -19661,6 +19673,7 @@ org.telegram.messenger.TLRPC$User -> org.telegram.messenger.vm:
     org.telegram.messenger.TLRPC$UserStatus status -> k
     boolean inactive -> l
     java.lang.String toString() -> toString
+    java.lang.String fullName() -> e
 org.telegram.messenger.TLRPC$UserProfilePhoto -> org.telegram.messenger.vn:
     long photo_id -> c
     org.telegram.messenger.TLRPC$FileLocation photo_small -> d

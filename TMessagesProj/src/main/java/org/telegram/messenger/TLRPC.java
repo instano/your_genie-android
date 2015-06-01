@@ -10712,7 +10712,7 @@ public class TLRPC {
         }
 
         public String fullName() {
-            return first_name + (last_name == null ? "" : last_name);
+            return first_name + (last_name == null ? "" : ' ' + last_name);
         }
     }
 

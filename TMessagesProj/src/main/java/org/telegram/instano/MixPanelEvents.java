@@ -21,8 +21,9 @@ public class MixPanelEvents {
     public static final String CHAT_ACTIVITY_OPENED = "Chat Activity Opened";
 
     public static final String USER_USER_ID = "User user Id";
-    public static final String USER_NAME = "User name";
-    public static final String USER_PHONE = "User phone";
+    public static final String USER_PROPERTY_FIRST_NAME = "$first_name";
+    public static final String USER_PROPERTY_LAST_NAME = "$last_name";
+    public static final String USER_PROPERTY_PHONE = "$phone";
 
     public static MixpanelAPI api() {
         return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.MIXPANEL_TOKEN);
