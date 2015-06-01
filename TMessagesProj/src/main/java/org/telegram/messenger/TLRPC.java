@@ -10710,6 +10710,10 @@ public class TLRPC {
                     ", inactive=" + inactive +
                     '}';
         }
+
+        public String fullName() {
+            return first_name + (last_name == null ? "" : ' ' + last_name);
+        }
     }
 
     public static class TL_userEmpty extends User {

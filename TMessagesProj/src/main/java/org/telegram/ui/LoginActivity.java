@@ -53,6 +53,7 @@ import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
 import org.telegram.android.NotificationCenter;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
@@ -82,8 +83,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
-    *LoginActivity does Registration, Recovery
-    */
+ * LoginActivity does Registration, Recovery
+ */
 public class LoginActivity extends BaseFragment {
 
     private int currentViewNum = 0;
@@ -235,7 +236,7 @@ public class LoginActivity extends BaseFragment {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("logininfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     private void putBundleToEditor(Bundle bundle, SharedPreferences.Editor editor, String prefix) {
@@ -402,10 +403,14 @@ public class LoginActivity extends BaseFragment {
         presentFragment(new MessagesActivity(null), true);
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
         if (UserConfig.isClientActivated()) {
-            MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).alias(
-                    String.valueOf(UserConfig.getClientUserId()), null);
+            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+            mixpanelAPI.alias(String.valueOf(UserConfig.getClientUserId()), null);
             // we are considering the telegram's user id as a unique identifier
-            MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).identify(String.valueOf(UserConfig.getClientUserId()));
+            mixpanelAPI.getPeople().identify(String.valueOf(UserConfig.getClientUserId()));
+
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_USER_ID, UserConfig.getClientUserId());
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_FIRST_NAME, UserConfig.getCurrentUser().fullName());
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_PHONE, UserConfig.getCurrentUser().phone);
         }
     }
 

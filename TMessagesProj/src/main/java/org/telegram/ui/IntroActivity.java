@@ -39,6 +39,7 @@ import org.telegram.android.AndroidUtilities;
 import org.telegram.android.LocaleController;
 import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.BuildVars;
+import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
 
 import java.util.ArrayList;
@@ -63,7 +64,9 @@ public class IntroActivity extends Activity {
 
         ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
 
-        if(numberExists(BuildVars.PHONE)) {
+        long start = System.nanoTime();
+        if(!contactExists(BuildVars.PHONE)) {
+            FileLog.d(BuildVars.TAG, "creating contact");
 
             ops.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
                     .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
@@ -89,6 +92,8 @@ public class IntroActivity extends Activity {
                 e.printStackTrace();
             }
         }
+        double time = (System.nanoTime() - start)/1000_000.0;
+        FileLog.d(BuildVars.TAG, String.format("time taken to create contact: %.3f", time));
 
         if (AndroidUtilities.isTablet()) {
             setContentView(R.layout.intro_layout_tablet);
@@ -283,21 +288,15 @@ public class IntroActivity extends Activity {
 //        Utilities.checkForUpdates(this);
     }
 
-    private boolean numberExists(String number) {
-        /// number is the phone number
+    private boolean contactExists(String number) {
+        // number is the phone number
         Uri lookupUri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI,
                 Uri.encode(number));
         String[] mPhoneNumberProjection = { ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME };
         Cursor cur = getContentResolver().query(lookupUri,mPhoneNumberProjection, null, null, null);
-        try {
-            if (cur.moveToFirst()) {
-                return true;
-            }
-        } finally {
-            if (cur != null)
-                cur.close();
-        }
-        return false;
+        int count = cur.getCount();
+        cur.close();
+        return count > 0;
     }
 
     private class IntroAdapter extends PagerAdapter {

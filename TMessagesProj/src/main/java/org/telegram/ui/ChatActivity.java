@@ -457,6 +457,20 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             SecretChatHelper.getInstance().sendNotifyLayerMessage(currentEncryptedChat, null);
         }
 
+        MixpanelAPI mixpanelAPI = MixPanelEvents.api();
+        if (UserConfig.isClientActivated() && mixpanelAPI.getPeople().getDistinctId() == null) {
+            FileLog.d(BuildVars.TAG, "ChatActivity. updating mix panel people");
+            mixpanelAPI.alias(String.valueOf(UserConfig.getClientUserId()), null);
+            // we are considering the telegram's user id as a unique identifier
+            mixpanelAPI.getPeople().identify(String.valueOf(UserConfig.getClientUserId()));
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_USER_ID, UserConfig.getClientUserId());
+            TLRPC.User currentUser = UserConfig.getCurrentUser();
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_FIRST_NAME, currentUser.first_name);
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_LAST_NAME, currentUser.last_name);
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_PHONE, currentUser.phone);
+        } else
+            FileLog.d(BuildVars.TAG, "ChatActivity. using mix panel people.getDistinctId(): " + mixpanelAPI.getPeople().getDistinctId());
+
         return true;
     }
 
@@ -3950,7 +3964,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("dialog_" + dialog_id, text);
-                editor.commit();
+                editor.apply();
             }
             chatActivityEnterView.setFieldFocused(false);
         }
@@ -3968,7 +3982,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 editor.remove("reply_" + dialog_id);
                 FileLog.e("tmessages", e);
             }
-            editor.commit();
+            editor.apply();
         }
 
         MessagesController.getInstance().cancelTyping(dialog_id);
