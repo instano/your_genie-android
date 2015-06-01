@@ -197,7 +197,7 @@ public class ApplicationLoader extends Application {
         } catch (JSONException e) {
             FileLog.e(BuildVars.TAG, e);
         }
-        MixpanelAPI.getInstance(this, BuildVars.MIXPANEL_TOKEN).registerSuperProperties(superProperties);
+        MixpanelAPI.getInstance(this, BuildVars.mixpanelToken()).registerSuperProperties(superProperties);
 
         if (Build.VERSION.SDK_INT < 11) {
             java.lang.System.setProperty("java.net.preferIPv4Stack", "true");

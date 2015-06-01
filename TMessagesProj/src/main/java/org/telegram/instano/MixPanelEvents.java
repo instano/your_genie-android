@@ -26,6 +26,6 @@ public class MixPanelEvents {
     public static final String USER_PROPERTY_PHONE = "$phone";
 
     public static MixpanelAPI api() {
-        return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.MIXPANEL_TOKEN);
+        return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken());
     }
 }

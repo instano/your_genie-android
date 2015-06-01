@@ -238,7 +238,7 @@ public class IntroActivity extends Activity {
         });
 
         justCreated = true;
-        MixpanelAPI.getInstance(this, BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.FIRST_TIME, null);
+        MixpanelAPI.getInstance(this, BuildVars.mixpanelToken()).track(MixPanelEvents.FIRST_TIME, null);
     }
 
     @Override

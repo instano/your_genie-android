@@ -3853,7 +3853,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public void onResume() {
         super.onResume();
 
-        MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
+        MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken()).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
 
         if (!AndroidUtilities.isTablet()) {
             getParentActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);

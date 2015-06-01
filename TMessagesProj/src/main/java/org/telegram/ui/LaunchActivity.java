@@ -350,7 +350,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             } else {
                 actionBarLayout.addFragmentToStack(new ChatActivity(BuildVars.args));
                 // we are considering the telegram's user id as a unique identifier
-                MixpanelAPI.getInstance(this, BuildVars.MIXPANEL_TOKEN).identify(String.valueOf(UserConfig.getClientUserId()));
+                MixpanelAPI.getInstance(this, BuildVars.mixpanelToken()).identify(String.valueOf(UserConfig.getClientUserId()));
 //                actionBarLayout.addFragmentToStack(new MessagesActivity(null));
                 drawerLayoutContainer.setAllowOpenDrawer(true, false);
             }
