@@ -34,6 +34,8 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.Emoji;
 import org.telegram.android.LocaleController;
@@ -41,6 +43,8 @@ import org.telegram.android.MediaController;
 import org.telegram.android.MessageObject;
 import org.telegram.android.MessagesController;
 import org.telegram.android.SendMessagesHelper;
+import org.telegram.instano.MixPanelEvents;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLog;
 import org.telegram.android.NotificationCenter;
@@ -700,6 +704,9 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
                 delegate.onMessageSend(null);
             }
         }
+
+        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(getContext(), BuildVars.MIXPANEL_TOKEN);
+        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);
     }
 
     public boolean processSendingText(String text) {

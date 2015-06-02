@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -414,6 +415,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     boolean send = preferences.getBoolean("send_by_enter", false);
                     SharedPreferences.Editor editor = preferences.edit();
+                    Log.e("Send By Enter","Code is reaching here");
                     editor.putBoolean("send_by_enter", !send);
                     editor.commit();
                     if (view instanceof TextCheckCell) {
