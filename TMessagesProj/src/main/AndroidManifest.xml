@@ -62,7 +62,7 @@
         android:icon="@drawable/ic_launcher"
         android:theme="@style/Theme.TMessages.Start">
 
-        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCTNmNqbWovP9ETcAob98YlrfOQEAC0CJ4" />
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDxVsKYcLBT5dwOdb-ea2_fnNaAmgtCttE" />
 
         <activity
             android:name="org.telegram.ui.LaunchActivity"
