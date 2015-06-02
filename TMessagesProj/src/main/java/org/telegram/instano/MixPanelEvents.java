@@ -26,30 +26,47 @@ public class MixPanelEvents {
     public static final String USER_PROPERTY_PHONE = "$phone";
 
 //    LaunchActivity button click
-    public static final String LAUNCH_INVITE_FREINDS = "Invite Friends";
-    public static final String LAUNCH_SETTINGS = "Settings";
-    public static final String LAUNCH_ABOUT_US = "About Us";
-    public static final String LAUNCH_CONTACT_US = "Contact Us";
+    public static final String LAUNCH_INVITE_FREINDS = "Launch Invite Friends";
+    public static final String LAUNCH_SETTINGS = "Launch Settings";
+    public static final String LAUNCH_ABOUT_US = "Launch About Us";
+    public static final String LAUNCH_CONTACT_US = "Launch Contact Us";
 
 //    SettingsActivity button click
-    public static final String SETTINGS_USER_PHONE_NUMBER = "Phone";
-    public static final String SETTINGS_USER_NAME = "Name";
-    public static final String SETTINGS_NOTIFICATIONS_SOUNDS = "Notification";
-    public static final String SETTINGS_SECURITY = "Security";
-    public static final String SETTINGS_CHAT_BACKGROUND = "Chat Background";
-    public static final String SETTINGS_LANGUAGE = "Language";
-    public static final String SETTINGS_ANIMATIONS = "Animations";
-    public static final String SETTINGS_USING_MOBILE_DATA = "Mobile Data";
-    public static final String SETTINGS_USING_WI_FI = "Wi-Fi";
-    public static final String SETTINGS_USING_ROAMING = "Roaming";
-    public static final String SETTINGS_SAVE_TO_GALLERY = "Save To Gallery";
-    public static final String SETTINGS_MESSAGE_TEXT_SIZE = "Text Size";
-    public static final String SETTINGS_SEND_BY_ENTER = "Send By Enter";
+    public static final String SETTINGS_USER_PHONE_NUMBER = "Settings User Phone Number";
+    public static final String SETTINGS_USER_NAME = "Settings User Name";
+    public static final String SETTINGS_NOTIFICATIONS_SOUNDS = "Settings Notification";
+    public static final String SETTINGS_SECURITY = "Settings Security";
+    public static final String SETTINGS_CHAT_BACKGROUND = "Settings Chat Background";
+    public static final String SETTINGS_LANGUAGE = "Settings Language";
+    public static final String SETTINGS_ANIMATIONS = "Settings Animations";
+    public static final String SETTINGS_USING_MOBILE_DATA = "Settings Mobile Data";
+    public static final String SETTINGS_USING_WI_FI = "Settings Wi-Fi";
+    public static final String SETTINGS_USING_ROAMING = "Settings Roaming";
+    public static final String SETTINGS_SAVE_TO_GALLERY = "Settings Save To Gallery";
+    public static final String SETTINGS_MESSAGE_TEXT_SIZE = "Settings Text Size";
+    public static final String SETTINGS_SEND_BY_ENTER = "Settings Send By Enter";
 
 //    ProfileActivity button click
-    public static final String PROFILE_SENDER_PHONE_NUMBER = "Sender Number";
-    public static final String PROFILE_NOTIFICATION_AND_SOUNDS = "Notification And Sounds";
-    public static final String PROFILE_SHARED_MEDIA = "Shared Media";
+    public static final String PROFILE_SENDER_PHONE_NUMBER = "Profile Sender Number";
+    public static final String PROFILE_NOTIFICATION_AND_SOUNDS = "Profile Notification And Sounds";
+    public static final String PROFILE_SHARED_MEDIA = "Profile Shared Media";
+
+//    SecuritySettingsActivity button click
+    public static final String SECURITY_TWO_STEP_VERIFICATION = "Security Two-Step Verification";
+    public static final String SECURITY_ACTIVE_SESSIONS = "Security Active Sessions ";
+    public static final String SECURITY_SELF_DESTRUCT = "Security Account Self Destruct ";
+
+//    TwoStepVerificationActivity button click
+    public static final String TWO_STEP_VERIFICATION_SET_PASSWORD = "Two-Step Verification Set Password/Change Password";
+    public static final String TWO_STEP_VERIFICATION_SET_RECOVERY_EMAIL = "Two-Step Verification Set Email/Change Email";
+    public static final String TWO_STEP_VERIFICATION_TURN_PASSWORD_OFF = "Two-Step Verification Turn Off Password/Abort Password";
+
+//    NotificationsSettiongsActivity button click
+    public static final String NOTIFICATION_SETTINGS_LED_COLOR = "Notification Settings Led Color";
+    public static final String NOTIFICATION_SETTINGS_VIBRATE = "Notification Settings Vibrate";
+    public static final String NOTIFICATION_SETTINGS_POPUP_NOTIFICATION = "Notification Settings Pop Up Notification";
+    public static final String NOTIFICATION_SETTINGS_SOUND = "Notification Settings Sound";
+    public static final String NOTIFICATION_SETTINGS_RESET_NOTIFICATIONS = "Notification Settings Reset Notifications";
 
 
     public static MixpanelAPI api() {

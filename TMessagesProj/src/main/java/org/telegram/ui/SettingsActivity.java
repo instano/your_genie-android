@@ -12,7 +12,6 @@ import android.animation.ObjectAnimator;
 import android.animation.StateListAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,14 +20,11 @@ import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Outline;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
-import android.util.Base64;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -55,8 +51,6 @@ import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.android.LocaleController;
 import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.SerializedData;
-import org.telegram.messenger.TLClassStore;
 import org.telegram.messenger.TLObject;
 import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.ConnectionsManager;
@@ -76,7 +70,6 @@ import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.ShadowSectionCell;
 import org.telegram.ui.Cells.TextCheckCell;
 import org.telegram.ui.Cells.TextDetailSettingsCell;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
@@ -87,7 +80,6 @@ import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Components.NumberPicker;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -435,7 +427,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     }
                 } else if (i == privacyRow) {
                     MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.SETTINGS_SECURITY,null);
-                    presentFragment(new PrivacySettingsActivity());
+                    presentFragment(new SecuritySettingsActivity());
                 } else if (i == languageRow) {
                     MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.SETTINGS_LANGUAGE,null);
 //                    presentFragment(new LanguageSelectActivity());
