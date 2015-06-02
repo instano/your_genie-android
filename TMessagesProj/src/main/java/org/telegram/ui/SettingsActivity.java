@@ -415,12 +415,12 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     boolean send = preferences.getBoolean("send_by_enter", false);
                     SharedPreferences.Editor editor = preferences.edit();
-                    Log.e("Send By Enter","Code is reaching here");
                     editor.putBoolean("send_by_enter", !send);
                     editor.commit();
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(!send);
                     }
+                    Log.e("Send By Enter",String.valueOf(preferences.getBoolean("send_by_enter",false)));
                 } else if (i == saveToGalleryRow) {
                     MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.SETTINGS_SAVE_TO_GALLERY,null);
                     MediaController.getInstance().toggleSaveToGallery();

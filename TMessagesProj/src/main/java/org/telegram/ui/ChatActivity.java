@@ -3257,6 +3257,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 updateContactStatus();
             }
         } else if (id == NotificationCenter.didReceivedNewMessages) {
+            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext,BuildVars.MIXPANEL_TOKEN);
+            mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_RECIEVED,1);
             long did = (Long) args[0];
             if (did == dialog_id) {
 
