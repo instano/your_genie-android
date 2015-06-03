@@ -600,7 +600,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             } else {
                                 mixpanelAPI = MixPanelEvents.api();
                             }
-                            mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND, 1);
+                            mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_GALLERY, null);
                         }
 
                         @Override
@@ -653,7 +653,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             } else {
                                 mixpanelAPI = MixPanelEvents.api();
                             }
-                            mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);
+                            mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_LOCATION, null);
                             moveScrollToLastMessage();
                             showReplyPanel(false, null, null, null, false, true);
                             if (paused) {
@@ -669,6 +669,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         public void didSelectFiles(DocumentSelectActivity activity, ArrayList<String> files) {
                             activity.finishFragment();
                             SendMessagesHelper.prepareSendingDocuments(files, files, null, null, dialog_id, replyingMessageObject);
+                            MixpanelAPI mixpanelAPI;
+                            if(getParentActivity()!=null){
+                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                            }else{
+                                mixpanelAPI = MixPanelEvents.api();
+                            }
+                            mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_FILE, null);
+
                             showReplyPanel(false, null, null, null, false, true);
                         }
 
@@ -1849,6 +1857,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         }
                         SendMessagesHelper.getInstance().sendMessage((TLRPC.TL_document) document, null, null, dialog_id, replyingMessageObject);
+                        MixpanelAPI mixpanelAPI;
+                        if(getParentActivity()!=null){
+                            mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                        }else{
+                            mixpanelAPI = MixPanelEvents.api();
+                        }
+                        mixpanelAPI.track(MixPanelEvents.MESSAGES_SEND_EMOJI, null);
                         showReplyPanel(false, null, null, null, false, true);
                     }
                     chatActivityEnterView.setFieldText("");
@@ -2869,7 +2884,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         } else {
                             mixpanelAPI = MixPanelEvents.api();
                         }
-                        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);
+                        mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_PHOTO,null);
 
                         MediaController.PhotoEntry photoEntry = (MediaController.PhotoEntry) arrayList.get(0);
                         if (photoEntry.imagePath != null) {
@@ -2931,6 +2946,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 } else {
                     SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id, replyingMessageObject);
+                    MixpanelAPI mixpanelAPI;
+                    if(getParentActivity()!=null){
+                        mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                    }else{
+                        mixpanelAPI = MixPanelEvents.api();
+                    }
+                    mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_VIDEO, null);
+
                     showReplyPanel(false, null, null, null, false, true);
                 }
             } else if (requestCode == 21) {
@@ -3281,8 +3304,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 updateContactStatus();
             }
         } else if (id == NotificationCenter.didReceivedNewMessages) {
-//            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext,BuildVars.MIXPANEL_TOKEN);
-//            mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_RECIEVED,1);
             long did = (Long) args[0];
             if (did == dialog_id) {
 
@@ -3635,6 +3656,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (view instanceof ChatAudioCell) {
                         ChatAudioCell cell = (ChatAudioCell) view;
                         if (cell.getMessageObject() != null && cell.getMessageObject().getId() == mid) {
+                            FileLog.d(BuildVars.TAG,"3659 audio is recording from here");
                             cell.updateButtonState();
                             break;
                         }
@@ -3650,6 +3672,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (view instanceof ChatAudioCell) {
                         ChatAudioCell cell = (ChatAudioCell) view;
                         if (cell.getMessageObject() != null && cell.getMessageObject().getId() == mid) {
+                            FileLog.d(BuildVars.TAG,"3675 audio is recording from here");
                             cell.updateProgress();
                             break;
                         }
@@ -5003,6 +5026,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 baseCell.setMessageObject(message);
                 baseCell.setCheckPressed(!disableSelection, disableSelection && selected);
                 if (view instanceof ChatAudioCell && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_AUDIO)) {
+                    MixpanelAPI mixpanelAPI;
+                   if(getParentActivity()!=null){
+                        mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                    }else{
+                        mixpanelAPI = MixPanelEvents.api();
+                    }
+                    mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_SOUND,null);
                     ((ChatAudioCell) view).downloadAudioIfNeed();
                 }
                 baseCell.setHighlighted(highlightMessageId != Integer.MAX_VALUE && message.getId() == highlightMessageId);
