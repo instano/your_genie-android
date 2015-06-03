@@ -4717,6 +4717,19 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     view = new ChatActionCell(mContext);
                 }
 
+                if (view instanceof ChatMessageCell){
+                    ((ChatMessageCell) view).setDelegate(new ChatMessageCell.ChatMessageCellDelegate() {
+                        @Override
+                        public void pressedUrl(String url) {
+                            Toast.makeText(mContext, url +" clicked", Toast.LENGTH_SHORT).show();
+                            Bundle args = new Bundle();
+                            args.putString("url", url);
+                            WebViewActivity fragment = new WebViewActivity(args);
+                            presentFragment(fragment);
+                        }
+                    });
+                }
+
                 if (view instanceof ChatBaseCell) {
                     ((ChatBaseCell) view).setDelegate(new ChatBaseCell.ChatBaseCellDelegate() {
                         @Override
