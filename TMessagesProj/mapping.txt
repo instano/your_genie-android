@@ -4828,8 +4828,6 @@ com.crashlytics.android.Crashlytics -> com.b.a.a:
     java.util.Collection getKits() -> c
     java.lang.Void doInBackground() -> d
     com.crashlytics.android.Crashlytics getInstance() -> e
-    void logException(java.lang.Throwable) -> a
-    void checkInitialized() -> g
     java.lang.Object doInBackground() -> f
 com.crashlytics.android.answers.Answers -> com.b.a.a.a:
     java.lang.String versionCode -> b
@@ -15938,7 +15936,6 @@ org.telegram.messenger.ApplicationLoader -> org.telegram.messenger.ApplicationLo
     android.graphics.drawable.Drawable getCachedWallpaper() -> e
     void postInitApplication() -> f
     void onCreate() -> onCreate
-    void HandleCrashes(java.lang.Thread,java.lang.Throwable) -> a
     void startPushService() -> g
     void stopPushService() -> h
     void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
