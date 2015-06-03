@@ -529,7 +529,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     @Override
-    public View createView(Context context, LayoutInflater inflater) {
+    public View createView(final Context context, LayoutInflater inflater) {
 
         lastPrintString = null;
         lastStatus = null;
@@ -639,6 +639,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         @Override
                         public void didSelectLocation(double latitude, double longitude) {
                             SendMessagesHelper.getInstance().sendMessage(latitude, longitude, dialog_id, replyingMessageObject);
+                            FileLog.d(BuildVars.TAG, "id == attach_location");
+                            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext,BuildVars.MIXPANEL_TOKEN);
+                            mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);
                             moveScrollToLastMessage();
                             showReplyPanel(false, null, null, null, false, true);
                             if (paused) {
