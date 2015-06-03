@@ -37,26 +37,28 @@ import android.widget.TextView;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
-import org.telegram.android.AndroidUtilities;
 import org.telegram.PhoneFormat.PhoneFormat;
+import org.telegram.android.AndroidUtilities;
+import org.telegram.android.ContactsController;
 import org.telegram.android.LocaleController;
+import org.telegram.android.MessageObject;
+import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
-import org.telegram.android.SecretChatHelper;
+import org.telegram.android.NotificationCenter;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.query.SharedMediaQuery;
 import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
-import org.telegram.messenger.TLRPC;
-import org.telegram.android.ContactsController;
 import org.telegram.messenger.FileLog;
-import org.telegram.android.MessagesController;
-import org.telegram.android.NotificationCenter;
 import org.telegram.messenger.R;
-import org.telegram.android.MessageObject;
+import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
+import org.telegram.ui.ActionBar.ActionBar;
+import org.telegram.ui.ActionBar.ActionBarMenu;
+import org.telegram.ui.ActionBar.ActionBarMenuItem;
+import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.AnimationCompat.ViewProxy;
 import org.telegram.ui.Cells.DividerCell;
@@ -65,19 +67,14 @@ import org.telegram.ui.Cells.ShadowSectionCell;
 import org.telegram.ui.Cells.TextCell;
 import org.telegram.ui.Cells.TextDetailCell;
 import org.telegram.ui.Cells.UserCell;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.ActionBarMenu;
-import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.AvatarUpdater;
 import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Components.IdenticonDrawable;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.concurrent.Semaphore;
 
 public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate, PhotoViewer.PhotoViewerProvider {
@@ -372,7 +369,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     return;
                 }
                 if (i == sharedMediaRow) {
-                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.PROFILE_SHARED_MEDIA,null);
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.PROFILE_SHARED_MEDIA,null);
                     Bundle args = new Bundle();
                     if (user_id != 0) {
                         args.putLong("dialog_id", dialog_id != 0 ? dialog_id : user_id);
@@ -390,7 +387,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     showAlertDialog(AndroidUtilities.buildTTLAlert(getParentActivity(), currentEncryptedChat));
                 } else if (i == settingsNotificationsRow) {
-                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.PROFILE_NOTIFICATION_AND_SOUNDS,null);
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.PROFILE_NOTIFICATION_AND_SOUNDS,null);
                     Bundle args = new Bundle();
                     if (user_id != 0) {
                         args.putLong("dialog_id", dialog_id == 0 ? user_id : dialog_id);
@@ -399,7 +396,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     presentFragment(new ProfileNotificationsActivity(args));
                 } else if (i == phoneRow) {
-                    MixpanelAPI.getInstance(context, BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.PROFILE_SENDER_PHONE_NUMBER,null);
+                    MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.PROFILE_SENDER_PHONE_NUMBER,null);
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null || user.phone == null || user.phone.length() == 0 || getParentActivity() == null) {
                         return;

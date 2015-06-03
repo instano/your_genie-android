@@ -403,13 +403,13 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                     if (i == setPasswordRow || i == changePasswordRow) {
-                        MixpanelAPI.getInstance(context, BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.TWO_STEP_VERIFICATION_SET_PASSWORD,null);
+                        MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.TWO_STEP_VERIFICATION_SET_PASSWORD,null);
                         TwoStepVerificationActivity fragment = new TwoStepVerificationActivity(1);
                         fragment.currentPasswordHash = currentPasswordHash;
                         fragment.currentPassword = currentPassword;
                         presentFragment(fragment);
                     } else if (i == setRecoveryEmailRow || i == changeRecoveryEmailRow) {
-                        MixpanelAPI.getInstance(context, BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.TWO_STEP_VERIFICATION_SET_RECOVERY_EMAIL,null);
+                        MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.TWO_STEP_VERIFICATION_SET_RECOVERY_EMAIL,null);
                         TwoStepVerificationActivity fragment = new TwoStepVerificationActivity(1);
                         fragment.currentPasswordHash = currentPasswordHash;
                         fragment.currentPassword = currentPassword;
@@ -417,7 +417,7 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
                         fragment.passwordSetState = 3;
                         presentFragment(fragment);
                     } else if (i == turnPasswordOffRow || i == abortPasswordRow) {
-                        MixpanelAPI.getInstance(context, BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.TWO_STEP_VERIFICATION_TURN_PASSWORD_OFF,null);
+                        MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.TWO_STEP_VERIFICATION_TURN_PASSWORD_OFF,null);
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setMessage(LocaleController.getString("TurnPasswordOffQuestion", R.string.TurnPasswordOffQuestion));
                         builder.setTitle(LocaleController.getString("AppName", R.string.AppName));

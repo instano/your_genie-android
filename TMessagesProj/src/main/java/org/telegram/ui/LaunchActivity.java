@@ -9,7 +9,6 @@
 package org.telegram.ui;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -38,7 +37,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
@@ -67,7 +65,6 @@ import org.telegram.ui.ActionBar.ActionBarLayout;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.DrawerLayoutContainer;
 import org.telegram.ui.Adapters.DrawerLayoutAdapter;
-import org.telegram.ui.Components.NumberPicker;
 import org.telegram.ui.Components.PasscodeView;
 
 import java.io.BufferedReader;
@@ -296,22 +293,22 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
                         intent.putExtra(Intent.EXTRA_TEXT, ContactsController.getInstance().getInviteText());
-                        MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.LAUNCH_INVITE_FREINDS, null);
+                        MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_INVITE_FREINDS, null);
                         startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteFriends", R.string.InviteFriends)), 500);
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 3) {
-                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.LAUNCH_SETTINGS,null);
+                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_SETTINGS,null);
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 4) {
-                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.LAUNCH_ABOUT_US,null);
+                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_ABOUT_US,null);
                     presentFragment(new AboutUsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 5){
-                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.LAUNCH_CONTACT_US,null);
+                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_CONTACT_US,null);
                     ContactUsDialog cd = new ContactUsDialog(LaunchActivity.this);
                     cd.show();
                 }
