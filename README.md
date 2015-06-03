@@ -1,3 +1,6 @@
 ## Messenger for your genie app
 
-Visit [www.yourGenieApp.com](http://www.yourgenieapp.com/) for more
+Visit [www.instanoApp.com](http://www.instanoapp.com/) for more
+
+**An Instano Production**
+[Blog](http://blog.instanoapp.com) | [Facebook](https://www.facebook.com/instanoapp) | [Twitter @InstanoApp](https://twitter.com/instanoapp) | [Jobs](https://angel.co/instano/jobs)
