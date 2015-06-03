@@ -594,6 +594,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             SendMessagesHelper.prepareSendingPhotos(photos, null, dialog_id, replyingMessageObject);
                             SendMessagesHelper.prepareSendingPhotosSearch(webPhotos, dialog_id, replyingMessageObject);
                             showReplyPanel(false, null, null, null, false, true);
+                            MixpanelAPI mixpanelAPI;
+                            if (getParentActivity()!=null) {
+                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+                            } else {
+                                mixpanelAPI = MixPanelEvents.api();
+                            }
+                            mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND, 1);
                         }
 
                         @Override
@@ -640,7 +647,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         public void didSelectLocation(double latitude, double longitude) {
                             SendMessagesHelper.getInstance().sendMessage(latitude, longitude, dialog_id, replyingMessageObject);
                             FileLog.d(BuildVars.TAG, "id == attach_location");
-                            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext,BuildVars.MIXPANEL_TOKEN);
+                            MixpanelAPI mixpanelAPI;
+                            if (getParentActivity()!=null) {
+                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+                            } else {
+                                mixpanelAPI = MixPanelEvents.api();
+                            }
                             mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);
                             moveScrollToLastMessage();
                             showReplyPanel(false, null, null, null, false, true);
@@ -2851,8 +2863,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 //                        This count is for take photo send
                         FileLog.d(BuildVars.TAG,"Chat Activity.sendButtonPressed()");
 
-                        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.MIXPANEL_TOKEN);
-                        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND, 1);
+                        MixpanelAPI mixpanelAPI;
+                        if (getParentActivity()!=null) {
+                            mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+                        } else {
+                            mixpanelAPI = MixPanelEvents.api();
+                        }
+                        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);
 
                         MediaController.PhotoEntry photoEntry = (MediaController.PhotoEntry) arrayList.get(0);
                         if (photoEntry.imagePath != null) {
