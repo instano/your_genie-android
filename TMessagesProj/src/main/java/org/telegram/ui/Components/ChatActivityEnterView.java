@@ -95,7 +95,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
     private int keyboardHeight;
     private int keyboardHeightLand;
     private boolean keyboardVisible;
-    private boolean sendByEnter;
+//    private boolean sendByEnter;
     private long lastTypingTimeSend;
     private String lastTimeString;
     private float startedDraggingX = -1;
@@ -138,7 +138,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
         sizeNotifierRelativeLayout = parent;
         sizeNotifierRelativeLayout.setDelegate(this);
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        sendByEnter = preferences.getBoolean("send_by_enter", false);
+//        sendByEnter = preferences.getBoolean("send_by_enter", false);
 
         textFieldContainer = new LinearLayout(context);
         textFieldContainer.setBackgroundColor(0xffffffff);
@@ -205,7 +205,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
                         showEmojiPopup(false);
                     }
                     return true;
-                } else if (i == KeyEvent.KEYCODE_ENTER && sendByEnter && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                } else if (i == KeyEvent.KEYCODE_ENTER && sendByEnter() && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
                     sendMessage();
                     return true;
                 }
@@ -226,7 +226,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
                 if (i == EditorInfo.IME_ACTION_SEND) {
                     sendMessage();
                     return true;
-                } else if (sendByEnter) {
+                } else if (sendByEnter()) {
                     if (keyEvent != null && i == EditorInfo.IME_NULL && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
                         sendMessage();
                         return true;
@@ -271,7 +271,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (sendByEnter && editable.length() > 0 && editable.charAt(editable.length() - 1) == '\n') {
+                if (sendByEnter() && editable.length() > 0 && editable.charAt(editable.length() - 1) == '\n') {
                     sendMessage();
                 }
                 int i = 0;
@@ -609,6 +609,11 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
         }
     }
 
+    public boolean sendByEnter(){
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+        return preferences.getBoolean("send_by_enter", false);
+    }
+
     public boolean isTopViewVisible() {
         return topView != null && topView.getVisibility() == VISIBLE;
     }
@@ -675,6 +680,10 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
     }
 
     private void sendMessage() {
+        FileLog.d(BuildVars.TAG, "Chat Activity EnterView.sendMessage()");
+        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(getContext(), BuildVars.MIXPANEL_TOKEN);
+        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);
+
         if (parentFragment != null) {
             String action = null;
             TLRPC.Chat currentChat = null;
@@ -705,8 +714,6 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
             }
         }
 
-        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(getContext(), BuildVars.MIXPANEL_TOKEN);
-        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);
     }
 
     public boolean processSendingText(String text) {

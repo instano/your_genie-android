@@ -17,7 +17,7 @@ import org.telegram.ui.LoginActivity;
 public class MixPanelEvents {
 
     public static final String MESSAGES_SEND = "Sent Messages";
-    public static final String MESSAGES_RECIEVED = "Received Messages";
+//    public static final String MESSAGES_RECIEVED = "Received Messages";
 
     private final String TAG = getClass().getSimpleName();
     public static final String PROPERTY_BUILD_TYPE = "Build Type";

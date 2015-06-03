@@ -420,7 +420,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(!send);
                     }
-                    Log.e("Send By Enter",String.valueOf(preferences.getBoolean("send_by_enter",false)));
                 } else if (i == saveToGalleryRow) {
                     MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.SETTINGS_SAVE_TO_GALLERY,null);
                     MediaController.getInstance().toggleSaveToGallery();

@@ -2845,8 +2845,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 PhotoViewer.getInstance().openPhotoForSelect(arrayList, 0, 2, new PhotoViewer.EmptyPhotoViewerProvider() {
                     @Override
                     public void sendButtonPressed(int index) {
-                        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext,BuildVars.MIXPANEL_TOKEN);
-                        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);
+//                        This count is for take photo send
+                        FileLog.d(BuildVars.TAG,"Message is send from Chat Activity.sendButtonPressed()");
+
+//                        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.MIXPANEL_TOKEN);
+//                        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND, 1);
+
                         MediaController.PhotoEntry photoEntry = (MediaController.PhotoEntry) arrayList.get(0);
                         if (photoEntry.imagePath != null) {
                             SendMessagesHelper.prepareSendingPhoto(photoEntry.imagePath, null, dialog_id, replyingMessageObject);
@@ -3257,8 +3261,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 updateContactStatus();
             }
         } else if (id == NotificationCenter.didReceivedNewMessages) {
-            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext,BuildVars.MIXPANEL_TOKEN);
-            mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_RECIEVED,1);
+//            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext,BuildVars.MIXPANEL_TOKEN);
+//            mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_RECIEVED,1);
             long did = (Long) args[0];
             if (did == dialog_id) {
 
