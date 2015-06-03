@@ -597,7 +597,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             showReplyPanel(false, null, null, null, false, true);
                             MixpanelAPI mixpanelAPI;
                             if (getParentActivity()!=null) {
-                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
                             } else {
                                 mixpanelAPI = MixPanelEvents.api();
                             }
@@ -650,7 +650,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             FileLog.d(BuildVars.TAG, "id == attach_location");
                             MixpanelAPI mixpanelAPI;
                             if (getParentActivity()!=null) {
-                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
                             } else {
                                 mixpanelAPI = MixPanelEvents.api();
                             }
@@ -672,7 +672,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             SendMessagesHelper.prepareSendingDocuments(files, files, null, null, dialog_id, replyingMessageObject);
                             MixpanelAPI mixpanelAPI;
                             if(getParentActivity()!=null){
-                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.mixpanelToken());
                             }else{
                                 mixpanelAPI = MixPanelEvents.api();
                             }
@@ -1860,7 +1860,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         SendMessagesHelper.getInstance().sendMessage((TLRPC.TL_document) document, null, null, dialog_id, replyingMessageObject);
                         MixpanelAPI mixpanelAPI;
                         if(getParentActivity()!=null){
-                            mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                            mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.mixpanelToken());
                         }else{
                             mixpanelAPI = MixPanelEvents.api();
                         }
@@ -2881,7 +2881,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                         MixpanelAPI mixpanelAPI;
                         if (getParentActivity()!=null) {
-                            mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+                            mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
                         } else {
                             mixpanelAPI = MixPanelEvents.api();
                         }
@@ -2949,7 +2949,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id, replyingMessageObject);
                     MixpanelAPI mixpanelAPI;
                     if(getParentActivity()!=null){
-                        mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                        mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.mixpanelToken());
                     }else{
                         mixpanelAPI = MixPanelEvents.api();
                     }
@@ -5043,7 +5043,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (view instanceof ChatAudioCell && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_AUDIO)) {
                     MixpanelAPI mixpanelAPI;
                    if(getParentActivity()!=null){
-                        mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                        mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.mixpanelToken());
                     }else{
                         mixpanelAPI = MixPanelEvents.api();
                     }
