@@ -4176,19 +4176,19 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 }
 
-                final int[] finalOptions = options;
-                builder.setItems(items, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (finalOptions == null || selectedObject == null || i < 0 || i >= finalOptions.length) {
-                            return;
-                        }
-                        processSelectedOption(finalOptions[i]);
-                    }
-                });
-
-                builder.setTitle(LocaleController.getString("Message", R.string.Message));
-                showAlertDialog(builder);
+//                final int[] finalOptions = options;
+//                builder.setItems(items, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        if (finalOptions == null || selectedObject == null || i < 0 || i >= finalOptions.length) {
+//                            return;
+//                        }
+//                        processSelectedOption(finalOptions[i]);
+//                    }
+//                });
+//
+//                builder.setTitle(LocaleController.getString("Message", R.string.Message));
+//                showAlertDialog(builder);
             }
             return;
         }
