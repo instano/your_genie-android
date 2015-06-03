@@ -3860,7 +3860,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public void onResume() {
         super.onResume();
 
-        MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
+        MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken()).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
 
         if (!AndroidUtilities.isTablet()) {
             getParentActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -4744,6 +4744,19 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     view = li.inflate(R.layout.chat_unread_layout, viewGroup, false);
                 } else if (type == 4) {
                     view = new ChatActionCell(mContext);
+                }
+
+                if (view instanceof ChatMessageCell){
+                    ((ChatMessageCell) view).setDelegate(new ChatMessageCell.ChatMessageCellDelegate() {
+                        @Override
+                        public void pressedUrl(String url) {
+                            Toast.makeText(mContext, url +" clicked", Toast.LENGTH_SHORT).show();
+                            Bundle args = new Bundle();
+                            args.putString("url", url);
+                            WebViewActivity fragment = new WebViewActivity(args);
+                            presentFragment(fragment);
+                        }
+                    });
                 }
 
                 if (view instanceof ChatBaseCell) {

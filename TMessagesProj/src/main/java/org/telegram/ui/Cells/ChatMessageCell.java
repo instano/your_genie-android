@@ -9,13 +9,11 @@
 package org.telegram.ui.Cells;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.provider.Browser;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -23,14 +21,16 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
+import android.text.style.URLSpan;
 import android.view.MotionEvent;
 
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ImageReceiver;
 import org.telegram.android.MediaController;
+import org.telegram.android.MessageObject;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
-import org.telegram.android.MessageObject;
 import org.telegram.messenger.R;
 import org.telegram.messenger.TLRPC;
 import org.telegram.ui.Components.StaticLayoutEx;
@@ -39,6 +39,11 @@ import org.telegram.ui.Components.URLSpanNoUnderline;
 import java.util.Locale;
 
 public class ChatMessageCell extends ChatBaseCell {
+
+
+    public interface ChatMessageCellDelegate {
+        void pressedUrl(String url);
+    }
 
     private int textX, textY;
     private int totalHeight = 0;
@@ -70,6 +75,7 @@ public class ChatMessageCell extends ChatBaseCell {
     private TLRPC.PhotoSize currentPhotoObject;
     private TLRPC.PhotoSize currentPhotoObjectThumb;
     private boolean imageCleared;
+    protected ChatMessageCellDelegate mDelegate;
 
     private static Drawable igvideoDrawable;
 
@@ -116,6 +122,10 @@ public class ChatMessageCell extends ChatBaseCell {
             urlPaint = new Paint();
             urlPaint.setColor(0x33316f9f);
         }
+    }
+
+    public void setDelegate(ChatMessageCellDelegate delegate) {
+        this.mDelegate = delegate;
     }
 
     private void resetPressedLink() {
@@ -172,7 +182,10 @@ public class ChatMessageCell extends ChatBaseCell {
                                                         }
                                                     }
                                                 } else {
-                                                    pressedLink.onClick(this);
+                                                    FileLog.d(BuildVars.TAG, "pressedLink onclick 1");
+//                                                    pressedLink.onClick(this);
+                                                    if (mDelegate != null)
+                                                        mDelegate.pressedUrl(((URLSpan)pressedLink).getURL());
                                                 }
                                             } catch (Exception e) {
                                                 FileLog.e("tmessages", e);
@@ -240,12 +253,18 @@ public class ChatMessageCell extends ChatBaseCell {
                     } else if (linkPreviewPressed) {
                         try {
                             if (pressedLink != null) {
-                                pressedLink.onClick(this);
+                                FileLog.d(BuildVars.TAG, "pressedLink onclick 2");
+//                                pressedLink.onClick(this);
+                                if (mDelegate != null)
+                                    mDelegate.pressedUrl(((URLSpan)pressedLink).getURL());
                             } else {
                                 Uri uri = Uri.parse(currentMessageObject.messageOwner.media.webpage.url);
-                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                                intent.putExtra(Browser.EXTRA_APPLICATION_ID, getContext().getPackageName());
-                                getContext().startActivity(intent);
+                                if (mDelegate != null)
+                                    mDelegate.pressedUrl(uri.toString());
+//                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//                                intent.putExtra(Browser.EXTRA_APPLICATION_ID, getContext().getPackageName());
+                                FileLog.d(BuildVars.TAG, "linkPreviewPressed onclick 1 uri : "+uri);
+//                                getContext().startActivity(intent);
                             }
                         } catch (Exception e) {
                             FileLog.e("tmessages", e);

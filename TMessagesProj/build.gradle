@@ -80,10 +80,10 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.instano.buyer"
+        applicationId "com.instano.genie"
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 19
-        versionName "1.0.2"
+        versionCode 21
+        versionName "1.0.4"
     }
 }

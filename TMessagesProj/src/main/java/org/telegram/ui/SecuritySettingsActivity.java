@@ -37,7 +37,6 @@ import org.telegram.messenger.R;
 import org.telegram.messenger.RPCRequest;
 import org.telegram.messenger.TLObject;
 import org.telegram.messenger.TLRPC;
-import org.telegram.messenger.UserConfig;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
@@ -123,13 +122,13 @@ public class SecuritySettingsActivity extends BaseFragment implements Notificati
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 if (i == sessionsRow) {
-                    MixpanelAPI.getInstance(context, BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.SECURITY_ACTIVE_SESSIONS,null);
+                    MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.SECURITY_ACTIVE_SESSIONS,null);
                     presentFragment(new SessionsActivity());
                 } else if (i == deleteAccountRow) {
                     if (getParentActivity() == null) {
                         return;
                     }
-                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.SECURITY_SELF_DESTRUCT,null);
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SECURITY_SELF_DESTRUCT,null);
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("DeleteAccountTitle", R.string.DeleteAccountTitle));
                     builder.setItems(new CharSequence[]{
@@ -183,7 +182,7 @@ public class SecuritySettingsActivity extends BaseFragment implements Notificati
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showAlertDialog(builder);
                 }  else if (i == passwordRow) {
-                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.SECURITY_TWO_STEP_VERIFICATION,null);
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SECURITY_TWO_STEP_VERIFICATION,null);
                     presentFragment(new TwoStepVerificationActivity(0));
                 }
             }

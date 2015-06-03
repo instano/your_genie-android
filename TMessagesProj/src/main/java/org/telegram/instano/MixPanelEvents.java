@@ -74,6 +74,6 @@ public class MixPanelEvents {
 
 
     public static MixpanelAPI api() {
-        return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.MIXPANEL_TOKEN);
+        return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken());
     }
 }

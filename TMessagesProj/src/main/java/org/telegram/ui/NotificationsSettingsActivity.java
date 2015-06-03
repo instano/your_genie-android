@@ -171,7 +171,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     editor.putBoolean("EnablePreviewAll", !enabled);
                     editor.commit();
                 } else if (i == messageSoundRow ) {
-                    MixpanelAPI.getInstance(context, BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.NOTIFICATION_SETTINGS_SOUND,null);
+                    MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.NOTIFICATION_SETTINGS_SOUND,null);
                     try {
                         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                         Intent tmpIntent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
@@ -200,7 +200,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         FileLog.e("tmessages", e);
                     }
                 } else if (i == resetNotificationsRow) {
-                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.NOTIFICATION_SETTINGS_RESET_NOTIFICATIONS,null);
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.NOTIFICATION_SETTINGS_RESET_NOTIFICATIONS,null);
                     if (reseting) {
                         return;
                     }
@@ -296,7 +296,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         showAlertDialog(builder);
                     }
                 } else if (i == messageLedRow ) {
-                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.NOTIFICATION_SETTINGS_LED_COLOR,null);
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.NOTIFICATION_SETTINGS_LED_COLOR,null);
                     if (getParentActivity() == null) {
                         return;
                     }
@@ -333,7 +333,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     });
                     showAlertDialog(builder);
                 } else if (i == messagePopupNotificationRow ) {
-                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.NOTIFICATION_SETTINGS_POPUP_NOTIFICATION,null);
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.NOTIFICATION_SETTINGS_POPUP_NOTIFICATION,null);
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("PopupNotification", R.string.PopupNotification));
                     builder.setItems(new CharSequence[]{
@@ -356,7 +356,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showAlertDialog(builder);
                 } else if (i == messageVibrateRow ) {
-                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.NOTIFICATION_SETTINGS_VIBRATE,null);
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.NOTIFICATION_SETTINGS_VIBRATE,null);
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("Vibrate", R.string.Vibrate));
                     builder.setItems(new CharSequence[]{

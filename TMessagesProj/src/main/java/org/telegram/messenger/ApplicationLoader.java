@@ -10,15 +10,10 @@ package org.telegram.messenger;
 
 import android.app.Activity;
 import android.app.AlarmManager;
-import android.app.AlertDialog;
 import android.app.Application;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -29,19 +24,16 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.util.Log;
-import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
-//import io.fabric.sdk.android.Fabric;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.telegram.android.AndroidUtilities;
@@ -56,15 +48,13 @@ import org.telegram.android.SendMessagesHelper;
 import org.telegram.instano.MixPanelEvents;
 import org.telegram.ui.Components.ForegroundDetector;
 import org.telegram.ui.CrashActivity;
-import org.telegram.ui.ErrorDialog;
-import org.telegram.ui.LaunchActivity;
-import org.telegram.ui.PopupNotificationActivity;
-import org.telegram.ui.SettingsActivity;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import io.fabric.sdk.android.Fabric;
+
+//import io.fabric.sdk.android.Fabric;
 
 public class ApplicationLoader extends Application {
 
@@ -211,7 +201,7 @@ public class ApplicationLoader extends Application {
         } catch (JSONException e) {
             FileLog.e(BuildVars.TAG, e);
         }
-        MixpanelAPI.getInstance(this, BuildVars.MIXPANEL_TOKEN).registerSuperProperties(superProperties);
+        MixpanelAPI.getInstance(this, BuildVars.mixpanelToken()).registerSuperProperties(superProperties);
 
         if (Build.VERSION.SDK_INT < 11) {
             java.lang.System.setProperty("java.net.preferIPv4Stack", "true");
@@ -232,21 +222,17 @@ public class ApplicationLoader extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread thread, Throwable e) {
-                Crashlytics.logException(e);
-                HandleCrashes(thread, e);
+                Crashlytics.getInstance().core.logException(e);
+                //        e.printStackTrace();
+                Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Log.e("Handler", "Code is reaching here");
+                startActivity(intent);
+                System.exit(1);
             }
         });
 
-    }
-
-    public void HandleCrashes(Thread t, Throwable e) {
-//        e.printStackTrace();
-        Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Log.e("Handler", "Code is reaching here");
-        startActivity(intent);
-        System.exit(1);
     }
 
     public static void startPushService() {
