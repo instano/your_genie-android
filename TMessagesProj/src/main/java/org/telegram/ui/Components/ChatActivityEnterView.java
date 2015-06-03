@@ -680,6 +680,7 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
     }
 
     private void sendMessage() {
+//        For sending simple messages and smiley
         FileLog.d(BuildVars.TAG, "Chat Activity EnterView.sendMessage()");
         MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(getContext(), BuildVars.MIXPANEL_TOKEN);
         mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);

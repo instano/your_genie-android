@@ -2846,10 +2846,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public void sendButtonPressed(int index) {
 //                        This count is for take photo send
-                        FileLog.d(BuildVars.TAG,"Message is send from Chat Activity.sendButtonPressed()");
+                        FileLog.d(BuildVars.TAG,"Chat Activity.sendButtonPressed()");
 
-//                        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.MIXPANEL_TOKEN);
-//                        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND, 1);
+                        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.MIXPANEL_TOKEN);
+                        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND, 1);
 
                         MediaController.PhotoEntry photoEntry = (MediaController.PhotoEntry) arrayList.get(0);
                         if (photoEntry.imagePath != null) {
