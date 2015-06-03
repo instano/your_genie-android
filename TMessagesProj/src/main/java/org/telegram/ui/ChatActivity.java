@@ -52,6 +52,7 @@ import android.widget.Toast;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
+import org.json.JSONObject;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.android.Emoji;
@@ -528,7 +529,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     @Override
-    public View createView(Context context, LayoutInflater inflater) {
+    public View createView(final Context context, LayoutInflater inflater) {
 
         lastPrintString = null;
         lastStatus = null;
@@ -638,6 +639,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         @Override
                         public void didSelectLocation(double latitude, double longitude) {
                             SendMessagesHelper.getInstance().sendMessage(latitude, longitude, dialog_id, replyingMessageObject);
+                            FileLog.d(BuildVars.TAG, "id == attach_location");
+                            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext,BuildVars.MIXPANEL_TOKEN);
+                            mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND,1);
                             moveScrollToLastMessage();
                             showReplyPanel(false, null, null, null, false, true);
                             if (paused) {
@@ -2844,6 +2848,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 PhotoViewer.getInstance().openPhotoForSelect(arrayList, 0, 2, new PhotoViewer.EmptyPhotoViewerProvider() {
                     @Override
                     public void sendButtonPressed(int index) {
+//                        This count is for take photo send
+                        FileLog.d(BuildVars.TAG,"Chat Activity.sendButtonPressed()");
+
+                        MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.MIXPANEL_TOKEN);
+                        mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_SEND, 1);
+
                         MediaController.PhotoEntry photoEntry = (MediaController.PhotoEntry) arrayList.get(0);
                         if (photoEntry.imagePath != null) {
                             SendMessagesHelper.prepareSendingPhoto(photoEntry.imagePath, null, dialog_id, replyingMessageObject);
@@ -3254,6 +3264,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 updateContactStatus();
             }
         } else if (id == NotificationCenter.didReceivedNewMessages) {
+//            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext,BuildVars.MIXPANEL_TOKEN);
+//            mixpanelAPI.getPeople().increment(MixPanelEvents.MESSAGES_RECIEVED,1);
             long did = (Long) args[0];
             if (did == dialog_id) {
 

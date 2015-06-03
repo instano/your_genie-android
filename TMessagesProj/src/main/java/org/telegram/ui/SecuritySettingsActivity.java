@@ -22,11 +22,15 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.android.LocaleController;
 import org.telegram.android.NotificationCenter;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
@@ -44,7 +48,7 @@ import org.telegram.ui.Cells.TextSettingsCell;
 
 import java.util.ArrayList;
 
-public class PrivacySettingsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
+public class SecuritySettingsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     private ListAdapter listAdapter;
 
@@ -84,7 +88,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
     }
 
     @Override
-    public View createView(Context context, LayoutInflater inflater) {
+    public View createView(final Context context, LayoutInflater inflater) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(LocaleController.getString("Security", R.string.Security));
@@ -119,11 +123,13 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 if (i == sessionsRow) {
+                    MixpanelAPI.getInstance(context, BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.SECURITY_ACTIVE_SESSIONS,null);
                     presentFragment(new SessionsActivity());
                 } else if (i == deleteAccountRow) {
                     if (getParentActivity() == null) {
                         return;
                     }
+                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.SECURITY_SELF_DESTRUCT,null);
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("DeleteAccountTitle", R.string.DeleteAccountTitle));
                     builder.setItems(new CharSequence[]{
@@ -177,6 +183,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showAlertDialog(builder);
                 }  else if (i == passwordRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.SECURITY_TWO_STEP_VERIFICATION,null);
                     presentFragment(new TwoStepVerificationActivity(0));
                 }
             }

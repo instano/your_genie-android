@@ -35,6 +35,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import org.telegram.android.AndroidUtilities;
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.LocaleController;
@@ -42,7 +44,9 @@ import org.telegram.android.MessagesStorage;
 import org.telegram.android.SecretChatHelper;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.query.SharedMediaQuery;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.TLRPC;
 import org.telegram.android.ContactsController;
@@ -108,8 +112,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final static int edit_contact = 4;
     private final static int delete_contact = 5;
     private final static int add_member = 6;
-    private final static int leave_group = 7;
-    private final static int edit_name = 8;
+    private final static int edit_name = 7;
 
     private int overscrollRow;
     private int emptyRow;
@@ -222,7 +225,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     }
 
     @Override
-    public View createView(Context context, LayoutInflater inflater) {
+    public View createView(final Context context, LayoutInflater inflater) {
         actionBar.setBackgroundColor(AvatarDrawable.getProfileBackColorForId(user_id != 0 ? 5 : chat_id));
         actionBar.setItemsBackground(AvatarDrawable.getButtonColorForId(user_id != 0 ? 5 : chat_id));
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
@@ -238,31 +241,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 if (id == -1) {
                     finishFragment();
-                } else if (id == block_contact) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    if (!userBlocked) {
-                        builder.setMessage(LocaleController.getString("AreYouSureBlockContact", R.string.AreYouSureBlockContact));
-                    } else {
-                        builder.setMessage(LocaleController.getString("AreYouSureUnblockContact", R.string.AreYouSureUnblockContact));
-                    }
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            if (!userBlocked) {
-                                MessagesController.getInstance().blockUser(user_id);
-                            } else {
-                                MessagesController.getInstance().unblockUser(user_id);
-                            }
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
-                } else if (id == add_contact) {
-                    TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-                    Bundle args = new Bundle();
-                    args.putInt("user_id", user.id);
-                    presentFragment(new ContactAddActivity(args));
                 } else if (id == share_contact) {
                     Bundle args = new Bundle();
                     args.putBoolean("onlySelect", true);
@@ -288,42 +266,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             ArrayList<TLRPC.User> arrayList = new ArrayList<>();
                             arrayList.add(user);
                             ContactsController.getInstance().deleteContact(arrayList);
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
-                } else if (id == add_member) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("onlyUsers", true);
-                    args.putBoolean("destroyAfterSelect", true);
-                    args.putBoolean("returnAsResult", true);
-                    //args.putBoolean("allowUsernameSearch", false);
-                    if (chat_id > 0) {
-                        args.putString("selectAlertString", LocaleController.getString("AddToTheGroup", R.string.AddToTheGroup));
-                    }
-                    ContactsActivity fragment = new ContactsActivity(args);
-                    fragment.setDelegate(new ContactsActivity.ContactsActivityDelegate() {
-                        @Override
-                        public void didSelectContact(TLRPC.User user, String param) {
-                            MessagesController.getInstance().addUserToChat(chat_id, user, info, param != null ? Utilities.parseInt(param) : 0);
-                        }
-                    });
-                    if (info != null) {
-                        HashMap<Integer, TLRPC.User> users = new HashMap<>();
-                        for (TLRPC.TL_chatParticipant p : info.participants) {
-                            users.put(p.user_id, null);
-                        }
-                        fragment.setIgnoreUsers(users);
-                    }
-                    presentFragment(fragment);
-                } else if (id == leave_group) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(LocaleController.getString("AreYouSureDeleteAndExit", R.string.AreYouSureDeleteAndExit));
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            kickUser(null);
                         }
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -430,6 +372,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     return;
                 }
                 if (i == sharedMediaRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.PROFILE_SHARED_MEDIA,null);
                     Bundle args = new Bundle();
                     if (user_id != 0) {
                         args.putLong("dialog_id", dialog_id != 0 ? dialog_id : user_id);
@@ -447,6 +390,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     showAlertDialog(AndroidUtilities.buildTTLAlert(getParentActivity(), currentEncryptedChat));
                 } else if (i == settingsNotificationsRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.PROFILE_NOTIFICATION_AND_SOUNDS,null);
                     Bundle args = new Bundle();
                     if (user_id != 0) {
                         args.putLong("dialog_id", dialog_id == 0 ? user_id : dialog_id);
@@ -455,6 +399,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     presentFragment(new ProfileNotificationsActivity(args));
                 } else if (i == phoneRow) {
+                    MixpanelAPI.getInstance(context, BuildVars.MIXPANEL_TOKEN).track(MixPanelEvents.PROFILE_SENDER_PHONE_NUMBER,null);
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null || user.phone == null || user.phone.length() == 0 || getParentActivity() == null) {
                         return;
@@ -1136,14 +1081,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (user.phone != null && user.phone.length() != 0) {
                     item.addSubItem(add_contact, LocaleController.getString("AddContact", R.string.AddContact), 0);
                     item.addSubItem(share_contact, LocaleController.getString("ShareContact", R.string.ShareContact), 0);
-                    item.addSubItem(block_contact, !userBlocked ? LocaleController.getString("BlockContact", R.string.BlockContact) : LocaleController.getString("Unblock", R.string.Unblock), 0);
-                } else {
-                    item.addSubItem(block_contact, !userBlocked ? LocaleController.getString("BlockContact", R.string.BlockContact) : LocaleController.getString("Unblock", R.string.Unblock), 0);
                 }
             } else {
                 ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_other);
                 item.addSubItem(share_contact, LocaleController.getString("ShareContact", R.string.ShareContact), 0);
-                item.addSubItem(block_contact, !userBlocked ? LocaleController.getString("BlockContact", R.string.BlockContact) : LocaleController.getString("Unblock", R.string.Unblock), 0);
                 item.addSubItem(edit_contact, LocaleController.getString("EditContact", R.string.EditContact), 0);
                 item.addSubItem(delete_contact, LocaleController.getString("DeleteContact", R.string.DeleteContact), 0);
             }
@@ -1152,7 +1093,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             if (chat_id > 0) {
                 item.addSubItem(add_member, LocaleController.getString("AddMember", R.string.AddMember), 0);
                 item.addSubItem(edit_name, LocaleController.getString("EditName", R.string.EditName), 0);
-                item.addSubItem(leave_group, LocaleController.getString("DeleteAndExit", R.string.DeleteAndExit), 0);
             } else {
                 item.addSubItem(edit_name, LocaleController.getString("EditName", R.string.EditName), 0);
                 item.addSubItem(add_member, LocaleController.getString("AddRecipient", R.string.AddRecipient), 0);
