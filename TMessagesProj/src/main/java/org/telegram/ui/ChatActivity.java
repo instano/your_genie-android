@@ -52,6 +52,7 @@ import android.widget.Toast;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
@@ -4733,7 +4734,21 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     ((ChatMessageCell) view).setDelegate(new ChatMessageCell.ChatMessageCellDelegate() {
                         @Override
                         public void pressedUrl(String url) {
-                            Toast.makeText(mContext, url +" clicked", Toast.LENGTH_SHORT).show();
+                            MixpanelAPI mixpanelAPI;
+                            if (getParentActivity() != null) {
+                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
+                            }
+                            else {
+                                mixpanelAPI = MixPanelEvents.api();
+                            }
+                            JSONObject props = new JSONObject();
+                            try {
+                                props.put(MixPanelEvents.URL_CLICKED, url);
+                                mixpanelAPI.track(MixPanelEvents.URL_CLICKED, props);
+                            } catch (JSONException e) {
+                                FileLog.d(BuildVars.TAG, e.toString());
+                            }
+
                             Bundle args = new Bundle();
                             args.putString("url", url);
                             WebViewActivity fragment = new WebViewActivity(args);

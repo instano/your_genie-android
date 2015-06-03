@@ -72,6 +72,9 @@ public class MixPanelEvents {
     public static final String NOTIFICATION_SETTINGS_SOUND = "Notification Settings->Sound";
     public static final String NOTIFICATION_SETTINGS_RESET_NOTIFICATIONS = "Notification Settings->Reset Notifications";
 
+//    URL clicked in ChatActivity
+    public static final String URL_CLICKS = "URL clicks";
+    public static final String URL_CLICKED = "URL clicked";
 
     public static MixpanelAPI api() {
         return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken());
