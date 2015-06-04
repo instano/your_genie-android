@@ -52,6 +52,7 @@ import android.widget.Toast;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
@@ -594,6 +595,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             SendMessagesHelper.prepareSendingPhotos(photos, null, dialog_id, replyingMessageObject);
                             SendMessagesHelper.prepareSendingPhotosSearch(webPhotos, dialog_id, replyingMessageObject);
                             showReplyPanel(false, null, null, null, false, true);
+                            FileLog.d(BuildVars.TAG,"597 Attach gallery called");
                             MixpanelAPI mixpanelAPI;
                             if (getParentActivity()!=null) {
                                 mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
@@ -644,16 +646,19 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     LocationActivity fragment = new LocationActivity();
                     fragment.setDelegate(new LocationActivity.LocationActivityDelegate() {
                         @Override
-                        public void didSelectLocation(double latitude, double longitude) {
+                        public void didSelectLocation(double latitude, double longitude) throws JSONException {
                             SendMessagesHelper.getInstance().sendMessage(latitude, longitude, dialog_id, replyingMessageObject);
-                            FileLog.d(BuildVars.TAG, "id == attach_location");
+                            FileLog.d(BuildVars.TAG, "650 Attach_location called");
                             MixpanelAPI mixpanelAPI;
                             if (getParentActivity()!=null) {
                                 mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
                             } else {
                                 mixpanelAPI = MixPanelEvents.api();
                             }
-                            mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_LOCATION, null);
+                            JSONObject jsonObject = new JSONObject();
+                            jsonObject.put(MixPanelEvents.LOCATION_LATITUDE,latitude);
+                            jsonObject.put(MixPanelEvents.LOCATION_LONGITUDE,longitude);
+                            mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_LOCATION, jsonObject);
                             moveScrollToLastMessage();
                             showReplyPanel(false, null, null, null, false, true);
                             if (paused) {
@@ -669,6 +674,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         public void didSelectFiles(DocumentSelectActivity activity, ArrayList<String> files) {
                             activity.finishFragment();
                             SendMessagesHelper.prepareSendingDocuments(files, files, null, null, dialog_id, replyingMessageObject);
+                            FileLog.d(BuildVars.TAG, "673 Attach_file called");
                             MixpanelAPI mixpanelAPI;
                             if(getParentActivity()!=null){
                                 mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
@@ -1857,6 +1863,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         }
                         SendMessagesHelper.getInstance().sendMessage((TLRPC.TL_document) document, null, null, dialog_id, replyingMessageObject);
+                        FileLog.d(BuildVars.TAG, "1862 Send Emoji called");
                         MixpanelAPI mixpanelAPI;
                         if(getParentActivity()!=null){
                             mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
@@ -2876,7 +2883,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public void sendButtonPressed(int index) {
 //                        This count is for take photo send
-                        FileLog.d(BuildVars.TAG,"Chat Activity.sendButtonPressed()");
+                        FileLog.d(BuildVars.TAG,"2882 Attach photo called");
 
                         MixpanelAPI mixpanelAPI;
                         if (getParentActivity()!=null) {
@@ -2946,6 +2953,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 } else {
                     SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id, replyingMessageObject);
+                    FileLog.d(BuildVars.TAG, "2952 Attach_video called");
                     MixpanelAPI mixpanelAPI;
                     if(getParentActivity()!=null){
                         mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
@@ -5026,13 +5034,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 baseCell.setMessageObject(message);
                 baseCell.setCheckPressed(!disableSelection, disableSelection && selected);
                 if (view instanceof ChatAudioCell && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_AUDIO)) {
-                    MixpanelAPI mixpanelAPI;
-                   if(getParentActivity()!=null){
-                        mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
-                    }else{
-                        mixpanelAPI = MixPanelEvents.api();
-                    }
-                    mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_SOUND,null);
                     ((ChatAudioCell) view).downloadAudioIfNeed();
                 }
                 baseCell.setHighlighted(highlightMessageId != Integer.MAX_VALUE && message.getId() == highlightMessageId);

@@ -19,6 +19,9 @@ import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLoader;
@@ -668,7 +671,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     }
 
     public void sendMessage(String message, long peer, MessageObject reply_to_msg, TLRPC.WebPage webPage, boolean searchLinks) {
-        FileLog.d(BuildVars.TAG, "Send Message Helper.sendMessage()");
         sendMessage(message, null, null, null, null, null, null, null, null, null, peer, false, null, reply_to_msg, webPage, searchLinks);
     }
 
@@ -685,6 +687,10 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     }
 
     public void sendMessage(TLRPC.TL_audio audio, String path, long peer, MessageObject reply_to_msg) {
+        FileLog.d(BuildVars.TAG,"Audi is sent from here");
+        MixpanelAPI mixpanelAPI;
+        mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken());
+        mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_SOUND,null);
         sendMessage(null, null, null, null, null, null, null, null, audio, null, peer, false, path, reply_to_msg, null, true);
     }
 

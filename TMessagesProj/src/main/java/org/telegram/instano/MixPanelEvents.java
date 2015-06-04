@@ -17,14 +17,16 @@ import org.telegram.ui.LoginActivity;
 public class MixPanelEvents {
 
 //    Send Messages
+    public static String LOCATION_LATITUDE = "Attached Location Latitude";
+    public static String LOCATION_LONGITUDE = "Attached Location Longitude";
     public static final String MESSAGES_SEND_EMOJI= "Sent Emoji";
-    public static final String MESSAGES_SEND= "Sent Message's";
-    public static final String MESSAGES_ATTACH_PHOTO= "Attached Camera Photo's";
+    public static final String MESSAGES_SEND= "Sent Message";
+    public static final String MESSAGES_ATTACH_PHOTO= "Attached Camera Photo";
     public static final String MESSAGES_ATTACH_GALLERY = "Attached Gallery";
-    public static final String MESSAGES_ATTACH_VIDEO = "Attached Video's";
-    public static final String MESSAGES_ATTACH_FILE= "Attached File's";
-    public static final String MESSAGES_ATTACH_LOCATION= "Attached Location's";
-    public static final String MESSAGES_ATTACH_SOUND = "Sent Sound File's";
+    public static final String MESSAGES_ATTACH_VIDEO = "Attached Video";
+    public static final String MESSAGES_ATTACH_FILE= "Attached File";
+    public static final String MESSAGES_ATTACH_LOCATION= "Attached Location";
+    public static final String MESSAGES_ATTACH_SOUND = "Attached Sound File";
 //    public static final String MESSAGES_RECIEVED = "Received Messages";
 
     private final String TAG = getClass().getSimpleName();
