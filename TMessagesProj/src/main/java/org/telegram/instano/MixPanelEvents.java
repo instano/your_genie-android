@@ -16,18 +16,29 @@ import org.telegram.ui.LoginActivity;
  */
 public class MixPanelEvents {
 
-//    Send Messages
-    public static String LOCATION_LATITUDE = "Attached Location Latitude";
-    public static String LOCATION_LONGITUDE = "Attached Location Longitude";
-    public static final String MESSAGES_SEND_EMOJI= "Sent Emoji";
-    public static final String MESSAGES_SEND= "Sent Message";
-    public static final String MESSAGES_ATTACH_PHOTO= "Attached Camera Photo";
-    public static final String MESSAGES_ATTACH_GALLERY = "Attached Gallery";
-    public static final String MESSAGES_ATTACH_VIDEO = "Attached Video";
-    public static final String MESSAGES_ATTACH_FILE= "Attached File";
-    public static final String MESSAGES_ATTACH_LOCATION= "Attached Location";
-    public static final String MESSAGES_ATTACH_SOUND = "Attached Sound File";
-//    public static final String MESSAGES_RECIEVED = "Received Messages";
+//    Send Messages Event
+    public static String SEND_LOCATION_LATITUDE = "Latitude";
+    public static String SEND_LOCATION_LONGITUDE = "Longitude";
+    public static final String SEND_MESSAGES_EMOJI= "Sent Emoji";
+    public static final String SEND_MESSAGES= "Sent Message";
+    public static final String SEND_MESSAGES_ATTACH_PHOTO= "Sent Camera Photo";
+    public static final String SEND_MESSAGES_ATTACH_GALLERY = "Sent Gallery";
+    public static final String SEND_MESSAGES_ATTACH_VIDEO = "Sent Video";
+    public static final String SEND_MESSAGES_ATTACH_FILE= "Sent File";
+    public static final String SEND_MESSAGES_ATTACH_LOCATION= "Sent Location";
+    public static final String SEND_MESSAGES_ATTACH_SOUND = "Sent Sound File";
+
+//    Received Messages Event
+    public static String LOCATION_LATITUDE = "Latitude";
+    public static String LOCATION_LONGITUDE = "Longitude";
+    public static final String RECEIVED_MESSAGES_EMOJI= "Received Emoji";
+    public static final String RECEIVED_MESSAGES= "Received Message";
+    public static final String RECEIVED_MESSAGES_ATTACH_PHOTO= "Received Camera Photo";
+    public static final String RECEIVED_MESSAGES_ATTACH_GALLERY = "Received Gallery";
+    public static final String RECEIVED_ATTACH_VIDEO = "Received Video";
+    public static final String RECEIVED_ATTACH_FILE= "Received File";
+    public static final String RECEIVED_ATTACH_LOCATION= "Received Location";
+    public static final String RECEIVED_MESSAGES_ATTACH_SOUND = "Received Sound File";
 
     private final String TAG = getClass().getSimpleName();
     public static final String PROPERTY_BUILD_TYPE = "Build Type";

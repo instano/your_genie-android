@@ -690,7 +690,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         FileLog.d(BuildVars.TAG,"Audi is sent from here");
         MixpanelAPI mixpanelAPI;
         mixpanelAPI = MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken());
-        mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_SOUND,null);
+        mixpanelAPI.track(MixPanelEvents.SEND_MESSAGES_ATTACH_SOUND,null);
         sendMessage(null, null, null, null, null, null, null, null, audio, null, peer, false, path, reply_to_msg, null, true);
     }
 

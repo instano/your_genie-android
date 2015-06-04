@@ -598,11 +598,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             FileLog.d(BuildVars.TAG,"597 Attach gallery called");
                             MixpanelAPI mixpanelAPI;
                             if (getParentActivity()!=null) {
-                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
                             } else {
                                 mixpanelAPI = MixPanelEvents.api();
                             }
-                            mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_GALLERY, null);
+                            mixpanelAPI.track(MixPanelEvents.SEND_MESSAGES_ATTACH_GALLERY, null);
                         }
 
                         @Override
@@ -651,14 +651,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             FileLog.d(BuildVars.TAG, "650 Attach_location called");
                             MixpanelAPI mixpanelAPI;
                             if (getParentActivity()!=null) {
-                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
                             } else {
                                 mixpanelAPI = MixPanelEvents.api();
                             }
                             JSONObject jsonObject = new JSONObject();
                             jsonObject.put(MixPanelEvents.LOCATION_LATITUDE,latitude);
                             jsonObject.put(MixPanelEvents.LOCATION_LONGITUDE,longitude);
-                            mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_LOCATION, jsonObject);
+                            mixpanelAPI.track(MixPanelEvents.SEND_MESSAGES_ATTACH_LOCATION, jsonObject);
                             moveScrollToLastMessage();
                             showReplyPanel(false, null, null, null, false, true);
                             if (paused) {
@@ -677,11 +677,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             FileLog.d(BuildVars.TAG, "673 Attach_file called");
                             MixpanelAPI mixpanelAPI;
                             if(getParentActivity()!=null){
-                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.mixpanelToken());
                             }else{
                                 mixpanelAPI = MixPanelEvents.api();
                             }
-                            mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_FILE, null);
+                            mixpanelAPI.track(MixPanelEvents.SEND_MESSAGES_ATTACH_FILE, null);
 
                             showReplyPanel(false, null, null, null, false, true);
                         }
@@ -1866,11 +1866,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         FileLog.d(BuildVars.TAG, "1862 Send Emoji called");
                         MixpanelAPI mixpanelAPI;
                         if(getParentActivity()!=null){
-                            mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                            mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.mixpanelToken());
                         }else{
                             mixpanelAPI = MixPanelEvents.api();
                         }
-                        mixpanelAPI.track(MixPanelEvents.MESSAGES_SEND_EMOJI, null);
+                        mixpanelAPI.track(MixPanelEvents.SEND_MESSAGES_EMOJI, null);
                         showReplyPanel(false, null, null, null, false, true);
                     }
                     chatActivityEnterView.setFieldText("");
@@ -2887,11 +2887,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                         MixpanelAPI mixpanelAPI;
                         if (getParentActivity()!=null) {
-                            mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.MIXPANEL_TOKEN);
+                            mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
                         } else {
                             mixpanelAPI = MixPanelEvents.api();
                         }
-                        mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_PHOTO,null);
+                        mixpanelAPI.track(MixPanelEvents.SEND_MESSAGES_ATTACH_PHOTO,null);
 
                         MediaController.PhotoEntry photoEntry = (MediaController.PhotoEntry) arrayList.get(0);
                         if (photoEntry.imagePath != null) {
@@ -2956,11 +2956,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     FileLog.d(BuildVars.TAG, "2952 Attach_video called");
                     MixpanelAPI mixpanelAPI;
                     if(getParentActivity()!=null){
-                        mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.MIXPANEL_TOKEN);
+                        mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.mixpanelToken());
                     }else{
                         mixpanelAPI = MixPanelEvents.api();
                     }
-                    mixpanelAPI.track(MixPanelEvents.MESSAGES_ATTACH_VIDEO, null);
+                    mixpanelAPI.track(MixPanelEvents.SEND_MESSAGES_ATTACH_VIDEO, null);
 
                     showReplyPanel(false, null, null, null, false, true);
                 }
