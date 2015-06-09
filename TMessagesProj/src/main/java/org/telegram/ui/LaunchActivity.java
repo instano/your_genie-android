@@ -50,6 +50,7 @@ import org.telegram.android.MessagesStorage;
 import org.telegram.android.NotificationCenter;
 import org.telegram.android.NotificationsController;
 import org.telegram.android.SendMessagesHelper;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
@@ -292,18 +293,22 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
                         intent.putExtra(Intent.EXTRA_TEXT, ContactsController.getInstance().getInviteText());
+                        MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_INVITE_FREINDS, null);
                         startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteFriends", R.string.InviteFriends)), 500);
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 3) {
+                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_SETTINGS,null);
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 4) {
+                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_ABOUT_US,null);
                     presentFragment(new AboutUsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 5){
+                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_CONTACT_US,null);
                     ContactUsDialog cd = new ContactUsDialog(LaunchActivity.this);
                     cd.show();
                 }

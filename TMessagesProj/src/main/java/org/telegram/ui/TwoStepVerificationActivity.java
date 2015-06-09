@@ -39,9 +39,13 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.LocaleController;
 import org.telegram.android.NotificationCenter;
+import org.telegram.instano.MixPanelEvents;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
@@ -142,7 +146,7 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
     }
 
     @Override
-    public View createView(Context context, LayoutInflater inflater) {
+    public View createView(final Context context, LayoutInflater inflater) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(false);
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -399,11 +403,13 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                     if (i == setPasswordRow || i == changePasswordRow) {
+                        MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.TWO_STEP_VERIFICATION_SET_PASSWORD,null);
                         TwoStepVerificationActivity fragment = new TwoStepVerificationActivity(1);
                         fragment.currentPasswordHash = currentPasswordHash;
                         fragment.currentPassword = currentPassword;
                         presentFragment(fragment);
                     } else if (i == setRecoveryEmailRow || i == changeRecoveryEmailRow) {
+                        MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.TWO_STEP_VERIFICATION_SET_RECOVERY_EMAIL,null);
                         TwoStepVerificationActivity fragment = new TwoStepVerificationActivity(1);
                         fragment.currentPasswordHash = currentPasswordHash;
                         fragment.currentPassword = currentPassword;
@@ -411,6 +417,7 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
                         fragment.passwordSetState = 3;
                         presentFragment(fragment);
                     } else if (i == turnPasswordOffRow || i == abortPasswordRow) {
+                        MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.TWO_STEP_VERIFICATION_TURN_PASSWORD_OFF,null);
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setMessage(LocaleController.getString("TurnPasswordOffQuestion", R.string.TurnPasswordOffQuestion));
                         builder.setTitle(LocaleController.getString("AppName", R.string.AppName));

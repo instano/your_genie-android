@@ -12,7 +12,6 @@ import android.animation.ObjectAnimator;
 import android.animation.StateListAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,14 +20,11 @@ import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Outline;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
-import android.util.Base64;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -44,47 +40,46 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
+import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
-import org.telegram.PhoneFormat.PhoneFormat;
-import org.telegram.android.MediaController;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
 import org.telegram.android.LocaleController;
-import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.SerializedData;
-import org.telegram.messenger.TLClassStore;
-import org.telegram.messenger.TLObject;
-import org.telegram.messenger.TLRPC;
-import org.telegram.messenger.ConnectionsManager;
-import org.telegram.messenger.FileLog;
+import org.telegram.android.MediaController;
+import org.telegram.android.MessageObject;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
 import org.telegram.android.NotificationCenter;
+import org.telegram.instano.MixPanelEvents;
+import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
+import org.telegram.messenger.ConnectionsManager;
+import org.telegram.messenger.FileLoader;
+import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
 import org.telegram.messenger.RPCRequest;
+import org.telegram.messenger.TLObject;
+import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
-import org.telegram.android.MessageObject;
+import org.telegram.ui.ActionBar.ActionBar;
+import org.telegram.ui.ActionBar.ActionBarMenu;
+import org.telegram.ui.ActionBar.ActionBarMenuItem;
+import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.AnimationCompat.ViewProxy;
-import org.telegram.ui.Cells.TextInfoCell;
 import org.telegram.ui.Cells.EmptyCell;
 import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.ShadowSectionCell;
 import org.telegram.ui.Cells.TextCheckCell;
 import org.telegram.ui.Cells.TextDetailSettingsCell;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
+import org.telegram.ui.Cells.TextInfoCell;
 import org.telegram.ui.Cells.TextSettingsCell;
-import org.telegram.ui.ActionBar.ActionBar;
-import org.telegram.ui.ActionBar.ActionBarMenu;
-import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.AvatarUpdater;
 import org.telegram.ui.Components.BackupImageView;
-import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Components.NumberPicker;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -249,7 +244,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     }
 
     @Override
-    public View createView(Context context, LayoutInflater inflater) {
+    public View createView(final Context context, LayoutInflater inflater) {
         actionBar.setBackgroundColor(AvatarDrawable.getProfileBackColorForId(5));
         actionBar.setItemsBackground(AvatarDrawable.getButtonColorForId(5));
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
@@ -376,6 +371,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     if (getParentActivity() == null) {
                         return;
                     }
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_MESSAGE_TEXT_SIZE,null);
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("TextSize", R.string.TextSize));
                     final NumberPicker numberPicker = new NumberPicker(getParentActivity());
@@ -398,6 +394,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     });
                     showAlertDialog(builder);
                 } else if (i == enableAnimationsRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_ANIMATIONS,null);
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     boolean animations = preferences.getBoolean("view_animations", true);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -407,10 +404,13 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         ((TextCheckCell) view).setChecked(!animations);
                     }
                 } else if (i == notificationRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_NOTIFICATIONS_SOUNDS,null);
                     presentFragment(new NotificationsSettingsActivity());
                 } else if (i == backgroundRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_CHAT_BACKGROUND,null);
                     presentFragment(new WallpapersActivity());
                 } else if (i == sendByEnterRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_SEND_BY_ENTER,null);
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     boolean send = preferences.getBoolean("send_by_enter", false);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -420,13 +420,16 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         ((TextCheckCell) view).setChecked(!send);
                     }
                 } else if (i == saveToGalleryRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_SAVE_TO_GALLERY,null);
                     MediaController.getInstance().toggleSaveToGallery();
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canSaveToGallery());
                     }
                 } else if (i == privacyRow) {
-                    presentFragment(new PrivacySettingsActivity());
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_SECURITY,null);
+                    presentFragment(new SecuritySettingsActivity());
                 } else if (i == languageRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_LANGUAGE,null);
 //                    presentFragment(new LanguageSelectActivity());
                 } else if (i == contactsSortRow) {
                     if (getParentActivity() == null) {
@@ -460,12 +463,15 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
                     int mask = 0;
                     if (i == mobileDownloadRow) {
+                        MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_USING_MOBILE_DATA,null);
                         builder.setTitle(LocaleController.getString("WhenUsingMobileData", R.string.WhenUsingMobileData));
                         mask = MediaController.getInstance().mobileDataDownloadMask;
                     } else if (i == wifiDownloadRow) {
+                        MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_USING_WI_FI,null);
                         builder.setTitle(LocaleController.getString("WhenConnectedOnWiFi", R.string.WhenConnectedOnWiFi));
                         mask = MediaController.getInstance().wifiDownloadMask;
                     } else if (i == roamingDownloadRow) {
+                        MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_USING_ROAMING,null);
                         builder.setTitle(LocaleController.getString("WhenRoaming", R.string.WhenRoaming));
                         mask = MediaController.getInstance().roamingDownloadMask;
                     }
@@ -522,8 +528,10 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     builder.setNegativeButton(LocaleController.getString("OK", R.string.OK), null);
                     showAlertDialog(builder);
                 } else if (i == usernameRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_USER_NAME,null);
                     presentFragment(new ChangeNameActivity());
                 } else if (i == numberRow) {
+                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_USER_PHONE_NUMBER,null);
                     presentFragment(new ChangePhoneHelpActivity());
                 }
             }

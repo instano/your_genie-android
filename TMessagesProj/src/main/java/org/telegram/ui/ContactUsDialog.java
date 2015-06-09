@@ -22,7 +22,7 @@ public class ContactUsDialog extends Dialog implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.error_dialog);
-        setTitle("Instano");
+        setTitle("Contact");
 
         Button buttonSendSms = (Button) findViewById(R.id.buttonSendSms);
         Button buttonSendWhatsapp = (Button) findViewById(R.id.buttonSendWhatsapp);
@@ -59,10 +59,10 @@ public class ContactUsDialog extends Dialog implements View.OnClickListener {
                 Intent intent = null;
                 try {
                     getContext().getPackageManager().getPackageInfo("com.twitter.android", 0);
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name= Dheeraj Meena"));
+                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name= @meena_dheera"));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 } catch (Exception e) {
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/Dheeraj Meena"));
+                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/@meena__dheera"));
                 }
                 getContext().startActivity(intent);
                 break;
