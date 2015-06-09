@@ -1,4 +1,4 @@
-## Messenger for your genie app
+## Messenger for instano app
 
 Visit [www.instanoApp.com](http://www.instanoapp.com/) for more
 
