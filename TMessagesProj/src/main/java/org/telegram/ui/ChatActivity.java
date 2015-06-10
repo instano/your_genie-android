@@ -281,6 +281,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @Override
     public boolean onFragmentCreate() {
         FileLog.d(BuildVars.TAG, "onFragmentCreate()");
+        if (arguments == null)
+            arguments = BuildVars.args;
         final int chatId = arguments.getInt("chat_id", 0);
         final int userId = arguments.getInt("user_id", 0);
         final int encId = arguments.getInt("enc_id", 0);

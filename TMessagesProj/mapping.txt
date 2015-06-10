@@ -12941,11 +12941,8 @@ org.telegram.android.LocaleController -> org.telegram.android.u:
     void addRules(java.lang.String[],org.telegram.android.LocaleController$PluralRules) -> a
     java.lang.String stringForQuantity(int) -> a
     java.lang.String getLocaleString(java.util.Locale) -> a
-    boolean applyLanguageFile(java.io.File) -> a
-    void saveOtherLanguages() -> d
-    boolean deleteLanguage(org.telegram.android.LocaleController$LocaleInfo) -> a
-    void loadOtherLanguages() -> e
-    java.util.HashMap getLocaleFileStrings(java.io.File) -> b
+    void loadOtherLanguages() -> d
+    java.util.HashMap getLocaleFileStrings(java.io.File) -> a
     void applyLanguage(org.telegram.android.LocaleController$LocaleInfo,boolean) -> a
     void applyLanguage(org.telegram.android.LocaleController$LocaleInfo,boolean,boolean) -> a
     java.lang.String getCurrentLanguageName() -> b
@@ -12965,16 +12962,11 @@ org.telegram.android.LocaleController$1 -> org.telegram.android.u$1:
     org.telegram.android.LocaleController this$0 -> a
     int compare(org.telegram.android.LocaleController$LocaleInfo,org.telegram.android.LocaleController$LocaleInfo) -> a
     int compare(java.lang.Object,java.lang.Object) -> compare
-org.telegram.android.LocaleController$2 -> org.telegram.android.u$2:
-    org.telegram.android.LocaleController this$0 -> a
-    int compare(org.telegram.android.LocaleController$LocaleInfo,org.telegram.android.LocaleController$LocaleInfo) -> a
-    int compare(java.lang.Object,java.lang.Object) -> compare
 org.telegram.android.LocaleController$LocaleInfo -> org.telegram.android.v:
     java.lang.String name -> a
     java.lang.String nameEnglish -> b
     java.lang.String shortName -> c
     java.lang.String pathToFile -> d
-    java.lang.String getSaveString() -> a
     org.telegram.android.LocaleController$LocaleInfo createWithString(java.lang.String) -> a
 org.telegram.android.LocaleController$PluralRules -> org.telegram.android.w:
     int quantityForNumber(int) -> a
@@ -15947,18 +15939,14 @@ org.telegram.messenger.BuildVars -> org.telegram.messenger.e:
     boolean DEBUG_VERSION -> a
     int APP_ID -> b
     java.lang.String APP_HASH -> c
-    java.lang.String HOCKEY_APP_HASH -> d
-    java.lang.String GCM_SENDER_ID -> e
-    java.lang.String SEND_LOGS_EMAIL -> f
-    java.lang.String BING_SEARCH_KEY -> g
-    java.lang.String TAG -> h
-    int USER_ID -> i
-    int CHAT_ID -> j
-    int ENC_ID -> k
-    int MESSAGE_ID -> l
-    android.os.Bundle args -> m
-    java.lang.String ACTIONBAR_TITLE -> n
-    java.lang.String PHONE -> o
+    java.lang.String GCM_SENDER_ID -> d
+    java.lang.String SEND_LOGS_EMAIL -> e
+    java.lang.String BING_SEARCH_KEY -> f
+    int USER_ID -> g
+    int CHAT_ID -> h
+    int ENC_ID -> i
+    int MESSAGE_ID -> j
+    android.os.Bundle args -> k
     java.lang.String mixpanelToken() -> a
 org.telegram.messenger.ByteBufferDesc -> org.telegram.messenger.f:
     java.nio.ByteBuffer buffer -> a
@@ -20071,12 +20059,12 @@ org.telegram.ui.ActionBar.ActionBarLayout -> org.telegram.ui.a.c:
     boolean dispatchKeyEventPreIme(android.view.KeyEvent) -> dispatchKeyEventPreIme
     boolean drawChild(android.graphics.Canvas,android.view.View,long) -> drawChild
     void setDelegate(org.telegram.ui.ActionBar.ActionBarLayout$ActionBarLayoutDelegate) -> setDelegate
-    void onSlideAnimationEnd(boolean) -> c
+    void onSlideAnimationEnd(boolean) -> b
     void prepareForMoving(android.view.MotionEvent) -> a
     boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
     void onBackPressed() -> c
     void onLowMemory() -> d
-    void onAnimationEndCheck(boolean) -> d
+    void onAnimationEndCheck(boolean) -> c
     boolean checkTransitionAnimation() -> e
     void presentFragmentInternalRemoveOld(boolean,org.telegram.ui.ActionBar.BaseFragment) -> a
     boolean presentFragment(org.telegram.ui.ActionBar.BaseFragment) -> a
@@ -20089,12 +20077,11 @@ org.telegram.ui.ActionBar.ActionBarLayout -> org.telegram.ui.a.c:
     void showLastFragment() -> f
     void removeFragmentFromStack(org.telegram.ui.ActionBar.BaseFragment) -> c
     void removeAllFragments() -> g
-    void rebuildAllFragmentViews(boolean) -> b
     boolean onKeyUp(int,android.view.KeyEvent) -> onKeyUp
     void onActionModeStarted(java.lang.Object) -> a
     void onActionModeFinished(java.lang.Object) -> b
-    void onCloseAnimationEnd(boolean) -> e
-    void onOpenAnimationEnd(boolean) -> f
+    void onCloseAnimationEnd(boolean) -> d
+    void onOpenAnimationEnd(boolean) -> e
     void startActivityForResult(android.content.Intent,int) -> a
     void setUseAlphaAnimations(boolean) -> setUseAlphaAnimations
     void setBackgroundView(android.view.View) -> setBackgroundView
@@ -20165,7 +20152,6 @@ org.telegram.ui.ActionBar.ActionBarLayout$ActionBarLayoutDelegate -> org.telegra
     boolean needPresentFragment(org.telegram.ui.ActionBar.BaseFragment,boolean,boolean,org.telegram.ui.ActionBar.ActionBarLayout) -> a
     boolean needAddFragmentToStack(org.telegram.ui.ActionBar.BaseFragment,org.telegram.ui.ActionBar.ActionBarLayout) -> a
     boolean needCloseLastFragment(org.telegram.ui.ActionBar.ActionBarLayout) -> a
-    void onRebuildAllFragments(org.telegram.ui.ActionBar.ActionBarLayout) -> b
 org.telegram.ui.ActionBar.ActionBarLayout$LinearLayoutContainer -> org.telegram.ui.a.e:
     org.telegram.ui.ActionBar.ActionBarLayout this$0 -> a
     boolean drawChild(android.graphics.Canvas,android.view.View,long) -> drawChild
@@ -22373,7 +22359,6 @@ org.telegram.ui.ChatActivity -> org.telegram.ui.h:
     void fixLayout(boolean) -> d
     void onConfigurationChanged(android.content.res.Configuration) -> a
     void createMenu(android.view.View,boolean) -> a
-    void processSelectedOption(int) -> e
     void openProfileWithUsername(java.lang.String) -> a
     boolean isGoogleMapsInstalled() -> o
     void updateVisibleRows() -> G
@@ -22478,22 +22463,19 @@ org.telegram.ui.ChatActivity -> org.telegram.ui.h:
     android.widget.TextView access$7200(org.telegram.ui.ChatActivity) -> al
     org.telegram.ui.ActionBar.ActionBar access$7300(org.telegram.ui.ChatActivity) -> am
     org.telegram.ui.ActionBar.ActionBar access$7400(org.telegram.ui.ChatActivity) -> an
-    org.telegram.android.MessageObject access$7500(org.telegram.ui.ChatActivity) -> ao
-    void access$7600(org.telegram.ui.ChatActivity,int) -> b
-    void access$7700(org.telegram.ui.ChatActivity,boolean) -> e
-    android.app.AlertDialog access$7802(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> a
-    android.app.AlertDialog access$7902(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> b
-    int access$8000(org.telegram.ui.ChatActivity) -> ap
-    org.telegram.ui.ActionBar.ActionBar access$8100(org.telegram.ui.ChatActivity) -> aq
-    org.telegram.ui.ActionBar.ActionBar access$8200(org.telegram.ui.ChatActivity) -> ar
-    org.telegram.ui.ActionBar.ActionBar access$8300(org.telegram.ui.ChatActivity) -> as
-    void access$8400(org.telegram.ui.ChatActivity,java.lang.String) -> d
-    boolean access$8500(org.telegram.ui.ChatActivity) -> at
-    void access$8600(org.telegram.ui.ChatActivity,org.telegram.android.MessageObject) -> b
-    org.telegram.ui.ActionBar.ActionBar access$8700(org.telegram.ui.ChatActivity) -> au
-    org.telegram.ui.ActionBar.ActionBar access$8800(org.telegram.ui.ChatActivity) -> av
-    org.telegram.ui.ActionBar.ActionBar access$8900(org.telegram.ui.ChatActivity) -> aw
-    int access$9000(org.telegram.ui.ChatActivity) -> ax
+    android.app.AlertDialog access$7602(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> a
+    android.app.AlertDialog access$7702(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> b
+    int access$7800(org.telegram.ui.ChatActivity) -> ao
+    org.telegram.ui.ActionBar.ActionBar access$7900(org.telegram.ui.ChatActivity) -> ap
+    org.telegram.ui.ActionBar.ActionBar access$8000(org.telegram.ui.ChatActivity) -> aq
+    org.telegram.ui.ActionBar.ActionBar access$8100(org.telegram.ui.ChatActivity) -> ar
+    void access$8200(org.telegram.ui.ChatActivity,java.lang.String) -> d
+    boolean access$8300(org.telegram.ui.ChatActivity) -> as
+    void access$8400(org.telegram.ui.ChatActivity,org.telegram.android.MessageObject) -> b
+    org.telegram.ui.ActionBar.ActionBar access$8500(org.telegram.ui.ChatActivity) -> at
+    org.telegram.ui.ActionBar.ActionBar access$8600(org.telegram.ui.ChatActivity) -> au
+    org.telegram.ui.ActionBar.ActionBar access$8700(org.telegram.ui.ChatActivity) -> av
+    int access$8800(org.telegram.ui.ChatActivity) -> aw
 org.telegram.ui.ChatActivity$1 -> org.telegram.ui.h$1:
     org.telegram.ui.ChatActivity this$0 -> a
     boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
@@ -22630,74 +22612,66 @@ org.telegram.ui.ChatActivity$33 -> org.telegram.ui.h$27:
     int val$lastPos -> a
     org.telegram.ui.ChatActivity this$0 -> b
     boolean onPreDraw() -> onPreDraw
-org.telegram.ui.ChatActivity$34 -> org.telegram.ui.h$28:
-    int[] val$finalOptions -> a
-    org.telegram.ui.ChatActivity this$0 -> b
-    void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ChatActivity$35 -> org.telegram.ui.h$29:
-    org.telegram.android.MessageObject val$finalSelectedObject -> a
-    org.telegram.ui.ChatActivity this$0 -> b
-    void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ChatActivity$36 -> org.telegram.ui.h$30:
+org.telegram.ui.ChatActivity$35 -> org.telegram.ui.h$28:
     android.app.ProgressDialog val$progressDialog -> a
     org.telegram.ui.ChatActivity this$0 -> b
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.ChatActivity$36$1 -> org.telegram.ui.h$30$1:
+org.telegram.ui.ChatActivity$35$1 -> org.telegram.ui.h$28$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
-    org.telegram.ui.ChatActivity$36 this$1 -> c
+    org.telegram.ui.ChatActivity$35 this$1 -> c
     void run() -> run
-org.telegram.ui.ChatActivity$37 -> org.telegram.ui.h$31:
+org.telegram.ui.ChatActivity$36 -> org.telegram.ui.h$29:
     long val$reqId -> a
     org.telegram.ui.ChatActivity this$0 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ChatActivity$38 -> org.telegram.ui.h$32:
+org.telegram.ui.ChatActivity$37 -> org.telegram.ui.h$30:
     org.telegram.ui.ChatActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ChatActivity$4 -> org.telegram.ui.h$33:
+org.telegram.ui.ChatActivity$4 -> org.telegram.ui.h$31:
     int val$userId -> a
     java.util.concurrent.Semaphore val$semaphore -> b
     org.telegram.ui.ChatActivity this$0 -> c
     void run() -> run
-org.telegram.ui.ChatActivity$5 -> org.telegram.ui.h$34:
+org.telegram.ui.ChatActivity$5 -> org.telegram.ui.h$32:
     int val$encId -> a
     java.util.concurrent.Semaphore val$semaphore -> b
     org.telegram.ui.ChatActivity this$0 -> c
     void run() -> run
-org.telegram.ui.ChatActivity$6 -> org.telegram.ui.h$35:
+org.telegram.ui.ChatActivity$6 -> org.telegram.ui.h$33:
     java.util.concurrent.Semaphore val$semaphore -> a
     org.telegram.ui.ChatActivity this$0 -> b
     void run() -> run
-org.telegram.ui.ChatActivity$7 -> org.telegram.ui.h$36:
+org.telegram.ui.ChatActivity$7 -> org.telegram.ui.h$34:
     org.telegram.ui.ChatActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.ChatActivity$7$1 -> org.telegram.ui.h$36$1:
+org.telegram.ui.ChatActivity$7$1 -> org.telegram.ui.h$34$1:
     org.telegram.ui.ChatActivity$7 this$1 -> a
     void didSelectPhotos(java.util.ArrayList,java.util.ArrayList) -> a
     void startPhotoSelectActivity() -> a
-org.telegram.ui.ChatActivity$7$2 -> org.telegram.ui.h$36$2:
+org.telegram.ui.ChatActivity$7$2 -> org.telegram.ui.h$34$2:
     org.telegram.ui.ChatActivity$7 this$1 -> a
     void didSelectLocation(double,double) -> a
-org.telegram.ui.ChatActivity$7$3 -> org.telegram.ui.h$36$3:
+org.telegram.ui.ChatActivity$7$3 -> org.telegram.ui.h$34$3:
     org.telegram.ui.ChatActivity$7 this$1 -> a
     void didSelectFiles(org.telegram.ui.DocumentSelectActivity,java.util.ArrayList) -> a
     void startDocumentSelectActivity() -> a
-org.telegram.ui.ChatActivity$7$4 -> org.telegram.ui.h$36$4:
+org.telegram.ui.ChatActivity$7$4 -> org.telegram.ui.h$34$4:
     org.telegram.ui.ChatActivity$7 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ChatActivity$7$5 -> org.telegram.ui.h$36$5:
+org.telegram.ui.ChatActivity$7$5 -> org.telegram.ui.h$34$5:
     org.telegram.ui.ChatActivity$7 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ChatActivity$7$6 -> org.telegram.ui.h$36$6:
+org.telegram.ui.ChatActivity$7$6 -> org.telegram.ui.h$34$6:
     org.telegram.ui.ChatActivity$7 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ChatActivity$7$7 -> org.telegram.ui.h$36$7:
+org.telegram.ui.ChatActivity$7$7 -> org.telegram.ui.h$34$7:
     org.telegram.ui.ChatActivity$7 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ChatActivity$8 -> org.telegram.ui.h$37:
+org.telegram.ui.ChatActivity$8 -> org.telegram.ui.h$35:
     org.telegram.ui.ChatActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.ChatActivity$9 -> org.telegram.ui.h$38:
+org.telegram.ui.ChatActivity$9 -> org.telegram.ui.h$36:
     org.telegram.ui.ChatActivity this$0 -> a
     void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$ChatAdapter -> org.telegram.ui.i:
@@ -24966,96 +24940,6 @@ org.telegram.ui.IntroActivity$IntroAdapter -> org.telegram.ui.w:
     android.os.Parcelable saveState() -> b
     void startUpdate(android.view.View) -> a
     void unregisterDataSetObserver(android.database.DataSetObserver) -> b
-org.telegram.ui.LanguageSelectActivity -> org.telegram.ui.x:
-    org.telegram.ui.Adapters.BaseFragmentAdapter listAdapter -> j
-    android.widget.ListView listView -> k
-    boolean searchWas -> l
-    boolean searching -> m
-    org.telegram.ui.Adapters.BaseFragmentAdapter searchListViewAdapter -> n
-    android.widget.TextView emptyTextView -> o
-    java.util.Timer searchTimer -> p
-    java.util.ArrayList searchResult -> i
-    android.view.View createView(android.content.Context,android.view.LayoutInflater) -> a
-    void onResume() -> f
-    void search(java.lang.String) -> a
-    void processSearch(java.lang.String) -> b
-    void updateSearchResults(java.util.ArrayList) -> a
-    boolean access$002(org.telegram.ui.LanguageSelectActivity,boolean) -> a
-    boolean access$102(org.telegram.ui.LanguageSelectActivity,boolean) -> b
-    android.widget.ListView access$200(org.telegram.ui.LanguageSelectActivity) -> a
-    android.widget.TextView access$300(org.telegram.ui.LanguageSelectActivity) -> b
-    org.telegram.ui.Adapters.BaseFragmentAdapter access$400(org.telegram.ui.LanguageSelectActivity) -> c
-    org.telegram.ui.Adapters.BaseFragmentAdapter access$500(org.telegram.ui.LanguageSelectActivity) -> d
-    boolean access$000(org.telegram.ui.LanguageSelectActivity) -> e
-    boolean access$100(org.telegram.ui.LanguageSelectActivity) -> f
-    org.telegram.ui.ActionBar.ActionBarLayout access$600(org.telegram.ui.LanguageSelectActivity) -> g
-    java.util.Timer access$700(org.telegram.ui.LanguageSelectActivity) -> h
-    java.util.Timer access$702(org.telegram.ui.LanguageSelectActivity,java.util.Timer) -> a
-    void access$800(org.telegram.ui.LanguageSelectActivity,java.lang.String) -> a
-    void access$900(org.telegram.ui.LanguageSelectActivity,java.util.ArrayList) -> a
-org.telegram.ui.LanguageSelectActivity$1 -> org.telegram.ui.x$1:
-    org.telegram.ui.LanguageSelectActivity this$0 -> a
-    void onItemClick(int) -> a
-org.telegram.ui.LanguageSelectActivity$2 -> org.telegram.ui.x$2:
-    org.telegram.ui.LanguageSelectActivity this$0 -> a
-    void onSearchExpand() -> a
-    boolean onSearchCollapse() -> b
-    void onTextChanged(android.widget.EditText) -> a
-org.telegram.ui.LanguageSelectActivity$3 -> org.telegram.ui.x$3:
-    org.telegram.ui.LanguageSelectActivity this$0 -> a
-    boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-org.telegram.ui.LanguageSelectActivity$4 -> org.telegram.ui.x$4:
-    org.telegram.ui.LanguageSelectActivity this$0 -> a
-    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.LanguageSelectActivity$5 -> org.telegram.ui.x$5:
-    org.telegram.ui.LanguageSelectActivity this$0 -> a
-    boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
-org.telegram.ui.LanguageSelectActivity$5$1 -> org.telegram.ui.x$5$1:
-    org.telegram.android.LocaleController$LocaleInfo val$finalLocaleInfo -> a
-    org.telegram.ui.LanguageSelectActivity$5 this$1 -> b
-    void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.LanguageSelectActivity$6 -> org.telegram.ui.x$6:
-    org.telegram.ui.LanguageSelectActivity this$0 -> a
-    void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
-    void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-org.telegram.ui.LanguageSelectActivity$7 -> org.telegram.ui.x$7:
-    java.lang.String val$query -> a
-    org.telegram.ui.LanguageSelectActivity this$0 -> b
-    void run() -> run
-org.telegram.ui.LanguageSelectActivity$8 -> org.telegram.ui.x$8:
-    java.lang.String val$query -> a
-    org.telegram.ui.LanguageSelectActivity this$0 -> b
-    void run() -> run
-org.telegram.ui.LanguageSelectActivity$9 -> org.telegram.ui.x$9:
-    java.util.ArrayList val$arrCounties -> a
-    org.telegram.ui.LanguageSelectActivity this$0 -> b
-    void run() -> run
-org.telegram.ui.LanguageSelectActivity$ListAdapter -> org.telegram.ui.y:
-    android.content.Context mContext -> b
-    org.telegram.ui.LanguageSelectActivity this$0 -> a
-    boolean areAllItemsEnabled() -> areAllItemsEnabled
-    boolean isEnabled(int) -> isEnabled
-    int getCount() -> getCount
-    java.lang.Object getItem(int) -> getItem
-    long getItemId(int) -> getItemId
-    boolean hasStableIds() -> hasStableIds
-    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-    int getItemViewType(int) -> getItemViewType
-    int getViewTypeCount() -> getViewTypeCount
-    boolean isEmpty() -> isEmpty
-org.telegram.ui.LanguageSelectActivity$SearchAdapter -> org.telegram.ui.z:
-    android.content.Context mContext -> b
-    org.telegram.ui.LanguageSelectActivity this$0 -> a
-    boolean areAllItemsEnabled() -> areAllItemsEnabled
-    boolean isEnabled(int) -> isEnabled
-    int getCount() -> getCount
-    java.lang.Object getItem(int) -> getItem
-    long getItemId(int) -> getItemId
-    boolean hasStableIds() -> hasStableIds
-    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-    int getItemViewType(int) -> getItemViewType
-    int getViewTypeCount() -> getViewTypeCount
-    boolean isEmpty() -> isEmpty
 org.telegram.ui.LaunchActivity -> org.telegram.ui.LaunchActivity:
     boolean finished -> a
     java.lang.String videoPath -> b
@@ -25112,7 +24996,6 @@ org.telegram.ui.LaunchActivity -> org.telegram.ui.LaunchActivity:
     boolean needPresentFragment(org.telegram.ui.ActionBar.BaseFragment,boolean,boolean,org.telegram.ui.ActionBar.ActionBarLayout) -> a
     boolean needAddFragmentToStack(org.telegram.ui.ActionBar.BaseFragment,org.telegram.ui.ActionBar.ActionBarLayout) -> a
     boolean needCloseLastFragment(org.telegram.ui.ActionBar.ActionBarLayout) -> a
-    void onRebuildAllFragments(org.telegram.ui.ActionBar.ActionBarLayout) -> b
     org.telegram.ui.ActionBar.ActionBarLayout access$000(org.telegram.ui.LaunchActivity) -> a
     org.telegram.ui.ActionBar.ActionBarLayout access$100(org.telegram.ui.LaunchActivity) -> b
     org.telegram.ui.ActionBar.DrawerLayoutContainer access$200(org.telegram.ui.LaunchActivity) -> c
@@ -25156,7 +25039,7 @@ org.telegram.ui.LaunchActivity$7 -> org.telegram.ui.LaunchActivity$7:
 org.telegram.ui.LaunchActivity$8 -> org.telegram.ui.LaunchActivity$8:
     org.telegram.ui.LaunchActivity this$0 -> a
     void run() -> run
-org.telegram.ui.LocationActivity -> org.telegram.ui.aa:
+org.telegram.ui.LocationActivity -> org.telegram.ui.x:
     com.google.android.gms.maps.GoogleMap googleMap -> i
     android.widget.TextView distanceTextView -> j
     com.google.android.gms.maps.model.Marker userMarker -> k
@@ -25187,26 +25070,26 @@ org.telegram.ui.LocationActivity -> org.telegram.ui.aa:
     org.telegram.ui.LocationActivity$LocationActivityDelegate access$300(org.telegram.ui.LocationActivity) -> c
     android.location.Location access$400(org.telegram.ui.LocationActivity) -> d
     boolean access$502(org.telegram.ui.LocationActivity,boolean) -> a
-org.telegram.ui.LocationActivity$1 -> org.telegram.ui.aa$1:
+org.telegram.ui.LocationActivity$1 -> org.telegram.ui.x$1:
     org.telegram.ui.LocationActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.LocationActivity$2 -> org.telegram.ui.aa$2:
+org.telegram.ui.LocationActivity$2 -> org.telegram.ui.x$2:
     org.telegram.ui.LocationActivity this$0 -> a
     void onMyLocationChange(android.location.Location) -> a
-org.telegram.ui.LocationActivity$3 -> org.telegram.ui.aa$3:
+org.telegram.ui.LocationActivity$3 -> org.telegram.ui.x$3:
     org.telegram.ui.LocationActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.LocationActivity$4 -> org.telegram.ui.aa$4:
+org.telegram.ui.LocationActivity$4 -> org.telegram.ui.x$4:
     org.telegram.ui.LocationActivity this$0 -> a
     void onMarkerDragStart(com.google.android.gms.maps.model.Marker) -> a
     void onMarkerDrag(com.google.android.gms.maps.model.Marker) -> b
     void onMarkerDragEnd(com.google.android.gms.maps.model.Marker) -> c
-org.telegram.ui.LocationActivity$5 -> org.telegram.ui.aa$5:
+org.telegram.ui.LocationActivity$5 -> org.telegram.ui.x$5:
     org.telegram.ui.LocationActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.LocationActivity$LocationActivityDelegate -> org.telegram.ui.ab:
+org.telegram.ui.LocationActivity$LocationActivityDelegate -> org.telegram.ui.y:
     void didSelectLocation(double,double) -> a
-org.telegram.ui.LoginActivity -> org.telegram.ui.ac:
+org.telegram.ui.LoginActivity -> org.telegram.ui.z:
     int currentViewNum -> i
     org.telegram.ui.Components.SlideView[] views -> j
     android.app.ProgressDialog progressDialog -> k
@@ -25226,24 +25109,24 @@ org.telegram.ui.LoginActivity -> org.telegram.ui.ac:
     void needFinishActivity() -> q
     org.telegram.ui.Components.SlideView[] access$000(org.telegram.ui.LoginActivity) -> a
     int access$100(org.telegram.ui.LoginActivity) -> b
-org.telegram.ui.LoginActivity$1 -> org.telegram.ui.ac$1:
+org.telegram.ui.LoginActivity$1 -> org.telegram.ui.z$1:
     org.telegram.ui.LoginActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.LoginActivity$2 -> org.telegram.ui.ac$2:
+org.telegram.ui.LoginActivity$2 -> org.telegram.ui.z$2:
     org.telegram.ui.Components.SlideView val$outView -> a
     org.telegram.ui.LoginActivity this$0 -> b
     void onAnimationStart(android.animation.Animator) -> onAnimationStart
     void onAnimationEnd(android.animation.Animator) -> onAnimationEnd
     void onAnimationCancel(android.animation.Animator) -> onAnimationCancel
     void onAnimationRepeat(android.animation.Animator) -> onAnimationRepeat
-org.telegram.ui.LoginActivity$3 -> org.telegram.ui.ac$3:
+org.telegram.ui.LoginActivity$3 -> org.telegram.ui.z$3:
     org.telegram.ui.Components.SlideView val$newView -> a
     org.telegram.ui.LoginActivity this$0 -> b
     void onAnimationStart(android.animation.Animator) -> onAnimationStart
     void onAnimationEnd(android.animation.Animator) -> onAnimationEnd
     void onAnimationCancel(android.animation.Animator) -> onAnimationCancel
     void onAnimationRepeat(android.animation.Animator) -> onAnimationRepeat
-org.telegram.ui.LoginActivity$LoginActivityPasswordView -> org.telegram.ui.ad:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView -> org.telegram.ui.aa:
     android.widget.EditText codeField -> b
     android.widget.TextView confirmTextView -> c
     android.widget.TextView resetAccountButton -> d
@@ -25276,52 +25159,52 @@ org.telegram.ui.LoginActivity$LoginActivityPasswordView -> org.telegram.ui.ad:
     java.lang.String access$3600(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> g
     boolean access$3702(org.telegram.ui.LoginActivity$LoginActivityPasswordView,boolean) -> a
     void access$3800(org.telegram.ui.LoginActivity$LoginActivityPasswordView,boolean) -> b
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$1 -> org.telegram.ui.ad$1:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$1 -> org.telegram.ui.aa$1:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityPasswordView this$1 -> b
     boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$2 -> org.telegram.ui.ad$2:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$2 -> org.telegram.ui.aa$2:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityPasswordView this$1 -> b
     void onClick(android.view.View) -> onClick
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1 -> org.telegram.ui.ad$2$1:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1 -> org.telegram.ui.aa$2$1:
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$2 this$2 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1$1 -> org.telegram.ui.ad$2$1$1:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1$1 -> org.telegram.ui.aa$2$1$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1 this$3 -> c
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1$1$1 -> org.telegram.ui.ad$2$1$1$1:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1$1$1 -> org.telegram.ui.aa$2$1$1$1:
     org.telegram.messenger.TLRPC$TL_auth_passwordRecovery val$res -> a
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1$1 this$4 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$3 -> org.telegram.ui.ad$3:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$3 -> org.telegram.ui.aa$3:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityPasswordView this$1 -> b
     void onClick(android.view.View) -> onClick
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1 -> org.telegram.ui.ad$3$1:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1 -> org.telegram.ui.aa$3$1:
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$3 this$2 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1$1 -> org.telegram.ui.ad$3$1$1:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1$1 -> org.telegram.ui.aa$3$1$1:
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1 this$3 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1$1$1 -> org.telegram.ui.ad$3$1$1$1:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1$1$1 -> org.telegram.ui.aa$3$1$1$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1$1 this$4 -> b
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$4 -> org.telegram.ui.ad$4:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$4 -> org.telegram.ui.aa$4:
     org.telegram.ui.LoginActivity$LoginActivityPasswordView this$1 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$4$1 -> org.telegram.ui.ad$4$1:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$4$1 -> org.telegram.ui.aa$4$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$4 this$2 -> c
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivityPasswordView$4$1$1 -> org.telegram.ui.ad$4$1$1:
+org.telegram.ui.LoginActivity$LoginActivityPasswordView$4$1$1 -> org.telegram.ui.aa$4$1$1:
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$4$1 this$3 -> a
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivityRecoverView -> org.telegram.ui.ae:
+org.telegram.ui.LoginActivity$LoginActivityRecoverView -> org.telegram.ui.ab:
     android.widget.EditText codeField -> b
     android.widget.TextView confirmTextView -> c
     android.widget.TextView cancelButton -> d
@@ -25340,29 +25223,29 @@ org.telegram.ui.LoginActivity$LoginActivityRecoverView -> org.telegram.ui.ae:
     void restoreStateParams(android.os.Bundle) -> b
     boolean access$3902(org.telegram.ui.LoginActivity$LoginActivityRecoverView,boolean) -> a
     void access$4000(org.telegram.ui.LoginActivity$LoginActivityRecoverView,boolean) -> b
-org.telegram.ui.LoginActivity$LoginActivityRecoverView$1 -> org.telegram.ui.ae$1:
+org.telegram.ui.LoginActivity$LoginActivityRecoverView$1 -> org.telegram.ui.ab$1:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityRecoverView this$1 -> b
     boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
-org.telegram.ui.LoginActivity$LoginActivityRecoverView$2 -> org.telegram.ui.ae$2:
+org.telegram.ui.LoginActivity$LoginActivityRecoverView$2 -> org.telegram.ui.ab$2:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityRecoverView this$1 -> b
     void onClick(android.view.View) -> onClick
-org.telegram.ui.LoginActivity$LoginActivityRecoverView$2$1 -> org.telegram.ui.ae$2$1:
+org.telegram.ui.LoginActivity$LoginActivityRecoverView$2$1 -> org.telegram.ui.ab$2$1:
     org.telegram.ui.LoginActivity$LoginActivityRecoverView$2 this$2 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.LoginActivity$LoginActivityRecoverView$3 -> org.telegram.ui.ae$3:
+org.telegram.ui.LoginActivity$LoginActivityRecoverView$3 -> org.telegram.ui.ab$3:
     org.telegram.ui.LoginActivity$LoginActivityRecoverView this$1 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.LoginActivity$LoginActivityRecoverView$3$1 -> org.telegram.ui.ae$3$1:
+org.telegram.ui.LoginActivity$LoginActivityRecoverView$3$1 -> org.telegram.ui.ab$3$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivityRecoverView$3 this$2 -> c
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivityRecoverView$3$1$1 -> org.telegram.ui.ae$3$1$1:
+org.telegram.ui.LoginActivity$LoginActivityRecoverView$3$1$1 -> org.telegram.ui.ab$3$1$1:
     org.telegram.ui.LoginActivity$LoginActivityRecoverView$3$1 this$3 -> a
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivityRegisterView -> org.telegram.ui.af:
+org.telegram.ui.LoginActivity$LoginActivityRegisterView -> org.telegram.ui.ac:
     android.widget.EditText firstNameField -> b
     android.widget.EditText lastNameField -> c
     java.lang.String requestPhone -> d
@@ -25380,29 +25263,29 @@ org.telegram.ui.LoginActivity$LoginActivityRegisterView -> org.telegram.ui.af:
     void restoreStateParams(android.os.Bundle) -> b
     android.widget.EditText access$4100(org.telegram.ui.LoginActivity$LoginActivityRegisterView) -> a
     boolean access$4202(org.telegram.ui.LoginActivity$LoginActivityRegisterView,boolean) -> a
-org.telegram.ui.LoginActivity$LoginActivityRegisterView$1 -> org.telegram.ui.af$1:
+org.telegram.ui.LoginActivity$LoginActivityRegisterView$1 -> org.telegram.ui.ac$1:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityRegisterView this$1 -> b
     boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
-org.telegram.ui.LoginActivity$LoginActivityRegisterView$2 -> org.telegram.ui.af$2:
+org.telegram.ui.LoginActivity$LoginActivityRegisterView$2 -> org.telegram.ui.ac$2:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityRegisterView this$1 -> b
     void onClick(android.view.View) -> onClick
-org.telegram.ui.LoginActivity$LoginActivityRegisterView$2$1 -> org.telegram.ui.af$2$1:
+org.telegram.ui.LoginActivity$LoginActivityRegisterView$2$1 -> org.telegram.ui.ac$2$1:
     org.telegram.ui.LoginActivity$LoginActivityRegisterView$2 this$2 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.LoginActivity$LoginActivityRegisterView$3 -> org.telegram.ui.af$3:
+org.telegram.ui.LoginActivity$LoginActivityRegisterView$3 -> org.telegram.ui.ac$3:
     org.telegram.ui.LoginActivity$LoginActivityRegisterView this$1 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.LoginActivity$LoginActivityRegisterView$3$1 -> org.telegram.ui.af$3$1:
+org.telegram.ui.LoginActivity$LoginActivityRegisterView$3$1 -> org.telegram.ui.ac$3$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivityRegisterView$3 this$2 -> c
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivityRegisterView$3$1$1 -> org.telegram.ui.af$3$1$1:
+org.telegram.ui.LoginActivity$LoginActivityRegisterView$3$1$1 -> org.telegram.ui.ac$3$1$1:
     org.telegram.ui.LoginActivity$LoginActivityRegisterView$3$1 this$3 -> a
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivitySmsView -> org.telegram.ui.ag:
+org.telegram.ui.LoginActivity$LoginActivitySmsView -> org.telegram.ui.ad:
     java.lang.String phoneHash -> b
     java.lang.String requestPhone -> c
     java.lang.String emailPhone -> d
@@ -25457,62 +25340,62 @@ org.telegram.ui.LoginActivity$LoginActivitySmsView -> org.telegram.ui.ag:
     void access$2700(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> n
     boolean access$2800(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> o
     android.widget.EditText access$2900(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> p
-org.telegram.ui.LoginActivity$LoginActivitySmsView$1 -> org.telegram.ui.ag$1:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$1 -> org.telegram.ui.ad$1:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> b
     boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
-org.telegram.ui.LoginActivity$LoginActivitySmsView$2 -> org.telegram.ui.ag$2:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$2 -> org.telegram.ui.ad$2:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> b
     void onClick(android.view.View) -> onClick
-org.telegram.ui.LoginActivity$LoginActivitySmsView$3 -> org.telegram.ui.ag$3:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$3 -> org.telegram.ui.ad$3:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> b
     void onClick(android.view.View) -> onClick
-org.telegram.ui.LoginActivity$LoginActivitySmsView$4 -> org.telegram.ui.ag$4:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$4 -> org.telegram.ui.ad$4:
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> a
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivitySmsView$4$1 -> org.telegram.ui.ag$4$1:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$4$1 -> org.telegram.ui.ad$4$1:
     org.telegram.ui.LoginActivity$LoginActivitySmsView$4 this$2 -> a
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivitySmsView$5 -> org.telegram.ui.ag$5:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$5 -> org.telegram.ui.ad$5:
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> a
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1 -> org.telegram.ui.ag$5$1:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1 -> org.telegram.ui.ad$5$1:
     org.telegram.ui.LoginActivity$LoginActivitySmsView$5 this$2 -> a
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1$1 -> org.telegram.ui.ag$5$1$1:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1$1 -> org.telegram.ui.ad$5$1$1:
     org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1 this$3 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1$1$1 -> org.telegram.ui.ag$5$1$1$1:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1$1$1 -> org.telegram.ui.ad$5$1$1$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1$1 this$4 -> b
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivitySmsView$6 -> org.telegram.ui.ag$6:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$6 -> org.telegram.ui.ad$6:
     org.telegram.messenger.TLRPC$TL_auth_signIn val$req -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> b
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1 -> org.telegram.ui.ag$6$1:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1 -> org.telegram.ui.ad$6$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivitySmsView$6 this$2 -> c
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$1 -> org.telegram.ui.ag$6$1$1:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$1 -> org.telegram.ui.ad$6$1$1:
     org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1 this$3 -> a
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$2 -> org.telegram.ui.ag$6$1$2:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$2 -> org.telegram.ui.ad$6$1$2:
     org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1 this$3 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$2$1 -> org.telegram.ui.ag$6$1$2$1:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$2$1 -> org.telegram.ui.ad$6$1$2$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$2 this$4 -> c
     void run() -> run
-org.telegram.ui.LoginActivity$LoginActivitySmsView$7 -> org.telegram.ui.ag$7:
+org.telegram.ui.LoginActivity$LoginActivitySmsView$7 -> org.telegram.ui.ad$7:
     java.lang.Object[] val$args -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> b
     void run() -> run
-org.telegram.ui.LoginActivity$PhoneView -> org.telegram.ui.ah:
+org.telegram.ui.LoginActivity$PhoneView -> org.telegram.ui.ae:
     android.widget.EditText codeField -> b
     android.widget.EditText phoneField -> c
     android.widget.TextView countryButton -> d
@@ -25547,48 +25430,48 @@ org.telegram.ui.LoginActivity$PhoneView -> org.telegram.ui.ah:
     boolean access$1100(org.telegram.ui.LoginActivity$PhoneView) -> h
     boolean access$1102(org.telegram.ui.LoginActivity$PhoneView,boolean) -> c
     boolean access$1202(org.telegram.ui.LoginActivity$PhoneView,boolean) -> d
-org.telegram.ui.LoginActivity$PhoneView$1 -> org.telegram.ui.ah$1:
+org.telegram.ui.LoginActivity$PhoneView$1 -> org.telegram.ui.ae$1:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
     void onClick(android.view.View) -> onClick
-org.telegram.ui.LoginActivity$PhoneView$1$1 -> org.telegram.ui.ah$1$1:
+org.telegram.ui.LoginActivity$PhoneView$1$1 -> org.telegram.ui.ae$1$1:
     org.telegram.ui.LoginActivity$PhoneView$1 this$2 -> a
     void didSelectCountry(java.lang.String) -> a
-org.telegram.ui.LoginActivity$PhoneView$2 -> org.telegram.ui.ah$2:
+org.telegram.ui.LoginActivity$PhoneView$2 -> org.telegram.ui.ae$2:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
     void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
     void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
     void afterTextChanged(android.text.Editable) -> afterTextChanged
-org.telegram.ui.LoginActivity$PhoneView$3 -> org.telegram.ui.ah$3:
+org.telegram.ui.LoginActivity$PhoneView$3 -> org.telegram.ui.ae$3:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
     boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
-org.telegram.ui.LoginActivity$PhoneView$4 -> org.telegram.ui.ah$4:
+org.telegram.ui.LoginActivity$PhoneView$4 -> org.telegram.ui.ae$4:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
     void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
     void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
     void afterTextChanged(android.text.Editable) -> afterTextChanged
-org.telegram.ui.LoginActivity$PhoneView$5 -> org.telegram.ui.ah$5:
+org.telegram.ui.LoginActivity$PhoneView$5 -> org.telegram.ui.ae$5:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
     boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
-org.telegram.ui.LoginActivity$PhoneView$6 -> org.telegram.ui.ah$6:
+org.telegram.ui.LoginActivity$PhoneView$6 -> org.telegram.ui.ae$6:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
     int compare(java.lang.String,java.lang.String) -> a
     int compare(java.lang.Object,java.lang.Object) -> compare
-org.telegram.ui.LoginActivity$PhoneView$7 -> org.telegram.ui.ah$7:
+org.telegram.ui.LoginActivity$PhoneView$7 -> org.telegram.ui.ae$7:
     android.os.Bundle val$params -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.LoginActivity$PhoneView$7$1 -> org.telegram.ui.ah$7$1:
+org.telegram.ui.LoginActivity$PhoneView$7$1 -> org.telegram.ui.ae$7$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$PhoneView$7 this$2 -> c
     void run() -> run
-org.telegram.ui.MediaActivity -> org.telegram.ui.ai:
+org.telegram.ui.MediaActivity -> org.telegram.ui.af:
     org.telegram.ui.MediaActivity$SharedPhotoVideoAdapter photoVideoAdapter -> i
     org.telegram.ui.MediaActivity$SharedDocumentsAdapter documentsAdapter -> j
     org.telegram.ui.MediaActivity$DocumentsSearchAdapter documentsSearchAdapter -> k
@@ -25661,42 +25544,42 @@ org.telegram.ui.MediaActivity -> org.telegram.ui.ai:
     org.telegram.ui.ActionBar.ActionBar access$3200(org.telegram.ui.MediaActivity) -> s
     int access$3500(org.telegram.ui.MediaActivity) -> t
     org.telegram.ui.ActionBar.ActionBar access$4000(org.telegram.ui.MediaActivity) -> u
-org.telegram.ui.MediaActivity$1 -> org.telegram.ui.ai$1:
+org.telegram.ui.MediaActivity$1 -> org.telegram.ui.af$1:
     org.telegram.ui.MediaActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.MediaActivity$1$1 -> org.telegram.ui.ai$1$1:
+org.telegram.ui.MediaActivity$1$1 -> org.telegram.ui.af$1$1:
     org.telegram.ui.MediaActivity$1 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.MediaActivity$1$2 -> org.telegram.ui.ai$1$2:
+org.telegram.ui.MediaActivity$1$2 -> org.telegram.ui.af$1$2:
     org.telegram.ui.MediaActivity$1 this$1 -> a
-org.telegram.ui.MediaActivity$2 -> org.telegram.ui.ai$2:
+org.telegram.ui.MediaActivity$2 -> org.telegram.ui.af$2:
     org.telegram.ui.MediaActivity this$0 -> a
     void onSearchExpand() -> a
     boolean onSearchCollapse() -> b
     void onTextChanged(android.widget.EditText) -> a
-org.telegram.ui.MediaActivity$3 -> org.telegram.ui.ai$3:
+org.telegram.ui.MediaActivity$3 -> org.telegram.ui.af$3:
     org.telegram.ui.MediaActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.MediaActivity$4 -> org.telegram.ui.ai$4:
+org.telegram.ui.MediaActivity$4 -> org.telegram.ui.af$4:
     org.telegram.ui.MediaActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-org.telegram.ui.MediaActivity$5 -> org.telegram.ui.ai$5:
+org.telegram.ui.MediaActivity$5 -> org.telegram.ui.af$5:
     org.telegram.ui.MediaActivity this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.MediaActivity$6 -> org.telegram.ui.ai$6:
+org.telegram.ui.MediaActivity$6 -> org.telegram.ui.af$6:
     org.telegram.ui.MediaActivity this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-org.telegram.ui.MediaActivity$7 -> org.telegram.ui.ai$7:
+org.telegram.ui.MediaActivity$7 -> org.telegram.ui.af$7:
     org.telegram.ui.MediaActivity this$0 -> a
     boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
-org.telegram.ui.MediaActivity$8 -> org.telegram.ui.ai$8:
+org.telegram.ui.MediaActivity$8 -> org.telegram.ui.af$8:
     org.telegram.ui.MediaActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-org.telegram.ui.MediaActivity$9 -> org.telegram.ui.ai$9:
+org.telegram.ui.MediaActivity$9 -> org.telegram.ui.af$9:
     org.telegram.ui.MediaActivity this$0 -> a
     boolean onPreDraw() -> onPreDraw
-org.telegram.ui.MediaActivity$DocumentsSearchAdapter -> org.telegram.ui.aj:
+org.telegram.ui.MediaActivity$DocumentsSearchAdapter -> org.telegram.ui.ag:
     android.content.Context mContext -> c
     java.util.ArrayList searchResult -> d
     java.util.Timer searchTimer -> e
@@ -25726,31 +25609,31 @@ org.telegram.ui.MediaActivity$DocumentsSearchAdapter -> org.telegram.ui.aj:
     void access$3700(org.telegram.ui.MediaActivity$DocumentsSearchAdapter,java.lang.String) -> a
     void access$3800(org.telegram.ui.MediaActivity$DocumentsSearchAdapter,java.util.ArrayList) -> a
     java.util.ArrayList access$3902(org.telegram.ui.MediaActivity$DocumentsSearchAdapter,java.util.ArrayList) -> b
-org.telegram.ui.MediaActivity$DocumentsSearchAdapter$1 -> org.telegram.ui.aj$1:
+org.telegram.ui.MediaActivity$DocumentsSearchAdapter$1 -> org.telegram.ui.ag$1:
     int val$currentReqId -> a
     org.telegram.ui.MediaActivity$DocumentsSearchAdapter this$1 -> b
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.MediaActivity$DocumentsSearchAdapter$1$1 -> org.telegram.ui.aj$1$1:
+org.telegram.ui.MediaActivity$DocumentsSearchAdapter$1$1 -> org.telegram.ui.ag$1$1:
     java.util.ArrayList val$messageObjects -> a
     org.telegram.ui.MediaActivity$DocumentsSearchAdapter$1 this$2 -> b
     void run() -> run
-org.telegram.ui.MediaActivity$DocumentsSearchAdapter$2 -> org.telegram.ui.aj$2:
+org.telegram.ui.MediaActivity$DocumentsSearchAdapter$2 -> org.telegram.ui.ag$2:
     java.lang.String val$query -> a
     org.telegram.ui.MediaActivity$DocumentsSearchAdapter this$1 -> b
     void run() -> run
-org.telegram.ui.MediaActivity$DocumentsSearchAdapter$3 -> org.telegram.ui.aj$3:
+org.telegram.ui.MediaActivity$DocumentsSearchAdapter$3 -> org.telegram.ui.ag$3:
     java.lang.String val$query -> a
     org.telegram.ui.MediaActivity$DocumentsSearchAdapter this$1 -> b
     void run() -> run
-org.telegram.ui.MediaActivity$DocumentsSearchAdapter$3$1 -> org.telegram.ui.aj$3$1:
+org.telegram.ui.MediaActivity$DocumentsSearchAdapter$3$1 -> org.telegram.ui.ag$3$1:
     java.util.ArrayList val$copy -> a
     org.telegram.ui.MediaActivity$DocumentsSearchAdapter$3 this$2 -> b
     void run() -> run
-org.telegram.ui.MediaActivity$DocumentsSearchAdapter$4 -> org.telegram.ui.aj$4:
+org.telegram.ui.MediaActivity$DocumentsSearchAdapter$4 -> org.telegram.ui.ag$4:
     java.util.ArrayList val$documents -> a
     org.telegram.ui.MediaActivity$DocumentsSearchAdapter this$1 -> b
     void run() -> run
-org.telegram.ui.MediaActivity$SharedDocumentsAdapter -> org.telegram.ui.ak:
+org.telegram.ui.MediaActivity$SharedDocumentsAdapter -> org.telegram.ui.ah:
     android.content.Context mContext -> b
     org.telegram.ui.MediaActivity this$0 -> a
     java.lang.Object getItem(int,int) -> c
@@ -25761,7 +25644,7 @@ org.telegram.ui.MediaActivity$SharedDocumentsAdapter -> org.telegram.ui.ak:
     android.view.View getItemView(int,int,android.view.View,android.view.ViewGroup) -> a
     int getItemViewType(int,int) -> b
     int getViewTypeCount() -> getViewTypeCount
-org.telegram.ui.MediaActivity$SharedMediaData -> org.telegram.ui.al:
+org.telegram.ui.MediaActivity$SharedMediaData -> org.telegram.ui.ai:
     java.util.ArrayList messages -> b
     java.util.HashMap messagesDict -> c
     java.util.ArrayList sections -> d
@@ -25787,7 +25670,7 @@ org.telegram.ui.MediaActivity$SharedMediaData -> org.telegram.ui.al:
     java.util.ArrayList access$2500(org.telegram.ui.MediaActivity$SharedMediaData) -> e
     java.util.ArrayList access$2700(org.telegram.ui.MediaActivity$SharedMediaData) -> f
     java.util.HashMap access$2800(org.telegram.ui.MediaActivity$SharedMediaData) -> g
-org.telegram.ui.MediaActivity$SharedPhotoVideoAdapter -> org.telegram.ui.am:
+org.telegram.ui.MediaActivity$SharedPhotoVideoAdapter -> org.telegram.ui.aj:
     android.content.Context mContext -> b
     org.telegram.ui.MediaActivity this$0 -> a
     java.lang.Object getItem(int,int) -> c
@@ -25798,11 +25681,11 @@ org.telegram.ui.MediaActivity$SharedPhotoVideoAdapter -> org.telegram.ui.am:
     android.view.View getItemView(int,int,android.view.View,android.view.ViewGroup) -> a
     int getItemViewType(int,int) -> b
     int getViewTypeCount() -> getViewTypeCount
-org.telegram.ui.MediaActivity$SharedPhotoVideoAdapter$1 -> org.telegram.ui.am$1:
+org.telegram.ui.MediaActivity$SharedPhotoVideoAdapter$1 -> org.telegram.ui.aj$1:
     org.telegram.ui.MediaActivity$SharedPhotoVideoAdapter this$1 -> a
     void didClickItem(org.telegram.ui.Cells.SharedPhotoVideoCell,int,org.telegram.android.MessageObject,int) -> a
     boolean didLongClickItem(org.telegram.ui.Cells.SharedPhotoVideoCell,int,org.telegram.android.MessageObject,int) -> b
-org.telegram.ui.MessagesActivity -> org.telegram.ui.an:
+org.telegram.ui.MessagesActivity -> org.telegram.ui.ak:
     android.widget.ListView messagesListView -> i
     org.telegram.ui.Adapters.DialogsAdapter dialogsAdapter -> j
     org.telegram.ui.Adapters.DialogsSearchAdapter dialogsSearchAdapter -> k
@@ -25838,14 +25721,14 @@ org.telegram.ui.MessagesActivity -> org.telegram.ui.an:
     void access$000(org.telegram.ui.MessagesActivity) -> a
     android.widget.ImageView access$100(org.telegram.ui.MessagesActivity) -> b
     boolean access$200(org.telegram.ui.MessagesActivity) -> c
-org.telegram.ui.MessagesActivity$1 -> org.telegram.ui.an$1:
+org.telegram.ui.MessagesActivity$1 -> org.telegram.ui.ak$1:
     org.telegram.ui.MessagesActivity this$0 -> a
     void run() -> run
-org.telegram.ui.MessagesActivity$2 -> org.telegram.ui.an$2:
+org.telegram.ui.MessagesActivity$2 -> org.telegram.ui.ak$2:
     org.telegram.ui.MessagesActivity this$0 -> a
     void onGlobalLayout() -> onGlobalLayout
-org.telegram.ui.MessagesActivity$MessagesActivityDelegate -> org.telegram.ui.ao:
-org.telegram.ui.NotificationsSettingsActivity -> org.telegram.ui.ap:
+org.telegram.ui.MessagesActivity$MessagesActivityDelegate -> org.telegram.ui.al:
+org.telegram.ui.NotificationsSettingsActivity -> org.telegram.ui.am:
     android.widget.ListView listView -> i
     boolean reseting -> j
     int notificationsServiceRow -> k
@@ -25904,40 +25787,40 @@ org.telegram.ui.NotificationsSettingsActivity -> org.telegram.ui.ap:
     int access$2300(org.telegram.ui.NotificationsSettingsActivity) -> x
     int access$2400(org.telegram.ui.NotificationsSettingsActivity) -> y
     int access$2500(org.telegram.ui.NotificationsSettingsActivity) -> z
-org.telegram.ui.NotificationsSettingsActivity$1 -> org.telegram.ui.ap$1:
+org.telegram.ui.NotificationsSettingsActivity$1 -> org.telegram.ui.am$1:
     org.telegram.ui.NotificationsSettingsActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.NotificationsSettingsActivity$2 -> org.telegram.ui.ap$2:
+org.telegram.ui.NotificationsSettingsActivity$2 -> org.telegram.ui.am$2:
     android.content.Context val$context -> a
     org.telegram.ui.NotificationsSettingsActivity this$0 -> b
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.NotificationsSettingsActivity$2$1 -> org.telegram.ui.ap$2$1:
+org.telegram.ui.NotificationsSettingsActivity$2$1 -> org.telegram.ui.am$2$1:
     org.telegram.ui.NotificationsSettingsActivity$2 this$1 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.NotificationsSettingsActivity$2$1$1 -> org.telegram.ui.ap$2$1$1:
+org.telegram.ui.NotificationsSettingsActivity$2$1$1 -> org.telegram.ui.am$2$1$1:
     org.telegram.ui.NotificationsSettingsActivity$2$1 this$2 -> a
     void run() -> run
-org.telegram.ui.NotificationsSettingsActivity$2$2 -> org.telegram.ui.ap$2$2:
+org.telegram.ui.NotificationsSettingsActivity$2$2 -> org.telegram.ui.am$2$2:
     android.content.SharedPreferences val$preferences -> a
     org.telegram.ui.NotificationsSettingsActivity$2 this$1 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.NotificationsSettingsActivity$2$3 -> org.telegram.ui.ap$2$3:
+org.telegram.ui.NotificationsSettingsActivity$2$3 -> org.telegram.ui.am$2$3:
     org.telegram.ui.Components.ColorPickerView val$colorPickerView -> a
     org.telegram.ui.NotificationsSettingsActivity$2 this$1 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.NotificationsSettingsActivity$2$4 -> org.telegram.ui.ap$2$4:
+org.telegram.ui.NotificationsSettingsActivity$2$4 -> org.telegram.ui.am$2$4:
     org.telegram.ui.NotificationsSettingsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.NotificationsSettingsActivity$2$5 -> org.telegram.ui.ap$2$5:
+org.telegram.ui.NotificationsSettingsActivity$2$5 -> org.telegram.ui.am$2$5:
     org.telegram.ui.NotificationsSettingsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.NotificationsSettingsActivity$2$6 -> org.telegram.ui.ap$2$6:
+org.telegram.ui.NotificationsSettingsActivity$2$6 -> org.telegram.ui.am$2$6:
     org.telegram.ui.NotificationsSettingsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.NotificationsSettingsActivity$2$7 -> org.telegram.ui.ap$2$7:
+org.telegram.ui.NotificationsSettingsActivity$2$7 -> org.telegram.ui.am$2$7:
     org.telegram.ui.NotificationsSettingsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.NotificationsSettingsActivity$ListAdapter -> org.telegram.ui.aq:
+org.telegram.ui.NotificationsSettingsActivity$ListAdapter -> org.telegram.ui.an:
     android.content.Context mContext -> b
     org.telegram.ui.NotificationsSettingsActivity this$0 -> a
     boolean areAllItemsEnabled() -> areAllItemsEnabled
@@ -25950,7 +25833,7 @@ org.telegram.ui.NotificationsSettingsActivity$ListAdapter -> org.telegram.ui.aq:
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-org.telegram.ui.PhotoAlbumPickerActivity -> org.telegram.ui.ar:
+org.telegram.ui.PhotoAlbumPickerActivity -> org.telegram.ui.ao:
     java.util.ArrayList albumsSorted -> i
     java.util.HashMap selectedPhotos -> j
     java.util.HashMap selectedWebPhotos -> k
@@ -25992,26 +25875,26 @@ org.telegram.ui.PhotoAlbumPickerActivity -> org.telegram.ui.ar:
     java.util.ArrayList access$900(org.telegram.ui.PhotoAlbumPickerActivity) -> i
     int access$1000(org.telegram.ui.PhotoAlbumPickerActivity) -> j
     void access$1100(org.telegram.ui.PhotoAlbumPickerActivity,org.telegram.android.MediaController$AlbumEntry,int) -> a
-org.telegram.ui.PhotoAlbumPickerActivity$1 -> org.telegram.ui.ar$1:
+org.telegram.ui.PhotoAlbumPickerActivity$1 -> org.telegram.ui.ao$1:
     org.telegram.ui.PhotoAlbumPickerActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.PhotoAlbumPickerActivity$2 -> org.telegram.ui.ar$2:
+org.telegram.ui.PhotoAlbumPickerActivity$2 -> org.telegram.ui.ao$2:
     org.telegram.ui.PhotoAlbumPickerActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-org.telegram.ui.PhotoAlbumPickerActivity$3 -> org.telegram.ui.ar$3:
+org.telegram.ui.PhotoAlbumPickerActivity$3 -> org.telegram.ui.ao$3:
     org.telegram.ui.PhotoAlbumPickerActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoAlbumPickerActivity$4 -> org.telegram.ui.ar$4:
+org.telegram.ui.PhotoAlbumPickerActivity$4 -> org.telegram.ui.ao$4:
     org.telegram.ui.PhotoAlbumPickerActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoAlbumPickerActivity$5 -> org.telegram.ui.ar$5:
+org.telegram.ui.PhotoAlbumPickerActivity$5 -> org.telegram.ui.ao$5:
     org.telegram.ui.PhotoAlbumPickerActivity this$0 -> a
     boolean onPreDraw() -> onPreDraw
-org.telegram.ui.PhotoAlbumPickerActivity$6 -> org.telegram.ui.ar$6:
+org.telegram.ui.PhotoAlbumPickerActivity$6 -> org.telegram.ui.ao$6:
     org.telegram.ui.PhotoAlbumPickerActivity this$0 -> a
     void selectedPhotosChanged() -> a
     void actionButtonPressed(boolean) -> a
-org.telegram.ui.PhotoAlbumPickerActivity$ListAdapter -> org.telegram.ui.as:
+org.telegram.ui.PhotoAlbumPickerActivity$ListAdapter -> org.telegram.ui.ap:
     android.content.Context mContext -> b
     org.telegram.ui.PhotoAlbumPickerActivity this$0 -> a
     boolean areAllItemsEnabled() -> areAllItemsEnabled
@@ -26024,16 +25907,16 @@ org.telegram.ui.PhotoAlbumPickerActivity$ListAdapter -> org.telegram.ui.as:
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-org.telegram.ui.PhotoAlbumPickerActivity$ListAdapter$1 -> org.telegram.ui.as$1:
+org.telegram.ui.PhotoAlbumPickerActivity$ListAdapter$1 -> org.telegram.ui.ap$1:
     org.telegram.ui.PhotoAlbumPickerActivity$ListAdapter this$1 -> a
     void didSelectAlbum(org.telegram.android.MediaController$AlbumEntry) -> a
-org.telegram.ui.PhotoAlbumPickerActivity$ListAdapter$2 -> org.telegram.ui.as$2:
+org.telegram.ui.PhotoAlbumPickerActivity$ListAdapter$2 -> org.telegram.ui.ap$2:
     org.telegram.ui.PhotoAlbumPickerActivity$ListAdapter this$1 -> a
     void didPressedSearchButton(int) -> a
-org.telegram.ui.PhotoAlbumPickerActivity$PhotoAlbumPickerActivityDelegate -> org.telegram.ui.at:
+org.telegram.ui.PhotoAlbumPickerActivity$PhotoAlbumPickerActivityDelegate -> org.telegram.ui.aq:
     void didSelectPhotos(java.util.ArrayList,java.util.ArrayList) -> a
     void startPhotoSelectActivity() -> a
-org.telegram.ui.PhotoCropActivity -> org.telegram.ui.au:
+org.telegram.ui.PhotoCropActivity -> org.telegram.ui.ar:
     android.graphics.Bitmap imageToCrop -> i
     android.graphics.drawable.BitmapDrawable drawable -> j
     org.telegram.ui.PhotoCropActivity$PhotoEditActivityDelegate delegate -> k
@@ -26052,10 +25935,10 @@ org.telegram.ui.PhotoCropActivity -> org.telegram.ui.au:
     org.telegram.ui.PhotoCropActivity$PhotoCropView access$400(org.telegram.ui.PhotoCropActivity) -> e
     boolean access$502(org.telegram.ui.PhotoCropActivity,boolean) -> a
     boolean access$302(org.telegram.ui.PhotoCropActivity,boolean) -> b
-org.telegram.ui.PhotoCropActivity$1 -> org.telegram.ui.au$1:
+org.telegram.ui.PhotoCropActivity$1 -> org.telegram.ui.ar$1:
     org.telegram.ui.PhotoCropActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.PhotoCropActivity$PhotoCropView -> org.telegram.ui.av:
+org.telegram.ui.PhotoCropActivity$PhotoCropView -> org.telegram.ui.as:
     android.graphics.Paint rectPaint -> a
     android.graphics.Paint circlePaint -> b
     android.graphics.Paint halfPaint -> c
@@ -26079,12 +25962,12 @@ org.telegram.ui.PhotoCropActivity$PhotoCropView -> org.telegram.ui.av:
     void onLayout(boolean,int,int,int,int) -> onLayout
     android.graphics.Bitmap getBitmap() -> a
     void onDraw(android.graphics.Canvas) -> onDraw
-org.telegram.ui.PhotoCropActivity$PhotoCropView$1 -> org.telegram.ui.av$1:
+org.telegram.ui.PhotoCropActivity$PhotoCropView$1 -> org.telegram.ui.as$1:
     org.telegram.ui.PhotoCropActivity$PhotoCropView this$1 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-org.telegram.ui.PhotoCropActivity$PhotoEditActivityDelegate -> org.telegram.ui.aw:
+org.telegram.ui.PhotoCropActivity$PhotoEditActivityDelegate -> org.telegram.ui.at:
     void didFinishEdit(android.graphics.Bitmap,android.os.Bundle) -> a
-org.telegram.ui.PhotoPickerActivity -> org.telegram.ui.ax:
+org.telegram.ui.PhotoPickerActivity -> org.telegram.ui.au:
     org.telegram.android.volley.RequestQueue requestQueue -> i
     int type -> j
     java.util.HashMap selectedWebPhotos -> k
@@ -26165,58 +26048,58 @@ org.telegram.ui.PhotoPickerActivity -> org.telegram.ui.ax:
     java.util.HashMap access$2200(org.telegram.ui.PhotoPickerActivity) -> u
     org.telegram.ui.Components.PhotoPickerBottomLayout access$2300(org.telegram.ui.PhotoPickerActivity) -> v
     int access$2400(org.telegram.ui.PhotoPickerActivity) -> w
-org.telegram.ui.PhotoPickerActivity$1 -> org.telegram.ui.ax$1:
+org.telegram.ui.PhotoPickerActivity$1 -> org.telegram.ui.au$1:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.PhotoPickerActivity$10 -> org.telegram.ui.ax$2:
+org.telegram.ui.PhotoPickerActivity$10 -> org.telegram.ui.au$2:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     void onErrorResponse(org.telegram.android.volley.VolleyError) -> a
-org.telegram.ui.PhotoPickerActivity$11 -> org.telegram.ui.ax$3:
+org.telegram.ui.PhotoPickerActivity$11 -> org.telegram.ui.au$3:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     void onResponse(org.json.JSONObject) -> a
     void onResponse(java.lang.Object) -> a
-org.telegram.ui.PhotoPickerActivity$12 -> org.telegram.ui.ax$4:
+org.telegram.ui.PhotoPickerActivity$12 -> org.telegram.ui.au$4:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     void onErrorResponse(org.telegram.android.volley.VolleyError) -> a
-org.telegram.ui.PhotoPickerActivity$13 -> org.telegram.ui.ax$5:
+org.telegram.ui.PhotoPickerActivity$13 -> org.telegram.ui.au$5:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     java.util.Map getHeaders() -> i
-org.telegram.ui.PhotoPickerActivity$14 -> org.telegram.ui.ax$6:
+org.telegram.ui.PhotoPickerActivity$14 -> org.telegram.ui.au$6:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     boolean onPreDraw() -> onPreDraw
-org.telegram.ui.PhotoPickerActivity$2 -> org.telegram.ui.ax$7:
+org.telegram.ui.PhotoPickerActivity$2 -> org.telegram.ui.au$7:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     void onSearchExpand() -> a
     boolean onSearchCollapse() -> b
     void onTextChanged(android.widget.EditText) -> a
     void onSearchPressed(android.widget.EditText) -> b
-org.telegram.ui.PhotoPickerActivity$3 -> org.telegram.ui.ax$8:
+org.telegram.ui.PhotoPickerActivity$3 -> org.telegram.ui.au$8:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.PhotoPickerActivity$4 -> org.telegram.ui.ax$9:
+org.telegram.ui.PhotoPickerActivity$4 -> org.telegram.ui.au$9:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
-org.telegram.ui.PhotoPickerActivity$4$1 -> org.telegram.ui.ax$9$1:
+org.telegram.ui.PhotoPickerActivity$4$1 -> org.telegram.ui.au$9$1:
     org.telegram.ui.PhotoPickerActivity$4 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.PhotoPickerActivity$5 -> org.telegram.ui.ax$10:
+org.telegram.ui.PhotoPickerActivity$5 -> org.telegram.ui.au$10:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-org.telegram.ui.PhotoPickerActivity$6 -> org.telegram.ui.ax$11:
+org.telegram.ui.PhotoPickerActivity$6 -> org.telegram.ui.au$11:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-org.telegram.ui.PhotoPickerActivity$7 -> org.telegram.ui.ax$12:
+org.telegram.ui.PhotoPickerActivity$7 -> org.telegram.ui.au$12:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoPickerActivity$8 -> org.telegram.ui.ax$13:
+org.telegram.ui.PhotoPickerActivity$8 -> org.telegram.ui.au$13:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoPickerActivity$9 -> org.telegram.ui.ax$14:
+org.telegram.ui.PhotoPickerActivity$9 -> org.telegram.ui.au$14:
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     void onResponse(org.json.JSONObject) -> a
     void onResponse(java.lang.Object) -> a
-org.telegram.ui.PhotoPickerActivity$ListAdapter -> org.telegram.ui.ay:
+org.telegram.ui.PhotoPickerActivity$ListAdapter -> org.telegram.ui.av:
     android.content.Context mContext -> b
     org.telegram.ui.PhotoPickerActivity this$0 -> a
     boolean areAllItemsEnabled() -> areAllItemsEnabled
@@ -26229,13 +26112,13 @@ org.telegram.ui.PhotoPickerActivity$ListAdapter -> org.telegram.ui.ay:
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-org.telegram.ui.PhotoPickerActivity$ListAdapter$1 -> org.telegram.ui.ay$1:
+org.telegram.ui.PhotoPickerActivity$ListAdapter$1 -> org.telegram.ui.av$1:
     org.telegram.ui.PhotoPickerActivity$ListAdapter this$1 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoPickerActivity$PhotoPickerActivityDelegate -> org.telegram.ui.az:
+org.telegram.ui.PhotoPickerActivity$PhotoPickerActivityDelegate -> org.telegram.ui.aw:
     void selectedPhotosChanged() -> a
     void actionButtonPressed(boolean) -> a
-org.telegram.ui.PhotoViewer -> org.telegram.ui.ba:
+org.telegram.ui.PhotoViewer -> org.telegram.ui.ax:
     int classGuid -> a
     org.telegram.ui.PhotoViewer$PhotoViewerProvider placeProvider -> b
     boolean isVisible -> c
@@ -26465,114 +26348,114 @@ org.telegram.ui.PhotoViewer -> org.telegram.ui.ba:
     java.lang.Runnable access$5600(org.telegram.ui.PhotoViewer) -> M
     void access$6200(org.telegram.ui.PhotoViewer,org.telegram.ui.PhotoViewer$PlaceProviderObject) -> a
     org.telegram.ui.PhotoViewer$FrameLayoutTouchListener access$6300(org.telegram.ui.PhotoViewer) -> N
-org.telegram.ui.PhotoViewer$1 -> org.telegram.ui.ba$1:
+org.telegram.ui.PhotoViewer$1 -> org.telegram.ui.ax$1:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onItemClick(int) -> a
     boolean canOpenMenu() -> a
-org.telegram.ui.PhotoViewer$1$1 -> org.telegram.ui.ba$1$1:
+org.telegram.ui.PhotoViewer$1$1 -> org.telegram.ui.ax$1$1:
     org.telegram.ui.PhotoViewer$1 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.PhotoViewer$10 -> org.telegram.ui.ba$2:
+org.telegram.ui.PhotoViewer$10 -> org.telegram.ui.ax$2:
     org.telegram.ui.PhotoViewer this$0 -> a
     void needMoveImageTo(float,float,float,boolean) -> a
-org.telegram.ui.PhotoViewer$11 -> org.telegram.ui.ba$3:
+org.telegram.ui.PhotoViewer$11 -> org.telegram.ui.ax$3:
     int val$mode -> a
     org.telegram.ui.PhotoViewer this$0 -> b
     void onAnimationEnd(java.lang.Object) -> a
-org.telegram.ui.PhotoViewer$11$1 -> org.telegram.ui.ba$3$1:
+org.telegram.ui.PhotoViewer$11$1 -> org.telegram.ui.ax$3$1:
     org.telegram.ui.PhotoViewer$11 this$1 -> a
     void onAnimationStart(java.lang.Object) -> c
     void onAnimationEnd(java.lang.Object) -> a
-org.telegram.ui.PhotoViewer$12 -> org.telegram.ui.ba$4:
+org.telegram.ui.PhotoViewer$12 -> org.telegram.ui.ax$4:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoViewer$13 -> org.telegram.ui.ba$5:
+org.telegram.ui.PhotoViewer$13 -> org.telegram.ui.ax$5:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoViewer$13$1 -> org.telegram.ui.ba$5$1:
+org.telegram.ui.PhotoViewer$13$1 -> org.telegram.ui.ax$5$1:
     org.telegram.ui.PhotoViewer$13 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.PhotoViewer$14 -> org.telegram.ui.ba$6:
+org.telegram.ui.PhotoViewer$14 -> org.telegram.ui.ax$6:
     int val$mode -> a
     org.telegram.ui.PhotoViewer this$0 -> b
     void onAnimationEnd(java.lang.Object) -> a
-org.telegram.ui.PhotoViewer$14$1 -> org.telegram.ui.ba$6$1:
+org.telegram.ui.PhotoViewer$14$1 -> org.telegram.ui.ax$6$1:
     org.telegram.ui.PhotoViewer$14 this$1 -> a
     void onAnimationStart(java.lang.Object) -> c
     void onAnimationEnd(java.lang.Object) -> a
-org.telegram.ui.PhotoViewer$15 -> org.telegram.ui.ba$7:
+org.telegram.ui.PhotoViewer$15 -> org.telegram.ui.ax$7:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onAnimationEnd(java.lang.Object) -> a
-org.telegram.ui.PhotoViewer$16 -> org.telegram.ui.ba$8:
+org.telegram.ui.PhotoViewer$16 -> org.telegram.ui.ax$8:
     android.view.ViewGroup$LayoutParams val$layoutParams -> a
     android.graphics.Rect val$drawRegion -> b
     org.telegram.ui.PhotoViewer$PlaceProviderObject val$object -> c
     org.telegram.ui.PhotoViewer this$0 -> d
     boolean onPreDraw() -> onPreDraw
-org.telegram.ui.PhotoViewer$16$1 -> org.telegram.ui.ba$8$1:
+org.telegram.ui.PhotoViewer$16$1 -> org.telegram.ui.ax$8$1:
     org.telegram.ui.PhotoViewer$16 this$1 -> a
     void run() -> run
-org.telegram.ui.PhotoViewer$16$2 -> org.telegram.ui.ba$8$2:
+org.telegram.ui.PhotoViewer$16$2 -> org.telegram.ui.ax$8$2:
     org.telegram.ui.PhotoViewer$16 this$1 -> a
     void onAnimationEnd(java.lang.Object) -> a
     void onAnimationCancel(java.lang.Object) -> b
-org.telegram.ui.PhotoViewer$16$3 -> org.telegram.ui.ba$8$3:
+org.telegram.ui.PhotoViewer$16$3 -> org.telegram.ui.ax$8$3:
     org.telegram.ui.PhotoViewer$16 this$1 -> a
     void onDraw() -> a
-org.telegram.ui.PhotoViewer$17 -> org.telegram.ui.ba$9:
+org.telegram.ui.PhotoViewer$17 -> org.telegram.ui.ax$9:
     org.telegram.ui.PhotoViewer$PlaceProviderObject val$object -> a
     org.telegram.ui.PhotoViewer this$0 -> b
     void run() -> run
-org.telegram.ui.PhotoViewer$18 -> org.telegram.ui.ba$10:
+org.telegram.ui.PhotoViewer$18 -> org.telegram.ui.ax$10:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onAnimationEnd(java.lang.Object) -> a
     void onAnimationCancel(java.lang.Object) -> b
-org.telegram.ui.PhotoViewer$19 -> org.telegram.ui.ba$11:
+org.telegram.ui.PhotoViewer$19 -> org.telegram.ui.ax$11:
     org.telegram.ui.PhotoViewer$PlaceProviderObject val$object -> a
     org.telegram.ui.PhotoViewer this$0 -> b
     void run() -> run
-org.telegram.ui.PhotoViewer$2 -> org.telegram.ui.ba$12:
+org.telegram.ui.PhotoViewer$2 -> org.telegram.ui.ax$12:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoViewer$20 -> org.telegram.ui.ba$13:
+org.telegram.ui.PhotoViewer$20 -> org.telegram.ui.ax$13:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onAnimationEnd(java.lang.Object) -> a
-org.telegram.ui.PhotoViewer$21 -> org.telegram.ui.ba$14:
+org.telegram.ui.PhotoViewer$21 -> org.telegram.ui.ax$14:
     org.telegram.ui.PhotoViewer this$0 -> a
     void run() -> run
-org.telegram.ui.PhotoViewer$22 -> org.telegram.ui.ba$15:
+org.telegram.ui.PhotoViewer$22 -> org.telegram.ui.ax$15:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onAnimationEnd(java.lang.Object) -> a
-org.telegram.ui.PhotoViewer$23 -> org.telegram.ui.ba$16:
+org.telegram.ui.PhotoViewer$23 -> org.telegram.ui.ax$16:
     org.telegram.ui.PhotoViewer this$0 -> a
     boolean onPreDraw() -> onPreDraw
-org.telegram.ui.PhotoViewer$3 -> org.telegram.ui.ba$17:
+org.telegram.ui.PhotoViewer$3 -> org.telegram.ui.ax$17:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoViewer$4 -> org.telegram.ui.ba$18:
+org.telegram.ui.PhotoViewer$4 -> org.telegram.ui.ax$18:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoViewer$5 -> org.telegram.ui.ba$19:
+org.telegram.ui.PhotoViewer$5 -> org.telegram.ui.ax$19:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoViewer$6 -> org.telegram.ui.ba$20:
+org.telegram.ui.PhotoViewer$6 -> org.telegram.ui.ax$20:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoViewer$7 -> org.telegram.ui.ba$21:
+org.telegram.ui.PhotoViewer$7 -> org.telegram.ui.ax$21:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.PhotoViewer$8 -> org.telegram.ui.ba$22:
+org.telegram.ui.PhotoViewer$8 -> org.telegram.ui.ax$22:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onDismiss(android.content.DialogInterface) -> onDismiss
-org.telegram.ui.PhotoViewer$9 -> org.telegram.ui.ba$23:
+org.telegram.ui.PhotoViewer$9 -> org.telegram.ui.ax$23:
     int val$mode -> a
     org.telegram.ui.PhotoViewer this$0 -> b
     void onAnimationEnd(java.lang.Object) -> a
-org.telegram.ui.PhotoViewer$9$1 -> org.telegram.ui.ba$23$1:
+org.telegram.ui.PhotoViewer$9$1 -> org.telegram.ui.ax$23$1:
     org.telegram.ui.PhotoViewer$9 this$1 -> a
     void onAnimationStart(java.lang.Object) -> c
     void onAnimationEnd(java.lang.Object) -> a
-org.telegram.ui.PhotoViewer$EmptyPhotoViewerProvider -> org.telegram.ui.bb:
+org.telegram.ui.PhotoViewer$EmptyPhotoViewerProvider -> org.telegram.ui.ay:
     org.telegram.ui.PhotoViewer$PlaceProviderObject getPlaceForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> a
     android.graphics.Bitmap getThumbForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> b
     void willSwitchFromPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> c
@@ -26583,14 +26466,14 @@ org.telegram.ui.PhotoViewer$EmptyPhotoViewerProvider -> org.telegram.ui.bb:
     void sendButtonPressed(int) -> d
     int getSelectedCount() -> r
     void updatePhotoAtIndex(int) -> a
-org.telegram.ui.PhotoViewer$FrameLayoutDrawer -> org.telegram.ui.bc:
+org.telegram.ui.PhotoViewer$FrameLayoutDrawer -> org.telegram.ui.az:
     org.telegram.ui.PhotoViewer this$0 -> a
     void onDraw(android.graphics.Canvas) -> onDraw
-org.telegram.ui.PhotoViewer$FrameLayoutTouchListener -> org.telegram.ui.bd:
+org.telegram.ui.PhotoViewer$FrameLayoutTouchListener -> org.telegram.ui.ba:
     org.telegram.ui.PhotoViewer this$0 -> a
     boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
     void onLayout(boolean,int,int,int,int) -> onLayout
-org.telegram.ui.PhotoViewer$PhotoViewerProvider -> org.telegram.ui.be:
+org.telegram.ui.PhotoViewer$PhotoViewerProvider -> org.telegram.ui.bb:
     org.telegram.ui.PhotoViewer$PlaceProviderObject getPlaceForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> a
     android.graphics.Bitmap getThumbForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> b
     void willSwitchFromPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> c
@@ -26601,7 +26484,7 @@ org.telegram.ui.PhotoViewer$PhotoViewerProvider -> org.telegram.ui.be:
     void sendButtonPressed(int) -> d
     int getSelectedCount() -> r
     void updatePhotoAtIndex(int) -> a
-org.telegram.ui.PhotoViewer$PlaceProviderObject -> org.telegram.ui.bf:
+org.telegram.ui.PhotoViewer$PlaceProviderObject -> org.telegram.ui.bc:
     org.telegram.android.ImageReceiver imageReceiver -> a
     int viewX -> b
     int viewY -> c
@@ -26610,7 +26493,7 @@ org.telegram.ui.PhotoViewer$PlaceProviderObject -> org.telegram.ui.bf:
     int user_id -> f
     int size -> g
     int radius -> h
-org.telegram.ui.PhotoViewer$RadialProgressView -> org.telegram.ui.bg:
+org.telegram.ui.PhotoViewer$RadialProgressView -> org.telegram.ui.bd:
     long lastUpdateTime -> a
     float radOffset -> b
     float currentProgress -> c
@@ -26739,15 +26622,15 @@ org.telegram.ui.PopupNotificationActivity$8 -> org.telegram.ui.PopupNotification
 org.telegram.ui.PopupNotificationActivity$9 -> org.telegram.ui.PopupNotificationActivity$10:
     org.telegram.ui.PopupNotificationActivity this$0 -> a
     boolean onPreDraw() -> onPreDraw
-org.telegram.ui.PopupNotificationActivity$FrameLayoutAnimationListener -> org.telegram.ui.bh:
+org.telegram.ui.PopupNotificationActivity$FrameLayoutAnimationListener -> org.telegram.ui.be:
     org.telegram.ui.PopupNotificationActivity this$0 -> a
     void onAnimationEnd() -> onAnimationEnd
-org.telegram.ui.PopupNotificationActivity$FrameLayoutTouch -> org.telegram.ui.bi:
+org.telegram.ui.PopupNotificationActivity$FrameLayoutTouch -> org.telegram.ui.bf:
     org.telegram.ui.PopupNotificationActivity this$0 -> a
     boolean onInterceptTouchEvent(android.view.MotionEvent) -> onInterceptTouchEvent
     boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
     void requestDisallowInterceptTouchEvent(boolean) -> requestDisallowInterceptTouchEvent
-org.telegram.ui.ProfileActivity -> org.telegram.ui.bj:
+org.telegram.ui.ProfileActivity -> org.telegram.ui.bg:
     android.widget.ListView listView -> i
     org.telegram.ui.ProfileActivity$ListAdapter listAdapter -> j
     org.telegram.ui.Components.BackupImageView avatarImage -> k
@@ -26842,62 +26725,62 @@ org.telegram.ui.ProfileActivity -> org.telegram.ui.bj:
     int access$2600(org.telegram.ui.ProfileActivity) -> y
     int access$2700(org.telegram.ui.ProfileActivity) -> z
     int access$2800(org.telegram.ui.ProfileActivity) -> A
-org.telegram.ui.ProfileActivity$1 -> org.telegram.ui.bj$1:
+org.telegram.ui.ProfileActivity$1 -> org.telegram.ui.bg$1:
     java.util.concurrent.Semaphore val$semaphore -> a
     org.telegram.ui.ProfileActivity this$0 -> b
     void run() -> run
-org.telegram.ui.ProfileActivity$10 -> org.telegram.ui.bj$2:
+org.telegram.ui.ProfileActivity$10 -> org.telegram.ui.bg$2:
     org.telegram.ui.ProfileActivity this$0 -> a
     boolean onPreDraw() -> onPreDraw
-org.telegram.ui.ProfileActivity$11 -> org.telegram.ui.bj$3:
+org.telegram.ui.ProfileActivity$11 -> org.telegram.ui.bg$3:
     java.lang.Object[] val$args -> a
     org.telegram.ui.ProfileActivity this$0 -> b
     void run() -> run
-org.telegram.ui.ProfileActivity$12 -> org.telegram.ui.bj$4:
+org.telegram.ui.ProfileActivity$12 -> org.telegram.ui.bg$4:
     org.telegram.ui.ProfileActivity this$0 -> a
     int compare(java.lang.Integer,java.lang.Integer) -> a
     int compare(java.lang.Object,java.lang.Object) -> compare
-org.telegram.ui.ProfileActivity$2 -> org.telegram.ui.bj$5:
+org.telegram.ui.ProfileActivity$2 -> org.telegram.ui.bg$5:
     org.telegram.ui.ProfileActivity this$0 -> a
     void didUploadedPhoto(org.telegram.messenger.TLRPC$InputFile,org.telegram.messenger.TLRPC$PhotoSize,org.telegram.messenger.TLRPC$PhotoSize) -> a
-org.telegram.ui.ProfileActivity$3 -> org.telegram.ui.bj$6:
+org.telegram.ui.ProfileActivity$3 -> org.telegram.ui.bg$6:
     org.telegram.ui.ProfileActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.ProfileActivity$3$1 -> org.telegram.ui.bj$6$1:
+org.telegram.ui.ProfileActivity$3$1 -> org.telegram.ui.bg$6$1:
     org.telegram.messenger.TLRPC$User val$user -> a
     org.telegram.ui.ProfileActivity$3 this$1 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ProfileActivity$4 -> org.telegram.ui.bj$7:
+org.telegram.ui.ProfileActivity$4 -> org.telegram.ui.bg$7:
     org.telegram.ui.ProfileActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.ProfileActivity$5 -> org.telegram.ui.bj$8:
+org.telegram.ui.ProfileActivity$5 -> org.telegram.ui.bg$8:
     android.content.Context val$context -> a
     org.telegram.ui.ProfileActivity this$0 -> b
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.ProfileActivity$5$1 -> org.telegram.ui.bj$8$1:
+org.telegram.ui.ProfileActivity$5$1 -> org.telegram.ui.bg$8$1:
     org.telegram.messenger.TLRPC$User val$user -> a
     org.telegram.ui.ProfileActivity$5 this$1 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ProfileActivity$6 -> org.telegram.ui.bj$9:
+org.telegram.ui.ProfileActivity$6 -> org.telegram.ui.bg$9:
     org.telegram.ui.ProfileActivity this$0 -> a
     boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
-org.telegram.ui.ProfileActivity$6$1 -> org.telegram.ui.bj$9$1:
+org.telegram.ui.ProfileActivity$6$1 -> org.telegram.ui.bg$9$1:
     org.telegram.ui.ProfileActivity$6 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ProfileActivity$7 -> org.telegram.ui.bj$10:
+org.telegram.ui.ProfileActivity$7 -> org.telegram.ui.bg$10:
     org.telegram.ui.ProfileActivity this$0 -> a
     void getOutline(android.view.View,android.graphics.Outline) -> getOutline
-org.telegram.ui.ProfileActivity$8 -> org.telegram.ui.bj$11:
+org.telegram.ui.ProfileActivity$8 -> org.telegram.ui.bg$11:
     org.telegram.ui.ProfileActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.ProfileActivity$8$1 -> org.telegram.ui.bj$11$1:
+org.telegram.ui.ProfileActivity$8$1 -> org.telegram.ui.bg$11$1:
     org.telegram.ui.ProfileActivity$8 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ProfileActivity$9 -> org.telegram.ui.bj$12:
+org.telegram.ui.ProfileActivity$9 -> org.telegram.ui.bg$12:
     org.telegram.ui.ProfileActivity this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-org.telegram.ui.ProfileActivity$ListAdapter -> org.telegram.ui.bk:
+org.telegram.ui.ProfileActivity$ListAdapter -> org.telegram.ui.bh:
     android.content.Context mContext -> b
     org.telegram.ui.ProfileActivity this$0 -> a
     boolean areAllItemsEnabled() -> areAllItemsEnabled
@@ -26910,7 +26793,7 @@ org.telegram.ui.ProfileActivity$ListAdapter -> org.telegram.ui.bk:
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-org.telegram.ui.ProfileNotificationsActivity -> org.telegram.ui.bl:
+org.telegram.ui.ProfileNotificationsActivity -> org.telegram.ui.bi:
     android.widget.ListView listView -> i
     long dialog_id -> j
     int settingsNotificationsRow -> k
@@ -26932,32 +26815,32 @@ org.telegram.ui.ProfileNotificationsActivity -> org.telegram.ui.bl:
     int access$500(org.telegram.ui.ProfileNotificationsActivity) -> f
     int access$600(org.telegram.ui.ProfileNotificationsActivity) -> g
     int access$700(org.telegram.ui.ProfileNotificationsActivity) -> h
-org.telegram.ui.ProfileNotificationsActivity$1 -> org.telegram.ui.bl$1:
+org.telegram.ui.ProfileNotificationsActivity$1 -> org.telegram.ui.bi$1:
     org.telegram.ui.ProfileNotificationsActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.ProfileNotificationsActivity$2 -> org.telegram.ui.bl$2:
+org.telegram.ui.ProfileNotificationsActivity$2 -> org.telegram.ui.bi$2:
     org.telegram.ui.ProfileNotificationsActivity this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.ProfileNotificationsActivity$2$1 -> org.telegram.ui.bl$2$1:
+org.telegram.ui.ProfileNotificationsActivity$2$1 -> org.telegram.ui.bi$2$1:
     org.telegram.ui.ProfileNotificationsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ProfileNotificationsActivity$2$2 -> org.telegram.ui.bl$2$2:
+org.telegram.ui.ProfileNotificationsActivity$2$2 -> org.telegram.ui.bi$2$2:
     org.telegram.ui.ProfileNotificationsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ProfileNotificationsActivity$2$3 -> org.telegram.ui.bl$2$3:
+org.telegram.ui.ProfileNotificationsActivity$2$3 -> org.telegram.ui.bi$2$3:
     org.telegram.ui.Components.ColorPickerView val$colorPickerView -> a
     org.telegram.ui.ProfileNotificationsActivity$2 this$1 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ProfileNotificationsActivity$2$4 -> org.telegram.ui.bl$2$4:
+org.telegram.ui.ProfileNotificationsActivity$2$4 -> org.telegram.ui.bi$2$4:
     org.telegram.ui.ProfileNotificationsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ProfileNotificationsActivity$2$5 -> org.telegram.ui.bl$2$5:
+org.telegram.ui.ProfileNotificationsActivity$2$5 -> org.telegram.ui.bi$2$5:
     org.telegram.ui.ProfileNotificationsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ProfileNotificationsActivity$2$6 -> org.telegram.ui.bl$2$6:
+org.telegram.ui.ProfileNotificationsActivity$2$6 -> org.telegram.ui.bi$2$6:
     org.telegram.ui.ProfileNotificationsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.ProfileNotificationsActivity$ListAdapter -> org.telegram.ui.bm:
+org.telegram.ui.ProfileNotificationsActivity$ListAdapter -> org.telegram.ui.bj:
     android.content.Context mContext -> b
     org.telegram.ui.ProfileNotificationsActivity this$0 -> a
     boolean areAllItemsEnabled() -> areAllItemsEnabled
@@ -26970,7 +26853,7 @@ org.telegram.ui.ProfileNotificationsActivity$ListAdapter -> org.telegram.ui.bm:
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-org.telegram.ui.SecretPhotoViewer -> org.telegram.ui.bn:
+org.telegram.ui.SecretPhotoViewer -> org.telegram.ui.bk:
     android.app.Activity parentActivity -> a
     android.view.WindowManager$LayoutParams windowLayoutParams -> b
     org.telegram.ui.SecretPhotoViewer$FrameLayoutTouchListener windowView -> c
@@ -26991,19 +26874,19 @@ org.telegram.ui.SecretPhotoViewer -> org.telegram.ui.bn:
     void access$000(org.telegram.ui.SecretPhotoViewer,android.graphics.Canvas) -> a
     org.telegram.android.MessageObject access$100(org.telegram.ui.SecretPhotoViewer) -> a
     org.telegram.android.ImageReceiver access$200(org.telegram.ui.SecretPhotoViewer) -> b
-org.telegram.ui.SecretPhotoViewer$1 -> org.telegram.ui.bn$1:
+org.telegram.ui.SecretPhotoViewer$1 -> org.telegram.ui.bk$1:
     org.telegram.ui.SecretPhotoViewer this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-org.telegram.ui.SecretPhotoViewer$2 -> org.telegram.ui.bn$2:
+org.telegram.ui.SecretPhotoViewer$2 -> org.telegram.ui.bk$2:
     org.telegram.ui.SecretPhotoViewer this$0 -> a
     void run() -> run
-org.telegram.ui.SecretPhotoViewer$FrameLayoutDrawer -> org.telegram.ui.bo:
+org.telegram.ui.SecretPhotoViewer$FrameLayoutDrawer -> org.telegram.ui.bl:
     org.telegram.ui.SecretPhotoViewer this$0 -> a
     void onDraw(android.graphics.Canvas) -> onDraw
-org.telegram.ui.SecretPhotoViewer$FrameLayoutTouchListener -> org.telegram.ui.bp:
+org.telegram.ui.SecretPhotoViewer$FrameLayoutTouchListener -> org.telegram.ui.bm:
     org.telegram.ui.SecretPhotoViewer this$0 -> a
     boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
-org.telegram.ui.SecretPhotoViewer$SecretDeleteTimer -> org.telegram.ui.bq:
+org.telegram.ui.SecretPhotoViewer$SecretDeleteTimer -> org.telegram.ui.bn:
     java.lang.String currentInfoString -> b
     int infoWidth -> c
     android.text.TextPaint infoPaint -> d
@@ -27015,7 +26898,7 @@ org.telegram.ui.SecretPhotoViewer$SecretDeleteTimer -> org.telegram.ui.bq:
     void updateSecretTimeText() -> a
     void onMeasure(int,int) -> onMeasure
     void onDraw(android.graphics.Canvas) -> onDraw
-org.telegram.ui.SecuritySettingsActivity -> org.telegram.ui.br:
+org.telegram.ui.SecuritySettingsActivity -> org.telegram.ui.bo:
     org.telegram.ui.SecuritySettingsActivity$ListAdapter listAdapter -> i
     int securitySectionRow -> j
     int sessionsRow -> k
@@ -27039,26 +26922,26 @@ org.telegram.ui.SecuritySettingsActivity -> org.telegram.ui.br:
     int access$600(org.telegram.ui.SecuritySettingsActivity) -> g
     int access$700(org.telegram.ui.SecuritySettingsActivity) -> h
     int access$800(org.telegram.ui.SecuritySettingsActivity) -> i
-org.telegram.ui.SecuritySettingsActivity$1 -> org.telegram.ui.br$1:
+org.telegram.ui.SecuritySettingsActivity$1 -> org.telegram.ui.bo$1:
     org.telegram.ui.SecuritySettingsActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.SecuritySettingsActivity$2 -> org.telegram.ui.br$2:
+org.telegram.ui.SecuritySettingsActivity$2 -> org.telegram.ui.bo$2:
     android.content.Context val$context -> a
     org.telegram.ui.SecuritySettingsActivity this$0 -> b
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.SecuritySettingsActivity$2$1 -> org.telegram.ui.br$2$1:
+org.telegram.ui.SecuritySettingsActivity$2$1 -> org.telegram.ui.bo$2$1:
     org.telegram.ui.SecuritySettingsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.SecuritySettingsActivity$2$1$1 -> org.telegram.ui.br$2$1$1:
+org.telegram.ui.SecuritySettingsActivity$2$1$1 -> org.telegram.ui.bo$2$1$1:
     android.app.ProgressDialog val$progressDialog -> a
     org.telegram.messenger.TLRPC$TL_account_setAccountTTL val$req -> b
     org.telegram.ui.SecuritySettingsActivity$2$1 this$2 -> c
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.SecuritySettingsActivity$2$1$1$1 -> org.telegram.ui.br$2$1$1$1:
+org.telegram.ui.SecuritySettingsActivity$2$1$1$1 -> org.telegram.ui.bo$2$1$1$1:
     org.telegram.messenger.TLObject val$response -> a
     org.telegram.ui.SecuritySettingsActivity$2$1$1 this$3 -> b
     void run() -> run
-org.telegram.ui.SecuritySettingsActivity$ListAdapter -> org.telegram.ui.bs:
+org.telegram.ui.SecuritySettingsActivity$ListAdapter -> org.telegram.ui.bp:
     android.content.Context mContext -> b
     org.telegram.ui.SecuritySettingsActivity this$0 -> a
     boolean areAllItemsEnabled() -> areAllItemsEnabled
@@ -27071,7 +26954,7 @@ org.telegram.ui.SecuritySettingsActivity$ListAdapter -> org.telegram.ui.bs:
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-org.telegram.ui.SessionsActivity -> org.telegram.ui.bt:
+org.telegram.ui.SessionsActivity -> org.telegram.ui.bq:
     org.telegram.ui.SessionsActivity$ListAdapter listAdapter -> i
     java.util.ArrayList sessions -> j
     org.telegram.messenger.TLRPC$TL_authorization currentSession -> k
@@ -27112,48 +26995,48 @@ org.telegram.ui.SessionsActivity -> org.telegram.ui.bt:
     int access$1400(org.telegram.ui.SessionsActivity) -> n
     org.telegram.messenger.TLRPC$TL_authorization access$700(org.telegram.ui.SessionsActivity) -> o
     int access$1500(org.telegram.ui.SessionsActivity) -> p
-org.telegram.ui.SessionsActivity$1 -> org.telegram.ui.bt$1:
+org.telegram.ui.SessionsActivity$1 -> org.telegram.ui.bq$1:
     org.telegram.ui.SessionsActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.SessionsActivity$2 -> org.telegram.ui.bt$2:
+org.telegram.ui.SessionsActivity$2 -> org.telegram.ui.bq$2:
     org.telegram.ui.SessionsActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-org.telegram.ui.SessionsActivity$3 -> org.telegram.ui.bt$3:
+org.telegram.ui.SessionsActivity$3 -> org.telegram.ui.bq$3:
     org.telegram.ui.SessionsActivity this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.SessionsActivity$3$1 -> org.telegram.ui.bt$3$1:
+org.telegram.ui.SessionsActivity$3$1 -> org.telegram.ui.bq$3$1:
     org.telegram.ui.SessionsActivity$3 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.SessionsActivity$3$1$1 -> org.telegram.ui.bt$3$1$1:
+org.telegram.ui.SessionsActivity$3$1$1 -> org.telegram.ui.bq$3$1$1:
     org.telegram.ui.SessionsActivity$3$1 this$2 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.SessionsActivity$3$1$1$1 -> org.telegram.ui.bt$3$1$1$1:
+org.telegram.ui.SessionsActivity$3$1$1$1 -> org.telegram.ui.bq$3$1$1$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.SessionsActivity$3$1$1 this$3 -> c
     void run() -> run
-org.telegram.ui.SessionsActivity$3$2 -> org.telegram.ui.bt$3$2:
+org.telegram.ui.SessionsActivity$3$2 -> org.telegram.ui.bq$3$2:
     int val$i -> a
     org.telegram.ui.SessionsActivity$3 this$1 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.SessionsActivity$3$2$1 -> org.telegram.ui.bt$3$2$1:
+org.telegram.ui.SessionsActivity$3$2$1 -> org.telegram.ui.bq$3$2$1:
     android.app.ProgressDialog val$progressDialog -> a
     org.telegram.messenger.TLRPC$TL_authorization val$authorization -> b
     org.telegram.ui.SessionsActivity$3$2 this$2 -> c
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.SessionsActivity$3$2$1$1 -> org.telegram.ui.bt$3$2$1$1:
+org.telegram.ui.SessionsActivity$3$2$1$1 -> org.telegram.ui.bq$3$2$1$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.ui.SessionsActivity$3$2$1 this$3 -> b
     void run() -> run
-org.telegram.ui.SessionsActivity$4 -> org.telegram.ui.bt$4:
+org.telegram.ui.SessionsActivity$4 -> org.telegram.ui.bq$4:
     org.telegram.ui.SessionsActivity this$0 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.SessionsActivity$4$1 -> org.telegram.ui.bt$4$1:
+org.telegram.ui.SessionsActivity$4$1 -> org.telegram.ui.bq$4$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.SessionsActivity$4 this$1 -> c
     void run() -> run
-org.telegram.ui.SessionsActivity$ListAdapter -> org.telegram.ui.bu:
+org.telegram.ui.SessionsActivity$ListAdapter -> org.telegram.ui.br:
     android.content.Context mContext -> b
     org.telegram.ui.SessionsActivity this$0 -> a
     boolean areAllItemsEnabled() -> areAllItemsEnabled
@@ -27166,7 +27049,7 @@ org.telegram.ui.SessionsActivity$ListAdapter -> org.telegram.ui.bu:
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-org.telegram.ui.SettingsActivity -> org.telegram.ui.bv:
+org.telegram.ui.SettingsActivity -> org.telegram.ui.bs:
     android.widget.ListView listView -> i
     org.telegram.ui.SettingsActivity$ListAdapter listAdapter -> j
     org.telegram.ui.Components.BackupImageView avatarImage -> k
@@ -27255,56 +27138,56 @@ org.telegram.ui.SettingsActivity -> org.telegram.ui.bv:
     int access$2900(org.telegram.ui.SettingsActivity) -> D
     int access$3000(org.telegram.ui.SettingsActivity) -> E
     int access$3100(org.telegram.ui.SettingsActivity) -> F
-org.telegram.ui.SettingsActivity$1 -> org.telegram.ui.bv$1:
+org.telegram.ui.SettingsActivity$1 -> org.telegram.ui.bs$1:
     org.telegram.ui.SettingsActivity this$0 -> a
     void didUploadedPhoto(org.telegram.messenger.TLRPC$InputFile,org.telegram.messenger.TLRPC$PhotoSize,org.telegram.messenger.TLRPC$PhotoSize) -> a
-org.telegram.ui.SettingsActivity$1$1 -> org.telegram.ui.bv$1$1:
+org.telegram.ui.SettingsActivity$1$1 -> org.telegram.ui.bs$1$1:
     org.telegram.ui.SettingsActivity$1 this$1 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.SettingsActivity$1$1$1 -> org.telegram.ui.bv$1$1$1:
+org.telegram.ui.SettingsActivity$1$1$1 -> org.telegram.ui.bs$1$1$1:
     org.telegram.ui.SettingsActivity$1$1 this$2 -> a
     void run() -> run
-org.telegram.ui.SettingsActivity$2 -> org.telegram.ui.bv$2:
+org.telegram.ui.SettingsActivity$2 -> org.telegram.ui.bs$2:
     org.telegram.ui.SettingsActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.SettingsActivity$2$1 -> org.telegram.ui.bv$2$1:
+org.telegram.ui.SettingsActivity$2$1 -> org.telegram.ui.bs$2$1:
     org.telegram.ui.SettingsActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.SettingsActivity$3 -> org.telegram.ui.bv$3:
+org.telegram.ui.SettingsActivity$3 -> org.telegram.ui.bs$3:
     org.telegram.ui.SettingsActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.SettingsActivity$4 -> org.telegram.ui.bv$4:
+org.telegram.ui.SettingsActivity$4 -> org.telegram.ui.bs$4:
     android.content.Context val$context -> a
     org.telegram.ui.SettingsActivity this$0 -> b
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.SettingsActivity$4$1 -> org.telegram.ui.bv$4$1:
+org.telegram.ui.SettingsActivity$4$1 -> org.telegram.ui.bs$4$1:
     org.telegram.ui.Components.NumberPicker val$numberPicker -> a
     org.telegram.ui.SettingsActivity$4 this$1 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.SettingsActivity$4$2 -> org.telegram.ui.bv$4$2:
+org.telegram.ui.SettingsActivity$4$2 -> org.telegram.ui.bs$4$2:
     org.telegram.ui.SettingsActivity$4 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.SettingsActivity$4$3 -> org.telegram.ui.bv$4$3:
+org.telegram.ui.SettingsActivity$4$3 -> org.telegram.ui.bs$4$3:
     int val$i -> a
     org.telegram.ui.SettingsActivity$4 this$1 -> b
     void onClick(android.content.DialogInterface,int,boolean) -> onClick
-org.telegram.ui.SettingsActivity$5 -> org.telegram.ui.bv$5:
+org.telegram.ui.SettingsActivity$5 -> org.telegram.ui.bs$5:
     org.telegram.ui.SettingsActivity this$0 -> a
     void getOutline(android.view.View,android.graphics.Outline) -> getOutline
-org.telegram.ui.SettingsActivity$6 -> org.telegram.ui.bv$6:
+org.telegram.ui.SettingsActivity$6 -> org.telegram.ui.bs$6:
     org.telegram.ui.SettingsActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.SettingsActivity$6$1 -> org.telegram.ui.bv$6$1:
+org.telegram.ui.SettingsActivity$6$1 -> org.telegram.ui.bs$6$1:
     org.telegram.ui.SettingsActivity$6 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.SettingsActivity$7 -> org.telegram.ui.bv$7:
+org.telegram.ui.SettingsActivity$7 -> org.telegram.ui.bs$7:
     org.telegram.ui.SettingsActivity this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-org.telegram.ui.SettingsActivity$8 -> org.telegram.ui.bv$8:
+org.telegram.ui.SettingsActivity$8 -> org.telegram.ui.bs$8:
     org.telegram.ui.SettingsActivity this$0 -> a
     boolean onPreDraw() -> onPreDraw
-org.telegram.ui.SettingsActivity$ListAdapter -> org.telegram.ui.bw:
+org.telegram.ui.SettingsActivity$ListAdapter -> org.telegram.ui.bt:
     android.content.Context mContext -> b
     org.telegram.ui.SettingsActivity this$0 -> a
     boolean areAllItemsEnabled() -> areAllItemsEnabled
@@ -27317,7 +27200,7 @@ org.telegram.ui.SettingsActivity$ListAdapter -> org.telegram.ui.bw:
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-org.telegram.ui.TwoStepVerificationActivity -> org.telegram.ui.bx:
+org.telegram.ui.TwoStepVerificationActivity -> org.telegram.ui.bu:
     org.telegram.ui.TwoStepVerificationActivity$ListAdapter listAdapter -> i
     android.widget.ListView listView -> j
     android.widget.TextView titleTextView -> k
@@ -27406,102 +27289,102 @@ org.telegram.ui.TwoStepVerificationActivity -> org.telegram.ui.bx:
     boolean access$1800(org.telegram.ui.TwoStepVerificationActivity) -> v
     int access$3000(org.telegram.ui.TwoStepVerificationActivity) -> w
     int access$3100(org.telegram.ui.TwoStepVerificationActivity) -> x
-org.telegram.ui.TwoStepVerificationActivity$1 -> org.telegram.ui.bx$1:
+org.telegram.ui.TwoStepVerificationActivity$1 -> org.telegram.ui.bu$1:
     org.telegram.ui.TwoStepVerificationActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.TwoStepVerificationActivity$10 -> org.telegram.ui.bx$2:
+org.telegram.ui.TwoStepVerificationActivity$10 -> org.telegram.ui.bu$2:
     org.telegram.ui.TwoStepVerificationActivity this$0 -> a
     void run() -> run
-org.telegram.ui.TwoStepVerificationActivity$11 -> org.telegram.ui.bx$3:
+org.telegram.ui.TwoStepVerificationActivity$11 -> org.telegram.ui.bu$3:
     boolean val$clear -> a
     org.telegram.messenger.TLRPC$TL_account_updatePasswordSettings val$req -> b
     org.telegram.ui.TwoStepVerificationActivity this$0 -> c
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.TwoStepVerificationActivity$11$1 -> org.telegram.ui.bx$3$1:
+org.telegram.ui.TwoStepVerificationActivity$11$1 -> org.telegram.ui.bu$3$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.TwoStepVerificationActivity$11 this$1 -> c
     void run() -> run
-org.telegram.ui.TwoStepVerificationActivity$11$1$1 -> org.telegram.ui.bx$3$1$1:
+org.telegram.ui.TwoStepVerificationActivity$11$1$1 -> org.telegram.ui.bu$3$1$1:
     org.telegram.ui.TwoStepVerificationActivity$11$1 this$2 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.TwoStepVerificationActivity$11$1$2 -> org.telegram.ui.bx$3$1$2:
+org.telegram.ui.TwoStepVerificationActivity$11$1$2 -> org.telegram.ui.bu$3$1$2:
     org.telegram.ui.TwoStepVerificationActivity$11$1 this$2 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.TwoStepVerificationActivity$12 -> org.telegram.ui.bx$4:
+org.telegram.ui.TwoStepVerificationActivity$12 -> org.telegram.ui.bu$4:
     org.telegram.messenger.TLRPC$TL_account_getPasswordSettings val$req -> a
     org.telegram.ui.TwoStepVerificationActivity this$0 -> b
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.TwoStepVerificationActivity$12$1 -> org.telegram.ui.bx$4$1:
+org.telegram.ui.TwoStepVerificationActivity$12$1 -> org.telegram.ui.bu$4$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.ui.TwoStepVerificationActivity$12 this$1 -> b
     void run() -> run
-org.telegram.ui.TwoStepVerificationActivity$13 -> org.telegram.ui.bx$5:
+org.telegram.ui.TwoStepVerificationActivity$13 -> org.telegram.ui.bu$5:
     org.telegram.ui.TwoStepVerificationActivity this$0 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.TwoStepVerificationActivity$13$1 -> org.telegram.ui.bx$5$1:
+org.telegram.ui.TwoStepVerificationActivity$13$1 -> org.telegram.ui.bu$5$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.ui.TwoStepVerificationActivity$13 this$1 -> b
     void run() -> run
-org.telegram.ui.TwoStepVerificationActivity$13$1$1 -> org.telegram.ui.bx$5$1$1:
+org.telegram.ui.TwoStepVerificationActivity$13$1$1 -> org.telegram.ui.bu$5$1$1:
     org.telegram.ui.TwoStepVerificationActivity$13$1 this$2 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.TwoStepVerificationActivity$2 -> org.telegram.ui.bx$6:
+org.telegram.ui.TwoStepVerificationActivity$2 -> org.telegram.ui.bu$6:
     org.telegram.ui.TwoStepVerificationActivity this$0 -> a
     boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
-org.telegram.ui.TwoStepVerificationActivity$3 -> org.telegram.ui.bx$7:
+org.telegram.ui.TwoStepVerificationActivity$3 -> org.telegram.ui.bu$7:
     org.telegram.ui.TwoStepVerificationActivity this$0 -> a
     void onCreateContextMenu(android.view.ContextMenu,android.view.View,android.view.ContextMenu$ContextMenuInfo) -> onCreateContextMenu
-org.telegram.ui.TwoStepVerificationActivity$4 -> org.telegram.ui.bx$8:
+org.telegram.ui.TwoStepVerificationActivity$4 -> org.telegram.ui.bu$8:
     org.telegram.ui.TwoStepVerificationActivity this$0 -> a
     boolean onPrepareActionMode(android.view.ActionMode,android.view.Menu) -> onPrepareActionMode
     void onDestroyActionMode(android.view.ActionMode) -> onDestroyActionMode
     boolean onCreateActionMode(android.view.ActionMode,android.view.Menu) -> onCreateActionMode
     boolean onActionItemClicked(android.view.ActionMode,android.view.MenuItem) -> onActionItemClicked
-org.telegram.ui.TwoStepVerificationActivity$5 -> org.telegram.ui.bx$9:
+org.telegram.ui.TwoStepVerificationActivity$5 -> org.telegram.ui.bu$9:
     org.telegram.ui.TwoStepVerificationActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.TwoStepVerificationActivity$5$1 -> org.telegram.ui.bx$9$1:
+org.telegram.ui.TwoStepVerificationActivity$5$1 -> org.telegram.ui.bu$9$1:
     org.telegram.ui.TwoStepVerificationActivity$5 this$1 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.TwoStepVerificationActivity$5$1$1 -> org.telegram.ui.bx$9$1$1:
+org.telegram.ui.TwoStepVerificationActivity$5$1$1 -> org.telegram.ui.bu$9$1$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.TwoStepVerificationActivity$5$1 this$2 -> c
     void run() -> run
-org.telegram.ui.TwoStepVerificationActivity$5$1$1$1 -> org.telegram.ui.bx$9$1$1$1:
+org.telegram.ui.TwoStepVerificationActivity$5$1$1$1 -> org.telegram.ui.bu$9$1$1$1:
     org.telegram.messenger.TLRPC$TL_auth_passwordRecovery val$res -> a
     org.telegram.ui.TwoStepVerificationActivity$5$1$1 this$3 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.TwoStepVerificationActivity$5$2 -> org.telegram.ui.bx$9$2:
+org.telegram.ui.TwoStepVerificationActivity$5$2 -> org.telegram.ui.bu$9$2:
     org.telegram.ui.TwoStepVerificationActivity$5 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.TwoStepVerificationActivity$6 -> org.telegram.ui.bx$10:
+org.telegram.ui.TwoStepVerificationActivity$6 -> org.telegram.ui.bu$10:
     org.telegram.ui.TwoStepVerificationActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-org.telegram.ui.TwoStepVerificationActivity$7 -> org.telegram.ui.bx$11:
+org.telegram.ui.TwoStepVerificationActivity$7 -> org.telegram.ui.bu$11:
     android.content.Context val$context -> a
     org.telegram.ui.TwoStepVerificationActivity this$0 -> b
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.TwoStepVerificationActivity$7$1 -> org.telegram.ui.bx$11$1:
+org.telegram.ui.TwoStepVerificationActivity$7$1 -> org.telegram.ui.bu$11$1:
     org.telegram.ui.TwoStepVerificationActivity$7 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.TwoStepVerificationActivity$8 -> org.telegram.ui.bx$12:
+org.telegram.ui.TwoStepVerificationActivity$8 -> org.telegram.ui.bu$12:
     org.telegram.ui.TwoStepVerificationActivity this$0 -> a
     void run() -> run
-org.telegram.ui.TwoStepVerificationActivity$9 -> org.telegram.ui.bx$13:
+org.telegram.ui.TwoStepVerificationActivity$9 -> org.telegram.ui.bu$13:
     boolean val$silent -> a
     org.telegram.ui.TwoStepVerificationActivity this$0 -> b
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.TwoStepVerificationActivity$9$1 -> org.telegram.ui.bx$13$1:
+org.telegram.ui.TwoStepVerificationActivity$9$1 -> org.telegram.ui.bu$13$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.TwoStepVerificationActivity$9 this$1 -> c
     void run() -> run
-org.telegram.ui.TwoStepVerificationActivity$9$1$1 -> org.telegram.ui.bx$13$1$1:
+org.telegram.ui.TwoStepVerificationActivity$9$1$1 -> org.telegram.ui.bu$13$1$1:
     org.telegram.ui.TwoStepVerificationActivity$9$1 this$2 -> a
     void run() -> run
-org.telegram.ui.TwoStepVerificationActivity$ListAdapter -> org.telegram.ui.by:
+org.telegram.ui.TwoStepVerificationActivity$ListAdapter -> org.telegram.ui.bv:
     android.content.Context mContext -> b
     org.telegram.ui.TwoStepVerificationActivity this$0 -> a
     boolean areAllItemsEnabled() -> areAllItemsEnabled
@@ -27514,7 +27397,7 @@ org.telegram.ui.TwoStepVerificationActivity$ListAdapter -> org.telegram.ui.by:
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-org.telegram.ui.VideoEditorActivity -> org.telegram.ui.bz:
+org.telegram.ui.VideoEditorActivity -> org.telegram.ui.bw:
     boolean created -> i
     android.media.MediaPlayer videoPlayer -> j
     org.telegram.ui.Components.VideoTimelineView videoTimelineView -> k
@@ -27603,46 +27486,46 @@ org.telegram.ui.VideoEditorActivity -> org.telegram.ui.bz:
     android.view.View access$2700(org.telegram.ui.VideoEditorActivity) -> z
     android.view.View access$2800(org.telegram.ui.VideoEditorActivity) -> A
     android.view.View access$2900(org.telegram.ui.VideoEditorActivity) -> B
-org.telegram.ui.VideoEditorActivity$1 -> org.telegram.ui.bz$1:
+org.telegram.ui.VideoEditorActivity$1 -> org.telegram.ui.bw$1:
     org.telegram.ui.VideoEditorActivity this$0 -> a
     void run() -> run
-org.telegram.ui.VideoEditorActivity$1$1 -> org.telegram.ui.bz$1$1:
+org.telegram.ui.VideoEditorActivity$1$1 -> org.telegram.ui.bw$1$1:
     org.telegram.ui.VideoEditorActivity$1 this$1 -> a
     void run() -> run
-org.telegram.ui.VideoEditorActivity$10 -> org.telegram.ui.bz$2:
+org.telegram.ui.VideoEditorActivity$10 -> org.telegram.ui.bw$2:
     org.telegram.ui.VideoEditorActivity this$0 -> a
     void onSeekComplete(android.media.MediaPlayer) -> onSeekComplete
-org.telegram.ui.VideoEditorActivity$2 -> org.telegram.ui.bz$3:
+org.telegram.ui.VideoEditorActivity$2 -> org.telegram.ui.bw$3:
     org.telegram.ui.VideoEditorActivity this$0 -> a
     void onCompletion(android.media.MediaPlayer) -> onCompletion
-org.telegram.ui.VideoEditorActivity$2$1 -> org.telegram.ui.bz$3$1:
+org.telegram.ui.VideoEditorActivity$2$1 -> org.telegram.ui.bw$3$1:
     org.telegram.ui.VideoEditorActivity$2 this$1 -> a
     void run() -> run
-org.telegram.ui.VideoEditorActivity$3 -> org.telegram.ui.bz$4:
+org.telegram.ui.VideoEditorActivity$3 -> org.telegram.ui.bw$4:
     org.telegram.ui.VideoEditorActivity this$0 -> a
     void onPrepared(android.media.MediaPlayer) -> onPrepared
-org.telegram.ui.VideoEditorActivity$4 -> org.telegram.ui.bz$5:
+org.telegram.ui.VideoEditorActivity$4 -> org.telegram.ui.bw$5:
     org.telegram.ui.VideoEditorActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.VideoEditorActivity$5 -> org.telegram.ui.bz$6:
+org.telegram.ui.VideoEditorActivity$5 -> org.telegram.ui.bw$6:
     org.telegram.ui.VideoEditorActivity this$0 -> a
     void onCheckedChanged(android.widget.CompoundButton,boolean) -> onCheckedChanged
-org.telegram.ui.VideoEditorActivity$6 -> org.telegram.ui.bz$7:
+org.telegram.ui.VideoEditorActivity$6 -> org.telegram.ui.bw$7:
     org.telegram.ui.VideoEditorActivity this$0 -> a
     void onLeftProgressChanged(float) -> a
     void onRifhtProgressChanged(float) -> b
-org.telegram.ui.VideoEditorActivity$7 -> org.telegram.ui.bz$8:
+org.telegram.ui.VideoEditorActivity$7 -> org.telegram.ui.bw$8:
     org.telegram.ui.VideoEditorActivity this$0 -> a
     void onSeekBarDrag(float) -> a
-org.telegram.ui.VideoEditorActivity$8 -> org.telegram.ui.bz$9:
+org.telegram.ui.VideoEditorActivity$8 -> org.telegram.ui.bw$9:
     org.telegram.ui.VideoEditorActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-org.telegram.ui.VideoEditorActivity$9 -> org.telegram.ui.bz$10:
+org.telegram.ui.VideoEditorActivity$9 -> org.telegram.ui.bw$10:
     org.telegram.ui.VideoEditorActivity this$0 -> a
     void onGlobalLayout() -> onGlobalLayout
-org.telegram.ui.VideoEditorActivity$VideoEditorActivityDelegate -> org.telegram.ui.ca:
+org.telegram.ui.VideoEditorActivity$VideoEditorActivityDelegate -> org.telegram.ui.bx:
     void didFinishEditVideo(java.lang.String,long,long,int,int,int,int,int,int,long,long) -> a
-org.telegram.ui.WallpapersActivity -> org.telegram.ui.cb:
+org.telegram.ui.WallpapersActivity -> org.telegram.ui.by:
     org.telegram.ui.Components.HorizontalListView listView -> i
     org.telegram.ui.WallpapersActivity$ListAdapter listAdapter -> j
     android.widget.ImageView backgroundImage -> k
@@ -27681,33 +27564,33 @@ org.telegram.ui.WallpapersActivity -> org.telegram.ui.cb:
     void access$800(org.telegram.ui.WallpapersActivity) -> h
     android.view.View access$900(org.telegram.ui.WallpapersActivity) -> i
     org.telegram.ui.Components.HorizontalListView access$1000(org.telegram.ui.WallpapersActivity) -> j
-org.telegram.ui.WallpapersActivity$1 -> org.telegram.ui.cb$1:
+org.telegram.ui.WallpapersActivity$1 -> org.telegram.ui.by$1:
     org.telegram.ui.WallpapersActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.WallpapersActivity$2 -> org.telegram.ui.cb$2:
+org.telegram.ui.WallpapersActivity$2 -> org.telegram.ui.by$2:
     org.telegram.ui.WallpapersActivity this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-org.telegram.ui.WallpapersActivity$2$1 -> org.telegram.ui.cb$2$1:
+org.telegram.ui.WallpapersActivity$2$1 -> org.telegram.ui.by$2$1:
     org.telegram.ui.WallpapersActivity$2 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-org.telegram.ui.WallpapersActivity$3 -> org.telegram.ui.cb$3:
+org.telegram.ui.WallpapersActivity$3 -> org.telegram.ui.by$3:
     java.lang.Object[] val$args -> a
     org.telegram.ui.WallpapersActivity this$0 -> b
     void run() -> run
-org.telegram.ui.WallpapersActivity$4 -> org.telegram.ui.cb$4:
+org.telegram.ui.WallpapersActivity$4 -> org.telegram.ui.by$4:
     org.telegram.ui.WallpapersActivity this$0 -> a
     void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
-org.telegram.ui.WallpapersActivity$4$1 -> org.telegram.ui.cb$4$1:
+org.telegram.ui.WallpapersActivity$4$1 -> org.telegram.ui.by$4$1:
     org.telegram.messenger.TLObject val$response -> a
     org.telegram.ui.WallpapersActivity$4 this$1 -> b
     void run() -> run
-org.telegram.ui.WallpapersActivity$5 -> org.telegram.ui.cb$5:
+org.telegram.ui.WallpapersActivity$5 -> org.telegram.ui.by$5:
     org.telegram.ui.WallpapersActivity this$0 -> a
     boolean onPreDraw() -> onPreDraw
-org.telegram.ui.WallpapersActivity$5$1 -> org.telegram.ui.cb$5$1:
+org.telegram.ui.WallpapersActivity$5$1 -> org.telegram.ui.by$5$1:
     org.telegram.ui.WallpapersActivity$5 this$1 -> a
     void run() -> run
-org.telegram.ui.WallpapersActivity$ListAdapter -> org.telegram.ui.cc:
+org.telegram.ui.WallpapersActivity$ListAdapter -> org.telegram.ui.bz:
     android.content.Context mContext -> b
     org.telegram.ui.WallpapersActivity this$0 -> a
     boolean areAllItemsEnabled() -> areAllItemsEnabled
@@ -27720,19 +27603,19 @@ org.telegram.ui.WallpapersActivity$ListAdapter -> org.telegram.ui.cc:
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-org.telegram.ui.WebViewActivity -> org.telegram.ui.cd:
+org.telegram.ui.WebViewActivity -> org.telegram.ui.ca:
     android.webkit.WebView webView -> i
     boolean onFragmentCreate() -> a
     void onFragmentDestroy() -> b
     android.view.View createView(android.content.Context,android.view.LayoutInflater) -> a
     org.telegram.ui.ActionBar.ActionBar access$000(org.telegram.ui.WebViewActivity) -> a
     org.telegram.ui.ActionBar.ActionBar access$100(org.telegram.ui.WebViewActivity) -> b
-org.telegram.ui.WebViewActivity$1 -> org.telegram.ui.cd$1:
+org.telegram.ui.WebViewActivity$1 -> org.telegram.ui.ca$1:
     org.telegram.ui.WebViewActivity this$0 -> a
     void onItemClick(int) -> a
-org.telegram.ui.WebViewActivity$2 -> org.telegram.ui.cd$2:
+org.telegram.ui.WebViewActivity$2 -> org.telegram.ui.ca$2:
     org.telegram.ui.WebViewActivity this$0 -> a
     void onProgressChanged(android.webkit.WebView,int) -> onProgressChanged
-org.telegram.ui.WebViewActivity$3 -> org.telegram.ui.cd$3:
+org.telegram.ui.WebViewActivity$3 -> org.telegram.ui.ca$3:
     org.telegram.ui.WebViewActivity this$0 -> a
     void onPageFinished(android.webkit.WebView,java.lang.String) -> onPageFinished
