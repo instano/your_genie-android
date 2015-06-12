@@ -308,7 +308,7 @@
     <string name="RepeatNotificationsNever">Never</string>
     <string name="RepeatNotifications">Repeat Notifications</string>
     <string name="PhoneNumberHelp">You can change your Instano number here. Your account and all your cloud data — messages, media, contacts, etc. will be moved to the new number.</string>
-    <string name="PhoneNumberAlert"></string>
+    <string name="PhoneNumberAlert">Your chat data will be moved to the new number</string>
     <string name="PhoneNumberChange">CHANGE NUMBER</string>
     <string name="ChangePhoneNewNumber">New number</string>
     <string name="ChangePhoneHelp">We will send an SMS with a Telegram code to your number.</string>

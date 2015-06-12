@@ -180,31 +180,39 @@ public class NotificationsController {
                                     msg = LocaleController.formatString("NotificationMessageText", R.string.NotificationMessageText, ContactsController.formatName(user.first_name, user.last_name), messageObject.messageOwner.message);
                                 } else {
                                     msg = LocaleController.formatString("NotificationMessageNoText", R.string.NotificationMessageNoText, ContactsController.formatName(user.first_name, user.last_name));
+                                    FileLog.d(BuildVars.TAG,"183 message received here");
                                 }
                             } else {
                                 msg = LocaleController.formatString("NotificationMessageNoText", R.string.NotificationMessageNoText, ContactsController.formatName(user.first_name, user.last_name));
+                                FileLog.d(BuildVars.TAG,"186 message received here");
                             }
                         } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
                             msg = LocaleController.formatString("NotificationMessagePhoto", R.string.NotificationMessagePhoto, ContactsController.formatName(user.first_name, user.last_name));
                             FileLog.d(BuildVars.TAG,"189 photo received here");
                         } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaVideo) {
                             msg = LocaleController.formatString("NotificationMessageVideo", R.string.NotificationMessageVideo, ContactsController.formatName(user.first_name, user.last_name));
+                            FileLog.d(BuildVars.TAG,"194 video received here");
                         } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaContact) {
                             msg = LocaleController.formatString("NotificationMessageContact", R.string.NotificationMessageContact, ContactsController.formatName(user.first_name, user.last_name));
                         } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaGeo) {
                             msg = LocaleController.formatString("NotificationMessageMap", R.string.NotificationMessageMap, ContactsController.formatName(user.first_name, user.last_name));
+                            FileLog.d(BuildVars.TAG,"199 location received here");
                         } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
                             if (messageObject.isSticker()) {
                                 msg = LocaleController.formatString("NotificationMessageSticker", R.string.NotificationMessageSticker, ContactsController.formatName(user.first_name, user.last_name));
+                                FileLog.d(BuildVars.TAG,"203 sticker received here");
                             } else {
                                 msg = LocaleController.formatString("NotificationMessageDocument", R.string.NotificationMessageDocument, ContactsController.formatName(user.first_name, user.last_name));
+                                FileLog.d(BuildVars.TAG,"206 file received here");
                             }
                         } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaAudio) {
                             msg = LocaleController.formatString("NotificationMessageAudio", R.string.NotificationMessageAudio, ContactsController.formatName(user.first_name, user.last_name));
+                            FileLog.d(BuildVars.TAG,"210 audio received here");
                         }
                     }
                 } else {
                     msg = LocaleController.formatString("NotificationMessageNoText", R.string.NotificationMessageNoText, ContactsController.formatName(user.first_name, user.last_name));
+                    FileLog.d(BuildVars.TAG,"215 message received here");
                 }
             } else if (chat_id != 0) {
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
