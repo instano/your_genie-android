@@ -168,6 +168,7 @@ public class NotificationsController {
                             msg = LocaleController.formatString("NotificationContactJoined", R.string.NotificationContactJoined, ContactsController.formatName(user.first_name, user.last_name));
                         } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                             msg = LocaleController.formatString("NotificationContactNewPhoto", R.string.NotificationContactNewPhoto, ContactsController.formatName(user.first_name, user.last_name));
+                            FileLog.d(BuildVars.TAG,"171 photo received here");
                         } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
                             String date = LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, LocaleController.formatterYear.format(((long) messageObject.messageOwner.date) * 1000), LocaleController.formatterDay.format(((long) messageObject.messageOwner.date) * 1000));
                             msg = LocaleController.formatString("NotificationUnrecognizedDevice", R.string.NotificationUnrecognizedDevice, UserConfig.getCurrentUser().first_name, date, messageObject.messageOwner.action.title, messageObject.messageOwner.action.address);
@@ -185,6 +186,7 @@ public class NotificationsController {
                             }
                         } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
                             msg = LocaleController.formatString("NotificationMessagePhoto", R.string.NotificationMessagePhoto, ContactsController.formatName(user.first_name, user.last_name));
+                            FileLog.d(BuildVars.TAG,"189 photo received here");
                         } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaVideo) {
                             msg = LocaleController.formatString("NotificationMessageVideo", R.string.NotificationMessageVideo, ContactsController.formatName(user.first_name, user.last_name));
                         } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaContact) {

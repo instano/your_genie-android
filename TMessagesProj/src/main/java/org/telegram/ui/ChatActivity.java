@@ -595,7 +595,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             SendMessagesHelper.prepareSendingPhotos(photos, null, dialog_id, replyingMessageObject);
                             SendMessagesHelper.prepareSendingPhotosSearch(webPhotos, dialog_id, replyingMessageObject);
                             showReplyPanel(false, null, null, null, false, true);
-                            FileLog.d(BuildVars.TAG,"597 Attach gallery called");
                             MixpanelAPI mixpanelAPI;
                             if (getParentActivity()!=null) {
                                 mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
@@ -648,7 +647,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         @Override
                         public void didSelectLocation(double latitude, double longitude) throws JSONException {
                             SendMessagesHelper.getInstance().sendMessage(latitude, longitude, dialog_id, replyingMessageObject);
-                            FileLog.d(BuildVars.TAG, "650 Attach_location called");
                             MixpanelAPI mixpanelAPI;
                             if (getParentActivity()!=null) {
                                 mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
@@ -656,8 +654,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 mixpanelAPI = MixPanelEvents.api();
                             }
                             JSONObject jsonObject = new JSONObject();
-                            jsonObject.put(MixPanelEvents.LOCATION_LATITUDE,latitude);
-                            jsonObject.put(MixPanelEvents.LOCATION_LONGITUDE,longitude);
+                            jsonObject.put(MixPanelEvents.SEND_LOCATION_LATITUDE,latitude);
+                            jsonObject.put(MixPanelEvents.SEND_LOCATION_LONGITUDE,longitude);
                             mixpanelAPI.track(MixPanelEvents.SEND_MESSAGES_ATTACH_LOCATION, jsonObject);
                             moveScrollToLastMessage();
                             showReplyPanel(false, null, null, null, false, true);
@@ -674,7 +672,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         public void didSelectFiles(DocumentSelectActivity activity, ArrayList<String> files) {
                             activity.finishFragment();
                             SendMessagesHelper.prepareSendingDocuments(files, files, null, null, dialog_id, replyingMessageObject);
-                            FileLog.d(BuildVars.TAG, "673 Attach_file called");
                             MixpanelAPI mixpanelAPI;
                             if(getParentActivity()!=null){
                                 mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.mixpanelToken());
@@ -899,25 +896,26 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         layoutParams2.leftMargin = AndroidUtilities.dp(56);
         layoutParams2.gravity = Gravity.TOP | Gravity.LEFT;
         avatarContainer.setLayoutParams(layoutParams2);
-        avatarContainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentUser != null) {
-                    Bundle args = new Bundle();
-                    args.putInt("user_id", currentUser.id);
-                    if (currentEncryptedChat != null) {
-                        args.putLong("dialog_id", dialog_id);
-                    }
-                    presentFragment(new ProfileActivity(args));
-                } else if (currentChat != null) {
-                    Bundle args = new Bundle();
-                    args.putInt("chat_id", currentChat.id);
-                    ProfileActivity fragment = new ProfileActivity(args);
-                    fragment.setChatInfo(info);
-                    presentFragment(fragment);
-                }
-            }
-        });
+        avatarContainer.setClickable(false);
+//        avatarContainer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (currentUser != null) {
+//                    Bundle args = new Bundle();
+//                    args.putInt("user_id", currentUser.id);
+//                    if (currentEncryptedChat != null) {
+//                        args.putLong("dialog_id", dialog_id);
+//                    }
+//                    presentFragment(new ProfileActivity(args));
+//                } else if (currentChat != null) {
+//                    Bundle args = new Bundle();
+//                    args.putInt("chat_id", currentChat.id);
+//                    ProfileActivity fragment = new ProfileActivity(args);
+//                    fragment.setChatInfo(info);
+//                    presentFragment(fragment);
+//                }
+//                }
+//            });
 
         if (currentChat != null) {
             int count = currentChat.participants_count;

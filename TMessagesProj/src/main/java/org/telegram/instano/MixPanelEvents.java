@@ -17,8 +17,8 @@ import org.telegram.ui.LoginActivity;
 public class MixPanelEvents {
 
 //    Send Messages Event
-    public static String SEND_LOCATION_LATITUDE = "Latitude";
-    public static String SEND_LOCATION_LONGITUDE = "Longitude";
+    public static String SEND_LOCATION_LATITUDE = "Attached Location Latitude";
+    public static String SEND_LOCATION_LONGITUDE = "Attached Location Longitude";
     public static final String SEND_MESSAGES_EMOJI= "Sent Emoji";
     public static final String SEND_MESSAGES= "Sent Message";
     public static final String SEND_MESSAGES_ATTACH_PHOTO= "Sent Camera Photo";
