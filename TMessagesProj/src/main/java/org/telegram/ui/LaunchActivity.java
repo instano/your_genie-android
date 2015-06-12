@@ -288,7 +288,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 //                    drawerLayoutContainer.closeDrawer(false);
 //                    drawerLayoutContainer.closeDrawer(false);
 //                } else
-                if (position == 2) {
+                if (position == 3) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
@@ -299,15 +299,15 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 3) {
+                } else if (position == 4) {
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_SETTINGS,null);
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 4) {
+                } else if (position == 5) {
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_ABOUT_US,null);
                     presentFragment(new AboutUsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 5){
+                } else if (position == 6){
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_CONTACT_US,null);
                     ContactUsDialog cd = new ContactUsDialog(LaunchActivity.this);
                     cd.show();

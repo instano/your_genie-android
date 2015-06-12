@@ -1,16 +1,26 @@
 package org.telegram.ui;
 
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.LabeledIntent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.telegram.messenger.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactUsDialog extends Dialog implements View.OnClickListener {
 
@@ -56,15 +66,8 @@ public class ContactUsDialog extends Dialog implements View.OnClickListener {
                 }
                 break;
             case R.id.buttonSendTwitter:
-                Intent intent = null;
-                try {
-                    getContext().getPackageManager().getPackageInfo("com.twitter.android", 0);
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name= @meena_dheera"));
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                } catch (Exception e) {
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/@meena__dheera"));
-                }
-                getContext().startActivity(intent);
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/instanoapp"));
+                getContext().startActivity(browserIntent);
                 break;
         }
     }
