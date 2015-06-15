@@ -97,4 +97,8 @@ public class MixPanelEvents {
     public static MixpanelAPI api() {
         return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken());
     }
+
+    public static String getId(){
+        return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken()).getPeople().getDistinctId();
+    }
 }

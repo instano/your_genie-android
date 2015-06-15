@@ -12,6 +12,9 @@ import android.animation.ObjectAnimator;
 import android.animation.StateListAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -256,6 +259,11 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
+//                    Fragment currentFragment = getParentActivity().getFragmentManager().findFragmentByTag("ChatActivity");
+//                    FragmentTransaction fragTransaction = getParentActivity().getFragmentManager().beginTransaction();
+//                    fragTransaction.detach();
+//                    fragTransaction.attach();
+//                    fragTransaction.commit();
                     finishFragment();
                 } else if (id == logout) {
                     if (getParentActivity() == null) {

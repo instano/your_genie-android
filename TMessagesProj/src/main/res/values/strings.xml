@@ -309,6 +309,7 @@
     <string name="RepeatNotifications">Repeat Notifications</string>
     <string name="PhoneNumberHelp">You can change your Instano number here. Your account and all your cloud data — messages, media, contacts, etc. will be moved to the new number.</string>
     <string name="PhoneNumberAlert">Your chat data will be moved to the new number</string>
+    <string name="AboutUs">Instano is a chat based virtual assistant application that renders on-demand delivery of products and services.\n \n We have a large network of ever-ready merchants/retailers and fetch the best and cheapest possible product(s) at your doorstep in the minimal possible time.\n \n We are always on the go for outsourcing the best quality product at the most affordable price. Whether you are nocturnal or a daylight person, we are there to serve you anytime, anywhere (24/7 service). Your convenience is at the apex of our priority list.\n \nSo if you need anything, really anything, just rub the lamp and summon Instano! Have a Happy Hassle Free Shopping!  </string>
     <string name="PhoneNumberChange">CHANGE NUMBER</string>
     <string name="ChangePhoneNewNumber">New number</string>
     <string name="ChangePhoneHelp">We will send an SMS with a Telegram code to your number.</string>
@@ -551,7 +552,7 @@
     <string name="AddToTheGroup">Add %1$s to the group?\n\nNumber of last messages to forward:</string>
     <string name="ForwardMessagesTo">Forward messages to %1$s?</string>
     <string name="SendMessagesTo">Send messages to %1$s?</string>
-    <string name="AreYouSureLogout">Are you sure you want to log out?\n\nNote that you can seamlessly use Instano on all your devices at once.\n\nRemember, logging out kills all your Secret Chats.</string>
+    <string name="AreYouSureLogout">Are you sure you want to log out?\n\nNote that you can seamlessly use Instano on all your devices at once.\n</string>
     <string name="AreYouSureSessions">Are you sure you want to terminate all other sessions?</string>
     <string name="AreYouSureDeleteAndExit">Are you sure you want to delete and leave the group?</string>
     <string name="AreYouSureDeleteThisChat">Are you sure you want to delete this chat?</string>

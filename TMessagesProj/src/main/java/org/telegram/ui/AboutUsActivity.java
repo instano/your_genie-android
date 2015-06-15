@@ -73,12 +73,12 @@ public class AboutUsActivity extends BaseFragment {
         });
 
         mTextView = new TextView(context);
-        mTextView.setTextColor(context.getResources().getColor(R.color.background_tab_pressed));
+        mTextView.setTextColor(context.getResources().getColor(R.color.common_signin_btn_light_text_focused));
         mTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         mTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mTextView.setLayoutParams(layoutParams);
-        mTextView.setText(R.string.PhoneNumberHelp);
+        mTextView.setText(R.string.AboutUs);
 
         fragmentView = new FrameLayout(context);
         FrameLayout frameLayout = (FrameLayout) fragmentView;

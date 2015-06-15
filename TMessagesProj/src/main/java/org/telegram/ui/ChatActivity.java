@@ -50,6 +50,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.json.JSONException;
@@ -469,8 +470,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_FIRST_NAME, currentUser.first_name);
             mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_LAST_NAME, currentUser.last_name);
             mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_PHONE, currentUser.phone);
-        } else
+            Crashlytics.setUserIdentifier(MixPanelEvents.USER_USER_ID);
+            Crashlytics.setUserName(currentUser.fullName());
+            Crashlytics.setUserEmail(currentUser.phone);
+        } else{
             FileLog.d(BuildVars.TAG, "ChatActivity. using mix panel people.getDistinctId(): " + mixpanelAPI.getPeople().getDistinctId());
+            Crashlytics.setUserIdentifier(MixPanelEvents.getId());
+        }
 
         return true;
     }
@@ -3890,6 +3896,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         super.onResume();
 
         MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken()).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+        MessagesController.getInstance().fontSize = preferences.getInt("fons_size",0);
 
         if (!AndroidUtilities.isTablet()) {
             getParentActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -3933,7 +3941,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         fixLayout(true);
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         String lastMessageText = preferences.getString("dialog_" + dialog_id, null);
         if (lastMessageText != null) {
             preferences.edit().remove("dialog_" + dialog_id).commit();
