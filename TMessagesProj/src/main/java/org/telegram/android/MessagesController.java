@@ -369,7 +369,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         MediaController.getInstance().cleanup();
         NotificationsController.getInstance().cleanup();
         SendMessagesHelper.getInstance().cleanUp();
-        SecretChatHelper.getInstance().cleanUp();
 
         dialogs_dict.clear();
         dialogs.clear();
@@ -1033,10 +1032,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         MessagesStorage.getInstance().updateDialogsWithDeletedMessages(messages, true);
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesDeleted, messages);
 
-        if (randoms != null && encryptedChat != null && !randoms.isEmpty()) {
-            SecretChatHelper.getInstance().sendMessagesDeleteMessage(encryptedChat, randoms, null);
-        }
-
         ArrayList<Integer> toSend = new ArrayList<>();
         for (Integer mid : messages) {
             if (mid > 0) {
@@ -1129,12 +1124,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                     }
                 }
             });
-        } else {
-            if (onlyHistory) {
-                SecretChatHelper.getInstance().sendClearHistoryMessage(getEncryptedChat(high_id), null);
-            } else {
-                SecretChatHelper.getInstance().declineSecretChat(high_id);
-            }
         }
     }
 
@@ -1742,9 +1731,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         putChats(dialogsRes.chats, isCache);
                         if (encChats != null) {
                             for (TLRPC.EncryptedChat encryptedChat : encChats) {
-                                if (encryptedChat instanceof TLRPC.TL_encryptedChat && AndroidUtilities.getMyLayerVersion(encryptedChat.layer) < SecretChatHelper.CURRENT_SECRET_CHAT_LAYER) {
-                                    SecretChatHelper.getInstance().sendNotifyLayerMessage(encryptedChat, null);
-                                }
+
                                 putEncryptedChat(encryptedChat, true);
                             }
                         }
@@ -1824,7 +1811,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         }
         ArrayList<Long> random_ids = new ArrayList<>();
         random_ids.add(random_id);
-        SecretChatHelper.getInstance().sendMessagesReadMessage(chat, random_ids, null);
         int time = ConnectionsManager.getInstance().getCurrentTime();
         MessagesStorage.getInstance().createTaskForSecretChat(chat.id, time, time, 0, random_ids);
     }
@@ -2555,14 +2541,14 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                                 public void run() {
                                     if (!res.new_messages.isEmpty() || !res.new_encrypted_messages.isEmpty()) {
                                         final HashMap<Long, ArrayList<MessageObject>> messages = new HashMap<>();
-                                        for (TLRPC.EncryptedMessage encryptedMessage : res.new_encrypted_messages) {
-                                            ArrayList<TLRPC.Message> decryptedMessages = SecretChatHelper.getInstance().decryptMessage(encryptedMessage);
-                                            if (decryptedMessages != null && !decryptedMessages.isEmpty()) {
-                                                for (TLRPC.Message message : decryptedMessages) {
-                                                    res.new_messages.add(message);
-                                                }
-                                            }
-                                        }
+//                                        for (TLRPC.EncryptedMessage encryptedMessage : res.new_encrypted_messages) {
+//                                            ArrayList<TLRPC.Message> decryptedMessages = SecretChatHelper.getInstance().decryptMessage(encryptedMessage);
+//                                            if (decryptedMessages != null && !decryptedMessages.isEmpty()) {
+//                                                for (TLRPC.Message message : decryptedMessages) {
+//                                                    res.new_messages.add(message);
+//                                                }
+//                                            }
+//                                        }
 
                                         ImageLoader.saveMessagesThumbs(res.new_messages);
 
@@ -2633,7 +2619,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                                             }
                                         });
 
-                                        SecretChatHelper.getInstance().processPendingEncMessages();
                                     }
 
                                     if (res != null && !res.other_updates.isEmpty()) {
@@ -2943,7 +2928,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         } else if (updates instanceof UserActionUpdatesPts) {
             MessagesStorage.lastPtsValue = updates.pts;
         }
-        SecretChatHelper.getInstance().processPendingEncMessages();
         if (!fromQueue) {
             if (needGetDiff) {
                 getDifference();
@@ -3214,24 +3198,24 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 pushMessages.add(obj);
             } else if (update instanceof TLRPC.TL_updateNewGeoChatMessage) {
                 //DEPRECATED
-            } else if (update instanceof TLRPC.TL_updateNewEncryptedMessage) {
-                ArrayList<TLRPC.Message> decryptedMessages = SecretChatHelper.getInstance().decryptMessage(((TLRPC.TL_updateNewEncryptedMessage) update).message);
-                if (decryptedMessages != null && !decryptedMessages.isEmpty()) {
-                    int cid = ((TLRPC.TL_updateNewEncryptedMessage)update).message.chat_id;
-                    long uid = ((long) cid) << 32;
-                    ArrayList<MessageObject> arr = messages.get(uid);
-                    if (arr == null) {
-                        arr = new ArrayList<>();
-                        messages.put(uid, arr);
-                    }
-                    for (TLRPC.Message message : decryptedMessages) {
-                        ImageLoader.saveMessageThumbs(message);
-                        messagesArr.add(message);
-                        MessageObject obj = new MessageObject(message, usersDict, true);
-                        arr.add(obj);
-                        pushMessages.add(obj);
-                    }
-                }
+//            } else if (update instanceof TLRPC.TL_updateNewEncryptedMessage) {
+//                ArrayList<TLRPC.Message> decryptedMessages = SecretChatHelper.getInstance().decryptMessage(((TLRPC.TL_updateNewEncryptedMessage) update).message);
+//                if (decryptedMessages != null && !decryptedMessages.isEmpty()) {
+//                    int cid = ((TLRPC.TL_updateNewEncryptedMessage)update).message.chat_id;
+//                    long uid = ((long) cid) << 32;
+//                    ArrayList<MessageObject> arr = messages.get(uid);
+//                    if (arr == null) {
+//                        arr = new ArrayList<>();
+//                        messages.put(uid, arr);
+//                    }
+//                    for (TLRPC.Message message : decryptedMessages) {
+//                        ImageLoader.saveMessageThumbs(message);
+//                        messagesArr.add(message);
+//                        MessageObject obj = new MessageObject(message, usersDict, true);
+//                        arr.add(obj);
+//                        pushMessages.add(obj);
+//                    }
+//                }
             } else if (update instanceof TLRPC.TL_updateEncryptedChatTyping) {
                 TLRPC.EncryptedChat encryptedChat = getEncryptedChatDB(update.chat_id);
                 if (encryptedChat != null) {
@@ -3268,8 +3252,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 MessagesStorage.getInstance().updateChatInfo(update.chat_id, update.user_id, true, 0, update.version);
             } else if (update instanceof TLRPC.TL_updateDcOptions) {
                 ConnectionsManager.getInstance().updateDcSettings(0);
-            } else if (update instanceof TLRPC.TL_updateEncryption) {
-                SecretChatHelper.getInstance().processUpdateEncryption((TLRPC.TL_updateEncryption) update, usersDict);
             } else if (update instanceof TLRPC.TL_updateUserBlocked) {
                 final TLRPC.TL_updateUserBlocked finalUpdate = (TLRPC.TL_updateUserBlocked)update;
                 if (finalUpdate.blocked) {

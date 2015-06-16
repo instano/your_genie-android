@@ -377,10 +377,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             }
                             case "group":
                                 if (args != null) {
-                                    GroupCreateFinalActivity group = new GroupCreateFinalActivity(args);
-                                    if (actionBarLayout.addFragmentToStack(group)) {
-                                        group.restoreSelfArgs(savedInstanceState);
-                                    }
+//                                    GroupCreateFinalActivity group = new GroupCreateFinalActivity(args);
+//                                    if (actionBarLayout.addFragmentToStack(group)) {
+//                                        group.restoreSelfArgs(savedInstanceState);
+//                                    }
                                 }
                                 break;
                             case "chat_profile":
@@ -1328,9 +1328,9 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     outState.putString("fragment", "chat");
                 } else if (lastFragment instanceof SettingsActivity) {
                     outState.putString("fragment", "settings");
-                } else if (lastFragment instanceof GroupCreateFinalActivity && args != null) {
-                    outState.putBundle("args", args);
-                    outState.putString("fragment", "group");
+//                } else if (lastFragment instanceof GroupCreateFinalActivity && args != null) {
+//                    outState.putBundle("args", args);
+//                    outState.putString("fragment", "group");
                 } else if (lastFragment instanceof WallpapersActivity) {
                     outState.putString("fragment", "wallpapers");
                 } else if (lastFragment instanceof ProfileActivity && ((ProfileActivity) lastFragment).isChat() && args != null) {

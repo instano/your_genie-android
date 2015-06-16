@@ -245,10 +245,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     MessagesActivity fragment = new MessagesActivity(args);
                     fragment.setDelegate(ProfileActivity.this);
                     presentFragment(fragment);
-                } else if (id == edit_contact) {
-                    Bundle args = new Bundle();
-                    args.putInt("user_id", user_id);
-                    presentFragment(new ContactAddActivity(args));
                 } else if (id == delete_contact) {
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null || getParentActivity() == null) {

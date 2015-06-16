@@ -34,7 +34,6 @@ import android.widget.TextView;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesStorage;
-import org.telegram.android.SecretChatHelper;
 import org.telegram.messenger.TLRPC;
 import org.telegram.android.ContactsController;
 import org.telegram.messenger.FileLog;
@@ -277,7 +276,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                     } else {
                         if (createSecretChat) {
                             creatingChat = true;
-                            SecretChatHelper.getInstance().startSecretChat(getParentActivity(), user);
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("user_id", user.id);
@@ -307,7 +305,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                 if (!MessagesController.isFeatureEnabled("chat_create", ContactsActivity.this)) {
                                     return;
                                 }
-                                presentFragment(new GroupCreateActivity(), false);
+//                                presentFragment(new GroupCreateActivity(), false);
                             } else if (row == 1) {
                                 Bundle args = new Bundle();
                                 args.putBoolean("onlyUsers", true);
@@ -320,7 +318,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                 }
                                 Bundle args = new Bundle();
                                 args.putBoolean("broadcast", true);
-                                presentFragment(new GroupCreateActivity(args), false);
+//                                presentFragment(new GroupCreateActivity(args), false);
                             }
                         }
                     } else {
@@ -336,7 +334,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             } else {
                                 if (createSecretChat) {
                                     creatingChat = true;
-                                    SecretChatHelper.getInstance().startSecretChat(getParentActivity(), user);
                                 } else {
                                     Bundle args = new Bundle();
                                     args.putInt("user_id", user.id);

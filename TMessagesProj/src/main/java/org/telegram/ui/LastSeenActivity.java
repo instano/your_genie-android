@@ -187,26 +187,26 @@ public class LastSeenActivity extends BaseFragment implements NotificationCenter
                     if (createFromArray.isEmpty()) {
                         Bundle args = new Bundle();
                         args.putBoolean(i == neverShareRow ? "isNeverShare" : "isAlwaysShare", true);
-                        GroupCreateActivity fragment = new GroupCreateActivity(args);
-                        fragment.setDelegate(new GroupCreateActivity.GroupCreateActivityDelegate() {
-                            @Override
-                            public void didSelectUsers(ArrayList<Integer> ids) {
-                                if (i == neverShareRow) {
-                                    currentMinus = ids;
-                                    for (Integer id : currentMinus) {
-                                        currentPlus.remove(id);
-                                    }
-                                } else {
-                                    currentPlus = ids;
-                                    for (Integer id : currentPlus) {
-                                        currentMinus.remove(id);
-                                    }
-                                }
-                                doneButton.setVisibility(View.VISIBLE);
-                                listAdapter.notifyDataSetChanged();
-                            }
-                        });
-                        presentFragment(fragment);
+//                        GroupCreateActivity fragment = new GroupCreateActivity(args);
+//                        fragment.setDelegate(new GroupCreateActivity.GroupCreateActivityDelegate() {
+//                            @Override
+//                            public void didSelectUsers(ArrayList<Integer> ids) {
+//                                if (i == neverShareRow) {
+//                                    currentMinus = ids;
+//                                    for (Integer id : currentMinus) {
+//                                        currentPlus.remove(id);
+//                                    }
+//                                } else {
+//                                    currentPlus = ids;
+//                                    for (Integer id : currentPlus) {
+//                                        currentMinus.remove(id);
+//                                    }
+//                                }
+//                                doneButton.setVisibility(View.VISIBLE);
+//                                listAdapter.notifyDataSetChanged();
+//                            }
+//                        });
+//                        presentFragment(fragment);
                     } else {
                         LastSeenUsersActivity fragment = new LastSeenUsersActivity(createFromArray, i == alwaysShareRow);
                         fragment.setDelegate(new LastSeenUsersActivity.LastSeenUsersActivityDelegate() {

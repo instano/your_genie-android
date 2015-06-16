@@ -155,7 +155,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             } else if (encryptedFile != null && message.sendEncryptedRequest != null) {
                                 message.sendEncryptedRequest.media.key = encryptedFile.key;
                                 message.sendEncryptedRequest.media.iv = encryptedFile.iv;
-                                SecretChatHelper.getInstance().performSendEncryptedRequest(message.sendEncryptedRequest, message.obj.messageOwner, message.encryptedChat, encryptedFile, message.originalPath);
                                 arr.remove(a);
                                 a--;
                             }
@@ -403,33 +402,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             if (messageObject.messageOwner.random_id == 0) {
                 messageObject.messageOwner.random_id = getNextRandomId();
             }
-            if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionSetMessageTTL) {
-                SecretChatHelper.getInstance().sendTTLMessage(encryptedChat, messageObject.messageOwner);
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionDeleteMessages) {
-                SecretChatHelper.getInstance().sendMessagesDeleteMessage(encryptedChat, null, messageObject.messageOwner);
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionFlushHistory) {
-                SecretChatHelper.getInstance().sendClearHistoryMessage(encryptedChat, messageObject.messageOwner);
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionNotifyLayer) {
-                SecretChatHelper.getInstance().sendNotifyLayerMessage(encryptedChat, messageObject.messageOwner);
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionReadMessages) {
-                SecretChatHelper.getInstance().sendMessagesReadMessage(encryptedChat, null, messageObject.messageOwner);
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionScreenshotMessages) {
-                SecretChatHelper.getInstance().sendScreenshotMessage(encryptedChat, null, messageObject.messageOwner);
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionTyping) {
 
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionResend) {
-
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionCommitKey) {
-                SecretChatHelper.getInstance().sendCommitKeyMessage(encryptedChat, messageObject.messageOwner);
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionAbortKey) {
-                SecretChatHelper.getInstance().sendAbortKeyMessage(encryptedChat, messageObject.messageOwner, 0);
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionRequestKey) {
-                SecretChatHelper.getInstance().sendRequestKeyMessage(encryptedChat, messageObject.messageOwner);
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionAcceptKey) {
-                SecretChatHelper.getInstance().sendAcceptKeyMessage(encryptedChat, messageObject.messageOwner);
-            } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionNoop) {
-                SecretChatHelper.getInstance().sendNoopMessage(encryptedChat, messageObject.messageOwner);
-            }
             return true;
         }
         if (unsent) {
@@ -994,7 +967,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     reqSend.random_id = newMsg.random_id;
                     reqSend.message = message;
                     reqSend.media = new TLRPC.TL_decryptedMessageMediaEmpty();
-                    SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null);
                 }
             } else if (type >= 1 && type <= 3 || type >= 5 && type <= 8) {
                 if (encryptedChat == null) {
@@ -1171,7 +1143,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         reqSend.media = new TLRPC.TL_decryptedMessageMediaGeoPoint();
                         reqSend.media.lat = lat;
                         reqSend.media._long = lon;
-                        SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null);
                     } else if (type == 2) {
                         TLRPC.PhotoSize small = photo.sizes.get(0);
                         TLRPC.PhotoSize big = photo.sizes.get(photo.sizes.size() - 1);
@@ -1201,7 +1172,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             encryptedFile.access_hash = big.location.secret;
                             reqSend.media.key = big.location.key;
                             reqSend.media.iv = big.location.iv;
-                            SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, encryptedFile, null);
                         }
                     } else if (type == 3) {
                         if (AndroidUtilities.getPeerLayerVersion(encryptedChat.layer) >= 17) {
@@ -1232,7 +1202,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             encryptedFile.access_hash = video.access_hash;
                             reqSend.media.key = video.key;
                             reqSend.media.iv = video.iv;
-                            SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, encryptedFile, null);
                         }
                     } else if (type == 6) {
                         reqSend.media = new TLRPC.TL_decryptedMessageMediaContact();
@@ -1240,7 +1209,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         reqSend.media.first_name = user.first_name;
                         reqSend.media.last_name = user.last_name;
                         reqSend.media.user_id = user.id;
-                        SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null);
                     } else if (type == 7) {
                         boolean isSticker = false;
                         for (TLRPC.DocumentAttribute attribute : document.attributes) {
@@ -1257,7 +1225,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             ((TLRPC.TL_decryptedMessageMediaExternalDocument) reqSend.media).thumbImage = document.thumb;
                             reqSend.media.dc_id = document.dc_id;
                             reqSend.media.attributes = document.attributes;
-                            SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null);
                         } else {
                             reqSend.media = new TLRPC.TL_decryptedMessageMediaDocument();
                             reqSend.media.size = document.size;
@@ -1291,7 +1258,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                 encryptedFile.access_hash = document.access_hash;
                                 reqSend.media.key = document.key;
                                 reqSend.media.iv = document.iv;
-                                SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, encryptedFile, null);
                             }
                         }
                     } else if (type == 8) {

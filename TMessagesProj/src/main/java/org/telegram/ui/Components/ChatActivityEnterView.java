@@ -95,7 +95,6 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
     private int keyboardHeight;
     private int keyboardHeightLand;
     private boolean keyboardVisible;
-//    private boolean sendByEnter;
     private long lastTypingTimeSend;
     private String lastTimeString;
     private float startedDraggingX = -1;
@@ -680,8 +679,6 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
     }
 
     private void sendMessage() {
-//        For sending simple messages and smiley
-        FileLog.d(BuildVars.TAG, "Send msg/smiley called");
         MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(getContext(), BuildVars.mixpanelToken());
         mixpanelAPI.getPeople().increment(MixPanelEvents.SEND_MESSAGES,1);
 
