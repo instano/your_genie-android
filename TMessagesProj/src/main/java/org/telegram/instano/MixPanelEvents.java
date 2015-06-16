@@ -72,9 +72,9 @@ public class MixPanelEvents {
     public static final String SETTINGS_SEND_BY_ENTER = "Settings->Send By Enter";
 
 //    ProfileActivity button click
-    public static final String PROFILE_SENDER_PHONE_NUMBER = "Profile->Sender Number";
-    public static final String PROFILE_NOTIFICATION_AND_SOUNDS = "Profile->Notification And Sounds";
-    public static final String PROFILE_SHARED_MEDIA = "Profile->Shared Media";
+//    public static final String PROFILE_SENDER_PHONE_NUMBER = "Profile->Sender Number";
+//    public static final String PROFILE_NOTIFICATION_AND_SOUNDS = "Profile->Notification And Sounds";
+//    public static final String PROFILE_SHARED_MEDIA = "Profile->Shared Media";
 
 //    SecuritySettingsActivity button click
     public static final String SECURITY_TWO_STEP_VERIFICATION = "Security->Two-Step Verification";
