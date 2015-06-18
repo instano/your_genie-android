@@ -108,15 +108,15 @@ public class ApplicationLoader extends Application {
                         int cacheColorHint = 0;
                         if (selectedColor == 0) {
                             if (selectedBackground == 1000001) {
-                                cachedWallpaper = applicationContext.getResources().getDrawable(R.drawable.background_hd);
+                                cachedWallpaper = applicationContext.getResources().getDrawable(R.drawable.background_new);
                                 isCustomTheme = false;
                             } else {
-                                File toFile = new File(ApplicationLoader.applicationContext.getFilesDir(), "wallpaper.jpg");
+                                File toFile = new File(ApplicationLoader.applicationContext.getFilesDir(), "background_new.jpg");
                                 if (toFile.exists()) {
                                     cachedWallpaper = Drawable.createFromPath(toFile.getAbsolutePath());
                                     isCustomTheme = true;
                                 } else {
-                                    cachedWallpaper = applicationContext.getResources().getDrawable(R.drawable.background_hd);
+                                    cachedWallpaper = applicationContext.getResources().getDrawable(R.drawable.background_new);
                                     isCustomTheme = false;
                                 }
                             }
