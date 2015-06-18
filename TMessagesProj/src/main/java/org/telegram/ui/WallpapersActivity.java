@@ -316,7 +316,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                 FileLoader.getInstance().cancelLoadFile(loadingSize);
             }
             if (selectedBackground == 1000001) {
-                backgroundImage.setImageResource(R.drawable.background_hd);
+                backgroundImage.setImageResource(R.drawable.background_tablet_new);
                 backgroundImage.setBackgroundColor(0);
                 selectedColor = 0;
             } else if (selectedBackground == -1) {
