@@ -99,7 +99,7 @@ public class DrawerLayoutAdapter extends BaseAdapter {
             } else if (i == 5) {
                 actionCell.setTextAndIcon("About Us", R.drawable.menu_help);
             } else if (i == 6) {
-                actionCell.setTextAndIcon("Contatct Us",R.drawable.menu_settings);
+                actionCell.setTextAndIcon("Contact Us",R.drawable.menu_settings);
             }
         }
 
