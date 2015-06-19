@@ -68,11 +68,11 @@ public class ChatBaseCell extends BaseCell {
     private static Drawable checkDrawable;
     private static Drawable halfCheckDrawable;
     private static Drawable clockDrawable;
-    private static Drawable broadcastDrawable;
+//    private static Drawable broadcastDrawable;
     private static Drawable checkMediaDrawable;
     private static Drawable halfCheckMediaDrawable;
     private static Drawable clockMediaDrawable;
-    private static Drawable broadcastMediaDrawable;
+//    private static Drawable broadcastMediaDrawable;
     private static Drawable errorDrawable;
     private static Drawable backgroundBlack;
     private static Drawable backgroundBlue;
@@ -161,8 +161,8 @@ public class ChatBaseCell extends BaseCell {
             clockMediaDrawable = getResources().getDrawable(R.drawable.msg_clock_photo);
             errorDrawable = getResources().getDrawable(R.drawable.msg_warning);
             mediaBackgroundDrawable = getResources().getDrawable(R.drawable.phototime);
-            broadcastDrawable = getResources().getDrawable(R.drawable.broadcast3);
-            broadcastMediaDrawable = getResources().getDrawable(R.drawable.broadcast4);
+//            broadcastDrawable = getResources().getDrawable(R.drawable.broadcast3);
+//            broadcastMediaDrawable = getResources().getDrawable(R.drawable.broadcast4);
             backgroundBlack = getResources().getDrawable(R.drawable.system_black);
             backgroundBlue = getResources().getDrawable(R.drawable.system_blue);
 
@@ -810,15 +810,15 @@ public class ChatBaseCell extends BaseCell {
                     }
                 }
                 if (isBroadcast) {
-                    if (drawCheck1 || drawCheck2) {
-                        if (!media) {
-                            setDrawableBounds(broadcastDrawable, layoutWidth - AndroidUtilities.dp(20.5f) - broadcastDrawable.getIntrinsicWidth(), layoutHeight - AndroidUtilities.dp(8.0f) - broadcastDrawable.getIntrinsicHeight());
-                            broadcastDrawable.draw(canvas);
-                        } else {
-                            setDrawableBounds(broadcastMediaDrawable, layoutWidth - AndroidUtilities.dp(24.0f) - broadcastMediaDrawable.getIntrinsicWidth(), layoutHeight - AndroidUtilities.dp(13.0f) - broadcastMediaDrawable.getIntrinsicHeight());
-                            broadcastMediaDrawable.draw(canvas);
-                        }
-                    }
+//                    if (drawCheck1 || drawCheck2) {
+//                        if (!media) {
+//                            setDrawableBounds(broadcastDrawable, layoutWidth - AndroidUtilities.dp(20.5f) - broadcastDrawable.getIntrinsicWidth(), layoutHeight - AndroidUtilities.dp(8.0f) - broadcastDrawable.getIntrinsicHeight());
+//                            broadcastDrawable.draw(canvas);
+//                        } else {
+//                            setDrawableBounds(broadcastMediaDrawable, layoutWidth - AndroidUtilities.dp(24.0f) - broadcastMediaDrawable.getIntrinsicWidth(), layoutHeight - AndroidUtilities.dp(13.0f) - broadcastMediaDrawable.getIntrinsicHeight());
+//                            broadcastMediaDrawable.draw(canvas);
+//                        }
+//                    }
                 } else {
                     if (drawCheck2) {
                         if (!media) {
