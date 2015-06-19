@@ -40,7 +40,7 @@ public class AvatarDrawable extends Drawable {
     private static int[] arrColorsButtons = {R.drawable.bar_selector_red, R.drawable.bar_selector_orange, R.drawable.bar_selector_violet,
             R.drawable.bar_selector_green, R.drawable.bar_selector_cyan, R.drawable.bar_selector_blue, R.drawable.bar_selector_violet, R.drawable.bar_selector_blue};
 
-    private static Drawable broadcastDrawable;
+//    private static Drawable broadcastDrawable;
     private static Drawable photoDrawable;
 
     private int color;
@@ -65,7 +65,7 @@ public class AvatarDrawable extends Drawable {
             namePaintSmall.setColor(0xffffffff);
             namePaintSmall.setTextSize(AndroidUtilities.dp(14));
 
-            broadcastDrawable = ApplicationLoader.applicationContext.getResources().getDrawable(R.drawable.broadcast_w);
+//            broadcastDrawable = ApplicationLoader.applicationContext.getResources().getDrawable(R.drawable.broadcast_w);
         }
     }
 
@@ -246,11 +246,12 @@ public class AvatarDrawable extends Drawable {
         canvas.translate(bounds.left, bounds.top);
         canvas.drawCircle(size / 2, size / 2, size / 2, paint);
 
-        if (drawBrodcast && broadcastDrawable != null) {
-            int x = (size - broadcastDrawable.getIntrinsicWidth()) / 2;
-            int y = (size - broadcastDrawable.getIntrinsicHeight()) / 2;
-            broadcastDrawable.setBounds(x, y, x + broadcastDrawable.getIntrinsicWidth(), y + broadcastDrawable.getIntrinsicHeight());
-            broadcastDrawable.draw(canvas);
+        if (drawBrodcast ) {
+//        if (drawBrodcast && broadcastDrawable != null) { same if statement as above only "&& broadcastDrawable != null" has been removed
+//            int x = (size - broadcastDrawable.getIntrinsicWidth()) / 2;
+//            int y = (size - broadcastDrawable.getIntrinsicHeight()) / 2;
+//            broadcastDrawable.setBounds(x, y, x + broadcastDrawable.getIntrinsicWidth(), y + broadcastDrawable.getIntrinsicHeight());
+//            broadcastDrawable.draw(canvas);
         } else {
             if (textLayout != null) {
                 canvas.translate((size - textWidth) / 2 - textLeft, (size - textHeight) / 2);
