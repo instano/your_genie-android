@@ -57,8 +57,8 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
     private ListView listView;
     private boolean reseting = false;
 
-    private int notificationsServiceRow;
-    private int messageSectionRow2;
+//    private int notificationsServiceRow;
+//    private int messageSectionRow2;
     private int messageSectionRow;
     private int messageAlertRow;
     private int messagePreviewRow;
@@ -84,8 +84,8 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
 
     @Override
     public boolean onFragmentCreate() {
-        notificationsServiceRow = rowCount++;
-        messageSectionRow2 = rowCount++;
+//        notificationsServiceRow = rowCount++;
+//        messageSectionRow2 = rowCount++;
         messageSectionRow = rowCount++;
         messageAlertRow = rowCount++;
         messagePreviewRow = rowCount++;
@@ -267,34 +267,34 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     MessagesController.getInstance().enableJoined = !enabled;
                     editor.putBoolean("EnableContactJoined", !enabled);
                     editor.commit();
-                } else if (i == notificationsServiceRow) {
-                    final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                    enabled = preferences.getBoolean("pushService", true);
-                    if (!enabled) {
-                        final SharedPreferences.Editor editor = preferences.edit();
-                        editor.putBoolean("pushService", !enabled);
-                        editor.commit();
-                        ApplicationLoader.startPushService();
-                    } else {
-                        if (getParentActivity() == null) {
-                            return;
-                        }
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setMessage(LocaleController.getString("NotificationsServiceDisableInfo", R.string.NotificationsServiceDisableInfo));
-                        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                ApplicationLoader.stopPushService();
-                                final SharedPreferences.Editor editor = preferences.edit();
-                                editor.putBoolean("pushService", false);
-                                editor.commit();
-                                listView.invalidateViews();
-                            }
-                        });
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                        showAlertDialog(builder);
-                    }
+//                } else if (i == notificationsServiceRow) {
+//                    final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+//                    enabled = preferences.getBoolean("pushService", true);
+//                    if (!enabled) {
+//                        final SharedPreferences.Editor editor = preferences.edit();
+//                        editor.putBoolean("pushService", !enabled);
+//                        editor.commit();
+//                        ApplicationLoader.startPushService();
+//                    } else {
+//                        if (getParentActivity() == null) {
+//                            return;
+//                        }
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+//                        builder.setMessage(LocaleController.getString("NotificationsServiceDisableInfo", R.string.NotificationsServiceDisableInfo));
+//                        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+//                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                ApplicationLoader.stopPushService();
+//                                final SharedPreferences.Editor editor = preferences.edit();
+//                                editor.putBoolean("pushService", false);
+//                                editor.commit();
+//                                listView.invalidateViews();
+//                            }
+//                        });
+//                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+//                        showAlertDialog(builder);
+//                    }
                 } else if (i == messageLedRow ) {
                     MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.NOTIFICATION_SETTINGS_LED_COLOR,null);
                     if (getParentActivity() == null) {
@@ -500,7 +500,8 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
         public boolean isEnabled(int i) {
             return !(i == messageSectionRow ||  i == inappSectionRow ||
                     i == eventsSectionRow || i == resetSectionRow ||
-                    i == messageSectionRow2 || i == eventsSectionRow2 ||
+//                    i == messageSectionRow2 ||
+                    i == eventsSectionRow2 ||
                     i == inappSectionRow2 || i == resetSectionRow2);
         }
 
@@ -561,8 +562,8 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     checkCell.setTextAndCheck(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), preferences.getBoolean("EnableInAppPriority", false), false);
                 } else if (i == contactJoinedRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("ContactJoined", R.string.ContactJoined), preferences.getBoolean("EnableContactJoined", true), false);
-                } else if (i == notificationsServiceRow) {
-                    checkCell.setTextAndCheck(LocaleController.getString("NotificationsService", R.string.NotificationsService), preferences.getBoolean("pushService", true), false);
+//                } else if (i == notificationsServiceRow) {
+//                    checkCell.setTextAndCheck(LocaleController.getString("NotificationsService", R.string.NotificationsService), preferences.getBoolean("pushService", true), false);
                 } else if (i == inchatSoundRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("InChatSound", R.string.InChatSound), preferences.getBoolean("EnableInChatSound", true), true);
                 }
@@ -652,12 +653,13 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
             } else if (i == messageAlertRow || i == messagePreviewRow ||
                      i == inappSoundRow || i == inappVibrateRow ||
                     i == inappPreviewRow || i == contactJoinedRow ||
-                    i == notificationsServiceRow || i == inappPriorityRow ||
+//                    i == notificationsServiceRow ||
+                    i == inappPriorityRow ||
                     i == inchatSoundRow) {
                 return 1;
             } else if (i == messageLedRow ) {
                 return 3;
-            } else if (i == messageSectionRow2 || i == eventsSectionRow2 ||
+            } else if (/* i == messageSectionRow2  || */ i == eventsSectionRow2 ||
                     i == inappSectionRow2 ||  i == resetSectionRow2) {
                 return 4;
             } else {

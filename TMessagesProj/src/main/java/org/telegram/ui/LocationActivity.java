@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONException;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
 import org.telegram.messenger.ApplicationLoader;
@@ -66,7 +67,7 @@ public class LocationActivity extends BaseFragment implements NotificationCenter
     private final static int map_list_menu_hybrid = 4;
 
     public interface LocationActivityDelegate {
-        void didSelectLocation(double latitude, double longitude);
+        void didSelectLocation(double latitude, double longitude) throws JSONException;
     }
 
     @Override
@@ -189,7 +190,11 @@ public class LocationActivity extends BaseFragment implements NotificationCenter
                     @Override
                     public void onClick(View view) {
                         if (delegate != null) {
-                            delegate.didSelectLocation(userLocation.getLatitude(), userLocation.getLongitude());
+                            try {
+                                delegate.didSelectLocation(userLocation.getLatitude(), userLocation.getLongitude());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                         finishFragment();
                     }

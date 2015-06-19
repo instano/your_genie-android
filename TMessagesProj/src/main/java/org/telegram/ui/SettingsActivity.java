@@ -12,6 +12,9 @@ import android.animation.ObjectAnimator;
 import android.animation.StateListAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -116,10 +119,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     private int textSizeRow;
     private int sendByEnterRow;
     private int versionRow;
-    private int contactsSortRow;
     private int rowCount;
 
-    private final static int edit_name = 1;
     private final static int logout = 2;
 
     private static class LinkMovementMethodMy extends LinkMovementMethod {
@@ -256,6 +257,11 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
+//                    Fragment currentFragment = getParentActivity().getFragmentManager().findFragmentByTag("ChatActivity");
+//                    FragmentTransaction fragTransaction = getParentActivity().getFragmentManager().beginTransaction();
+//                    fragTransaction.detach();
+//                    fragTransaction.attach();
+//                    fragTransaction.commit();
                     finishFragment();
                 } else if (id == logout) {
                     if (getParentActivity() == null) {
@@ -431,30 +437,30 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == languageRow) {
                     MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.SETTINGS_LANGUAGE,null);
 //                    presentFragment(new LanguageSelectActivity());
-                } else if (i == contactsSortRow) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("SortBy", R.string.SortBy));
-                    builder.setItems(new CharSequence[]{
-                            LocaleController.getString("Default", R.string.Default),
-                            LocaleController.getString("SortFirstName", R.string.SortFirstName),
-                            LocaleController.getString("SortLastName", R.string.SortLastName)
-                    }, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putInt("sortContactsBy", which);
-                            editor.commit();
-                            if (listView != null) {
-                                listView.invalidateViews();
-                            }
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
+//                } else if (i == contactsSortRow) {
+//                    if (getParentActivity() == null) {
+//                        return;
+//                    }
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+//                    builder.setTitle(LocaleController.getString("SortBy", R.string.SortBy));
+//                    builder.setItems(new CharSequence[]{
+//                            LocaleController.getString("Default", R.string.Default),
+//                            LocaleController.getString("SortFirstName", R.string.SortFirstName),
+//                            LocaleController.getString("SortLastName", R.string.SortLastName)
+//                    }, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+//                            SharedPreferences.Editor editor = preferences.edit();
+//                            editor.putInt("sortContactsBy", which);
+//                            editor.commit();
+//                            if (listView != null) {
+//                                listView.invalidateViews();
+//                            }
+//                        }
+//                    });
+//                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+//                    showAlertDialog(builder);
                 } else if (i == wifiDownloadRow || i == mobileDownloadRow || i == roamingDownloadRow) {
                     if (getParentActivity() == null) {
                         return;
@@ -853,7 +859,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             return i == textSizeRow || i == enableAnimationsRow || i == notificationRow || i == backgroundRow ||
                 i == numberRow || i == sendByEnterRow || i == privacyRow || i == wifiDownloadRow ||
                 i == mobileDownloadRow || i == roamingDownloadRow || i == languageRow || i == usernameRow ||
-                i == contactsSortRow || i == saveToGalleryRow;
+                i == saveToGalleryRow;
         }
 
         @Override
@@ -903,18 +909,18 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     textCell.setTextAndValue(LocaleController.getString("TextSize", R.string.TextSize), String.format("%d", size), true);
                 } else if (i == languageRow) {
                     textCell.setTextAndValue(LocaleController.getString("Language", R.string.Language), LocaleController.getCurrentLanguageName(), true);
-                }  else if (i == contactsSortRow) {
-                    String value;
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                    int sort = preferences.getInt("sortContactsBy", 0);
-                    if (sort == 0) {
-                        value = LocaleController.getString("Default", R.string.Default);
-                    } else if (sort == 1) {
-                        value = LocaleController.getString("FirstName", R.string.SortFirstName);
-                    } else {
-                        value = LocaleController.getString("LastName", R.string.SortLastName);
-                    }
-                    textCell.setTextAndValue(LocaleController.getString("SortBy", R.string.SortBy), value, true);
+//                }  else if (i == contactsSortRow) {
+//                    String value;
+//                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+//                    int sort = preferences.getInt("sortContactsBy", 0);
+//                    if (sort == 0) {
+//                        value = LocaleController.getString("Default", R.string.Default);
+//                    } else if (sort == 1) {
+//                        value = LocaleController.getString("FirstName", R.string.SortFirstName);
+//                    } else {
+//                        value = LocaleController.getString("LastName", R.string.SortLastName);
+//                    }
+//                    textCell.setTextAndValue(LocaleController.getString("SortBy", R.string.SortBy), value, true);
                 } else if (i == notificationRow) {
                     textCell.setText(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds), true);
                 } else if (i == backgroundRow) {
@@ -1032,7 +1038,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 return 1;
             } else if (i == enableAnimationsRow || i == sendByEnterRow || i == saveToGalleryRow) {
                 return 3;
-            } else if (i == notificationRow || i == backgroundRow || i == privacyRow || i == textSizeRow || i == languageRow || i == contactsSortRow) {
+            } else if (i == notificationRow || i == backgroundRow || i == privacyRow || i == textSizeRow || i == languageRow) {
                 return 2;
             } else if (i == versionRow) {
                 return 5;

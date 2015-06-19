@@ -843,9 +843,6 @@ public class MediaController implements NotificationCenter.NotificationCenterDel
                 }
             }
         }
-        if (send) {
-            SecretChatHelper.getInstance().sendScreenshotMessage(lastSecretChat, lastSecretChatVisibleMessages, null);
-        }
     }
 
     public void setLastEncryptedChatParams(long enterTime, long leaveTime, TLRPC.EncryptedChat encryptedChat, ArrayList<Long> visibleMessages) {

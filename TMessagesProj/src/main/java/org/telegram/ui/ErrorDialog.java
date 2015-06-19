@@ -52,15 +52,8 @@ public class ErrorDialog extends Dialog implements View.OnClickListener {
                 }
               break;
             case R.id.buttonSendTwitter:
-                Intent intent = null;
-                try {
-                    getContext().getPackageManager().getPackageInfo("com.twitter.android", 0);
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name= Dheeraj Meena"));
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                } catch (Exception e) {
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/Dheeraj Meena"));
-                }
-                getContext().startActivity(intent);
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/instanoapp"));
+                getContext().startActivity(browserIntent);
                 break;
         }
     }

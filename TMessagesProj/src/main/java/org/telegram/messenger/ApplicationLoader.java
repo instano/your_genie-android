@@ -227,7 +227,6 @@ public class ApplicationLoader extends Application {
                 Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Log.e("Handler", "Code is reaching here");
                 startActivity(intent);
                 System.exit(1);
             }

@@ -288,7 +288,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 //                    drawerLayoutContainer.closeDrawer(false);
 //                    drawerLayoutContainer.closeDrawer(false);
 //                } else
-                if (position == 2) {
+                if (position == 3) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
@@ -299,15 +299,15 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 3) {
+                } else if (position == 4) {
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_SETTINGS,null);
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 4) {
+                } else if (position == 5) {
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_ABOUT_US,null);
                     presentFragment(new AboutUsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 5){
+                } else if (position == 6){
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_CONTACT_US,null);
                     ContactUsDialog cd = new ContactUsDialog(LaunchActivity.this);
                     cd.show();
@@ -377,10 +377,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             }
                             case "group":
                                 if (args != null) {
-                                    GroupCreateFinalActivity group = new GroupCreateFinalActivity(args);
-                                    if (actionBarLayout.addFragmentToStack(group)) {
-                                        group.restoreSelfArgs(savedInstanceState);
-                                    }
+//                                    GroupCreateFinalActivity group = new GroupCreateFinalActivity(args);
+//                                    if (actionBarLayout.addFragmentToStack(group)) {
+//                                        group.restoreSelfArgs(savedInstanceState);
+//                                    }
                                 }
                                 break;
                             case "chat_profile":
@@ -1328,9 +1328,9 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     outState.putString("fragment", "chat");
                 } else if (lastFragment instanceof SettingsActivity) {
                     outState.putString("fragment", "settings");
-                } else if (lastFragment instanceof GroupCreateFinalActivity && args != null) {
-                    outState.putBundle("args", args);
-                    outState.putString("fragment", "group");
+//                } else if (lastFragment instanceof GroupCreateFinalActivity && args != null) {
+//                    outState.putBundle("args", args);
+//                    outState.putString("fragment", "group");
                 } else if (lastFragment instanceof WallpapersActivity) {
                     outState.putString("fragment", "wallpapers");
                 } else if (lastFragment instanceof ProfileActivity && ((ProfileActivity) lastFragment).isChat() && args != null) {
