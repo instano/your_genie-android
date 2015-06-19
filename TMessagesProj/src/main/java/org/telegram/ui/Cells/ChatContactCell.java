@@ -39,8 +39,8 @@ public class ChatContactCell extends ChatBaseCell {
 
     private static TextPaint namePaint;
     private static TextPaint phonePaint;
-    private static Drawable addContactDrawableIn;
-    private static Drawable addContactDrawableOut;
+//    private static Drawable addContactDrawableIn;
+//    private static Drawable addContactDrawableOut;
 
     private ImageReceiver avatarImage;
     private AvatarDrawable avatarDrawable;
@@ -68,8 +68,8 @@ public class ChatContactCell extends ChatBaseCell {
             phonePaint.setTextSize(AndroidUtilities.dp(15));
             phonePaint.setColor(0xff212121);
 
-            addContactDrawableIn = getResources().getDrawable(R.drawable.addcontact_blue);
-            addContactDrawableOut = getResources().getDrawable(R.drawable.addcontact_green);
+//            addContactDrawableIn = getResources().getDrawable(R.drawable.addcontact_blue);
+//            addContactDrawableOut = getResources().getDrawable(R.drawable.addcontact_green);
         }
         avatarImage = new ImageReceiver(this);
         avatarImage.setRoundRadius(AndroidUtilities.dp(21));
@@ -287,12 +287,12 @@ public class ChatContactCell extends ChatBaseCell {
         if (drawAddButton) {
             Drawable addContactDrawable;
             if (currentMessageObject.isOut()) {
-                addContactDrawable = addContactDrawableOut;
+//                addContactDrawable = addContactDrawableOut;
             } else {
-                addContactDrawable = addContactDrawableIn;
+//                addContactDrawable = addContactDrawableIn;
             }
-            setDrawableBounds(addContactDrawable, avatarImage.getImageX() + namesWidth + AndroidUtilities.dp(78), AndroidUtilities.dp(13) + namesOffset);
-            addContactDrawable.draw(canvas);
+//            setDrawableBounds(addContactDrawable, avatarImage.getImageX() + namesWidth + AndroidUtilities.dp(78), AndroidUtilities.dp(13) + namesOffset);
+//            addContactDrawable.draw(canvas);
         }
     }
 }
