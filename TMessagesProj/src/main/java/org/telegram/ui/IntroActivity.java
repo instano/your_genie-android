@@ -161,6 +161,7 @@ public class IntroActivity extends Activity {
             @Override
             public void onPageScrollStateChanged(int i) {
                 if (i == ViewPager.SCROLL_STATE_IDLE || i == ViewPager.SCROLL_STATE_SETTLING) {
+                    MixpanelAPI.getInstance(IntroActivity.this, BuildVars.mixpanelToken()).track(MixPanelEvents.INTROACTIVITY_ITEM_SCROLLED, null);
                     if (lastPage != viewPager.getCurrentItem()) {
                         lastPage = viewPager.getCurrentItem();
 

@@ -16,6 +16,9 @@ import org.telegram.ui.LoginActivity;
  */
 public class MixPanelEvents {
 
+//    IntroActivity items scrolled
+public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scrolled";
+
 //    Send Messages Event
     public static String SEND_LOCATION_LATITUDE = "Attached Location Latitude";
     public static String SEND_LOCATION_LONGITUDE = "Attached Location Longitude";
