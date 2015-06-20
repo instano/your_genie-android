@@ -166,7 +166,7 @@
     <!--contacts view-->
     <string name="SelectContact">Select Contact</string>
     <string name="NoContacts">No contacts yet</string>
-    <string name="InviteText">Hey, let\'s switch to Instano: https://www.Instano.in</string>
+    <string name="InviteText">Hey, let\'s switch to Instano: https://www.instanoapp.com</string>
     <string name="TodayAt">at</string>
     <string name="YesterdayAt">yesterday at</string>
     <string name="Online">online</string>
