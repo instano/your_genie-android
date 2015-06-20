@@ -186,7 +186,7 @@ public class ContactsController {
                                     SharedPreferences.Editor editor = preferences.edit();
                                     editor.putString("invitetext", res.message);
                                     editor.putInt("invitetexttime", (int) (System.currentTimeMillis() / 1000));
-                                    editor.commit();
+                                    editor.apply();
                                 }
                             });
                         }

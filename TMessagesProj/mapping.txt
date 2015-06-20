@@ -15660,6 +15660,7 @@ org.telegram.instano.MixPanelEvents -> org.telegram.b.a:
     java.lang.String SEND_LOCATION_LONGITUDE -> b
     java.lang.String LOCATION_LATITUDE -> c
     java.lang.String LOCATION_LONGITUDE -> d
+    com.mixpanel.android.mpmetrics.MixpanelAPI api(android.content.Context) -> a
     com.mixpanel.android.mpmetrics.MixpanelAPI api() -> a
     java.lang.String getId() -> b
 org.telegram.messenger.AbsSerializedData -> org.telegram.messenger.a:
@@ -24555,15 +24556,15 @@ org.telegram.ui.IntroActivity -> org.telegram.ui.IntroActivity:
     void onCreate(android.os.Bundle) -> onCreate
     void onResume() -> onResume
     void contactExists(java.lang.String) -> a
-    int access$100(org.telegram.ui.IntroActivity) -> a
+    int[] access$100(org.telegram.ui.IntroActivity) -> a
     android.support.v4.view.ViewPager access$200(org.telegram.ui.IntroActivity) -> b
-    int access$102(org.telegram.ui.IntroActivity,int) -> a
-    android.widget.ImageView access$300(org.telegram.ui.IntroActivity) -> c
+    int access$300(org.telegram.ui.IntroActivity) -> c
+    int access$302(org.telegram.ui.IntroActivity,int) -> a
     android.widget.ImageView access$400(org.telegram.ui.IntroActivity) -> d
-    int[] access$500(org.telegram.ui.IntroActivity) -> e
-    boolean access$600(org.telegram.ui.IntroActivity) -> f
-    boolean access$602(org.telegram.ui.IntroActivity,boolean) -> a
-    int[] access$700(org.telegram.ui.IntroActivity) -> g
+    android.widget.ImageView access$500(org.telegram.ui.IntroActivity) -> e
+    int[] access$600(org.telegram.ui.IntroActivity) -> f
+    boolean access$700(org.telegram.ui.IntroActivity) -> g
+    boolean access$702(org.telegram.ui.IntroActivity,boolean) -> a
     int[] access$800(org.telegram.ui.IntroActivity) -> h
     android.view.ViewGroup access$900(org.telegram.ui.IntroActivity) -> i
 org.telegram.ui.IntroActivity$1 -> org.telegram.ui.IntroActivity$1:
