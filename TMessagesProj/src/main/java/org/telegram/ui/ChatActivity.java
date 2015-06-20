@@ -4046,9 +4046,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     if (AndroidUtilities.isTablet()) {
                         if (AndroidUtilities.isSmallTablet() && getParentActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                            actionBar.setBackButtonImage(R.drawable.ic_ab_back);
+                            actionBar.setBackButtonDrawable(new MenuDrawable());
                         } else {
-                            actionBar.setBackButtonImage(R.drawable.ic_close_white);
+                            actionBar.setBackButtonDrawable(new MenuDrawable());
                         }
                     }
                     int padding = (AndroidUtilities.getCurrentActionBarHeight() - AndroidUtilities.dp(48)) / 2;
