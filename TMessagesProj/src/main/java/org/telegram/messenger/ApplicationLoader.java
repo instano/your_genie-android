@@ -26,7 +26,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
-import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.ConnectionResult;
@@ -108,15 +107,15 @@ public class ApplicationLoader extends Application {
                         int cacheColorHint = 0;
                         if (selectedColor == 0) {
                             if (selectedBackground == 1000001) {
-                                cachedWallpaper = applicationContext.getResources().getDrawable(R.drawable.background_new);
+                                cachedWallpaper = applicationContext.getResources().getDrawable(R.drawable.background);
                                 isCustomTheme = false;
                             } else {
-                                File toFile = new File(ApplicationLoader.applicationContext.getFilesDir(), "background_new.jpg");
+                                File toFile = new File(ApplicationLoader.applicationContext.getFilesDir(), "background");
                                 if (toFile.exists()) {
                                     cachedWallpaper = Drawable.createFromPath(toFile.getAbsolutePath());
                                     isCustomTheme = true;
                                 } else {
-                                    cachedWallpaper = applicationContext.getResources().getDrawable(R.drawable.background_new);
+                                    cachedWallpaper = applicationContext.getResources().getDrawable(R.drawable.background);
                                     isCustomTheme = false;
                                 }
                             }

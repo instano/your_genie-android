@@ -403,7 +403,7 @@ public class LoginActivity extends BaseFragment {
         presentFragment(new MessagesActivity(null), true);
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
         if (UserConfig.isClientActivated()) {
-            MixpanelAPI mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
+            MixpanelAPI mixpanelAPI = MixPanelEvents.api(getParentActivity());
             mixpanelAPI.alias(String.valueOf(UserConfig.getClientUserId()), null);
             // we are considering the telegram's user id as a unique identifier
             mixpanelAPI.getPeople().identify(String.valueOf(UserConfig.getClientUserId()));

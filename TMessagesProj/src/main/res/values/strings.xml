@@ -576,14 +576,12 @@
     <string name="Page3Title">Fast</string>
     <string name="Page4Title">Secure</string>
     <string name="Page5Title">Bangalore</string>
-    <string name="Page6Title">Free</string>
     <string name="Page7Title">Robust</string>
     <string name="Page1Message">Need anything? Make a wish and <![CDATA[<b>Instano</b>]]> will get it for you.</string>
     <string name="Page2Message"><![CDATA[<b>Instano</b>]]> delivers <![CDATA[<b>anything</b>]]> (Just don\'t make us deliver anything illegal).</string>
     <string name="Page3Message"><![CDATA[<b>Instano</b>]]> delivers within 30 minutes, though it varies on the service you order.</string>
     <string name="Page4Message"><![CDATA[<b>Instano</b>]]> We use only secure payment methods.</string>
-    <string name="Page5Message"><![CDATA[<b>Instano</b>]]> delivers <![CDATA[<b>anywhere</b>]]> in bangalore. <![CDATA[<br/>]]> More cities to be added soon</string>
-    <string name="Page6Message"><![CDATA[<b>Instano</b>]]> is free to use. We only charge a nominal <![CDATA[<b>(₹20 to 50)</b>]]> if it involves delivery.</string>
+    <string name="Page5Message"><![CDATA[<b>Instano</b>]]> is <![CDATA[<b>operational</b>]]> in bangalore. <![CDATA[<br/>]]> More cities to be added soon</string>
     <string name="Page7Message"><![CDATA[<b>Instano</b>]]> uses <![CDATA[<b>Telegram</b>]]> at its backend. Its <![CDATA[<b>Open source</b>]]> and <![CDATA[<b>Secure</b>]]></string>
     <string name="GetStarted">Get started</string>
 

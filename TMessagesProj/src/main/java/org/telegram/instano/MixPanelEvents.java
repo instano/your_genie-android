@@ -1,5 +1,7 @@
 package org.telegram.instano;
 
+import android.content.Context;
+
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.telegram.messenger.ApplicationLoader;
@@ -99,6 +101,13 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
 //    URL clicked in ChatActivity
     public static final String URL_CLICKS = "URL clicks";
     public static final String URL_CLICKED = "URL clicked";
+
+    public static MixpanelAPI api(Context context) {
+        if (context == null)
+            return api();
+        else
+            return MixpanelAPI.getInstance(context, BuildVars.mixpanelToken());
+    }
 
     public static MixpanelAPI api() {
         return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken());

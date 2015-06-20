@@ -3866,7 +3866,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public void onResume() {
         super.onResume();
 
-        MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken()).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
+        MixPanelEvents.api(getParentActivity()).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
 
         if (!AndroidUtilities.isTablet()) {
@@ -3913,12 +3913,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         fixLayout(true);
         String lastMessageText = preferences.getString("dialog_" + dialog_id, null);
         if (lastMessageText != null) {
-            preferences.edit().remove("dialog_" + dialog_id).commit();
+            preferences.edit().remove("dialog_" + dialog_id).apply();
             chatActivityEnterView.setFieldText(lastMessageText);
         }
         String lastReplyMessage = preferences.getString("reply_" + dialog_id, null);
         if (lastReplyMessage != null && lastReplyMessage.length() != 0) {
-            preferences.edit().remove("reply_" + dialog_id).commit();
+            preferences.edit().remove("reply_" + dialog_id).apply();
             try {
                 byte[] bytes = Base64.decode(lastReplyMessage, Base64.DEFAULT);
                 if (bytes != null) {

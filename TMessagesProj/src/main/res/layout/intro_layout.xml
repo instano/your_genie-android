@@ -94,12 +94,6 @@
                 android:background="#bbbbbb"
                 android:layout_marginLeft="7dp"/>
 
-            <FrameLayout
-                android:layout_width="5dp"
-                android:layout_height="5dp"
-                android:background="#bbbbbb"
-                android:layout_marginLeft="7dp"/>
-
         </LinearLayout>
 
     </FrameLayout>

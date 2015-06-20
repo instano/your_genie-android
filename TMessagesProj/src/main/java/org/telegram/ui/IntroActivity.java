@@ -36,6 +36,8 @@ import android.widget.TextView;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.LocaleController;
 import org.telegram.instano.MixPanelEvents;
@@ -75,7 +77,6 @@ public class IntroActivity extends Activity {
         if (LocaleController.isRTL) {
             icons = new int[] {
                     R.drawable.intro7,
-                    R.drawable.intro6,
                     R.drawable.intro5,
                     R.drawable.intro4,
                     R.drawable.intro3,
@@ -84,7 +85,6 @@ public class IntroActivity extends Activity {
             };
             titles = new int[] {
                     R.string.Page7Title,
-                    R.string.Page6Title,
                     R.string.Page5Title,
                     R.string.Page4Title,
                     R.string.Page3Title,
@@ -93,7 +93,6 @@ public class IntroActivity extends Activity {
             };
             messages = new int[] {
                     R.string.Page7Message,
-                    R.string.Page6Message,
                     R.string.Page5Message,
                     R.string.Page4Message,
                     R.string.Page3Message,
@@ -108,7 +107,6 @@ public class IntroActivity extends Activity {
                     R.drawable.intro3,
                     R.drawable.intro4,
                     R.drawable.intro5,
-                    R.drawable.intro6,
                     R.drawable.intro7
 
             };
@@ -118,7 +116,6 @@ public class IntroActivity extends Activity {
                     R.string.Page3Title,
                     R.string.Page4Title,
                     R.string.Page5Title,
-                    R.string.Page6Title,
                     R.string.Page7Title
             };
             messages = new int[] {
@@ -127,7 +124,6 @@ public class IntroActivity extends Activity {
                     R.string.Page3Message,
                     R.string.Page4Message,
                     R.string.Page5Message,
-                    R.string.Page6Message,
                     R.string.Page7Message
             };
         }
@@ -161,7 +157,14 @@ public class IntroActivity extends Activity {
             @Override
             public void onPageScrollStateChanged(int i) {
                 if (i == ViewPager.SCROLL_STATE_IDLE || i == ViewPager.SCROLL_STATE_SETTLING) {
-                    MixpanelAPI.getInstance(IntroActivity.this, BuildVars.mixpanelToken()).track(MixPanelEvents.INTROACTIVITY_ITEM_SCROLLED, null);
+                    JSONObject data = null;
+                    try {
+                        data = new JSONObject()
+                                .put("current page", titles[viewPager.getCurrentItem()]);
+                    } catch (JSONException e) {
+                        FileLog.e(BuildVars.TAG, e);
+                    }
+                    MixpanelAPI.getInstance(IntroActivity.this, BuildVars.mixpanelToken()).track(MixPanelEvents.INTROACTIVITY_ITEM_SCROLLED, data);
                     if (lastPage != viewPager.getCurrentItem()) {
                         lastPage = viewPager.getCurrentItem();
 
@@ -247,8 +250,8 @@ public class IntroActivity extends Activity {
         super.onResume();
         if (justCreated) {
             if (LocaleController.isRTL) {
-                viewPager.setCurrentItem(6);
-                lastPage = 6;
+                viewPager.setCurrentItem(titles.length - 1);
+                lastPage = titles.length - 1;
             } else {
                 viewPager.setCurrentItem(0);
                 lastPage = 0;
@@ -314,7 +317,7 @@ public class IntroActivity extends Activity {
     private class IntroAdapter extends PagerAdapter {
         @Override
         public int getCount() {
-            return 7;
+            return titles.length;
         }
 
         @Override
