@@ -16,16 +16,32 @@ import org.telegram.ui.LoginActivity;
  */
 public class MixPanelEvents {
 
-//    Send Messages
-    public static final String MESSAGES_SEND_EMOJI= "Sent Emoji";
-    public static final String MESSAGES_SEND= "Sent Message's";
-    public static final String MESSAGES_ATTACH_PHOTO= "Attached Camera Photo's";
-    public static final String MESSAGES_ATTACH_GALLERY = "Attached Gallery";
-    public static final String MESSAGES_ATTACH_VIDEO = "Attached Video's";
-    public static final String MESSAGES_ATTACH_FILE= "Attached File's";
-    public static final String MESSAGES_ATTACH_LOCATION= "Attached Location's";
-    public static final String MESSAGES_ATTACH_SOUND = "Sent Sound File's";
-//    public static final String MESSAGES_RECIEVED = "Received Messages";
+//    IntroActivity items scrolled
+public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scrolled";
+
+//    Send Messages Event
+    public static String SEND_LOCATION_LATITUDE = "Attached Location Latitude";
+    public static String SEND_LOCATION_LONGITUDE = "Attached Location Longitude";
+    public static final String SEND_MESSAGES_EMOJI= "Sent Emoji";
+    public static final String SEND_MESSAGES= "Sent Message";
+    public static final String SEND_MESSAGES_ATTACH_PHOTO= "Sent Camera Photo";
+    public static final String SEND_MESSAGES_ATTACH_GALLERY = "Sent Gallery";
+    public static final String SEND_MESSAGES_ATTACH_VIDEO = "Sent Video";
+    public static final String SEND_MESSAGES_ATTACH_FILE= "Sent File";
+    public static final String SEND_MESSAGES_ATTACH_LOCATION= "Sent Location";
+    public static final String SEND_MESSAGES_ATTACH_SOUND = "Sent Sound File";
+
+//    Received Messages Event
+    public static String LOCATION_LATITUDE = "Latitude";
+    public static String LOCATION_LONGITUDE = "Longitude";
+    public static final String RECEIVED_MESSAGES_EMOJI= "Received Emoji";
+    public static final String RECEIVED_MESSAGES= "Received Message";
+    public static final String RECEIVED_MESSAGES_ATTACH_PHOTO= "Received Camera Photo";
+    public static final String RECEIVED_MESSAGES_ATTACH_GALLERY = "Received Gallery";
+    public static final String RECEIVED_ATTACH_VIDEO = "Received Video";
+    public static final String RECEIVED_ATTACH_FILE= "Received File";
+    public static final String RECEIVED_ATTACH_LOCATION= "Received Location";
+    public static final String RECEIVED_MESSAGES_ATTACH_SOUND = "Received Sound File";
 
     private final String TAG = getClass().getSimpleName();
     public static final String PROPERTY_BUILD_TYPE = "Build Type";
@@ -59,9 +75,9 @@ public class MixPanelEvents {
     public static final String SETTINGS_SEND_BY_ENTER = "Settings->Send By Enter";
 
 //    ProfileActivity button click
-    public static final String PROFILE_SENDER_PHONE_NUMBER = "Profile->Sender Number";
-    public static final String PROFILE_NOTIFICATION_AND_SOUNDS = "Profile->Notification And Sounds";
-    public static final String PROFILE_SHARED_MEDIA = "Profile->Shared Media";
+//    public static final String PROFILE_SENDER_PHONE_NUMBER = "Profile->Sender Number";
+//    public static final String PROFILE_NOTIFICATION_AND_SOUNDS = "Profile->Notification And Sounds";
+//    public static final String PROFILE_SHARED_MEDIA = "Profile->Shared Media";
 
 //    SecuritySettingsActivity button click
     public static final String SECURITY_TWO_STEP_VERIFICATION = "Security->Two-Step Verification";
@@ -86,5 +102,9 @@ public class MixPanelEvents {
 
     public static MixpanelAPI api() {
         return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken());
+    }
+
+    public static String getId(){
+        return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken()).getPeople().getDistinctId();
     }
 }

@@ -245,10 +245,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     MessagesActivity fragment = new MessagesActivity(args);
                     fragment.setDelegate(ProfileActivity.this);
                     presentFragment(fragment);
-                } else if (id == edit_contact) {
-                    Bundle args = new Bundle();
-                    args.putInt("user_id", user_id);
-                    presentFragment(new ContactAddActivity(args));
                 } else if (id == delete_contact) {
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null || getParentActivity() == null) {
@@ -369,7 +365,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     return;
                 }
                 if (i == sharedMediaRow) {
-                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.PROFILE_SHARED_MEDIA,null);
+//                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.PROFILE_SHARED_MEDIA,null);
                     Bundle args = new Bundle();
                     if (user_id != 0) {
                         args.putLong("dialog_id", dialog_id != 0 ? dialog_id : user_id);
@@ -387,7 +383,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     showAlertDialog(AndroidUtilities.buildTTLAlert(getParentActivity(), currentEncryptedChat));
                 } else if (i == settingsNotificationsRow) {
-                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.PROFILE_NOTIFICATION_AND_SOUNDS,null);
+//                    MixpanelAPI.getInstance(context,BuildVars.mixpanelToken()).track(MixPanelEvents.PROFILE_NOTIFICATION_AND_SOUNDS,null);
                     Bundle args = new Bundle();
                     if (user_id != 0) {
                         args.putLong("dialog_id", dialog_id == 0 ? user_id : dialog_id);
@@ -396,7 +392,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     presentFragment(new ProfileNotificationsActivity(args));
                 } else if (i == phoneRow) {
-                    MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.PROFILE_SENDER_PHONE_NUMBER,null);
+//                    MixpanelAPI.getInstance(context, BuildVars.mixpanelToken()).track(MixPanelEvents.PROFILE_SENDER_PHONE_NUMBER,null);
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null || user.phone == null || user.phone.length() == 0 || getParentActivity() == null) {
                         return;

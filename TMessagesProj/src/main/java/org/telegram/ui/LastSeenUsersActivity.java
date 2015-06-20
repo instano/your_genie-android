@@ -91,23 +91,23 @@ public class LastSeenUsersActivity extends BaseFragment implements NotificationC
                 } else if (id == block_user) {
                     Bundle args = new Bundle();
                     args.putBoolean(isAlwaysShare ? "isAlwaysShare" : "isNeverShare", true);
-                    GroupCreateActivity fragment = new GroupCreateActivity(args);
-                    fragment.setDelegate(new GroupCreateActivity.GroupCreateActivityDelegate() {
-                        @Override
-                        public void didSelectUsers(ArrayList<Integer> ids) {
-                            for (Integer id : ids) {
-                                if (uidArray.contains(id)) {
-                                    continue;
-                                }
-                                uidArray.add(id);
-                            }
-                            listViewAdapter.notifyDataSetChanged();
-                            if (delegate != null) {
-                                delegate.didUpdatedUserList(uidArray, true);
-                            }
-                        }
-                    });
-                    presentFragment(fragment);
+//                    GroupCreateActivity fragment = new GroupCreateActivity(args);
+//                    fragment.setDelegate(new GroupCreateActivity.GroupCreateActivityDelegate() {
+//                        @Override
+//                        public void didSelectUsers(ArrayList<Integer> ids) {
+//                            for (Integer id : ids) {
+//                                if (uidArray.contains(id)) {
+//                                    continue;
+//                                }
+//                                uidArray.add(id);
+//                            }
+//                            listViewAdapter.notifyDataSetChanged();
+//                            if (delegate != null) {
+//                                delegate.didUpdatedUserList(uidArray, true);
+//                            }
+//                        }
+//                    });
+//                    presentFragment(fragment);
                 }
             }
         });
