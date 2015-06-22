@@ -15661,6 +15661,7 @@ org.telegram.instano.MixPanelEvents -> org.telegram.b.a:
     com.mixpanel.android.mpmetrics.MixpanelAPI api(android.content.Context) -> a
     com.mixpanel.android.mpmetrics.MixpanelAPI api() -> a
     java.lang.String getId() -> b
+    boolean isPackageInstalled(java.lang.String,android.content.Context) -> a
 org.telegram.messenger.AbsSerializedData -> org.telegram.messenger.a:
     void writeInt32(int) -> a
     void writeInt64(long) -> a

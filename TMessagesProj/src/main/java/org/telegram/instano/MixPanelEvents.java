@@ -1,6 +1,7 @@
 package org.telegram.instano;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
@@ -48,6 +49,7 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
     private final String TAG = getClass().getSimpleName();
     public static final String PROPERTY_BUILD_TYPE = "Build Type";
     public static final String FIRST_TIME = "First Time";
+    public static final String TELEGRAM_PRESENT = "Telegram Present";
     public static final String CHAT_ACTIVITY_OPENED = "Chat Activity Opened";
 
     public static final String USER_USER_ID = "User user Id";
@@ -115,5 +117,15 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
 
     public static String getId(){
         return MixpanelAPI.getInstance(ApplicationLoader.applicationContext, BuildVars.mixpanelToken()).getPeople().getDistinctId();
+    }
+
+    public static boolean isPackageInstalled(String packagename, Context context) {
+        PackageManager pm = context.getPackageManager();
+        try {
+            pm.getPackageInfo(packagename, PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
     }
 }

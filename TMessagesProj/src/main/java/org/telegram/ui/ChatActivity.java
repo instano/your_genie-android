@@ -3866,7 +3866,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public void onResume() {
         super.onResume();
 
-        MixPanelEvents.api(getParentActivity()).track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
+        MixpanelAPI mixpanelAPI = MixPanelEvents.api(getParentActivity());
+        mixpanelAPI.track(MixPanelEvents.CHAT_ACTIVITY_OPENED, null);
+        if (MixPanelEvents.isPackageInstalled("org.telegram.messenger", ApplicationLoader.applicationContext))
+            mixpanelAPI.track(MixPanelEvents.TELEGRAM_PRESENT, null);
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
 
         if (!AndroidUtilities.isTablet()) {

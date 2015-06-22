@@ -242,7 +242,10 @@ public class IntroActivity extends Activity {
         });
 
         justCreated = true;
-        MixpanelAPI.getInstance(this, BuildVars.mixpanelToken()).track(MixPanelEvents.FIRST_TIME, null);
+        MixpanelAPI mixpanelAPI = MixPanelEvents.api(this);
+        mixpanelAPI.track(MixPanelEvents.FIRST_TIME, null);
+        if (MixPanelEvents.isPackageInstalled("org.telegram.messenger", this))
+            mixpanelAPI.track(MixPanelEvents.TELEGRAM_PRESENT, null);
     }
 
     @Override
