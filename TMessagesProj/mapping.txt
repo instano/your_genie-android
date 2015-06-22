@@ -15656,10 +15656,8 @@ org.telegram.android.volley.toolbox.Volley -> org.telegram.android.d.a.o:
     org.telegram.android.volley.RequestQueue newRequestQueue(android.content.Context,org.telegram.android.volley.toolbox.HttpStack) -> a
     org.telegram.android.volley.RequestQueue newRequestQueue(android.content.Context) -> a
 org.telegram.instano.MixPanelEvents -> org.telegram.b.a:
-    java.lang.String SEND_LOCATION_LATITUDE -> a
-    java.lang.String SEND_LOCATION_LONGITUDE -> b
-    java.lang.String LOCATION_LATITUDE -> c
-    java.lang.String LOCATION_LONGITUDE -> d
+    java.lang.String LOCATION_LATITUDE -> a
+    java.lang.String LOCATION_LONGITUDE -> b
     com.mixpanel.android.mpmetrics.MixpanelAPI api(android.content.Context) -> a
     com.mixpanel.android.mpmetrics.MixpanelAPI api() -> a
     java.lang.String getId() -> b

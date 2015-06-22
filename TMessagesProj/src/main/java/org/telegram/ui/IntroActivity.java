@@ -160,7 +160,7 @@ public class IntroActivity extends Activity {
                     JSONObject data = null;
                     try {
                         data = new JSONObject()
-                                .put("current page", titles[viewPager.getCurrentItem()]);
+                                .put("current page", getResources().getString(titles[viewPager.getCurrentItem()]));
                     } catch (JSONException e) {
                         FileLog.e(BuildVars.TAG, e);
                     }

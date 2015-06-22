@@ -22,8 +22,8 @@ public class MixPanelEvents {
 public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scrolled";
 
 //    Send Messages Event
-    public static String SEND_LOCATION_LATITUDE = "Attached Location Latitude";
-    public static String SEND_LOCATION_LONGITUDE = "Attached Location Longitude";
+    public static final String SEND_LOCATION_LATITUDE = "Attached Location Latitude";
+    public static final String SEND_LOCATION_LONGITUDE = "Attached Location Longitude";
     public static final String SEND_MESSAGES_EMOJI= "Sent Emoji";
     public static final String SEND_MESSAGES= "Sent Message";
     public static final String SEND_MESSAGES_ATTACH_PHOTO= "Sent Camera Photo";
