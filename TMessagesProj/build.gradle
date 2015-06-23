@@ -83,7 +83,7 @@ android {
         applicationId "com.instano.genie"
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 25
-        versionName "1.0.8"
+        versionCode 26
+        versionName "1.0.9"
     }
 }

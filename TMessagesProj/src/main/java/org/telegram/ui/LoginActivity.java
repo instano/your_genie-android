@@ -411,6 +411,8 @@ public class LoginActivity extends BaseFragment {
             mixpanelAPI.getPeople().set(MixPanelEvents.USER_USER_ID, UserConfig.getClientUserId());
             mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_FIRST_NAME, UserConfig.getCurrentUser().fullName());
             mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_PHONE, UserConfig.getCurrentUser().phone);
+
+            mixpanelAPI.track(MixPanelEvents.PHONE_VERIFIED, null);
         }
     }
 

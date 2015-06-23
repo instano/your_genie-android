@@ -49,6 +49,7 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
     private final String TAG = getClass().getSimpleName();
     public static final String PROPERTY_BUILD_TYPE = "Build Type";
     public static final String FIRST_TIME = "First Time";
+    public static final String PHONE_VERIFIED = "Phone Verified";
     public static final String TELEGRAM_PRESENT = "Telegram Present";
     public static final String CHAT_ACTIVITY_OPENED = "Chat Activity Opened";
 
