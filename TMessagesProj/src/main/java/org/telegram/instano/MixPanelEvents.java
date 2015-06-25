@@ -34,7 +34,7 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
     public static final String SEND_MESSAGES_ATTACH_LOCATION= "Sent Location";
     public static final String SEND_MESSAGES_ATTACH_SOUND = "Sent Sound File";
 
-//    Received Messages Event
+    //    Received Messages Event
     public static String LOCATION_LATITUDE = "Latitude";
     public static String LOCATION_LONGITUDE = "Longitude";
     public static final String RECEIVED_MESSAGES_EMOJI= "Received Emoji";
@@ -46,9 +46,11 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
     public static final String RECEIVED_ATTACH_LOCATION= "Received Location";
     public static final String RECEIVED_MESSAGES_ATTACH_SOUND = "Received Sound File";
 
-    private final String TAG = getClass().getSimpleName();
+    // Initial config
     public static final String PROPERTY_BUILD_TYPE = "Build Type";
     public static final String FIRST_TIME = "First Time";
+    public static final String GET_STARTED_CLICKED = "Get started clicked";
+    public static final String PHONE_ENTERED = "Phone entered";
     public static final String PHONE_VERIFIED = "Phone Verified";
     public static final String TELEGRAM_PRESENT = "Telegram Present";
     public static final String CHAT_ACTIVITY_OPENED = "Chat Activity Opened";

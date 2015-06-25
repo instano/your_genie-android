@@ -230,6 +230,7 @@ public class IntroActivity extends Activity {
         startMessagingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MixPanelEvents.api(IntroActivity.this).track(MixPanelEvents.GET_STARTED_CLICKED, null);
                 if (startPressed) {
                     return;
                 }

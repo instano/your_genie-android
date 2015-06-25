@@ -416,6 +416,9 @@ public class LoginActivity extends BaseFragment {
         }
     }
 
+    /**
+     * the screen in which phone number has to be entered
+     */
     public class PhoneView extends SlideView implements AdapterView.OnItemSelectedListener {
 
         private EditText codeField;
@@ -790,6 +793,9 @@ public class LoginActivity extends BaseFragment {
                 needShowAlert(LocaleController.getString("AppName", R.string.AppName), LocaleController.getString("InvalidPhoneNumber", R.string.InvalidPhoneNumber));
                 return;
             }
+
+            MixPanelEvents.api(getParentActivity()).track(MixPanelEvents.PHONE_ENTERED, null);
+
             TLRPC.TL_auth_sendCode req = new TLRPC.TL_auth_sendCode();
             String phone = PhoneFormat.stripExceptNumbers("" + codeField.getText() + phoneField.getText());
             ConnectionsManager.getInstance().applyCountryPortNumber(phone);
