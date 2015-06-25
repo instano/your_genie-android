@@ -163,51 +163,54 @@ public class NotificationsController {
             if (chat_id == 0 && user_id != 0) {
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
                 if (preferences.getBoolean("EnablePreviewAll", true)) {
-                    if (messageObject.messageOwner instanceof TLRPC.TL_messageService) {
-                        if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserJoined) {
-                            msg = LocaleController.formatString("NotificationContactJoined", R.string.NotificationContactJoined, ContactsController.formatName(user.first_name, user.last_name));
-                        } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
-                            msg = LocaleController.formatString("NotificationContactNewPhoto", R.string.NotificationContactNewPhoto, ContactsController.formatName(user.first_name, user.last_name));
-                            FileLog.d(BuildVars.TAG,"171 photo received here");
-                        } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
-                            String date = LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, LocaleController.formatterYear.format(((long) messageObject.messageOwner.date) * 1000), LocaleController.formatterDay.format(((long) messageObject.messageOwner.date) * 1000));
-                            msg = LocaleController.formatString("NotificationUnrecognizedDevice", R.string.NotificationUnrecognizedDevice, UserConfig.getCurrentUser().first_name, date, messageObject.messageOwner.action.title, messageObject.messageOwner.action.address);
-                        }
-                    } else {
-                        if (messageObject.isMediaEmpty()) {
-                            if (!shortMessage) {
-                                if (messageObject.messageOwner.message != null && messageObject.messageOwner.message.length() != 0) {
-                                    msg = LocaleController.formatString("NotificationMessageText", R.string.NotificationMessageText, ContactsController.formatName(user.first_name, user.last_name), messageObject.messageOwner.message);
+                    if (user.phone.contains(BuildVars.PHONE)) {
+                        BuildVars.instanoUser = user;
+                        if (messageObject.messageOwner instanceof TLRPC.TL_messageService) {
+//                            if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserJoined) {
+//                                msg = LocaleController.formatString("NotificationContactJoined", R.string.NotificationContactJoined, ContactsController.formatName(user.first_name, user.last_name));
+//                            } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
+//                                msg = LocaleController.formatString("NotificationContactNewPhoto", R.string.NotificationContactNewPhoto, ContactsController.formatName(user.first_name, user.last_name));
+//                                FileLog.d(BuildVars.TAG,"171 photo received here");
+//                            } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
+//                                String date = LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, LocaleController.formatterYear.format(((long) messageObject.messageOwner.date) * 1000), LocaleController.formatterDay.format(((long) messageObject.messageOwner.date) * 1000));
+//                                msg = LocaleController.formatString("NotificationUnrecognizedDevice", R.string.NotificationUnrecognizedDevice, UserConfig.getCurrentUser().first_name, date, messageObject.messageOwner.action.title, messageObject.messageOwner.action.address);
+//                            }
+                        } else {
+                            if (messageObject.isMediaEmpty()) {
+                                if (!shortMessage) {
+                                    if (messageObject.messageOwner.message != null && messageObject.messageOwner.message.length() != 0) {
+                                        msg = LocaleController.formatString("NotificationMessageText", R.string.NotificationMessageText, ContactsController.formatName(user.first_name, user.last_name), messageObject.messageOwner.message);
+                                    } else {
+                                        msg = LocaleController.formatString("NotificationMessageNoText", R.string.NotificationMessageNoText, ContactsController.formatName(user.first_name, user.last_name));
+                                        FileLog.d(BuildVars.TAG,"183 message received here");
+                                    }
                                 } else {
                                     msg = LocaleController.formatString("NotificationMessageNoText", R.string.NotificationMessageNoText, ContactsController.formatName(user.first_name, user.last_name));
                                     FileLog.d(BuildVars.TAG,"183 message received here");
                                 }
-                            } else {
-                                msg = LocaleController.formatString("NotificationMessageNoText", R.string.NotificationMessageNoText, ContactsController.formatName(user.first_name, user.last_name));
-                                FileLog.d(BuildVars.TAG,"186 message received here");
+                            } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
+                                msg = LocaleController.formatString("NotificationMessagePhoto", R.string.NotificationMessagePhoto, ContactsController.formatName(user.first_name, user.last_name));
+                                FileLog.d(BuildVars.TAG,"189 photo received here");
+                            } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaVideo) {
+                                msg = LocaleController.formatString("NotificationMessageVideo", R.string.NotificationMessageVideo, ContactsController.formatName(user.first_name, user.last_name));
+                                FileLog.d(BuildVars.TAG,"194 video received here");
+                            } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaContact) {
+                                msg = LocaleController.formatString("NotificationMessageContact", R.string.NotificationMessageContact, ContactsController.formatName(user.first_name, user.last_name));
+                            } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaGeo) {
+                                msg = LocaleController.formatString("NotificationMessageMap", R.string.NotificationMessageMap, ContactsController.formatName(user.first_name, user.last_name));
+                                FileLog.d(BuildVars.TAG,"199 location received here");
+                            } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
+                                if (messageObject.isSticker()) {
+                                    msg = LocaleController.formatString("NotificationMessageSticker", R.string.NotificationMessageSticker, ContactsController.formatName(user.first_name, user.last_name));
+                                    FileLog.d(BuildVars.TAG,"203 sticker received here");
+                                } else {
+                                    msg = LocaleController.formatString("NotificationMessageDocument", R.string.NotificationMessageDocument, ContactsController.formatName(user.first_name, user.last_name));
+                                    FileLog.d(BuildVars.TAG,"206 file received here");
+                                }
+                            } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaAudio) {
+                                msg = LocaleController.formatString("NotificationMessageAudio", R.string.NotificationMessageAudio, ContactsController.formatName(user.first_name, user.last_name));
+                                FileLog.d(BuildVars.TAG,"210 audio received here");
                             }
-                        } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
-                            msg = LocaleController.formatString("NotificationMessagePhoto", R.string.NotificationMessagePhoto, ContactsController.formatName(user.first_name, user.last_name));
-                            FileLog.d(BuildVars.TAG,"189 photo received here");
-                        } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaVideo) {
-                            msg = LocaleController.formatString("NotificationMessageVideo", R.string.NotificationMessageVideo, ContactsController.formatName(user.first_name, user.last_name));
-                            FileLog.d(BuildVars.TAG,"194 video received here");
-                        } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaContact) {
-                            msg = LocaleController.formatString("NotificationMessageContact", R.string.NotificationMessageContact, ContactsController.formatName(user.first_name, user.last_name));
-                        } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaGeo) {
-                            msg = LocaleController.formatString("NotificationMessageMap", R.string.NotificationMessageMap, ContactsController.formatName(user.first_name, user.last_name));
-                            FileLog.d(BuildVars.TAG,"199 location received here");
-                        } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
-                            if (messageObject.isSticker()) {
-                                msg = LocaleController.formatString("NotificationMessageSticker", R.string.NotificationMessageSticker, ContactsController.formatName(user.first_name, user.last_name));
-                                FileLog.d(BuildVars.TAG,"203 sticker received here");
-                            } else {
-                                msg = LocaleController.formatString("NotificationMessageDocument", R.string.NotificationMessageDocument, ContactsController.formatName(user.first_name, user.last_name));
-                                FileLog.d(BuildVars.TAG,"206 file received here");
-                            }
-                        } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaAudio) {
-                            msg = LocaleController.formatString("NotificationMessageAudio", R.string.NotificationMessageAudio, ContactsController.formatName(user.first_name, user.last_name));
-                            FileLog.d(BuildVars.TAG,"210 audio received here");
                         }
                     }
                 } else {
@@ -516,16 +519,19 @@ public class NotificationsController {
 
             String detailText = null;
             if (pushDialogs.size() == 1) {
-                detailText = LocaleController.formatPluralString("NewMessages", total_unread_count);
+//                detailText = LocaleController.formatPluralString("NewMessages", total_unread_count);
+                detailText = "New messages";
             } else {
-                detailText = LocaleController.formatString("NotificationMessagesPeopleDisplayOrder", R.string.NotificationMessagesPeopleDisplayOrder, LocaleController.formatPluralString("NewMessages", total_unread_count), LocaleController.formatPluralString("FromChats", pushDialogs.size()));
+                detailText = "New messages";
+//                detailText = LocaleController.formatString("NotificationMessagesPeopleDisplayOrder", R.string.NotificationMessagesPeopleDisplayOrder, LocaleController.formatPluralString("NewMessages", total_unread_count), LocaleController.formatPluralString("FromChats", pushDialogs.size()));
             }
 
+            int instanoCount =0;
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ApplicationLoader.applicationContext)
                     .setContentTitle(name)
                     .setSmallIcon(android.R.drawable.stat_notify_chat)
                     .setAutoCancel(true)
-                    .setNumber(total_unread_count)
+//                    .setNumber(total_unread_count)
                     .setContentIntent(contentIntent)
                     .setGroup("messages")
                     .setGroupSummary(true)
@@ -557,16 +563,18 @@ public class NotificationsController {
                     return;
                 }
                 if (replace) {
+                    instanoCount++;
                     if (chat != null) {
                         message = message.replace(" @ " + name, "");
                     } else {
                         message = message.replace(name + ": ", "").replace(name + " ", "");
                     }
                 }
+                String removeName = message.substring(0, message.indexOf(":") + 1);
+                message = message.replace(removeName, "");
                 mBuilder.setContentText(message);
                 mBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(message));
             } else {
-                mBuilder.setContentText(detailText);
                 NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
                 inboxStyle.setBigContentTitle(name);
                 int count = Math.min(10, pushMessages.size());
@@ -588,9 +596,20 @@ public class NotificationsController {
                                 message = message.replace(name + ": ", "").replace(name + " ", "");
                             }
                         }
+                    } else {
+                        instanoCount++;
                     }
+                    String removeName = message.substring(0, message.indexOf(":") + 1);
+                    message = message.replace(removeName, "");
                     inboxStyle.addLine(message);
                 }
+                if (instanoCount>1) {
+                    mBuilder.setNumber(instanoCount);
+                    detailText = instanoCount + " new messages";
+                } else {
+                    detailText = lastMessage;
+                }
+                mBuilder.setContentText(detailText);
                 inboxStyle.setSummaryText(detailText);
                 mBuilder.setStyle(inboxStyle);
             }
