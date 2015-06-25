@@ -166,15 +166,15 @@ public class NotificationsController {
                     if (user.phone.contains(BuildVars.PHONE)) {
                         BuildVars.instanoUser = user;
                         if (messageObject.messageOwner instanceof TLRPC.TL_messageService) {
-                            if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserJoined) {
-                                msg = LocaleController.formatString("NotificationContactJoined", R.string.NotificationContactJoined, ContactsController.formatName(user.first_name, user.last_name));
-                            } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
-                                msg = LocaleController.formatString("NotificationContactNewPhoto", R.string.NotificationContactNewPhoto, ContactsController.formatName(user.first_name, user.last_name));
-                                FileLog.d(BuildVars.TAG,"171 photo received here");
-                            } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
-                                String date = LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, LocaleController.formatterYear.format(((long) messageObject.messageOwner.date) * 1000), LocaleController.formatterDay.format(((long) messageObject.messageOwner.date) * 1000));
-                                msg = LocaleController.formatString("NotificationUnrecognizedDevice", R.string.NotificationUnrecognizedDevice, UserConfig.getCurrentUser().first_name, date, messageObject.messageOwner.action.title, messageObject.messageOwner.action.address);
-                            }
+//                            if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserJoined) {
+//                                msg = LocaleController.formatString("NotificationContactJoined", R.string.NotificationContactJoined, ContactsController.formatName(user.first_name, user.last_name));
+//                            } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
+//                                msg = LocaleController.formatString("NotificationContactNewPhoto", R.string.NotificationContactNewPhoto, ContactsController.formatName(user.first_name, user.last_name));
+//                                FileLog.d(BuildVars.TAG,"171 photo received here");
+//                            } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
+//                                String date = LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, LocaleController.formatterYear.format(((long) messageObject.messageOwner.date) * 1000), LocaleController.formatterDay.format(((long) messageObject.messageOwner.date) * 1000));
+//                                msg = LocaleController.formatString("NotificationUnrecognizedDevice", R.string.NotificationUnrecognizedDevice, UserConfig.getCurrentUser().first_name, date, messageObject.messageOwner.action.title, messageObject.messageOwner.action.address);
+//                            }
                         } else {
                             if (messageObject.isMediaEmpty()) {
                                 if (!shortMessage) {
@@ -519,16 +519,19 @@ public class NotificationsController {
 
             String detailText = null;
             if (pushDialogs.size() == 1) {
-                detailText = LocaleController.formatPluralString("NewMessages", total_unread_count);
+//                detailText = LocaleController.formatPluralString("NewMessages", total_unread_count);
+                detailText = "New messages";
             } else {
-                detailText = LocaleController.formatString("NotificationMessagesPeopleDisplayOrder", R.string.NotificationMessagesPeopleDisplayOrder, LocaleController.formatPluralString("NewMessages", total_unread_count), LocaleController.formatPluralString("FromChats", pushDialogs.size()));
+                detailText = "New messages";
+//                detailText = LocaleController.formatString("NotificationMessagesPeopleDisplayOrder", R.string.NotificationMessagesPeopleDisplayOrder, LocaleController.formatPluralString("NewMessages", total_unread_count), LocaleController.formatPluralString("FromChats", pushDialogs.size()));
             }
 
+            int instanoCount =0;
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ApplicationLoader.applicationContext)
                     .setContentTitle(name)
                     .setSmallIcon(android.R.drawable.stat_notify_chat)
                     .setAutoCancel(true)
-                    .setNumber(total_unread_count)
+//                    .setNumber(total_unread_count)
                     .setContentIntent(contentIntent)
                     .setGroup("messages")
                     .setGroupSummary(true)
@@ -560,16 +563,18 @@ public class NotificationsController {
                     return;
                 }
                 if (replace) {
+                    instanoCount++;
                     if (chat != null) {
                         message = message.replace(" @ " + name, "");
                     } else {
                         message = message.replace(name + ": ", "").replace(name + " ", "");
                     }
                 }
+                String removeName = message.substring(0, message.indexOf(":") + 1);
+                message = message.replace(removeName, "");
                 mBuilder.setContentText(message);
                 mBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(message));
             } else {
-                mBuilder.setContentText(detailText);
                 NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
                 inboxStyle.setBigContentTitle(name);
                 int count = Math.min(10, pushMessages.size());
@@ -591,9 +596,20 @@ public class NotificationsController {
                                 message = message.replace(name + ": ", "").replace(name + " ", "");
                             }
                         }
+                    } else {
+                        instanoCount++;
                     }
+                    String removeName = message.substring(0, message.indexOf(":") + 1);
+                    message = message.replace(removeName, "");
                     inboxStyle.addLine(message);
                 }
+                if (instanoCount>1) {
+                    mBuilder.setNumber(instanoCount);
+                    detailText = instanoCount + " new messages";
+                } else {
+                    detailText = lastMessage;
+                }
+                mBuilder.setContentText(detailText);
                 inboxStyle.setSummaryText(detailText);
                 mBuilder.setStyle(inboxStyle);
             }
