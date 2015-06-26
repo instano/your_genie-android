@@ -9,6 +9,7 @@
 package org.telegram.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -309,8 +310,42 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 5){
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_CONTACT_US,null);
-                    ContactUsDialog cd = new ContactUsDialog(LaunchActivity.this);
-                    cd.show();
+//                    ContactUsDialog cd = new ContactUsDialog(LaunchActivity.this);
+//                    cd.show()
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
+                    CharSequence[] items = new CharSequence[]{"Sms", "WhatsApp", "Twitter"};
+
+                    final String whatsAppId = BuildVars.whatsAppId;
+                    final String mobileNumber = "+" + whatsAppId;
+
+                    builder.setItems(items, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            switch (i) {
+                                case 0:
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", mobileNumber, null)));
+                                    break;
+                                case 1:
+                                    Uri mUri = Uri.parse("smsto:+" + whatsAppId);
+                                    Intent whatsApp = new Intent(Intent.ACTION_SENDTO, mUri);
+                                    whatsApp.putExtra("chat", true);
+                                    whatsApp.setPackage("com.whatsapp");
+                                    try {
+                                        startActivity(whatsApp);
+                                    } catch (android.content.ActivityNotFoundException ex) {
+                                        Toast.makeText(LaunchActivity.this, "WhatsApp not installed", Toast.LENGTH_SHORT).show();
+                                    }
+                                    break;
+                                case 2:
+                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/instanoapp"));
+                                    startActivity(browserIntent);
+                                    break;
+                            }
+                        }
+                    });
+
+                    builder.setTitle("Contact us");
+                    builder.show();
                 }
             }
         });
