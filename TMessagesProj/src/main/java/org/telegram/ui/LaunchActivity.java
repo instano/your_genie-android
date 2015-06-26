@@ -306,11 +306,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_SETTINGS,null);
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 4) {
-                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_ABOUT_US,null);
-                    presentFragment(new AboutUsActivity());
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 5){
+                }
+//                else if (position == 4) {
+//                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_ABOUT_US,null);
+//                    presentFragment(new AboutUsActivity());
+//                    drawerLayoutContainer.closeDrawer(false);
+//                }
+                else if (position == 4){
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_CONTACT_US,null);
                     AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
 
