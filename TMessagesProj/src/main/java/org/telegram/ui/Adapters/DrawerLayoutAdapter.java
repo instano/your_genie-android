@@ -98,10 +98,11 @@ public class DrawerLayoutAdapter extends BaseAdapter {
             } else if (i == 3) {
                 actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
             } else if (i == 4) {
-                actionCell.setTextAndIcon("About Us", R.drawable.menu_help);
-            } else if (i == 5) {
-                actionCell.setTextAndIcon("Contact Us",R.drawable.menu_settings);
+                actionCell.setTextAndIcon("Contact Us",R.drawable.menu_help);
             }
+//            else if (i == 4) {
+//                actionCell.setTextAndIcon("About Us", R.drawable.menu_help);
+//            }
         }
 
         return view;

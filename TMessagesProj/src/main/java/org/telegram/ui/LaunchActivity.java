@@ -9,6 +9,7 @@
 package org.telegram.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -35,6 +36,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -50,6 +52,7 @@ import org.telegram.android.MessagesStorage;
 import org.telegram.android.NotificationCenter;
 import org.telegram.android.NotificationsController;
 import org.telegram.android.SendMessagesHelper;
+import org.telegram.instano.ArrayAdapterWithIcon;
 import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
@@ -303,14 +306,49 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_SETTINGS,null);
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 4) {
-                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_ABOUT_US,null);
-                    presentFragment(new AboutUsActivity());
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 5){
+                }
+//                else if (position == 4) {
+//                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_ABOUT_US,null);
+//                    presentFragment(new AboutUsActivity());
+//                    drawerLayoutContainer.closeDrawer(false);
+//                }
+                else if (position == 4){
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_CONTACT_US,null);
-                    ContactUsDialog cd = new ContactUsDialog(LaunchActivity.this);
-                    cd.show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
+
+                    final String [] items = new String[] {"Sms", "WhatsApp", "Twitter"};
+                    final Integer[] icons = new Integer[] {R.drawable.sms, R.drawable.wa,R.drawable.twitter};
+                    ListAdapter adapter = new ArrayAdapterWithIcon(LaunchActivity.this, items, icons);
+
+                    final String whatsAppId = BuildVars.whatsAppId;
+                    final String mobileNumber = "+" + whatsAppId;
+
+                    builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int i) {
+                                    switch (i) {
+                                        case 0:
+                                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", mobileNumber, null)));
+                                            break;
+                                        case 1:
+                                            Uri mUri = Uri.parse("smsto:+" + whatsAppId);
+                                            Intent whatsApp = new Intent(Intent.ACTION_SENDTO, mUri);
+                                            whatsApp.putExtra("chat", true);
+                                            whatsApp.setPackage("com.whatsapp");
+                                            try {
+                                                startActivity(whatsApp);
+                                            } catch (android.content.ActivityNotFoundException ex) {
+                                                Toast.makeText(LaunchActivity.this, "WhatsApp not installed", Toast.LENGTH_SHORT).show();
+                                            }
+                                            break;
+                                        case 2:
+                                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/instanoapp"));
+                                            startActivity(browserIntent);
+                                            break;
+                                    }
+                                }
+                            });
+                    builder.setTitle("Contact us");
+                    builder.show();
                 }
             }
         });
