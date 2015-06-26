@@ -9,9 +9,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 
-import org.telegram.android.LocaleController;
+import org.telegram.instano.ArrayAdapterWithIcon;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.R;
 
@@ -36,16 +37,18 @@ public class CrashActivity extends Activity {
     protected void onResume() {
         super.onResume();
         AlertDialog.Builder builder = new AlertDialog.Builder(CrashActivity.this);
-        CharSequence[] items = new CharSequence[]{"Sms", "WhatsApp", "Twitter"};
 
         final String whatsAppId = BuildVars.whatsAppId;
         final String mobileNumber = "+" + whatsAppId;
 
-        builder.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+        final String [] items = new String[] {"Sms", "WhatsApp", "Twitter"};
+        final Integer[] icons = new Integer[] {R.drawable.sms, R.drawable.wa,R.drawable.twitter};
+        ListAdapter adapter = new ArrayAdapterWithIcon(CrashActivity.this, items, icons);
+
+        builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int i) {
                 switch (i) {
-                    case 0 :
+                    case 0:
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", mobileNumber, null)));
                         break;
                     case 1:
@@ -67,9 +70,9 @@ public class CrashActivity extends Activity {
             }
         });
 
-        builder.setTitle("Error occured :(");
-        builder.show();
+        builder.setTitle("App crashed. Order via");
         builder.setCancelable(false);
+        builder.show();
     }
 
     @Override
