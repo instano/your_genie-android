@@ -392,11 +392,10 @@ public class ApplicationLoader extends Application {
     private void storeRegistrationId(Context context, String regId) {
         final SharedPreferences prefs = getGCMPreferences(context);
         int appVersion = getAppVersion();
-        FileLog.e("tmessages", "Saving regId on app version " + appVersion);
+        FileLog.e("tmessages", "Saving regId:" + regId + " on app version " + appVersion);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(PROPERTY_REG_ID, regId);
         editor.putInt(PROPERTY_APP_VERSION, appVersion);
-        editor.commit();
-
+        editor.apply();
     }
 }

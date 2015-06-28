@@ -120,6 +120,9 @@ public class FileLog {
         }
     }
 
+    /**
+     * TODO: send errors to crashlytics
+     */
     public static void e(final String tag, final Throwable e) {
         if (!BuildVars.DEBUG_VERSION) {
             return;
