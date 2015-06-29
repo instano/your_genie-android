@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import org.apache.http.HttpStatus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +20,7 @@ import org.telegram.instano.network.model.Order;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.FileLog;
+import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
 
 import java.util.HashMap;
@@ -51,7 +53,7 @@ public class NetworkController {
      */
     public void fetchMyOrders(@NonNull final Action1<List<Order>> callback) {
         if (getSessionId().isEmpty()) {
-            signIn(new Action1<Boolean>() {
+            registerDevice(new Action1<Boolean>() {
                 @Override
                 public void call(Boolean success) {
                     if (success)
@@ -74,7 +76,41 @@ public class NetworkController {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         FileLog.e(TAG, error);
-                        callback.call(null);
+                        // try to refresh session id:
+                        // TODO: fix bug: may result in a infinite callback loop
+                        switch (error.networkResponse.statusCode) {
+                            case HttpStatus.SC_FORBIDDEN: // device not registered
+                                FileLog.d(TAG, "fetchMyOrders.error.networkResponse.statusCode == HttpStatus.SC_FORBIDDEN");
+                                registerDevice(new Action1<Boolean>() { // first register device
+                                    @Override
+                                    public void call(Boolean success) {
+                                        if (success) {
+                                            registerUser(new Action1<Boolean>() { // then register user
+                                                @Override
+                                                public void call(Boolean success) {
+                                                    if (success)
+                                                        fetchMyOrders(callback); // then fetch orders
+                                                    else callback.call(null);
+                                                }
+                                            });
+                                        } else callback.call(null);
+                                    }
+                                });
+                                break;
+                            case HttpStatus.SC_NOT_ACCEPTABLE: // user not registered
+                                FileLog.d(TAG, "error.networkResponse.statusCode == HttpStatus.SC_NOT_ACCEPTABLE");
+                                registerUser(new Action1<Boolean>() { // first register user
+                                    @Override
+                                    public void call(Boolean success) {
+                                        if (success)
+                                            fetchMyOrders(callback); // then fetch orders
+                                        else callback.call(null);
+                                    }
+                                });
+                                break;
+                            default:
+                                callback.call(null);
+                        }
                     }
                 }
         ){
@@ -88,10 +124,73 @@ public class NetworkController {
         requestQueue.add(request);
     }
 
-    private void signIn(@Nullable final Action1<Boolean> callback) {
+    public void registerUser(@Nullable final Action1<Boolean> callback) {
+        if (getSessionId().isEmpty()) {
+            registerDevice(new Action1<Boolean>() {
+                @Override
+                public void call(Boolean success) {
+                    if (success)
+                        registerUser(callback);
+                }
+            });
+            return; // first sign in
+        }
+        TLRPC.User currentUser = UserConfig.getCurrentUser();
+        if (currentUser == null) {
+            if (callback != null) {
+                callback.call(false);
+            }
+            return;
+        }
         try {
             JsonObjectRequest request = new JsonObjectRequest(
-                    BuildVars.apiDomain() + "users/sign_in",
+                    BuildVars.apiDomain() + "users",
+                    new JSONObject().put("name", currentUser.fullName())
+                            .put("telegram_no", currentUser.phone),
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            FileLog.d(TAG, "successfully registered: " + response);
+                            if (callback != null)
+                                callback.call(true);
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            FileLog.e(TAG, error);
+                            if (error.networkResponse.statusCode == HttpStatus.SC_FORBIDDEN) { // device not registered
+                                FileLog.d(TAG, "registerUser.error.networkResponse.statusCode == HttpStatus.SC_FORBIDDEN");
+                                registerDevice(new Action1<Boolean>() {
+                                    @Override
+                                    public void call(Boolean success) {
+                                        if (success)
+                                            registerUser(callback);
+                                        else if (callback != null)
+                                            callback.call(false);
+                                    }
+                                });
+                            }
+                        }
+                    }
+            ){
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Session-Id", getSessionId());
+                    return headers;
+                }
+            };
+            requestQueue.add(request);
+        } catch (JSONException e) {
+            FileLog.e(TAG, e);
+        }
+    }
+
+    private void registerDevice(@Nullable final Action1<Boolean> callback) {
+        try {
+            JsonObjectRequest request = new JsonObjectRequest(
+                    BuildVars.apiDomain() + "devices",
                     new JSONObject().put("gcm_id", UserConfig.pushString),
                     new Response.Listener<JSONObject>() {
                         @Override

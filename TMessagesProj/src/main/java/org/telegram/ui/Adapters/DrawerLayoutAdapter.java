@@ -89,15 +89,15 @@ public class DrawerLayoutAdapter extends BaseAdapter {
 //            } else if (i == 6) {
 //                actionCell.setTextAndIcon(LocaleController.getString("Contacts", R.string.Contacts), R.drawable.menu_contacts);
 //            } else
-//            if(i==2){
-//                actionCell.setTextAndIcon("My Orders",R.drawable.ic_ab_doc);
-//            }
-//            else
-            if (i == 2) {
+            if(i==2){
+                actionCell.setTextAndIcon("My Orders",R.drawable.ic_ab_doc);
+            }
+            else
+            if (i == 3) {
                 actionCell.setTextAndIcon(LocaleController.getString("InviteFriend", R.string.InviteFriends), R.drawable.menu_invite);
-            } else if (i == 3) {
-                actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
             } else if (i == 4) {
+                actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
+            } else if (i == 5) {
                 actionCell.setTextAndIcon("Contact Us",R.drawable.menu_help);
             }
 //            else if (i == 4) {
