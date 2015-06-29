@@ -45,6 +45,7 @@ import org.telegram.android.NotificationsService;
 import org.telegram.android.ScreenReceiver;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.instano.MixPanelEvents;
+import org.telegram.instano.network.NetworkController;
 import org.telegram.ui.Components.ForegroundDetector;
 import org.telegram.ui.CrashActivity;
 
@@ -382,6 +383,7 @@ public class ApplicationLoader extends Application {
                         @Override
                         public void run() {
                             MessagesController.getInstance().registerForPush(regid);
+                            NetworkController.instance().registerDevice(null);
                         }
                     });
                 }

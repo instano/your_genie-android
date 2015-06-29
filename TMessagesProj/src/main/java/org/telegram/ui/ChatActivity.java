@@ -69,6 +69,7 @@ import org.telegram.android.NotificationsController;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.query.ReplyMessageQuery;
 import org.telegram.instano.MixPanelEvents;
+import org.telegram.instano.network.NetworkController;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
@@ -455,6 +456,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         typingDotsDrawable = new TypingDotsDrawable();
         typingDotsDrawable.setIsChat(currentChat != null);
+
+        NetworkController.instance().registerUserIfNeeded();
 
         MixpanelAPI mixpanelAPI = MixPanelEvents.api();
         if (UserConfig.isClientActivated() && mixpanelAPI.getPeople().getDistinctId() == null) {

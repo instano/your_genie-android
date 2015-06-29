@@ -35,6 +35,7 @@ import rxJava.functions.Action1;
 public class NetworkController {
     private final String TAG = getClass().getSimpleName();
     private final static String KEY_SESSION_ID = "SessionId";
+    private final static String KEY_USER_REGISTERED = "User registered";
 
     private static NetworkController instance;
 
@@ -69,6 +70,7 @@ public class NetworkController {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        FileLog.d(TAG, String.valueOf(response));
                         callback.call(Order.parse(response));
                     }
                 },
@@ -77,40 +79,42 @@ public class NetworkController {
                     public void onErrorResponse(VolleyError error) {
                         FileLog.e(TAG, error);
                         // try to refresh session id:
-                        // TODO: fix bug: may result in a infinite callback loop
-                        switch (error.networkResponse.statusCode) {
-                            case HttpStatus.SC_FORBIDDEN: // device not registered
-                                FileLog.d(TAG, "fetchMyOrders.error.networkResponse.statusCode == HttpStatus.SC_FORBIDDEN");
-                                registerDevice(new Action1<Boolean>() { // first register device
-                                    @Override
-                                    public void call(Boolean success) {
-                                        if (success) {
-                                            registerUser(new Action1<Boolean>() { // then register user
-                                                @Override
-                                                public void call(Boolean success) {
-                                                    if (success)
-                                                        fetchMyOrders(callback); // then fetch orders
-                                                    else callback.call(null);
-                                                }
-                                            });
-                                        } else callback.call(null);
-                                    }
-                                });
-                                break;
-                            case HttpStatus.SC_NOT_ACCEPTABLE: // user not registered
-                                FileLog.d(TAG, "error.networkResponse.statusCode == HttpStatus.SC_NOT_ACCEPTABLE");
-                                registerUser(new Action1<Boolean>() { // first register user
-                                    @Override
-                                    public void call(Boolean success) {
-                                        if (success)
-                                            fetchMyOrders(callback); // then fetch orders
-                                        else callback.call(null);
-                                    }
-                                });
-                                break;
-                            default:
-                                callback.call(null);
-                        }
+                        if (error.networkResponse != null) {
+                            switch (error.networkResponse.statusCode) {
+                                case HttpStatus.SC_FORBIDDEN: // device not registered
+                                    FileLog.d(TAG, "fetchMyOrders.error.networkResponse.statusCode == HttpStatus.SC_FORBIDDEN");
+                                    registerDevice(new Action1<Boolean>() { // first register device
+                                        @Override
+                                        public void call(Boolean success) {
+                                            if (success) {
+                                                registerUser(new Action1<Boolean>() { // then register user
+                                                    @Override
+                                                    public void call(Boolean success) {
+                                                        if (success)
+                                                            fetchMyOrders(callback); // then fetch orders
+                                                        else callback.call(null);
+                                                    }
+                                                });
+                                            } else callback.call(null);
+                                        }
+                                    });
+                                    break;
+                                case HttpStatus.SC_NOT_ACCEPTABLE: // user not registered
+                                    FileLog.d(TAG, "error.networkResponse.statusCode == HttpStatus.SC_NOT_ACCEPTABLE");
+                                    registerUser(new Action1<Boolean>() { // first register user
+                                        @Override
+                                        public void call(Boolean success) {
+                                            if (success)
+                                                fetchMyOrders(callback); // then fetch orders
+                                            else callback.call(null);
+                                        }
+                                    });
+                                    break;
+                                default:
+                                    callback.call(null);
+                            }
+                        } else
+                            callback.call(null);
                     }
                 }
         ){
@@ -124,7 +128,13 @@ public class NetworkController {
         requestQueue.add(request);
     }
 
-    public void registerUser(@Nullable final Action1<Boolean> callback) {
+    public void registerUserIfNeeded() {
+        FileLog.d(TAG, "registerUserIfNeeded");
+        if(!getSharedPrefrences().getBoolean(KEY_USER_REGISTERED, false))
+            registerUser(null);
+    }
+
+    private void registerUser(@Nullable final Action1<Boolean> callback) {
         if (getSessionId().isEmpty()) {
             registerDevice(new Action1<Boolean>() {
                 @Override
@@ -151,6 +161,9 @@ public class NetworkController {
                         @Override
                         public void onResponse(JSONObject response) {
                             FileLog.d(TAG, "successfully registered: " + response);
+                            getSharedPrefrences().edit()
+                                    .putBoolean(KEY_USER_REGISTERED, true)
+                                    .apply();
                             if (callback != null)
                                 callback.call(true);
                         }
@@ -159,7 +172,7 @@ public class NetworkController {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             FileLog.e(TAG, error);
-                            if (error.networkResponse.statusCode == HttpStatus.SC_FORBIDDEN) { // device not registered
+                            if (error.networkResponse != null && error.networkResponse.statusCode == HttpStatus.SC_FORBIDDEN) { // device not registered
                                 FileLog.d(TAG, "registerUser.error.networkResponse.statusCode == HttpStatus.SC_FORBIDDEN");
                                 registerDevice(new Action1<Boolean>() {
                                     @Override
@@ -170,7 +183,8 @@ public class NetworkController {
                                             callback.call(false);
                                     }
                                 });
-                            }
+                            } else if (callback != null)
+                                callback.call(false);
                         }
                     }
             ){
@@ -187,7 +201,7 @@ public class NetworkController {
         }
     }
 
-    private void registerDevice(@Nullable final Action1<Boolean> callback) {
+    public void registerDevice(@Nullable final Action1<Boolean> callback) {
         try {
             JsonObjectRequest request = new JsonObjectRequest(
                     BuildVars.apiDomain() + "devices",
