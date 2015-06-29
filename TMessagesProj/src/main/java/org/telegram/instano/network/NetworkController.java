@@ -197,7 +197,7 @@ public class NetworkController {
             };
             requestQueue.add(request);
         } catch (JSONException e) {
-            FileLog.e(TAG, e);
+            FileLog.fatal(e);
         }
     }
 
@@ -231,7 +231,7 @@ public class NetworkController {
             );
             requestQueue.add(request);
         } catch (JSONException e) {
-            FileLog.e(TAG, e);
+            FileLog.fatal(e);
         }
     }
 

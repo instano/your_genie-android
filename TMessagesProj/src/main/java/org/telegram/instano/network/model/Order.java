@@ -15,6 +15,7 @@ public class Order {
     private final static String TAG = "Order";
 
     public final String details;
+    public final String status;
 
     public static List<Order> parse(JSONArray jsonArray) {
         List<Order> orders = new ArrayList<>();
@@ -23,7 +24,7 @@ public class Order {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 orders.add(parse(jsonObject));
             } catch (JSONException e) {
-                FileLog.e(TAG, e);
+                FileLog.fatal(e);
             }
         }
         return orders;
@@ -31,11 +32,13 @@ public class Order {
 
     public static Order parse(JSONObject jsonObject) throws JSONException {
         return new Order(
-                jsonObject.getString("details")
+                jsonObject.getString("details"),
+                jsonObject.getString("status")
         );
     }
 
-    public Order(String details) {
+    public Order(String details, String status) {
         this.details = details;
+        this.status = status;
     }
 }
