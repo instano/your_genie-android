@@ -70,7 +70,7 @@ public class NetworkController {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        FileLog.d(TAG, String.valueOf(response));
+                        FileLog.d(TAG, "orders: " + response);
                         callback.call(Order.parse(response));
                     }
                 },
@@ -83,22 +83,7 @@ public class NetworkController {
                             switch (error.networkResponse.statusCode) {
                                 case HttpStatus.SC_FORBIDDEN: // device not registered
                                     FileLog.d(TAG, "fetchMyOrders.error.networkResponse.statusCode == HttpStatus.SC_FORBIDDEN");
-                                    registerDevice(new Action1<Boolean>() { // first register device
-                                        @Override
-                                        public void call(Boolean success) {
-                                            if (success) {
-                                                registerUser(new Action1<Boolean>() { // then register user
-                                                    @Override
-                                                    public void call(Boolean success) {
-                                                        if (success)
-                                                            fetchMyOrders(callback); // then fetch orders
-                                                        else callback.call(null);
-                                                    }
-                                                });
-                                            } else callback.call(null);
-                                        }
-                                    });
-                                    break;
+                                    // now first device will be registered then user
                                 case HttpStatus.SC_NOT_ACCEPTABLE: // user not registered
                                     FileLog.d(TAG, "error.networkResponse.statusCode == HttpStatus.SC_NOT_ACCEPTABLE");
                                     registerUser(new Action1<Boolean>() { // first register user
@@ -141,6 +126,8 @@ public class NetworkController {
                 public void call(Boolean success) {
                     if (success)
                         registerUser(callback);
+                    else if (callback != null)
+                        callback.call(false);
                 }
             });
             return; // first sign in

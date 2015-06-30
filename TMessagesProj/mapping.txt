@@ -15633,9 +15633,11 @@ org.telegram.android.volley.toolbox.HurlStack -> org.telegram.android.d.a.j:
     void addBodyIfExists(java.net.HttpURLConnection,org.telegram.android.volley.Request) -> b
 org.telegram.android.volley.toolbox.HurlStack$UrlRewriter -> org.telegram.android.d.a.k:
     java.lang.String rewriteUrl(java.lang.String) -> a
-org.telegram.android.volley.toolbox.JsonObjectRequest -> org.telegram.android.d.a.l:
+org.telegram.android.volley.toolbox.JsonArrayRequest -> org.telegram.android.d.a.l:
     org.telegram.android.volley.Response parseNetworkResponse(org.telegram.android.volley.NetworkResponse) -> a
-org.telegram.android.volley.toolbox.JsonRequest -> org.telegram.android.d.a.m:
+org.telegram.android.volley.toolbox.JsonObjectRequest -> org.telegram.android.d.a.m:
+    org.telegram.android.volley.Response parseNetworkResponse(org.telegram.android.volley.NetworkResponse) -> a
+org.telegram.android.volley.toolbox.JsonRequest -> org.telegram.android.d.a.n:
     java.lang.String PROTOCOL_CONTENT_TYPE -> a
     org.telegram.android.volley.Response$Listener mListener -> b
     java.lang.String mRequestBody -> c
@@ -15645,14 +15647,14 @@ org.telegram.android.volley.toolbox.JsonRequest -> org.telegram.android.d.a.m:
     byte[] getPostBody() -> m
     java.lang.String getBodyContentType() -> p
     byte[] getBody() -> q
-org.telegram.android.volley.toolbox.PoolingByteArrayOutputStream -> org.telegram.android.d.a.n:
+org.telegram.android.volley.toolbox.PoolingByteArrayOutputStream -> org.telegram.android.d.a.o:
     org.telegram.android.volley.toolbox.ByteArrayPool mPool -> a
     void close() -> close
     void finalize() -> finalize
     void expand(int) -> a
     void write(byte[],int,int) -> write
     void write(int) -> write
-org.telegram.android.volley.toolbox.Volley -> org.telegram.android.d.a.o:
+org.telegram.android.volley.toolbox.Volley -> org.telegram.android.d.a.p:
     org.telegram.android.volley.RequestQueue newRequestQueue(android.content.Context,org.telegram.android.volley.toolbox.HttpStack) -> a
     org.telegram.android.volley.RequestQueue newRequestQueue(android.content.Context) -> a
 org.telegram.instano.ArrayAdapterWithIcon -> org.telegram.b.a:
@@ -15665,6 +15667,87 @@ org.telegram.instano.MixPanelEvents -> org.telegram.b.b:
     com.mixpanel.android.mpmetrics.MixpanelAPI api() -> a
     java.lang.String getId() -> b
     boolean isPackageInstalled(java.lang.String,android.content.Context) -> a
+org.telegram.instano.network.NetworkController -> org.telegram.b.a.a:
+    java.lang.String TAG -> a
+    org.telegram.instano.network.NetworkController instance -> b
+    org.telegram.android.volley.RequestQueue requestQueue -> c
+    org.telegram.instano.network.NetworkController instance() -> a
+    void fetchMyOrders(rxJava.functions.Action1) -> a
+    void registerUserIfNeeded() -> b
+    void registerUser(rxJava.functions.Action1) -> c
+    void registerDevice(rxJava.functions.Action1) -> b
+    java.lang.String getSessionId() -> c
+    void setSessionId(java.lang.String) -> a
+    android.content.SharedPreferences getSharedPrefrences() -> d
+    java.lang.String access$000(org.telegram.instano.network.NetworkController) -> a
+    void access$100(org.telegram.instano.network.NetworkController,rxJava.functions.Action1) -> a
+    java.lang.String access$200(org.telegram.instano.network.NetworkController) -> b
+    android.content.SharedPreferences access$300(org.telegram.instano.network.NetworkController) -> c
+    void access$400(org.telegram.instano.network.NetworkController,java.lang.String) -> a
+org.telegram.instano.network.NetworkController$1 -> org.telegram.b.a.a$1:
+    rxJava.functions.Action1 val$callback -> a
+    org.telegram.instano.network.NetworkController this$0 -> b
+    void call(java.lang.Boolean) -> a
+    void call(java.lang.Object) -> a
+org.telegram.instano.network.NetworkController$10 -> org.telegram.b.a.a$2:
+    rxJava.functions.Action1 val$callback -> a
+    org.telegram.instano.network.NetworkController this$0 -> b
+    void onErrorResponse(org.telegram.android.volley.VolleyError) -> a
+org.telegram.instano.network.NetworkController$2 -> org.telegram.b.a.a$3:
+    rxJava.functions.Action1 val$callback -> a
+    org.telegram.instano.network.NetworkController this$0 -> b
+    void onResponse(org.json.JSONArray) -> a
+    void onResponse(java.lang.Object) -> a
+org.telegram.instano.network.NetworkController$3 -> org.telegram.b.a.a$4:
+    rxJava.functions.Action1 val$callback -> a
+    org.telegram.instano.network.NetworkController this$0 -> b
+    void onErrorResponse(org.telegram.android.volley.VolleyError) -> a
+org.telegram.instano.network.NetworkController$3$1 -> org.telegram.b.a.a$4$1:
+    org.telegram.instano.network.NetworkController$3 this$1 -> a
+    void call(java.lang.Boolean) -> a
+    void call(java.lang.Object) -> a
+org.telegram.instano.network.NetworkController$3$1$1 -> org.telegram.b.a.a$4$1$1:
+    org.telegram.instano.network.NetworkController$3$1 this$2 -> a
+    void call(java.lang.Boolean) -> a
+    void call(java.lang.Object) -> a
+org.telegram.instano.network.NetworkController$3$2 -> org.telegram.b.a.a$4$2:
+    org.telegram.instano.network.NetworkController$3 this$1 -> a
+    void call(java.lang.Boolean) -> a
+    void call(java.lang.Object) -> a
+org.telegram.instano.network.NetworkController$4 -> org.telegram.b.a.a$5:
+    org.telegram.instano.network.NetworkController this$0 -> a
+    java.util.Map getHeaders() -> i
+org.telegram.instano.network.NetworkController$5 -> org.telegram.b.a.a$6:
+    rxJava.functions.Action1 val$callback -> a
+    org.telegram.instano.network.NetworkController this$0 -> b
+    void call(java.lang.Boolean) -> a
+    void call(java.lang.Object) -> a
+org.telegram.instano.network.NetworkController$6 -> org.telegram.b.a.a$7:
+    rxJava.functions.Action1 val$callback -> a
+    org.telegram.instano.network.NetworkController this$0 -> b
+    void onResponse(org.json.JSONObject) -> a
+    void onResponse(java.lang.Object) -> a
+org.telegram.instano.network.NetworkController$7 -> org.telegram.b.a.a$8:
+    rxJava.functions.Action1 val$callback -> a
+    org.telegram.instano.network.NetworkController this$0 -> b
+    void onErrorResponse(org.telegram.android.volley.VolleyError) -> a
+org.telegram.instano.network.NetworkController$7$1 -> org.telegram.b.a.a$8$1:
+    org.telegram.instano.network.NetworkController$7 this$1 -> a
+    void call(java.lang.Boolean) -> a
+    void call(java.lang.Object) -> a
+org.telegram.instano.network.NetworkController$8 -> org.telegram.b.a.a$9:
+    org.telegram.instano.network.NetworkController this$0 -> a
+    java.util.Map getHeaders() -> i
+org.telegram.instano.network.NetworkController$9 -> org.telegram.b.a.a$10:
+    rxJava.functions.Action1 val$callback -> a
+    org.telegram.instano.network.NetworkController this$0 -> b
+    void onResponse(org.json.JSONObject) -> a
+    void onResponse(java.lang.Object) -> a
+org.telegram.instano.network.model.Order -> org.telegram.b.a.a.a:
+    java.lang.String details -> a
+    java.lang.String status -> b
+    java.util.List parse(org.json.JSONArray) -> a
+    org.telegram.instano.network.model.Order parse(org.json.JSONObject) -> a
 org.telegram.messenger.AbsSerializedData -> org.telegram.messenger.a:
     void writeInt32(int) -> a
     void writeInt64(long) -> a
@@ -15778,7 +15861,8 @@ org.telegram.messenger.BuildVars -> org.telegram.messenger.e:
     java.lang.String ACTIONBAR_TITLE -> n
     org.telegram.messenger.TLRPC$User instanoUser -> o
     java.lang.String PHONE -> p
-    java.lang.String mixpanelToken() -> a
+    java.lang.String apiDomain() -> a
+    java.lang.String mixpanelToken() -> b
 org.telegram.messenger.ByteBufferDesc -> org.telegram.messenger.f:
     java.nio.ByteBuffer buffer -> a
     boolean justCalc -> b
@@ -16420,6 +16504,7 @@ org.telegram.messenger.FileLog -> org.telegram.messenger.r:
     java.io.File currentFile -> d
     org.telegram.messenger.FileLog Instance -> e
     org.telegram.messenger.FileLog getInstance() -> a
+    void fatal(java.lang.Throwable) -> a
     void e(java.lang.String,java.lang.String,java.lang.Throwable) -> a
     void e(java.lang.String,java.lang.String) -> a
     void e(java.lang.String,java.lang.Throwable) -> a
@@ -24681,6 +24766,10 @@ org.telegram.ui.LaunchActivity$3 -> org.telegram.ui.LaunchActivity$3:
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
 org.telegram.ui.LaunchActivity$3$1 -> org.telegram.ui.LaunchActivity$3$1:
     org.telegram.ui.LaunchActivity$3 this$1 -> a
+    void call(java.util.List) -> a
+    void call(java.lang.Object) -> a
+org.telegram.ui.LaunchActivity$3$2 -> org.telegram.ui.LaunchActivity$3$2:
+    org.telegram.ui.LaunchActivity$3 this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.LaunchActivity$4 -> org.telegram.ui.LaunchActivity$4:
     org.telegram.ui.LaunchActivity this$0 -> a
@@ -27256,3 +27345,5 @@ org.telegram.ui.WebViewActivity$2 -> org.telegram.ui.bt$2:
 org.telegram.ui.WebViewActivity$3 -> org.telegram.ui.bt$3:
     org.telegram.ui.WebViewActivity this$0 -> a
     void onPageFinished(android.webkit.WebView,java.lang.String) -> onPageFinished
+rxJava.functions.Action1 -> c.a.a:
+    void call(java.lang.Object) -> a
