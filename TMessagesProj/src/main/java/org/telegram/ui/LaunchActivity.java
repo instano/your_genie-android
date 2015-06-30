@@ -54,8 +54,6 @@ import org.telegram.android.NotificationsController;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.instano.ArrayAdapterWithIcon;
 import org.telegram.instano.MixPanelEvents;
-import org.telegram.instano.network.NetworkController;
-import org.telegram.instano.network.model.Order;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
@@ -76,10 +74,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-
-import rxJava.functions.Action1;
 
 /**
  * The base activity with navigation drawer. Usually other classes are added as fragments
@@ -296,17 +291,19 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 //                    drawerLayoutContainer.closeDrawer(false);
 //                    drawerLayoutContainer.closeDrawer(false);
 //                } else
+                // TODO : User order received/fetched
+//                if (position == 2) {
+//                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_MY_ORDERS, null);
+//                    NetworkController.instance().fetchMyOrders(new Action1<List<Order>>() {
+//                        @Override
+//                        public void call(List<Order> orders) {
+//                            FileLog.d(BuildVars.TAG, String.valueOf(orders));
+//                        }
+//                    });
+//                    drawerLayoutContainer.closeDrawer(false);
+//                }
+//                else
                 if (position == 2) {
-                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_MY_ORDERS, null);
-                    NetworkController.instance().fetchMyOrders(new Action1<List<Order>>() {
-                        @Override
-                        public void call(List<Order> orders) {
-                            FileLog.d(BuildVars.TAG, String.valueOf(orders));
-                        }
-                    });
-                    drawerLayoutContainer.closeDrawer(false);
-                }
-                else if (position == 3) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
@@ -317,7 +314,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 4) {
+                } else if (position == 3) {
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_SETTINGS,null);
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
@@ -327,7 +324,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 //                    presentFragment(new AboutUsActivity());
 //                    drawerLayoutContainer.closeDrawer(false);
 //                }
-                else if (position == 5){
+                else if (position == 4){
                     MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_CONTACT_US,null);
                     AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
 
