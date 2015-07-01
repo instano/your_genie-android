@@ -467,12 +467,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_FIRST_NAME, currentUser.first_name);
             mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_LAST_NAME, currentUser.last_name);
             mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_PHONE, currentUser.phone);
-            Crashlytics.setUserIdentifier(MixPanelEvents.USER_USER_ID);
-            Crashlytics.setUserName(currentUser.fullName());
-            Crashlytics.setUserEmail(currentUser.phone);
         } else{
             FileLog.d(BuildVars.TAG, "ChatActivity. using mix panel people.getDistinctId(): " + mixpanelAPI.getPeople().getDistinctId());
-            Crashlytics.setUserIdentifier(MixPanelEvents.getId());
         }
 
         return true;

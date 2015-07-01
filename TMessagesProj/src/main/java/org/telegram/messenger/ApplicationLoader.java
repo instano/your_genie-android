@@ -28,6 +28,7 @@ import android.os.Handler;
 import android.os.PowerManager;
 
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.core.CrashlyticsCore;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -221,7 +222,15 @@ public class ApplicationLoader extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread thread, Throwable e) {
-                Crashlytics.getInstance().core.logException(e);
+                CrashlyticsCore crashlyticsCore = Crashlytics.getInstance().core;
+                if (UserConfig.isClientActivated()) {
+                    TLRPC.User currentUser = UserConfig.getCurrentUser();
+                    crashlyticsCore.setUserIdentifier(currentUser.phone);
+                    crashlyticsCore.setUserName(currentUser.fullName());
+                    crashlyticsCore.setUserEmail(currentUser.phone);
+                } else
+                    crashlyticsCore.setUserIdentifier(MixPanelEvents.getId());
+                crashlyticsCore.logException(e);
                 //        e.printStackTrace();
                 Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

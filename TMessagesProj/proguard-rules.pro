@@ -46,3 +46,5 @@ public ** get*();
 
 -keep class org.telegram.SQLite.* {*;}
 
+# See http://support.crashlytics.com/knowledgebase/articles/202143-eclipse-with-proguard
+-keepattributes SourceFile,LineNumberTable
