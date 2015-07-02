@@ -166,7 +166,8 @@
     <!--contacts view-->
     <string name="SelectContact">Select Contact</string>
     <string name="NoContacts">No contacts yet</string>
-    <string name="InviteText">Hey, I am using Instano for all my needs like food/grocery ordering, bill payments, home services or just anything. Install now: https://goo.gl/7nNJ4p</string>
+    <!--...........................................................................................................140 characters. keep text less than this.........-->
+    <string name="InviteText">Hey, I am using Instano for all my needs- food/grocery, bill payments, home services or just anything. Install now: https://goo.gl/7nNJ4p</string>
     <string name="TodayAt">at</string>
     <string name="YesterdayAt">yesterday at</string>
     <string name="Online">online</string>
