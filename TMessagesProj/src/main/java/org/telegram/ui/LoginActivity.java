@@ -54,6 +54,7 @@ import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
 import org.telegram.android.NotificationCenter;
 import org.telegram.instano.MixPanelEvents;
+import org.telegram.instano.network.NetworkController;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
@@ -413,6 +414,8 @@ public class LoginActivity extends BaseFragment {
             mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_PHONE, UserConfig.getCurrentUser().phone);
 
             mixpanelAPI.track(MixPanelEvents.PHONE_VERIFIED, null);
+
+            NetworkController.instance().registerUserIfNeeded();
         }
     }
 

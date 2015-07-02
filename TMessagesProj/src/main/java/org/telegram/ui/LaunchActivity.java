@@ -291,6 +291,18 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 //                    drawerLayoutContainer.closeDrawer(false);
 //                    drawerLayoutContainer.closeDrawer(false);
 //                } else
+                // TODO : User order received/fetched
+//                if (position == 2) {
+//                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_MY_ORDERS, null);
+//                    NetworkController.instance().fetchMyOrders(new Action1<List<Order>>() {
+//                        @Override
+//                        public void call(List<Order> orders) {
+//                            FileLog.d(BuildVars.TAG, String.valueOf(orders));
+//                        }
+//                    });
+//                    drawerLayoutContainer.closeDrawer(false);
+//                }
+//                else
                 if (position == 2) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);

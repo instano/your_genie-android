@@ -11,6 +11,8 @@ package org.telegram.messenger;
 import android.net.Uri;
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
+
 import org.telegram.android.time.FastDateFormat;
 
 import java.io.File;
@@ -73,6 +75,13 @@ public class FileLog {
         }
     }
 
+    public static void fatal(Throwable throwable) {
+        if (BuildVars.DEBUG_VERSION)
+            throwable.printStackTrace();
+        else
+            Crashlytics.getInstance().core.logException(throwable);
+    }
+
     public static void trace() {
         if (BuildVars.DEBUG_VERSION) {
             new RuntimeException().printStackTrace();
@@ -121,9 +130,6 @@ public class FileLog {
     }
 
     public static void e(final String tag, final Throwable e) {
-        if (!BuildVars.DEBUG_VERSION) {
-            return;
-        }
         e.printStackTrace();
         if (getInstance().streamWriter != null) {
             getInstance().logQueue.postRunnable(new Runnable() {

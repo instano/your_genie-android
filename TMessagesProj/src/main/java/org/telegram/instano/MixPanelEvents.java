@@ -64,6 +64,7 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
     public static final String LAUNCH_INVITE_FREINDS = "Launch->Invite Friends";
     public static final String LAUNCH_SETTINGS = "Launch->Settings";
     public static final String LAUNCH_ABOUT_US = "Launch->About Us";
+    public static final String LAUNCH_MY_ORDERS = "Launch->My Orders";
     public static final String LAUNCH_CONTACT_US = "Launch->Contact Us";
 
 //    SettingsActivity button click

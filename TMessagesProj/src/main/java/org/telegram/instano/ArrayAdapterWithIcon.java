@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Used to populate the buttons in contact us dialog
  * Created by Rohit on 26/6/15.
  */
 public class ArrayAdapterWithIcon extends ArrayAdapter<String> {

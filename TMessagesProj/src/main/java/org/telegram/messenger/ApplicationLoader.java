@@ -46,6 +46,7 @@ import org.telegram.android.NotificationsService;
 import org.telegram.android.ScreenReceiver;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.instano.MixPanelEvents;
+import org.telegram.instano.network.NetworkController;
 import org.telegram.ui.Components.ForegroundDetector;
 import org.telegram.ui.CrashActivity;
 
@@ -391,6 +392,7 @@ public class ApplicationLoader extends Application {
                         @Override
                         public void run() {
                             MessagesController.getInstance().registerForPush(regid);
+                            NetworkController.instance().registerDevice(null);
                         }
                     });
                 }
@@ -401,11 +403,10 @@ public class ApplicationLoader extends Application {
     private void storeRegistrationId(Context context, String regId) {
         final SharedPreferences prefs = getGCMPreferences(context);
         int appVersion = getAppVersion();
-        FileLog.e("tmessages", "Saving regId on app version " + appVersion);
+        FileLog.e("tmessages", "Saving regId:" + regId + " on app version " + appVersion);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(PROPERTY_REG_ID, regId);
         editor.putInt(PROPERTY_APP_VERSION, appVersion);
-        editor.commit();
-
+        editor.apply();
     }
 }
