@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/msg_in"
+    android:layout_marginRight="20dp"
+    android:layout_marginEnd="20dp"
+    >
+
+    <TextView
+        android:id="@+id/order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:textColor="#212121"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:text="Medium Text"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:textSize="16sp"
+        android:layout_gravity="left"
+        />
+
+</LinearLayout>
