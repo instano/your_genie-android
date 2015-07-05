@@ -13420,41 +13420,43 @@ org.telegram.android.MessageObject -> org.telegram.android.bb:
     int textHeight -> o
     int blockHeight -> p
     java.util.ArrayList textLayoutBlocks -> q
-    384:457:void generateThumbs(boolean) -> a
-    460:465:java.lang.CharSequence replaceWithLink(java.lang.CharSequence,java.lang.String,org.telegram.messenger.TLRPC$User) -> a
-    469:484:java.lang.String getFileName() -> a
-    488:497:int getFileType() -> b
-    501:557:boolean containsUrls(java.lang.CharSequence) -> a
-    561:570:void generateLinkDescription() -> c
-    573:756:void generateLayout() -> v
-    759:759:boolean isOut() -> d
-    763:763:boolean isUnread() -> e
-    767:768:void setIsRead() -> f
-    771:771:int getId() -> g
-    775:775:boolean isSecretPhoto() -> h
-    779:779:boolean isSecretMedia() -> i
-    786:791:void setIsUnread(org.telegram.messenger.TLRPC$Message,boolean) -> a
-    794:794:boolean isUnread(org.telegram.messenger.TLRPC$Message) -> a
-    798:798:boolean isOut(org.telegram.messenger.TLRPC$Message) -> b
-    802:810:long getDialogId() -> j
-    816:816:boolean isSending() -> k
-    820:820:boolean isSendError() -> l
-    824:824:boolean isSent() -> m
-    828:841:java.lang.String getSecretTimeString() -> n
-    845:848:java.lang.String getDocumentName() -> o
-    852:859:boolean isStickerMessage(org.telegram.messenger.TLRPC$Message) -> c
-    863:870:java.lang.String getStrickerChar() -> p
-    874:964:int getApproximateHeight() -> q
-    969:969:boolean isSticker() -> r
-    973:973:boolean isForwarded() -> s
-    977:977:boolean isReply() -> t
-    981:981:boolean isMediaEmpty() -> u
-    985:985:boolean isMediaEmpty(org.telegram.messenger.TLRPC$Message) -> d
+    85:85:java.lang.String toString() -> toString
+    418:491:void generateThumbs(boolean) -> a
+    494:499:java.lang.CharSequence replaceWithLink(java.lang.CharSequence,java.lang.String,org.telegram.messenger.TLRPC$User) -> a
+    503:518:java.lang.String getFileName() -> a
+    522:531:int getFileType() -> b
+    535:591:boolean containsUrls(java.lang.CharSequence) -> a
+    595:604:void generateLinkDescription() -> c
+    607:790:void generateLayout() -> v
+    793:793:boolean isOut() -> d
+    797:797:boolean isUnread() -> e
+    801:802:void setIsRead() -> f
+    805:805:int getId() -> g
+    809:809:boolean isSecretPhoto() -> h
+    813:813:boolean isSecretMedia() -> i
+    820:825:void setIsUnread(org.telegram.messenger.TLRPC$Message,boolean) -> a
+    828:828:boolean isUnread(org.telegram.messenger.TLRPC$Message) -> a
+    832:832:boolean isOut(org.telegram.messenger.TLRPC$Message) -> b
+    836:844:long getDialogId() -> j
+    850:850:boolean isSending() -> k
+    854:854:boolean isSendError() -> l
+    858:858:boolean isSent() -> m
+    862:875:java.lang.String getSecretTimeString() -> n
+    879:882:java.lang.String getDocumentName() -> o
+    886:893:boolean isStickerMessage(org.telegram.messenger.TLRPC$Message) -> c
+    897:904:java.lang.String getStrickerChar() -> p
+    908:998:int getApproximateHeight() -> q
+    1003:1003:boolean isSticker() -> r
+    1007:1007:boolean isForwarded() -> s
+    1011:1011:boolean isReply() -> t
+    1015:1015:boolean isMediaEmpty() -> u
+    1019:1019:boolean isMediaEmpty(org.telegram.messenger.TLRPC$Message) -> d
 org.telegram.android.MessageObject$TextLayoutBlock -> org.telegram.android.bc:
     android.text.StaticLayout textLayout -> a
     float textXOffset -> b
     float textYOffset -> c
     int charactersOffset -> d
+    70:70:java.lang.String toString() -> toString
 org.telegram.android.MessagesController -> org.telegram.android.bd:
     java.util.concurrent.ConcurrentHashMap chats -> x
     java.util.concurrent.ConcurrentHashMap encryptedChats -> y
@@ -16959,10 +16961,12 @@ org.telegram.messenger.TLRPC$Message -> org.telegram.messenger.bo:
     long dialog_id -> r
     int ttl -> s
     int destroyTime -> t
-    int seq_in -> u
-    int seq_out -> v
-    org.telegram.messenger.TLRPC$Message replyMessage -> w
-    org.telegram.messenger.TLRPC$VideoEditedInfo videoEditedInfo -> x
+    int layer -> u
+    int seq_in -> v
+    int seq_out -> w
+    org.telegram.messenger.TLRPC$Message replyMessage -> x
+    org.telegram.messenger.TLRPC$VideoEditedInfo videoEditedInfo -> y
+    10384:10384:java.lang.String toString() -> toString
 org.telegram.messenger.TLRPC$MessageAction -> org.telegram.messenger.bp:
     org.telegram.messenger.TLRPC$Photo photo -> a
     org.telegram.messenger.TLRPC$UserProfilePhoto newUserPhoto -> c
@@ -17203,12 +17207,12 @@ org.telegram.messenger.TLRPC$TL_audioEmpty -> org.telegram.messenger.dg:
     1615:1617:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_audioEncrypted -> org.telegram.messenger.dh:
     int constructor -> m
-    11184:11193:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11196:11206:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11214:11223:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11226:11236:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_audio_old -> org.telegram.messenger.di:
     int constructor -> m
-    11580:11587:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11590:11598:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11610:11617:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11620:11628:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_auth_authorization -> org.telegram.messenger.dj:
     int constructor -> a
     int expires -> c
@@ -17348,8 +17352,8 @@ org.telegram.messenger.TLRPC$TL_chat -> org.telegram.messenger.ef:
     6093:6101:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_chatEmpty -> org.telegram.messenger.eg:
     int constructor -> n
-    10743:10746:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10749:10751:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    10773:10776:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10779:10781:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_chatForbidden -> org.telegram.messenger.eh:
     int constructor -> n
     6032:6035:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -17562,26 +17566,26 @@ org.telegram.messenger.TLRPC$TL_decryptedMessage -> org.telegram.messenger.fr:
     2916:2921:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageActionAbortKey -> org.telegram.messenger.fs:
     int constructor -> l
-    11389:11390:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11393:11395:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11419:11420:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11423:11425:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageActionAcceptKey -> org.telegram.messenger.ft:
     int constructor -> l
     4686:4689:void readParams(org.telegram.messenger.AbsSerializedData) -> a
     4692:4696:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageActionCommitKey -> org.telegram.messenger.fu:
     int constructor -> l
-    11373:11375:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11378:11381:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11403:11405:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11408:11411:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageActionDeleteMessages -> org.telegram.messenger.fv:
     int constructor -> l
-    11340:11355:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11358:11365:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11370:11385:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11388:11395:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageActionFlushHistory -> org.telegram.messenger.fw:
     int constructor -> l
     4677:4678:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageActionNoop -> org.telegram.messenger.fx:
     int constructor -> l
-    11403:11404:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11433:11434:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageActionNotifyLayer -> org.telegram.messenger.fy:
     int constructor -> l
     4720:4721:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -17600,8 +17604,8 @@ org.telegram.messenger.TLRPC$TL_decryptedMessageActionResend -> org.telegram.mes
     4709:4712:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageActionScreenshotMessages -> org.telegram.messenger.gc:
     int constructor -> l
-    11412:11427:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11430:11437:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11442:11457:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11460:11467:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageActionSetMessageTTL -> org.telegram.messenger.gd:
     int constructor -> l
     4664:4665:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -17634,8 +17638,8 @@ org.telegram.messenger.TLRPC$TL_decryptedMessageMediaAudio -> org.telegram.messe
     5893:5899:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageMediaAudio_old -> org.telegram.messenger.gi:
     int constructor -> z
-    11560:11564:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11567:11572:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11590:11594:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11597:11602:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageMediaContact -> org.telegram.messenger.gj:
     int constructor -> y
     5939:5943:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -17665,8 +17669,8 @@ org.telegram.messenger.TLRPC$TL_decryptedMessageMediaVideo -> org.telegram.messe
     5920:5931:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageMediaVideo_old -> org.telegram.messenger.gq:
     int constructor -> z
-    11530:11539:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11542:11552:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11560:11569:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11572:11582:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_decryptedMessageService -> org.telegram.messenger.gr:
     int constructor -> h
     2893:2895:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -17682,10 +17686,10 @@ org.telegram.messenger.TLRPC$TL_decryptedMessage_old -> org.telegram.messenger.g
 org.telegram.messenger.TLRPC$TL_destroy_session -> org.telegram.messenger.gu:
     int constructor -> a
     long session_id -> c
-    10825:10825:java.lang.Class responseClass() -> a
-    10829:10829:int layer() -> b
-    10833:10834:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10837:10839:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    10855:10855:java.lang.Class responseClass() -> a
+    10859:10859:int layer() -> b
+    10863:10864:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10867:10869:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_destroy_session_none -> org.telegram.messenger.gv:
     int constructor -> c
     745:746:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -17720,8 +17724,8 @@ org.telegram.messenger.TLRPC$TL_dialog -> org.telegram.messenger.hb:
     org.telegram.messenger.TLRPC$PeerNotifySettings notify_settings -> g
     int last_message_date -> h
     long id -> i
-    10885:10890:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10893:10899:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    10915:10920:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10923:10929:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_disabledFeature -> org.telegram.messenger.hc:
     int constructor -> a
     java.lang.String feature -> c
@@ -17765,11 +17769,11 @@ org.telegram.messenger.TLRPC$TL_documentEmpty -> org.telegram.messenger.hl:
     3121:3123:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_documentEncrypted -> org.telegram.messenger.hm:
     int constructor -> m
-    11084:11098:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11101:11117:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11114:11128:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11131:11147:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_documentEncrypted_old -> org.telegram.messenger.hn:
     int constructor -> m
-    11125:11138:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11155:11168:void readParams(org.telegram.messenger.AbsSerializedData) -> a
 org.telegram.messenger.TLRPC$TL_document_old -> org.telegram.messenger.ho:
     int constructor -> m
     9711:9722:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -17791,16 +17795,16 @@ org.telegram.messenger.TLRPC$TL_encryptedChatRequested -> org.telegram.messenger
     5115:5122:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_encryptedChatRequested_old -> org.telegram.messenger.ht:
     int constructor -> x
-    11315:11322:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11325:11332:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11345:11352:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11355:11362:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_encryptedChatWaiting -> org.telegram.messenger.hu:
     int constructor -> x
     5030:5035:void readParams(org.telegram.messenger.AbsSerializedData) -> a
     5038:5044:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_encryptedChat_old -> org.telegram.messenger.hv:
     int constructor -> y
-    11288:11296:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11299:11307:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11318:11326:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11329:11337:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_encryptedFile -> org.telegram.messenger.hw:
     int constructor -> g
     627:632:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -17824,8 +17828,8 @@ org.telegram.messenger.TLRPC$TL_error -> org.telegram.messenger.ia:
     111:114:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_fileEncryptedLocation -> org.telegram.messenger.ib:
     int constructor -> i
-    10942:10948:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10951:10958:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    10972:10978:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10981:10988:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_fileLocation -> org.telegram.messenger.ic:
     int constructor -> i
     6277:6281:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -18240,9 +18244,9 @@ org.telegram.messenger.TLRPC$TL_invokeAfterMsg -> org.telegram.messenger.lv:
     1169:1171:void readParams(org.telegram.messenger.AbsSerializedData) -> a
     1174:1177:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_message -> org.telegram.messenger.lw:
-    int constructor -> y
-    10433:10457:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10460:10479:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    int constructor -> z
+    10463:10487:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10490:10509:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageActionChatAddUser -> org.telegram.messenger.lx:
     int constructor -> j
     2696:2697:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -18268,8 +18272,8 @@ org.telegram.messenger.TLRPC$TL_messageActionChatEditTitle -> org.telegram.messe
     2748:2750:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageActionCreatedBroadcastList -> org.telegram.messenger.md:
     int constructor -> j
-    11073:11073:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11076:11077:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11103:11103:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11106:11107:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageActionEmpty -> org.telegram.messenger.me:
     int constructor -> j
     2735:2736:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
@@ -18282,36 +18286,36 @@ org.telegram.messenger.TLRPC$TL_messageActionGeoChatCreate -> org.telegram.messe
     2763:2766:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageActionLoginUnknownLocation -> org.telegram.messenger.mh:
     int constructor -> j
-    11238:11240:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11243:11246:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11268:11270:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11273:11276:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageActionTTLChange -> org.telegram.messenger.mi:
     int constructor -> j
-    11060:11061:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11064:11066:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11090:11091:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11094:11096:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageActionUserJoined -> org.telegram.messenger.mj:
     int constructor -> j
-    11227:11227:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11230:11231:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11257:11257:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11260:11261:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageActionUserUpdatedPhoto -> org.telegram.messenger.mk:
     int constructor -> j
-    11213:11214:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11217:11219:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11243:11244:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11247:11249:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageEmpty -> org.telegram.messenger.ml:
-    int constructor -> y
+    int constructor -> z
     1036:1037:void readParams(org.telegram.messenger.AbsSerializedData) -> a
     1040:1042:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageEncryptedAction -> org.telegram.messenger.mm:
     int constructor -> j
-    11444:11445:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11448:11450:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11474:11475:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11478:11480:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageForwarded_old -> org.telegram.messenger.mn:
-    int constructor -> y
-    10571:10592:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10595:10610:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
-org.telegram.messenger.TLRPC$TL_messageForwarded_old2 -> org.telegram.messenger.mo:
     int constructor -> z
-    10388:10408:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10411:10425:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    10601:10622:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10625:10640:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+org.telegram.messenger.TLRPC$TL_messageForwarded_old2 -> org.telegram.messenger.mo:
+    int constructor -> A
+    10418:10438:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10441:10455:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageMediaAudio -> org.telegram.messenger.mp:
     int constructor -> m
     1278:1279:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -18351,25 +18355,25 @@ org.telegram.messenger.TLRPC$TL_messageMediaWebPage -> org.telegram.messenger.my
     1227:1228:void readParams(org.telegram.messenger.AbsSerializedData) -> a
     1231:1233:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageService -> org.telegram.messenger.mz:
-    int constructor -> y
-    10521:10527:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10530:10537:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    int constructor -> z
+    10551:10557:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10560:10567:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messageService_old -> org.telegram.messenger.na:
-    int constructor -> z
-    10545:10552:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10555:10563:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    int constructor -> A
+    10575:10582:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10585:10593:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_message_old -> org.telegram.messenger.nb:
-    int constructor -> z
-    10617:10632:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10635:10645:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    int constructor -> A
+    10647:10662:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10665:10675:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_message_old2 -> org.telegram.messenger.nc:
-    int constructor -> z
-    10487:10501:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10504:10513:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    int constructor -> A
+    10517:10531:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10534:10543:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_message_secret -> org.telegram.messenger.nd:
-    int constructor -> z
-    10652:10667:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10670:10680:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    int constructor -> A
+    10682:10697:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10700:10710:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_messages_affectedHistory -> org.telegram.messenger.ne:
     int constructor -> a
     int pts -> c
@@ -18817,18 +18821,18 @@ org.telegram.messenger.TLRPC$TL_photos_uploadProfilePhoto -> org.telegram.messen
 org.telegram.messenger.TLRPC$TL_ping -> org.telegram.messenger.qe:
     int constructor -> a
     long ping_id -> c
-    10776:10776:java.lang.Class responseClass() -> a
-    10780:10780:int layer() -> b
-    10784:10785:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10788:10790:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    10806:10806:java.lang.Class responseClass() -> a
+    10810:10810:int layer() -> b
+    10814:10815:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10818:10820:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_ping_delay_disconnect -> org.telegram.messenger.qf:
     int constructor -> a
     long ping_id -> c
     int disconnect_delay -> d
-    10800:10800:java.lang.Class responseClass() -> a
-    10804:10804:int layer() -> b
-    10808:10810:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10813:10816:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    10830:10830:java.lang.Class responseClass() -> a
+    10834:10834:int layer() -> b
+    10838:10840:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10843:10846:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_pong -> org.telegram.messenger.qg:
     int constructor -> a
     long msg_id -> c
@@ -19218,17 +19222,17 @@ org.telegram.messenger.TLRPC$TL_upload_saveBigFilePart -> org.telegram.messenger
     int file_part -> d
     int file_total_parts -> e
     org.telegram.messenger.ByteBufferDesc bytes -> f
-    11462:11462:java.lang.Class responseClass() -> a
-    11466:11471:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
-    11475:11482:void freeResources() -> c
+    11492:11492:java.lang.Class responseClass() -> a
+    11496:11501:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11505:11512:void freeResources() -> c
 org.telegram.messenger.TLRPC$TL_upload_saveFilePart -> org.telegram.messenger.tr:
     int constructor -> a
     long file_id -> c
     int file_part -> d
     org.telegram.messenger.ByteBufferDesc bytes -> e
-    11493:11493:java.lang.Class responseClass() -> a
-    11497:11501:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
-    11505:11512:void freeResources() -> c
+    11523:11523:java.lang.Class responseClass() -> a
+    11527:11531:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11535:11542:void freeResources() -> c
 org.telegram.messenger.TLRPC$TL_userContact -> org.telegram.messenger.ts:
     int constructor -> a
     2442:2450:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -19247,8 +19251,8 @@ org.telegram.messenger.TLRPC$TL_userDeleted_old -> org.telegram.messenger.tv:
     9798:9802:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_userEmpty -> org.telegram.messenger.tw:
     int constructor -> a
-    10724:10730:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10733:10735:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    10754:10760:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10763:10765:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_userForeign -> org.telegram.messenger.tx:
     int constructor -> a
     2497:2504:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -19277,8 +19281,8 @@ org.telegram.messenger.TLRPC$TL_userProfilePhotoEmpty -> org.telegram.messenger.
     4941:4942:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_userProfilePhotoOld -> org.telegram.messenger.uc:
     int constructor -> a
-    10759:10761:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    10764:10767:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    10789:10791:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    10794:10797:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_userRequest -> org.telegram.messenger.ud:
     int constructor -> a
     2469:2477:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -19335,12 +19339,12 @@ org.telegram.messenger.TLRPC$TL_videoEmpty -> org.telegram.messenger.uq:
     3014:3016:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_videoEncrypted -> org.telegram.messenger.ur:
     int constructor -> c
-    11146:11159:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11162:11176:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11176:11189:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11192:11206:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_video_old -> org.telegram.messenger.us:
     int constructor -> c
-    11606:11617:void readParams(org.telegram.messenger.AbsSerializedData) -> a
-    11620:11632:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11636:11647:void readParams(org.telegram.messenger.AbsSerializedData) -> a
+    11650:11662:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$TL_wallPaper -> org.telegram.messenger.ut:
     int constructor -> a
     6942:6950:void readParams(org.telegram.messenger.AbsSerializedData) -> a
@@ -19429,8 +19433,8 @@ org.telegram.messenger.TLRPC$User -> org.telegram.messenger.va:
     org.telegram.messenger.TLRPC$UserProfilePhoto photo -> j
     org.telegram.messenger.TLRPC$UserStatus status -> k
     boolean inactive -> l
-    10701:10701:java.lang.String toString() -> toString
-    10715:10715:java.lang.String fullName() -> e
+    10731:10731:java.lang.String toString() -> toString
+    10745:10745:java.lang.String fullName() -> e
 org.telegram.messenger.TLRPC$UserProfilePhoto -> org.telegram.messenger.vb:
     long photo_id -> c
     org.telegram.messenger.TLRPC$FileLocation photo_small -> d
@@ -19466,8 +19470,8 @@ org.telegram.messenger.TLRPC$VideoEditedInfo -> org.telegram.messenger.vf:
     int resultHeight -> g
     int bitrate -> h
     java.lang.String originalPath -> i
-    10973:10973:java.lang.String getString() -> a
-    10977:10998:void parseString(java.lang.String) -> a
+    11003:11003:java.lang.String getString() -> a
+    11007:11028:void parseString(java.lang.String) -> a
 org.telegram.messenger.TLRPC$WallPaper -> org.telegram.messenger.vg:
     int id -> c
     java.lang.String title -> d
@@ -19527,12 +19531,12 @@ org.telegram.messenger.TLRPC$initConnection -> org.telegram.messenger.vo:
     java.lang.String app_version -> f
     java.lang.String lang_code -> g
     org.telegram.messenger.TLObject query -> h
-    11273:11280:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11303:11310:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$invokeWithLayer -> org.telegram.messenger.vp:
     int constructor -> a
     int layer -> c
     org.telegram.messenger.TLObject query -> d
-    11256:11259:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
+    11286:11289:void serializeToStream(org.telegram.messenger.AbsSerializedData) -> b
 org.telegram.messenger.TLRPC$messages_AllStickers -> org.telegram.messenger.vq:
     java.lang.String hash -> c
     java.util.ArrayList packs -> d
@@ -22157,57 +22161,57 @@ org.telegram.ui.ChatActivity -> org.telegram.ui.g:
     android.widget.AdapterView$OnItemClickListener onItemClickListener -> j
     284:477:boolean onFragmentCreate() -> d
     482:532:void onFragmentDestroy() -> e
-    537:1975:android.view.View createView(android.content.Context,android.view.LayoutInflater) -> a
-    1979:2048:void searchLinks(java.lang.CharSequence,boolean) -> a
-    2051:2061:void forwardMessages(java.util.ArrayList,boolean) -> a
-    2064:2248:void showReplyPanel(boolean,org.telegram.android.MessageObject,java.util.ArrayList,org.telegram.messenger.TLRPC$WebPage,boolean,boolean) -> a
-    2251:2262:void moveScrollToLastMessage() -> s
-    2274:2298:void scrollToLastMessage() -> t
-    2301:2366:void scrollToMessageId(int,int,boolean) -> a
-    2369:2397:void showPagedownButton(boolean,boolean) -> a
-    2400:2433:void updateSecretStatus() -> u
-    2436:2466:void checkActionBarMenu() -> v
-    2469:2480:int updateOnlineCount() -> w
-    2484:2595:int getMessageType(org.telegram.android.MessageObject) -> a
-    2602:2622:void addToSelectedMessages(org.telegram.android.MessageObject) -> b
-    2625:2640:void processRowSelect(android.view.View) -> a
-    2643:2649:void updateActionModeTitle() -> x
-    2652:2675:void updateTitle() -> y
-    2678:2687:void updateTitleIcons() -> z
-    2690:2735:void updateSubtitle() -> A
-    2738:2762:void setTypingAnimation(boolean) -> b
-    2765:2791:void checkAndUpdateAvatar() -> B
-    2794:2821:boolean openVideoEditor(java.lang.String,boolean) -> a
-    2825:2830:void showAttachmentError() -> C
-    2834:2962:void onActivityResultFragment(int,int,android.content.Intent) -> a
-    2966:2969:void saveSelfArgs(android.os.Bundle) -> a
-    2973:2974:void restoreSelfArgs(android.os.Bundle) -> b
-    2977:2988:void removeUnreadPlane(boolean) -> c
-    2997:3796:void didReceivedNotification(int,java.lang.Object[]) -> a
-    3800:3813:void onOpenAnimationEnd() -> k
-    3816:3834:void updateBottomOverlay() -> D
-    3837:3862:void updateContactStatus() -> E
-    3866:3959:void onResume() -> f
-    3963:3965:void onBeginSlide() -> j
-    3969:4009:void onPause() -> g
-    4012:4031:void updateInformationForScreenshotDetector() -> F
-    4034:4081:void fixLayout(boolean) -> d
-    4085:4086:void onConfigurationChanged(android.content.res.Configuration) -> a
-    4089:4241:void createMenu(android.view.View,boolean) -> a
-    4368:4425:void openProfileWithUsername(java.lang.String) -> a
-    4510:4532:boolean isGoogleMapsInstalled() -> o
-    4537:4565:void updateVisibleRows() -> G
-    4568:4580:void alertUserOpenError(org.telegram.android.MessageObject) -> c
-    4585:4585:void updatePhotoAtIndex(int) -> a
-    4589:4627:org.telegram.ui.PhotoViewer$PlaceProviderObject getPlaceForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> a
-    4632:4632:android.graphics.Bitmap getThumbForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> b
-    4637:4637:void willSwitchFromPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> c
-    4641:4641:void willHidePhotoViewer() -> p
-    4645:4645:boolean isPhotoChecked(int) -> b
-    4650:4650:void setPhotoChecked(int) -> c
-    4654:4654:void cancelButtonPressed() -> q
-    4658:4658:void sendButtonPressed(int) -> d
-    4662:4662:int getSelectedCount() -> r
+    537:1974:android.view.View createView(android.content.Context,android.view.LayoutInflater) -> a
+    1978:2047:void searchLinks(java.lang.CharSequence,boolean) -> a
+    2050:2060:void forwardMessages(java.util.ArrayList,boolean) -> a
+    2063:2247:void showReplyPanel(boolean,org.telegram.android.MessageObject,java.util.ArrayList,org.telegram.messenger.TLRPC$WebPage,boolean,boolean) -> a
+    2250:2261:void moveScrollToLastMessage() -> s
+    2273:2297:void scrollToLastMessage() -> t
+    2300:2365:void scrollToMessageId(int,int,boolean) -> a
+    2368:2396:void showPagedownButton(boolean,boolean) -> a
+    2399:2432:void updateSecretStatus() -> u
+    2435:2465:void checkActionBarMenu() -> v
+    2468:2479:int updateOnlineCount() -> w
+    2483:2594:int getMessageType(org.telegram.android.MessageObject) -> a
+    2601:2621:void addToSelectedMessages(org.telegram.android.MessageObject) -> b
+    2624:2639:void processRowSelect(android.view.View) -> a
+    2642:2648:void updateActionModeTitle() -> x
+    2651:2674:void updateTitle() -> y
+    2677:2686:void updateTitleIcons() -> z
+    2689:2734:void updateSubtitle() -> A
+    2737:2761:void setTypingAnimation(boolean) -> b
+    2764:2790:void checkAndUpdateAvatar() -> B
+    2793:2820:boolean openVideoEditor(java.lang.String,boolean) -> a
+    2824:2829:void showAttachmentError() -> C
+    2833:2961:void onActivityResultFragment(int,int,android.content.Intent) -> a
+    2965:2968:void saveSelfArgs(android.os.Bundle) -> a
+    2972:2973:void restoreSelfArgs(android.os.Bundle) -> b
+    2976:2987:void removeUnreadPlane(boolean) -> c
+    2996:3824:void didReceivedNotification(int,java.lang.Object[]) -> a
+    3828:3841:void onOpenAnimationEnd() -> k
+    3844:3862:void updateBottomOverlay() -> D
+    3865:3890:void updateContactStatus() -> E
+    3894:3987:void onResume() -> f
+    3991:3993:void onBeginSlide() -> j
+    3997:4037:void onPause() -> g
+    4040:4059:void updateInformationForScreenshotDetector() -> F
+    4062:4109:void fixLayout(boolean) -> d
+    4113:4114:void onConfigurationChanged(android.content.res.Configuration) -> a
+    4117:4269:void createMenu(android.view.View,boolean) -> a
+    4396:4453:void openProfileWithUsername(java.lang.String) -> a
+    4538:4560:boolean isGoogleMapsInstalled() -> o
+    4565:4593:void updateVisibleRows() -> G
+    4596:4608:void alertUserOpenError(org.telegram.android.MessageObject) -> c
+    4613:4613:void updatePhotoAtIndex(int) -> a
+    4617:4655:org.telegram.ui.PhotoViewer$PlaceProviderObject getPlaceForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> a
+    4660:4660:android.graphics.Bitmap getThumbForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> b
+    4665:4665:void willSwitchFromPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> c
+    4669:4669:void willHidePhotoViewer() -> p
+    4673:4673:boolean isPhotoChecked(int) -> b
+    4678:4678:void setPhotoChecked(int) -> c
+    4682:4682:void cancelButtonPressed() -> q
+    4686:4686:void sendButtonPressed(int) -> d
+    4690:4690:int getSelectedCount() -> r
     121:121:org.telegram.ui.ActionBar.ActionBar access$000(org.telegram.ui.ChatActivity) -> a
     121:121:org.telegram.ui.ActionBar.ActionBar access$100(org.telegram.ui.ChatActivity) -> b
     121:121:void access$200(org.telegram.ui.ChatActivity,android.view.View) -> a
@@ -22380,51 +22384,51 @@ org.telegram.ui.ChatActivity$2 -> org.telegram.ui.g$12:
     270:275:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
 org.telegram.ui.ChatActivity$20 -> org.telegram.ui.g$13:
     org.telegram.ui.ChatActivity this$0 -> a
-    1801:1853:void onItemClick(android.view.View,int) -> a
+    1801:1852:void onItemClick(android.view.View,int) -> a
 org.telegram.ui.ChatActivity$21 -> org.telegram.ui.g$14:
     org.telegram.ui.ChatActivity this$0 -> a
-    1902:1927:void onClick(android.view.View) -> onClick
+    1901:1926:void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$21$1 -> org.telegram.ui.g$14$1:
     org.telegram.ui.ChatActivity$21 this$1 -> a
-    1912:1913:void onClick(android.content.DialogInterface,int) -> onClick
+    1911:1912:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$21$2 -> org.telegram.ui.g$14$2:
     org.telegram.ui.ChatActivity$21 this$1 -> a
-    1920:1922:void onClick(android.content.DialogInterface,int) -> onClick
+    1919:1921:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$22 -> org.telegram.ui.g$15:
     org.telegram.ui.ChatActivity this$0 -> a
-    1955:1960:void onClick(android.view.View) -> onClick
+    1954:1959:void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$23 -> org.telegram.ui.g$16:
     org.telegram.messenger.TLRPC$TL_messages_getWebPagePreview val$req -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    2018:2045:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    2017:2044:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.ChatActivity$23$1 -> org.telegram.ui.g$16$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.ChatActivity$23 this$1 -> c
-    2021:2043:void run() -> run
+    2020:2042:void run() -> run
 org.telegram.ui.ChatActivity$24 -> org.telegram.ui.g$17:
     org.telegram.ui.ChatActivity this$0 -> a
-    2257:2259:void run() -> run
+    2256:2258:void run() -> run
 org.telegram.ui.ChatActivity$25 -> org.telegram.ui.g$18:
     org.telegram.ui.ChatActivity this$0 -> a
-    2389:2390:void onAnimationEnd(java.lang.Object) -> a
+    2388:2389:void onAnimationEnd(java.lang.Object) -> a
 org.telegram.ui.ChatActivity$26 -> org.telegram.ui.g$19:
     org.telegram.ui.ChatActivity this$0 -> a
-    2800:2812:void didFinishEditVideo(java.lang.String,long,long,int,int,int,int,int,int,long,long) -> a
+    2799:2811:void didFinishEditVideo(java.lang.String,long,long,int,int,int,int,int,int,long,long) -> a
 org.telegram.ui.ChatActivity$27 -> org.telegram.ui.g$20:
     java.util.ArrayList val$arrayList -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    2862:2880:void sendButtonPressed(int) -> d
+    2861:2879:void sendButtonPressed(int) -> d
 org.telegram.ui.ChatActivity$28 -> org.telegram.ui.g$21:
     int val$yOffset -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    3186:3194:boolean onPreDraw() -> onPreDraw
+    3214:3222:boolean onPreDraw() -> onPreDraw
 org.telegram.ui.ChatActivity$29 -> org.telegram.ui.g$22:
     int val$lastid -> a
     int val$last_unread_date_final -> b
     boolean val$wasUnreadFinal -> c
     org.telegram.ui.ChatActivity this$0 -> d
-    3237:3242:void run() -> run
+    3265:3270:void run() -> run
 org.telegram.ui.ChatActivity$3 -> org.telegram.ui.g$23:
     int val$chatId -> a
     java.util.concurrent.Semaphore val$semaphore -> b
@@ -22432,30 +22436,30 @@ org.telegram.ui.ChatActivity$3 -> org.telegram.ui.g$23:
     300:302:void run() -> run
 org.telegram.ui.ChatActivity$30 -> org.telegram.ui.g$24:
     org.telegram.ui.ChatActivity this$0 -> a
-    3950:3952:void run() -> run
+    3978:3980:void run() -> run
 org.telegram.ui.ChatActivity$31 -> org.telegram.ui.g$25:
     org.telegram.ui.ChatActivity this$0 -> a
-    4038:4061:boolean onPreDraw() -> onPreDraw
+    4066:4089:boolean onPreDraw() -> onPreDraw
 org.telegram.ui.ChatActivity$32 -> org.telegram.ui.g$26:
     int val$lastPos -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    4070:4077:boolean onPreDraw() -> onPreDraw
+    4098:4105:boolean onPreDraw() -> onPreDraw
 org.telegram.ui.ChatActivity$34 -> org.telegram.ui.g$27:
     android.app.ProgressDialog val$progressDialog -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    4387:4408:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    4415:4436:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.ChatActivity$34$1 -> org.telegram.ui.g$27$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.ChatActivity$34 this$1 -> c
-    4391:4406:void run() -> run
+    4419:4434:void run() -> run
 org.telegram.ui.ChatActivity$35 -> org.telegram.ui.g$28:
     long val$reqId -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    4413:4420:void onClick(android.content.DialogInterface,int) -> onClick
+    4441:4448:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$36 -> org.telegram.ui.g$29:
     org.telegram.ui.ChatActivity this$0 -> a
-    4523:4528:void onClick(android.content.DialogInterface,int) -> onClick
+    4551:4556:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$4 -> org.telegram.ui.g$30:
     int val$userId -> a
     java.util.concurrent.Semaphore val$semaphore -> b
@@ -22502,44 +22506,44 @@ org.telegram.ui.ChatActivity$9 -> org.telegram.ui.g$35:
 org.telegram.ui.ChatActivity$ChatAdapter -> org.telegram.ui.h:
     android.content.Context mContext -> b
     org.telegram.ui.ChatActivity this$0 -> a
-    4675:4675:boolean areAllItemsEnabled() -> areAllItemsEnabled
-    4680:4680:boolean isEnabled(int) -> isEnabled
-    4685:4694:int getCount() -> getCount
-    4699:4699:java.lang.Object getItem(int) -> getItem
-    4704:4704:long getItemId(int) -> getItemId
-    4709:4709:boolean hasStableIds() -> hasStableIds
-    4714:5040:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-    5045:5056:int getItemViewType(int) -> getItemViewType
-    5061:5061:int getViewTypeCount() -> getViewTypeCount
-    5066:5075:boolean isEmpty() -> isEmpty
+    4703:4703:boolean areAllItemsEnabled() -> areAllItemsEnabled
+    4708:4708:boolean isEnabled(int) -> isEnabled
+    4713:4722:int getCount() -> getCount
+    4727:4727:java.lang.Object getItem(int) -> getItem
+    4732:4732:long getItemId(int) -> getItemId
+    4737:4737:boolean hasStableIds() -> hasStableIds
+    4742:5068:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    5073:5084:int getItemViewType(int) -> getItemViewType
+    5089:5089:int getViewTypeCount() -> getViewTypeCount
+    5094:5103:boolean isEmpty() -> isEmpty
 org.telegram.ui.ChatActivity$ChatAdapter$1 -> org.telegram.ui.h$1:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4762:4780:void pressedUrl(java.lang.String) -> a
+    4790:4808:void pressedUrl(java.lang.String) -> a
 org.telegram.ui.ChatActivity$ChatAdapter$2 -> org.telegram.ui.h$2:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4788:4797:void didPressedUserAvatar(org.telegram.ui.Cells.ChatBaseCell,org.telegram.messenger.TLRPC$User) -> a
-    4801:4805:void didPressedCancelSendButton(org.telegram.ui.Cells.ChatBaseCell) -> a
-    4809:4810:void didLongPressed(org.telegram.ui.Cells.ChatBaseCell) -> b
-    4814:4814:boolean canPerformActions() -> a
-    4819:4826:void didPressUrl(java.lang.String) -> a
-    4830:4831:void didPressReplyMessage(org.telegram.ui.Cells.ChatBaseCell,int) -> a
+    4816:4825:void didPressedUserAvatar(org.telegram.ui.Cells.ChatBaseCell,org.telegram.messenger.TLRPC$User) -> a
+    4829:4833:void didPressedCancelSendButton(org.telegram.ui.Cells.ChatBaseCell) -> a
+    4837:4838:void didLongPressed(org.telegram.ui.Cells.ChatBaseCell) -> b
+    4842:4842:boolean canPerformActions() -> a
+    4847:4854:void didPressUrl(java.lang.String) -> a
+    4858:4859:void didPressReplyMessage(org.telegram.ui.Cells.ChatBaseCell,int) -> a
 org.telegram.ui.ChatActivity$ChatAdapter$3 -> org.telegram.ui.h$3:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4838:4920:void didClickedImage(org.telegram.ui.Cells.ChatMediaCell) -> a
-    4924:4925:void didPressedOther(org.telegram.ui.Cells.ChatMediaCell) -> b
+    4866:4948:void didClickedImage(org.telegram.ui.Cells.ChatMediaCell) -> a
+    4952:4953:void didPressedOther(org.telegram.ui.Cells.ChatMediaCell) -> b
 org.telegram.ui.ChatActivity$ChatAdapter$4 -> org.telegram.ui.h$4:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4931:4941:void didClickAddButton(org.telegram.ui.Cells.ChatContactCell,org.telegram.messenger.TLRPC$User) -> a
-    4945:4979:void didClickPhone(org.telegram.ui.Cells.ChatContactCell) -> a
+    4959:4969:void didClickAddButton(org.telegram.ui.Cells.ChatContactCell,org.telegram.messenger.TLRPC$User) -> a
+    4973:5007:void didClickPhone(org.telegram.ui.Cells.ChatContactCell) -> a
 org.telegram.ui.ChatActivity$ChatAdapter$4$1 -> org.telegram.ui.h$4$1:
     org.telegram.android.MessageObject val$messageObject -> a
     org.telegram.ui.ChatActivity$ChatAdapter$4 this$2 -> b
-    4957:4975:void onClick(android.content.DialogInterface,int) -> onClick
+    4985:5003:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$ChatAdapter$5 -> org.telegram.ui.h$5:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4986:4989:void didClickedImage(org.telegram.ui.Cells.ChatActionCell) -> a
-    4993:4994:void didLongPressed(org.telegram.ui.Cells.ChatActionCell) -> b
-    4998:5003:void needOpenUserProfile(int) -> a
+    5014:5017:void didClickedImage(org.telegram.ui.Cells.ChatActionCell) -> a
+    5021:5022:void didLongPressed(org.telegram.ui.Cells.ChatActionCell) -> b
+    5026:5031:void needOpenUserProfile(int) -> a
 org.telegram.ui.Components.AvatarDrawable -> org.telegram.ui.Components.a:
     android.graphics.Paint paint -> a
     android.text.TextPaint namePaint -> b
