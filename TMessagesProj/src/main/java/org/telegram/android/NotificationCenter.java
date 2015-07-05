@@ -21,11 +21,11 @@ public class NotificationCenter {
     public static final int closeChats = totalEvents++;
     public static final int messagesDeleted = totalEvents++;
     public static final int messagesRead = totalEvents++;
-    public static final int messagesDidLoaded = totalEvents++;
+    public static final int messagesDidLoaded = totalEvents++; // 7
     public static final int messageReceivedByAck = totalEvents++;
     public static final int messageReceivedByServer = totalEvents++;
     public static final int messageSendError = totalEvents++;
-    public static final int contactsDidLoaded = totalEvents++;
+    public static final int contactsDidLoaded = totalEvents++; // 11
     public static final int chatDidCreated = totalEvents++;
     public static final int chatDidFailCreate = totalEvents++;
     public static final int chatInfoDidLoaded = totalEvents++;
@@ -38,7 +38,7 @@ public class NotificationCenter {
     public static final int removeAllMessagesFromDialog = totalEvents++;
     public static final int notificationsSettingsUpdated = totalEvents++;
     public static final int pushMessagesUpdated = totalEvents++;
-    public static final int blockedUsersDidLoaded = totalEvents++;
+    public static final int blockedUsersDidLoaded = totalEvents++; // 24
     public static final int openedChatChanged = totalEvents++;
     public static final int hideEmojiKeyboard = totalEvents++;
     public static final int stopEncodingService = totalEvents++;

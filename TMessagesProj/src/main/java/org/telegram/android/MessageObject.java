@@ -46,6 +46,7 @@ public class MessageObject {
     public int type;
     public int contentType;
     public String dateKey;
+
     public String monthKey;
     public boolean deleted = false;
     public float audioProgress;
@@ -63,11 +64,44 @@ public class MessageObject {
         public float textXOffset = 0;
         public float textYOffset = 0;
         public int charactersOffset = 0;
+
+        @Override
+        public String toString() {
+            return "TextLayoutBlock{" +
+                    "textLayout=" + textLayout +
+                    ", textXOffset=" + textXOffset +
+                    ", textYOffset=" + textYOffset +
+                    ", charactersOffset=" + charactersOffset +
+                    '}';
+        }
     }
 
     private static final int LINES_PER_BLOCK = 10;
 
     public ArrayList<TextLayoutBlock> textLayoutBlocks;
+
+    @Override
+    public String toString() {
+        return "MessageObject{" +
+                "messageOwner=" + messageOwner +
+                ", messageText=" + messageText +
+                ", linkDescription=" + linkDescription +
+                ", replyMessageObject=" + replyMessageObject +
+                ", type=" + type +
+                ", contentType=" + contentType +
+                ", dateKey='" + dateKey + '\'' +
+                ", monthKey='" + monthKey + '\'' +
+                ", deleted=" + deleted +
+                ", audioProgress=" + audioProgress +
+                ", audioProgressSec=" + audioProgressSec +
+                ", photoThumbs=" + photoThumbs +
+                ", lastLineWidth=" + lastLineWidth +
+                ", textWidth=" + textWidth +
+                ", textHeight=" + textHeight +
+                ", blockHeight=" + blockHeight +
+                ", textLayoutBlocks=" + textLayoutBlocks +
+                '}';
+    }
 
     public MessageObject(TLRPC.Message message, AbstractMap<Integer, TLRPC.User> users, boolean generateLayout) {
         if (textPaint == null) {

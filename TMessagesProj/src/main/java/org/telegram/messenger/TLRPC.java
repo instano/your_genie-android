@@ -10378,6 +10378,36 @@ public class TLRPC {
         public int seq_out;
         public TLRPC.Message replyMessage;
         public VideoEditedInfo videoEditedInfo = null;
+
+        @Override
+        public String toString() {
+            return "Message{" +
+                    "flags=" + flags +
+                    ", id=" + id +
+                    ", fwd_from_id=" + fwd_from_id +
+                    ", fwd_date=" + fwd_date +
+                    ", from_id=" + from_id +
+                    ", to_id=" + to_id +
+                    ", date=" + date +
+                    ", message='" + message + '\'' +
+                    ", media=" + media +
+                    ", reply_to_msg_id=" + reply_to_msg_id +
+                    ", action=" + action +
+                    ", send_state=" + send_state +
+                    ", fwd_msg_id=" + fwd_msg_id +
+                    ", attachPath='" + attachPath + '\'' +
+                    ", random_id=" + random_id +
+                    ", local_id=" + local_id +
+                    ", dialog_id=" + dialog_id +
+                    ", ttl=" + ttl +
+                    ", destroyTime=" + destroyTime +
+                    ", layer=" + layer +
+                    ", seq_in=" + seq_in +
+                    ", seq_out=" + seq_out +
+                    ", replyMessage=" + replyMessage +
+                    ", videoEditedInfo=" + videoEditedInfo +
+                    '}';
+        }
     }
 
     public static class TL_messageForwarded_old2 extends Message {

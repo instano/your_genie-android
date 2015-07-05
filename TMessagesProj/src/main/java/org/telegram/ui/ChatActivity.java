@@ -50,7 +50,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.json.JSONException;
@@ -116,6 +115,7 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate,
@@ -1839,7 +1839,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         }
                         SendMessagesHelper.getInstance().sendMessage((TLRPC.TL_document) document, null, null, dialog_id, replyingMessageObject);
-                        FileLog.d(BuildVars.TAG, "1862 Send Emoji called");
                         MixpanelAPI mixpanelAPI;
                         if(getParentActivity()!=null){
                             mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.mixpanelToken());
@@ -2995,6 +2994,35 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @Override
     public void didReceivedNotification(int id, final Object... args) {
         if (id == NotificationCenter.messagesDidLoaded) {
+
+            if (messages.isEmpty()) {
+                FileLog.d(TAG, "messages.size() == 0");
+
+                TLRPC.Message message = new TLRPC.Message();
+                message.flags = 1;
+                Random ran = new Random();
+                message.id = ran.nextInt(1000);
+                message.from_id = BuildVars.USER_ID;
+                message.to_id = new TLRPC.TL_peerUser();
+                message.date = (int) (System.currentTimeMillis()/1000);
+                String first_name;
+                if (UserConfig.isClientActivated())
+                    first_name = ' ' + UserConfig.getCurrentUser().first_name;
+                else first_name = "";
+                message.message = String.format("Hey%s, Instano is your personal assistant. You can" +
+                        " order anything including food, grocery, cab booking, movie ticket, home services," +
+                        " stationary, bill payment or just anything.", first_name);
+                message.media = new TLRPC.TL_messageMediaEmpty();
+                message.attachPath = "";
+                dialog_id = BuildVars.USER_ID;
+                MessageObject messageObject = new MessageObject(
+                        message,
+                        null,
+                        true
+                );
+                messageObject.contentType = 0;
+                messages.add(messageObject);
+            }
 
             long did = (Long) args[0];
             if (did == dialog_id) {
