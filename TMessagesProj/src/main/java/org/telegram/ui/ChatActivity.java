@@ -113,6 +113,7 @@ import org.telegram.ui.Components.TypingDotsDrawable;
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
@@ -2993,36 +2994,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @SuppressWarnings("unchecked")
     @Override
     public void didReceivedNotification(int id, final Object... args) {
+        FileLog.d(TAG, "didReceivedNotification id: " + id);
+        FileLog.d(TAG, String.valueOf(Arrays.asList(args)));
         if (id == NotificationCenter.messagesDidLoaded) {
-
-            if (messages.isEmpty()) {
-                FileLog.d(TAG, "messages.size() == 0");
-
-                TLRPC.Message message = new TLRPC.Message();
-                message.flags = 1;
-                Random ran = new Random();
-                message.id = ran.nextInt(1000);
-                message.from_id = BuildVars.USER_ID;
-                message.to_id = new TLRPC.TL_peerUser();
-                message.date = (int) (System.currentTimeMillis()/1000);
-                String first_name;
-                if (UserConfig.isClientActivated())
-                    first_name = ' ' + UserConfig.getCurrentUser().first_name;
-                else first_name = "";
-                message.message = String.format("Hey%s, Instano is your personal assistant. You can" +
-                        " order anything including food, grocery, cab booking, movie ticket, home services," +
-                        " stationary, bill payment or just anything.", first_name);
-                message.media = new TLRPC.TL_messageMediaEmpty();
-                message.attachPath = "";
-                dialog_id = BuildVars.USER_ID;
-                MessageObject messageObject = new MessageObject(
-                        message,
-                        null,
-                        true
-                );
-                messageObject.contentType = 0;
-                messages.add(messageObject);
-            }
 
             long did = (Long) args[0];
             if (did == dialog_id) {
@@ -3119,6 +3093,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         } else {
                             messages.add(dateObj);
                         }
+                        FileLog.d(TAG, "messages.add " + dateObj.messageText);
                         newRowsCount++;
                     }
 
@@ -3129,6 +3104,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     } else {
                         messages.add(messages.size() - 1, obj);
                     }
+                    FileLog.d(TAG, "messages.add " + obj.messageText);
 
                     if (load_type == 2 && obj.getId() == first_unread_id) {
                         TLRPC.Message dateMsg = new TLRPC.Message();
@@ -3142,6 +3118,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             dateAdded = !next.dateKey.equals(obj.dateKey);
                         }
                         messages.add(messages.size() - (dateAdded ? 0 : 1), dateObj);
+                        FileLog.d(TAG, "messages.add " + dateObj.messageText);
                         unreadMessageObject = dateObj;
                         scrollToMessage = unreadMessageObject;
                         scrollToMessageMiddleScreen = false;
@@ -3164,6 +3141,35 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (obj.getId() == last_message_id) {
                         forward_end_reached = true;
                     }
+                }
+
+                if (messages.isEmpty()) {
+                    FileLog.d(TAG, "messages.size() == 0");
+
+                    TLRPC.Message message = new TLRPC.Message();
+                    message.flags = 1;
+                    Random ran = new Random();
+                    message.id = ran.nextInt(1000);
+                    message.from_id = BuildVars.USER_ID;
+                    message.to_id = new TLRPC.TL_peerUser();
+                    message.date = (int) (System.currentTimeMillis()/1000);
+                    String first_name;
+                    if (UserConfig.isClientActivated())
+                        first_name = ' ' + UserConfig.getCurrentUser().first_name;
+                    else first_name = "";
+                    message.message = String.format("Hey%s, Instano is your personal assistant. You can" +
+                            " order anything including food, grocery, cab booking, movie ticket, home services," +
+                            " stationary, bill payment or just anything.", first_name);
+                    message.media = new TLRPC.TL_messageMediaEmpty();
+                    message.attachPath = "";
+                    dialog_id = BuildVars.USER_ID;
+                    MessageObject messageObject = new MessageObject(
+                            message,
+                            null,
+                            true
+                    );
+                    messageObject.contentType = 0;
+                    messages.add(messageObject);
                 }
 
                 if (forward_end_reached) {
@@ -3437,6 +3443,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             dateObj.type = 10;
                             dateObj.contentType = 4;
                             messages.add(0, dateObj);
+                            FileLog.d(TAG, "messages.add " + dateObj.messageText);
                         }
                         if (!obj.isOut() && obj.isUnread()) {
                             if (!paused) {
@@ -3446,6 +3453,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         dayArray.add(0, obj);
                         messages.add(0, obj);
+                        FileLog.d(TAG, "messages.add " + obj.messageText);
                         if (obj.type == 10 || obj.type == 11) {
                             updateChat = true;
                         }
