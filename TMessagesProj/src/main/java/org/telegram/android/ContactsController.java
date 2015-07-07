@@ -1472,7 +1472,7 @@ public class ContactsController {
             ContentProviderResult[] result = contentResolver.applyBatch(ContactsContract.AUTHORITY, query);
             res = Long.parseLong(result[0].uri.getLastPathSegment());
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+//            FileLog.e("tmessages", e);
         }
         synchronized (observerLock) {
             ignoreChanges = false;

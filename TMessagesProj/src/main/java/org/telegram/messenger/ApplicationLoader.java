@@ -28,10 +28,12 @@ import android.os.Handler;
 import android.os.PowerManager;
 
 import com.crashlytics.android.Crashlytics;
+import com.facebook.FacebookSdk;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -195,6 +197,13 @@ public class ApplicationLoader extends Application {
         // Initialize the library with your
         // Mixpanel project token, MIXPANEL_TOKEN, and a reference
         // to your application context.
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        // Initialize the SDK before executing any other operations,
+        // especially, if you're using Facebook UI elements.
+
+        //TWeetComposer included
+        Fabric.with(this, new TweetComposer());
+
         JSONObject superProperties = new JSONObject();
         try {
             superProperties.put(MixPanelEvents.PROPERTY_BUILD_TYPE, BuildConfig.BUILD_TYPE);

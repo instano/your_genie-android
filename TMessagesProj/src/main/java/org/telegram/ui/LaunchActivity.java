@@ -10,6 +10,7 @@ package org.telegram.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -41,11 +42,15 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
+import org.telegram.android.GcmBroadcastReceiver;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
@@ -75,6 +80,8 @@ import org.telegram.ui.Components.PasscodeView;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -118,6 +125,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     private boolean tabletFullSize;
 
     private Runnable lockRunnable;
+    private ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -261,6 +269,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             layersActionBarLayout.setVisibility(View.GONE);
         } else {
             drawerLayoutContainer.addView(actionBarLayout, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
         }
 
         ListView listView = new ListView(this);
@@ -277,6 +286,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         listView.setDividerHeight(0);
         listView.setLayoutParams(layoutParams);
         listView.setVerticalScrollBarEnabled(false);
+        mListView = listView;
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -298,7 +308,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 //                } else
                 // TODO : User order received/fetched
                 if (position == 2) {
-                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_MY_ORDERS, null);
+                    MixpanelAPI.getInstance(LaunchActivity.this, BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_MY_ORDERS, null);
+
+//                    List<Order> orders = new ArrayList<Order>();
+//                    orders.add(new Order("Burger"));
+//                    orders.add(new Order("Macbook pro"));
+//                    orders.add(new Order("Pepsi"));
+//                    presentFragment(new MyOrdersActivity(orders));
                     NetworkController.instance().fetchMyOrders(new Action1<List<Order>>() {
                         @Override
                         public void call(List<Order> orders) {
@@ -472,6 +488,14 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             drawerLayoutContainer.setAllowOpenDrawer(allowOpen, false);
         }
 
+        //TODO : remove dummy broadcast
+        Intent intent = new Intent(LaunchActivity.this, GcmBroadcastReceiver.class);
+//        intent.putExtra("share_on_twitter",true);
+        intent.putExtra("order", "new Order");
+        intent.setAction("com.google.android.c2dm.intent.RECEIVE");
+        sendBroadcast(intent);
+
+
         handleIntent(getIntent(), false, savedInstanceState != null, false);
         needLayout();
     }
@@ -516,6 +540,42 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     private boolean handleIntent(Intent intent, boolean isNew, boolean restore, boolean fromPassword) {
         FileLog.d(TAG, ".handleIntent: " + intent);
         int flags = intent.getFlags();
+        if(intent.getExtras() != null) {
+            FileLog.d("getExtras : ", intent.getExtras().toString());
+            FileLog.d("getExtras Order: ", intent.getExtras().getBoolean("open_my_orders")+"");
+            FileLog.d("getExtras Fcebook: ", intent.getExtras().getBoolean("share_on_facebook")+"");
+            FileLog.d("getExtras Twitter: ", intent.getExtras().getBoolean("share_on_twitter") + "");
+            if (intent.getExtras().getBoolean("open_my_orders")) {
+                MixpanelAPI.getInstance(getApplicationContext(), BuildVars.mixpanelToken()).track(MixPanelEvents.ORDER_NOTIFICATION_CLICKED, null);
+                if (mListView != null)
+                    mListView.performItemClick(null, 2, 1);
+            } else if (intent.getAction().contains("share_on_facebook")) {
+                NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                manager.cancel(1);
+                MixpanelAPI.getInstance(getApplicationContext(), BuildVars.mixpanelToken()).track(MixPanelEvents.NOTIFICATION_FACEBOOK_SHARE_CLICKED, null);
+                ShareDialog shareDialog = new ShareDialog(this);
+                ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                        .setContentUrl(Uri.parse(intent.getStringExtra("content_url")))
+                        .setContentTitle(intent.getStringExtra("content_title"))
+                        .setContentDescription(intent.getStringExtra("content_description"))
+                        .build();
+                shareDialog.show(linkContent);
+            } else if (intent.getAction().contains("share_on_twitter")) {
+                NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                manager.cancel(1);
+                MixpanelAPI.getInstance(getApplicationContext(), BuildVars.mixpanelToken()).track(MixPanelEvents.NOTIFICATION_TWITTER_SHARE_CLICKED, null);
+                try {
+                    URL url = new URL(intent.getStringExtra("url"));
+                    TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                            .text(intent.getStringExtra("text"))
+                            .url(url);
+
+                    builder.show();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
         if (!fromPassword && (AndroidUtilities.needShowPasscode(true) || UserConfig.isWaitingForPasscodeEnter)) {
             showPasscodeActivity();
             passcodeSaveIntent = intent;

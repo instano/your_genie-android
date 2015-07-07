@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/msg_in"
-    android:layout_marginRight="20dp"
-    android:layout_marginEnd="20dp"
     >
 
     <TextView
@@ -16,11 +14,101 @@
         android:textColor="#212121"
         android:shadowDx="1"
         android:shadowDy="1"
-        android:text="Medium Text"
+        android:text="Medium Text and lot more \n Price\nTime\n Details"
         android:paddingLeft="15dp"
         android:paddingRight="10dp"
         android:textSize="16sp"
-        android:layout_gravity="left"
-        />
+        android:layout_gravity="left"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:weightSum="2"
+        android:paddingBottom="3dp"
+        android:paddingRight="5dp">
+
+        <LinearLayout
+            android:id="@+id/facebook_share"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/facebook_share_button_background">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:src="@drawable/facebook_icon"
+                android:layout_marginLeft="-5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Share"
+                android:textColor="#FFFFFF"
+                android:id="@+id/textView"
+                android:layout_marginLeft="-13dp"
+                android:paddingRight="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/twitter_share"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/twitter_share_button_background"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:layout_marginLeft="-10dp"
+                android:src="@drawable/twitter_icon_bird"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Share"
+                android:textColor="#FFFFFF"
+                android:id="@+id/textView2"
+                android:layout_marginLeft="-15dp"
+                android:paddingRight="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/re_order"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/twitter_share_button_background">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-10dp"
+                android:src="@drawable/ic_launcher"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Reorder"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="-10dp"
+                android:paddingRight="15dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

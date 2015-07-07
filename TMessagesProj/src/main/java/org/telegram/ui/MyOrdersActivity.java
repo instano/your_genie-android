@@ -1,6 +1,7 @@
 package org.telegram.ui;
 
 import android.content.Context;
+import android.net.Uri;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -17,9 +18,18 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.telegram.android.AndroidUtilities;
+import org.telegram.instano.MixPanelEvents;
 import org.telegram.instano.network.model.Order;
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
 import org.telegram.ui.ActionBar.ActionBar;
@@ -27,6 +37,8 @@ import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Components.LayoutListView;
 import org.telegram.ui.Components.SizeNotifierRelativeLayout;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
@@ -101,14 +113,15 @@ public class MyOrdersActivity extends BaseFragment {
         orderListView.setStackFromBottom(false);
         orderListView.setPadding(0, AndroidUtilities.dp(4), 0, AndroidUtilities.dp(3));
         orderListView.setDivider(null);
+        orderListView.setDividerHeight(10);
         orderListView.setSelector(R.drawable.transparent);
 //        orderListView.setOnItemLongClickListener(onItemLongClickListener);
 //        orderListView.setOnItemClickListener(onItemClickListener);
         contentView.addView(orderListView);
         layoutParams3 = (RelativeLayout.LayoutParams) orderListView.getLayoutParams();
-        layoutParams3.width = RelativeLayout.LayoutParams.MATCH_PARENT;
+        layoutParams3.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
         layoutParams3.height = RelativeLayout.LayoutParams.MATCH_PARENT;
-        layoutParams3.bottomMargin = -AndroidUtilities.dp(3);
+        layoutParams3.setMargins(0,5,15,10);
 //        layoutParams3.addRule(RelativeLayout.BELOW, actionBar.getId());
         orderListView.setLayoutParams(layoutParams3);
         orderListView.setEmptyView(emptyViewContainer);
@@ -150,13 +163,62 @@ public class MyOrdersActivity extends BaseFragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            Order order = getItem(position);
+            final Order order = getItem(position);
             convertView = mInflater.inflate(R.layout.order_list_item, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
 
+            View facebookShare = convertView.findViewById(R.id.facebook_share);
+            View twitterShare = convertView.findViewById(R.id.twitter_share);
+            View reOrder = convertView.findViewById(R.id.re_order);
+
+            facebookShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MixpanelAPI.getInstance(getContext(), BuildVars.mixpanelToken()).track(MixPanelEvents.FACEBOOK_SHARE_CLICKED, null);
+                    ShareDialog shareDialog = new ShareDialog(getParentActivity());
+                    ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                            .setContentUrl(Uri.parse("https://play.google.com/store/apps/details?id=com.instano.genie"))
+                            .setContentTitle("My Order")
+                            .setContentDescription("Order Details")
+                            .build();
+                    shareDialog.show(linkContent);
+                }
+            });
+
+            twitterShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MixpanelAPI.getInstance(getContext(), BuildVars.mixpanelToken()).track(MixPanelEvents.TWITTER_SHARE_CLICKED, null);
+                    try {
+                        URL url = new URL("https://play.google.com/store/apps/details?id=com.instano.genie");
+                        TweetComposer.Builder builder = new TweetComposer.Builder(getContext())
+                                .text("Fabulous shopping experience. \nOrdered: Burger")
+                                .url(url);
+
+                        builder.show();
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            reOrder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    JSONObject reOrdered = new JSONObject();
+                    try {
+                        reOrdered.put("order_id", order.details);
+                    } catch (JSONException e) {
+                        FileLog.e(BuildVars.TAG, e);
+                    }
+                    MixpanelAPI.getInstance(getContext(), BuildVars.mixpanelToken()).track(MixPanelEvents.REORDER_CLICKED, reOrdered);
+
+                }
+            });
+
             TextView tv = (TextView) convertView.findViewById(R.id.order);
-            tv.setText(viewHolder.setFormattedText(order));
+            tv.setText(viewHolder.setFormattedText(order)+"\nPrice: Rs. 100 \nAddress: Empire Hotel Koramangala");
             return convertView;
         }
     }

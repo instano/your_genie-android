@@ -108,6 +108,16 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
     public static final String URL_CLICKS = "URL clicks";
     public static final String URL_CLICKED = "URL clicked";
 
+//    Events inside MyOrdersActivity
+    public static final String FACEBOOK_SHARE_CLICKED = "Facebook share from My Orders clicked";
+    public static final String TWITTER_SHARE_CLICKED = "Twitter share from My Orders clicked";
+    public static final String REORDER_CLICKED = "Reorder from My Orders clicked";
+
+//    Order Notification Events
+    public static final String ORDER_NOTIFICATION_RECEIVED = "Order Notification received";
+    public static final String ORDER_NOTIFICATION_CLICKED = "Order Notification Clicked";
+    public static final String NOTIFICATION_FACEBOOK_SHARE_CLICKED = "Facebook share from Order Notification clicked";
+    public static final String NOTIFICATION_TWITTER_SHARE_CLICKED = "Twitter share from Order Notification clicked";
     public static MixpanelAPI api(Context context) {
         if (context == null)
             return api();

@@ -23,9 +23,14 @@ dependencies {
     compile 'com.googlecode.mp4parser:isoparser:1.0.+'
     compile 'com.android.support:recyclerview-v7:+'
     compile "com.mixpanel.android:mixpanel-android:4.5.3"
+    compile 'com.facebook.android:facebook-android-sdk:4.1.0'
     compile('com.crashlytics.sdk.android:crashlytics:2.3.0@aar') {
         transitive = true;
     }
+    compile('com.twitter.sdk.android:tweet-composer:0.8.0@aar')
+            {
+                transitive = true;
+            }
 }
 
 android {
