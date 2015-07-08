@@ -54,6 +54,7 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
     public static final String PHONE_VERIFIED = "Phone Verified";
     public static final String TELEGRAM_PRESENT = "Telegram Present";
     public static final String CHAT_ACTIVITY_OPENED = "Chat Activity Opened";
+    public static final String CRASH = "Crash";
 
     public static final String USER_USER_ID = "User user Id";
     public static final String USER_PROPERTY_FIRST_NAME = "$first_name";

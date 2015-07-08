@@ -223,6 +223,8 @@ public class ApplicationLoader extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread thread, Throwable e) {
+                // to get user info
+                MixPanelEvents.api().track(MixPanelEvents.CRASH, null);
                 CrashlyticsCore crashlyticsCore = Crashlytics.getInstance().core;
                 if (UserConfig.isClientActivated()) {
                     TLRPC.User currentUser = UserConfig.getCurrentUser();

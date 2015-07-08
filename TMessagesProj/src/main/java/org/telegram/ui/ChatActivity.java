@@ -50,6 +50,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.core.CrashlyticsCore;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.json.JSONException;
@@ -474,6 +476,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else{
             FileLog.d(BuildVars.TAG, "ChatActivity. using mix panel people.getDistinctId(): " + mixpanelAPI.getPeople().getDistinctId());
         }
+
+        // TODO: do better
+//        CrashlyticsCore crashlyticsCore = Crashlytics.getInstance().core;
+//        if (UserConfig.isClientActivated()) {
+//            TLRPC.User currentUser = UserConfig.getCurrentUser();
+//            crashlyticsCore.setUserIdentifier(currentUser.phone);
+//            crashlyticsCore.setUserName(currentUser.fullName());
+//            crashlyticsCore.setUserEmail(currentUser.phone);
+//        } else
+//            crashlyticsCore.setUserIdentifier(MixPanelEvents.getId());
 
         return true;
     }

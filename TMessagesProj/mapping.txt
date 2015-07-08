@@ -15659,10 +15659,10 @@ org.telegram.instano.ArrayAdapterWithIcon -> org.telegram.b.a:
 org.telegram.instano.MixPanelEvents -> org.telegram.b.b:
     java.lang.String LOCATION_LATITUDE -> a
     java.lang.String LOCATION_LONGITUDE -> b
-    112:115:com.mixpanel.android.mpmetrics.MixpanelAPI api(android.content.Context) -> a
-    119:119:com.mixpanel.android.mpmetrics.MixpanelAPI api() -> a
-    123:123:java.lang.String getId() -> b
-    127:132:boolean isPackageInstalled(java.lang.String,android.content.Context) -> a
+    113:116:com.mixpanel.android.mpmetrics.MixpanelAPI api(android.content.Context) -> a
+    120:120:com.mixpanel.android.mpmetrics.MixpanelAPI api() -> a
+    124:124:java.lang.String getId() -> b
+    128:133:boolean isPackageInstalled(java.lang.String,android.content.Context) -> a
 org.telegram.instano.network.NetworkController -> org.telegram.b.a.a:
     java.lang.String TAG -> a
     org.telegram.instano.network.NetworkController instance -> b
@@ -15754,18 +15754,18 @@ org.telegram.messenger.ApplicationLoader -> org.telegram.messenger.ApplicationLo
     97:137:void loadWallpaper() -> d
     140:142:android.graphics.drawable.Drawable getCachedWallpaper() -> e
     146:190:void postInitApplication() -> f
-    194:244:void onCreate() -> onCreate
-    247:265:void startPushService() -> g
-    268:273:void stopPushService() -> h
-    277:284:void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
-    287:299:void initPlayServices() -> l
-    302:303:boolean checkPlayServices() -> m
-    316:328:java.lang.String getRegistrationId() -> n
-    332:332:android.content.SharedPreferences getGCMPreferences(android.content.Context) -> a
-    337:340:int getAppVersion() -> i
-    345:381:void registerInBackground() -> o
-    384:401:void sendRegistrationIdToBackend(boolean) -> b
-    404:411:void storeRegistrationId(android.content.Context,java.lang.String) -> a
+    194:246:void onCreate() -> onCreate
+    249:267:void startPushService() -> g
+    270:275:void stopPushService() -> h
+    279:286:void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    289:301:void initPlayServices() -> l
+    304:305:boolean checkPlayServices() -> m
+    318:330:java.lang.String getRegistrationId() -> n
+    334:334:android.content.SharedPreferences getGCMPreferences(android.content.Context) -> a
+    339:342:int getAppVersion() -> i
+    347:383:void registerInBackground() -> o
+    386:403:void sendRegistrationIdToBackend(boolean) -> b
+    406:413:void storeRegistrationId(android.content.Context,java.lang.String) -> a
     60:60:java.lang.Object access$000() -> j
     60:60:android.graphics.drawable.Drawable access$102(android.graphics.drawable.Drawable) -> a
     60:60:boolean access$202(boolean) -> a
@@ -15780,18 +15780,18 @@ org.telegram.messenger.ApplicationLoader$1 -> org.telegram.messenger.Application
     103:135:void run() -> run
 org.telegram.messenger.ApplicationLoader$2 -> org.telegram.messenger.ApplicationLoader$2:
     org.telegram.messenger.ApplicationLoader this$0 -> a
-    226:241:void uncaughtException(java.lang.Thread,java.lang.Throwable) -> uncaughtException
+    227:243:void uncaughtException(java.lang.Thread,java.lang.Throwable) -> uncaughtException
 org.telegram.messenger.ApplicationLoader$3 -> org.telegram.messenger.ApplicationLoader$3:
     org.telegram.messenger.ApplicationLoader this$0 -> a
-    348:372:java.lang.Boolean doInBackground(java.lang.String[]) -> a
-    345:345:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    350:374:java.lang.Boolean doInBackground(java.lang.String[]) -> a
+    347:347:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 org.telegram.messenger.ApplicationLoader$4 -> org.telegram.messenger.ApplicationLoader$4:
     boolean val$isNew -> a
     org.telegram.messenger.ApplicationLoader this$0 -> b
-    387:399:void run() -> run
+    389:401:void run() -> run
 org.telegram.messenger.ApplicationLoader$4$1 -> org.telegram.messenger.ApplicationLoader$4$1:
     org.telegram.messenger.ApplicationLoader$4 this$1 -> a
-    394:396:void run() -> run
+    396:398:void run() -> run
 org.telegram.messenger.BuffersStorage -> org.telegram.messenger.d:
     java.util.ArrayList freeBuffers128 -> a
     java.util.ArrayList freeBuffers1024 -> b
@@ -22159,391 +22159,391 @@ org.telegram.ui.ChatActivity -> org.telegram.ui.g:
     float startY -> be
     android.widget.AdapterView$OnItemLongClickListener onItemLongClickListener -> i
     android.widget.AdapterView$OnItemClickListener onItemClickListener -> j
-    285:478:boolean onFragmentCreate() -> d
-    483:533:void onFragmentDestroy() -> e
-    538:1975:android.view.View createView(android.content.Context,android.view.LayoutInflater) -> a
-    1979:2048:void searchLinks(java.lang.CharSequence,boolean) -> a
-    2051:2061:void forwardMessages(java.util.ArrayList,boolean) -> a
-    2064:2248:void showReplyPanel(boolean,org.telegram.android.MessageObject,java.util.ArrayList,org.telegram.messenger.TLRPC$WebPage,boolean,boolean) -> a
-    2251:2262:void moveScrollToLastMessage() -> s
-    2274:2298:void scrollToLastMessage() -> t
-    2301:2366:void scrollToMessageId(int,int,boolean) -> a
-    2369:2397:void showPagedownButton(boolean,boolean) -> a
-    2400:2433:void updateSecretStatus() -> u
-    2436:2466:void checkActionBarMenu() -> v
-    2469:2480:int updateOnlineCount() -> w
-    2484:2595:int getMessageType(org.telegram.android.MessageObject) -> a
-    2602:2622:void addToSelectedMessages(org.telegram.android.MessageObject) -> b
-    2625:2640:void processRowSelect(android.view.View) -> a
-    2643:2649:void updateActionModeTitle() -> x
-    2652:2675:void updateTitle() -> y
-    2678:2687:void updateTitleIcons() -> z
-    2690:2735:void updateSubtitle() -> A
-    2738:2762:void setTypingAnimation(boolean) -> b
-    2765:2791:void checkAndUpdateAvatar() -> B
-    2794:2821:boolean openVideoEditor(java.lang.String,boolean) -> a
-    2825:2830:void showAttachmentError() -> C
-    2834:2962:void onActivityResultFragment(int,int,android.content.Intent) -> a
-    2966:2969:void saveSelfArgs(android.os.Bundle) -> a
-    2973:2974:void restoreSelfArgs(android.os.Bundle) -> b
-    2977:2988:void removeUnreadPlane(boolean) -> c
-    2997:3832:void didReceivedNotification(int,java.lang.Object[]) -> a
-    3836:3849:void onOpenAnimationEnd() -> k
-    3852:3870:void updateBottomOverlay() -> D
-    3873:3898:void updateContactStatus() -> E
-    3902:3995:void onResume() -> f
-    3999:4001:void onBeginSlide() -> j
-    4005:4045:void onPause() -> g
-    4048:4067:void updateInformationForScreenshotDetector() -> F
-    4070:4117:void fixLayout(boolean) -> d
-    4121:4122:void onConfigurationChanged(android.content.res.Configuration) -> a
-    4125:4277:void createMenu(android.view.View,boolean) -> a
-    4404:4461:void openProfileWithUsername(java.lang.String) -> a
-    4546:4568:boolean isGoogleMapsInstalled() -> o
-    4573:4601:void updateVisibleRows() -> G
-    4604:4616:void alertUserOpenError(org.telegram.android.MessageObject) -> c
-    4621:4621:void updatePhotoAtIndex(int) -> a
-    4625:4663:org.telegram.ui.PhotoViewer$PlaceProviderObject getPlaceForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> a
-    4668:4668:android.graphics.Bitmap getThumbForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> b
-    4673:4673:void willSwitchFromPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> c
-    4677:4677:void willHidePhotoViewer() -> p
-    4681:4681:boolean isPhotoChecked(int) -> b
-    4686:4686:void setPhotoChecked(int) -> c
-    4690:4690:void cancelButtonPressed() -> q
-    4694:4694:void sendButtonPressed(int) -> d
-    4698:4698:int getSelectedCount() -> r
-    122:122:org.telegram.ui.ActionBar.ActionBar access$000(org.telegram.ui.ChatActivity) -> a
-    122:122:org.telegram.ui.ActionBar.ActionBar access$100(org.telegram.ui.ChatActivity) -> b
-    122:122:void access$200(org.telegram.ui.ChatActivity,android.view.View) -> a
-    122:122:org.telegram.messenger.TLRPC$Chat access$302(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$Chat) -> a
-    122:122:org.telegram.messenger.TLRPC$User access$402(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$User) -> a
-    122:122:org.telegram.messenger.TLRPC$EncryptedChat access$502(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$EncryptedChat) -> a
-    122:122:org.telegram.messenger.TLRPC$EncryptedChat access$500(org.telegram.ui.ChatActivity) -> c
-    122:122:org.telegram.messenger.TLRPC$Chat access$300(org.telegram.ui.ChatActivity) -> d
-    122:122:org.telegram.ui.ActionBar.ActionBarLayout access$600(org.telegram.ui.ChatActivity) -> e
-    122:122:java.util.HashMap access$700(org.telegram.ui.ChatActivity) -> f
-    122:122:java.util.HashMap access$800(org.telegram.ui.ChatActivity) -> g
-    122:122:org.telegram.ui.ActionBar.ActionBar access$900(org.telegram.ui.ChatActivity) -> h
-    122:122:void access$1000(org.telegram.ui.ChatActivity) -> i
-    122:122:java.lang.String access$1102(org.telegram.ui.ChatActivity,java.lang.String) -> a
-    122:122:long access$1200(org.telegram.ui.ChatActivity) -> j
-    122:122:org.telegram.android.MessageObject access$1300(org.telegram.ui.ChatActivity) -> k
-    122:122:void access$1400(org.telegram.ui.ChatActivity) -> l
-    122:122:boolean access$1500(org.telegram.ui.ChatActivity) -> m
-    122:122:boolean access$1602(org.telegram.ui.ChatActivity,boolean) -> a
-    122:122:org.telegram.ui.ActionBar.ActionBar access$1700(org.telegram.ui.ChatActivity) -> n
-    122:122:org.telegram.ui.ActionBar.ActionBar access$1800(org.telegram.ui.ChatActivity) -> o
-    122:122:java.util.HashMap access$1900(org.telegram.ui.ChatActivity) -> p
-    122:122:org.telegram.ui.ActionBar.ActionBar access$2000(org.telegram.ui.ChatActivity) -> q
-    122:122:org.telegram.ui.ActionBar.ActionBar access$2100(org.telegram.ui.ChatActivity) -> r
-    122:122:org.telegram.ui.Components.LayoutListView access$2200(org.telegram.ui.ChatActivity) -> s
-    122:122:float access$2302(org.telegram.ui.ChatActivity,float) -> a
-    122:122:float access$2402(org.telegram.ui.ChatActivity,float) -> b
-    122:122:java.lang.Runnable access$2502(org.telegram.ui.ChatActivity,java.lang.Runnable) -> a
-    122:122:java.lang.Runnable access$2500(org.telegram.ui.ChatActivity) -> t
-    122:122:float access$2300(org.telegram.ui.ChatActivity) -> u
-    122:122:float access$2400(org.telegram.ui.ChatActivity) -> v
-    122:122:int access$2600(org.telegram.ui.ChatActivity) -> w
-    122:122:int access$2602(org.telegram.ui.ChatActivity,int) -> a
-    122:122:boolean access$2700(org.telegram.ui.ChatActivity) -> x
-    122:122:boolean access$2800(org.telegram.ui.ChatActivity) -> y
-    122:122:java.util.HashMap access$2900(org.telegram.ui.ChatActivity) -> z
-    122:122:int access$3000(org.telegram.ui.ChatActivity) -> A
-    122:122:boolean access$3100(org.telegram.ui.ChatActivity) -> B
-    122:122:int access$3200(org.telegram.ui.ChatActivity) -> C
-    122:122:int access$3300(org.telegram.ui.ChatActivity) -> D
-    122:122:int access$3400(org.telegram.ui.ChatActivity) -> E
-    122:122:int access$3500(org.telegram.ui.ChatActivity) -> F
-    122:122:boolean access$2802(org.telegram.ui.ChatActivity,boolean) -> b
-    122:122:boolean access$3600(org.telegram.ui.ChatActivity) -> G
-    122:122:boolean access$3700(org.telegram.ui.ChatActivity) -> H
-    122:122:int access$3800(org.telegram.ui.ChatActivity) -> I
-    122:122:int access$3900(org.telegram.ui.ChatActivity) -> J
-    122:122:int access$4000(org.telegram.ui.ChatActivity) -> K
-    122:122:boolean access$3702(org.telegram.ui.ChatActivity,boolean) -> c
-    122:122:void access$4100(org.telegram.ui.ChatActivity,boolean,boolean) -> a
-    122:122:android.widget.ListView access$4200(org.telegram.ui.ChatActivity) -> L
-    122:122:org.telegram.ui.Adapters.MentionsAdapter access$4300(org.telegram.ui.ChatActivity) -> M
-    122:122:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$4400(org.telegram.ui.ChatActivity) -> N
-    122:122:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$4402(org.telegram.ui.ChatActivity,org.telegram.ui.AnimationCompat.AnimatorSetProxy) -> a
-    122:122:boolean access$4500(org.telegram.ui.ChatActivity) -> O
-    122:122:org.telegram.ui.Components.ChatActivityEnterView access$4600(org.telegram.ui.ChatActivity) -> P
-    122:122:org.telegram.ui.Adapters.StickersAdapter access$4700(org.telegram.ui.ChatActivity) -> Q
-    122:122:java.util.ArrayList access$4800(org.telegram.ui.ChatActivity) -> R
-    122:122:java.lang.Runnable access$4900(org.telegram.ui.ChatActivity) -> S
-    122:122:java.lang.Runnable access$4902(org.telegram.ui.ChatActivity,java.lang.Runnable) -> b
-    122:122:void access$5000(org.telegram.ui.ChatActivity,java.lang.CharSequence,boolean) -> a
-    122:122:int access$5100(org.telegram.ui.ChatActivity) -> T
-    122:122:org.telegram.ui.ActionBar.ActionBarMenuItem access$5200(org.telegram.ui.ChatActivity) -> U
-    122:122:org.telegram.ui.ActionBar.ActionBarMenuItem access$5300(org.telegram.ui.ChatActivity) -> V
-    122:122:boolean access$4502(org.telegram.ui.ChatActivity,boolean) -> d
-    122:122:android.widget.FrameLayout access$5400(org.telegram.ui.ChatActivity) -> W
-    122:122:java.util.ArrayList access$5500(org.telegram.ui.ChatActivity) -> X
-    122:122:org.telegram.messenger.TLRPC$WebPage access$5600(org.telegram.ui.ChatActivity) -> Y
-    122:122:org.telegram.ui.Components.RecyclerListView access$5700(org.telegram.ui.ChatActivity) -> Z
-    122:122:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$5800(org.telegram.ui.ChatActivity) -> aa
-    122:122:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$5802(org.telegram.ui.ChatActivity,org.telegram.ui.AnimationCompat.AnimatorSetProxy) -> b
-    122:122:org.telegram.messenger.TLRPC$User access$400(org.telegram.ui.ChatActivity) -> ab
-    122:122:boolean access$5900(org.telegram.ui.ChatActivity) -> ac
-    122:122:int access$6000(org.telegram.ui.ChatActivity) -> ad
-    122:122:void access$6100(org.telegram.ui.ChatActivity,int,int,boolean) -> a
-    122:122:void access$6200(org.telegram.ui.ChatActivity) -> ae
-    122:122:long access$6302(org.telegram.ui.ChatActivity,long) -> a
-    122:122:org.telegram.messenger.TLRPC$WebPage access$5602(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$WebPage) -> a
-    122:122:java.lang.String access$6402(org.telegram.ui.ChatActivity,java.lang.String) -> b
-    122:122:android.widget.ImageView access$6500(org.telegram.ui.ChatActivity) -> af
-    122:122:org.telegram.android.MessageObject access$6600(org.telegram.ui.ChatActivity) -> ag
-    122:122:int access$6700(org.telegram.ui.ChatActivity) -> ah
-    122:122:java.lang.String access$6800(org.telegram.ui.ChatActivity) -> ai
-    122:122:java.lang.String access$6802(org.telegram.ui.ChatActivity,java.lang.String) -> c
-    122:122:android.widget.FrameLayout access$6900(org.telegram.ui.ChatActivity) -> aj
-    122:122:android.widget.TextView access$7000(org.telegram.ui.ChatActivity) -> ak
-    122:122:org.telegram.ui.ActionBar.ActionBar access$7100(org.telegram.ui.ChatActivity) -> al
-    122:122:org.telegram.ui.ActionBar.ActionBar access$7200(org.telegram.ui.ChatActivity) -> am
-    122:122:android.app.AlertDialog access$7402(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> a
-    122:122:android.app.AlertDialog access$7502(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> b
-    122:122:int access$7600(org.telegram.ui.ChatActivity) -> an
-    122:122:org.telegram.ui.ActionBar.ActionBar access$7700(org.telegram.ui.ChatActivity) -> ao
-    122:122:org.telegram.ui.ActionBar.ActionBar access$7800(org.telegram.ui.ChatActivity) -> ap
-    122:122:org.telegram.ui.ActionBar.ActionBar access$7900(org.telegram.ui.ChatActivity) -> aq
-    122:122:void access$8000(org.telegram.ui.ChatActivity,java.lang.String) -> d
-    122:122:boolean access$8100(org.telegram.ui.ChatActivity) -> ar
-    122:122:void access$8200(org.telegram.ui.ChatActivity,org.telegram.android.MessageObject) -> a
-    122:122:org.telegram.ui.ActionBar.ActionBar access$8300(org.telegram.ui.ChatActivity) -> as
-    122:122:org.telegram.ui.ActionBar.ActionBar access$8400(org.telegram.ui.ChatActivity) -> at
-    122:122:org.telegram.ui.ActionBar.ActionBar access$8500(org.telegram.ui.ChatActivity) -> au
-    122:122:int access$8600(org.telegram.ui.ChatActivity) -> av
+    287:490:boolean onFragmentCreate() -> d
+    495:545:void onFragmentDestroy() -> e
+    550:1987:android.view.View createView(android.content.Context,android.view.LayoutInflater) -> a
+    1991:2060:void searchLinks(java.lang.CharSequence,boolean) -> a
+    2063:2073:void forwardMessages(java.util.ArrayList,boolean) -> a
+    2076:2260:void showReplyPanel(boolean,org.telegram.android.MessageObject,java.util.ArrayList,org.telegram.messenger.TLRPC$WebPage,boolean,boolean) -> a
+    2263:2274:void moveScrollToLastMessage() -> s
+    2286:2310:void scrollToLastMessage() -> t
+    2313:2378:void scrollToMessageId(int,int,boolean) -> a
+    2381:2409:void showPagedownButton(boolean,boolean) -> a
+    2412:2445:void updateSecretStatus() -> u
+    2448:2478:void checkActionBarMenu() -> v
+    2481:2492:int updateOnlineCount() -> w
+    2496:2607:int getMessageType(org.telegram.android.MessageObject) -> a
+    2614:2634:void addToSelectedMessages(org.telegram.android.MessageObject) -> b
+    2637:2652:void processRowSelect(android.view.View) -> a
+    2655:2661:void updateActionModeTitle() -> x
+    2664:2687:void updateTitle() -> y
+    2690:2699:void updateTitleIcons() -> z
+    2702:2747:void updateSubtitle() -> A
+    2750:2774:void setTypingAnimation(boolean) -> b
+    2777:2803:void checkAndUpdateAvatar() -> B
+    2806:2833:boolean openVideoEditor(java.lang.String,boolean) -> a
+    2837:2842:void showAttachmentError() -> C
+    2846:2974:void onActivityResultFragment(int,int,android.content.Intent) -> a
+    2978:2981:void saveSelfArgs(android.os.Bundle) -> a
+    2985:2986:void restoreSelfArgs(android.os.Bundle) -> b
+    2989:3000:void removeUnreadPlane(boolean) -> c
+    3009:3844:void didReceivedNotification(int,java.lang.Object[]) -> a
+    3848:3861:void onOpenAnimationEnd() -> k
+    3864:3882:void updateBottomOverlay() -> D
+    3885:3910:void updateContactStatus() -> E
+    3914:4007:void onResume() -> f
+    4011:4013:void onBeginSlide() -> j
+    4017:4057:void onPause() -> g
+    4060:4079:void updateInformationForScreenshotDetector() -> F
+    4082:4129:void fixLayout(boolean) -> d
+    4133:4134:void onConfigurationChanged(android.content.res.Configuration) -> a
+    4137:4289:void createMenu(android.view.View,boolean) -> a
+    4416:4473:void openProfileWithUsername(java.lang.String) -> a
+    4558:4580:boolean isGoogleMapsInstalled() -> o
+    4585:4613:void updateVisibleRows() -> G
+    4616:4628:void alertUserOpenError(org.telegram.android.MessageObject) -> c
+    4633:4633:void updatePhotoAtIndex(int) -> a
+    4637:4675:org.telegram.ui.PhotoViewer$PlaceProviderObject getPlaceForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> a
+    4680:4680:android.graphics.Bitmap getThumbForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> b
+    4685:4685:void willSwitchFromPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> c
+    4689:4689:void willHidePhotoViewer() -> p
+    4693:4693:boolean isPhotoChecked(int) -> b
+    4698:4698:void setPhotoChecked(int) -> c
+    4702:4702:void cancelButtonPressed() -> q
+    4706:4706:void sendButtonPressed(int) -> d
+    4710:4710:int getSelectedCount() -> r
+    124:124:org.telegram.ui.ActionBar.ActionBar access$000(org.telegram.ui.ChatActivity) -> a
+    124:124:org.telegram.ui.ActionBar.ActionBar access$100(org.telegram.ui.ChatActivity) -> b
+    124:124:void access$200(org.telegram.ui.ChatActivity,android.view.View) -> a
+    124:124:org.telegram.messenger.TLRPC$Chat access$302(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$Chat) -> a
+    124:124:org.telegram.messenger.TLRPC$User access$402(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$User) -> a
+    124:124:org.telegram.messenger.TLRPC$EncryptedChat access$502(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$EncryptedChat) -> a
+    124:124:org.telegram.messenger.TLRPC$EncryptedChat access$500(org.telegram.ui.ChatActivity) -> c
+    124:124:org.telegram.messenger.TLRPC$Chat access$300(org.telegram.ui.ChatActivity) -> d
+    124:124:org.telegram.ui.ActionBar.ActionBarLayout access$600(org.telegram.ui.ChatActivity) -> e
+    124:124:java.util.HashMap access$700(org.telegram.ui.ChatActivity) -> f
+    124:124:java.util.HashMap access$800(org.telegram.ui.ChatActivity) -> g
+    124:124:org.telegram.ui.ActionBar.ActionBar access$900(org.telegram.ui.ChatActivity) -> h
+    124:124:void access$1000(org.telegram.ui.ChatActivity) -> i
+    124:124:java.lang.String access$1102(org.telegram.ui.ChatActivity,java.lang.String) -> a
+    124:124:long access$1200(org.telegram.ui.ChatActivity) -> j
+    124:124:org.telegram.android.MessageObject access$1300(org.telegram.ui.ChatActivity) -> k
+    124:124:void access$1400(org.telegram.ui.ChatActivity) -> l
+    124:124:boolean access$1500(org.telegram.ui.ChatActivity) -> m
+    124:124:boolean access$1602(org.telegram.ui.ChatActivity,boolean) -> a
+    124:124:org.telegram.ui.ActionBar.ActionBar access$1700(org.telegram.ui.ChatActivity) -> n
+    124:124:org.telegram.ui.ActionBar.ActionBar access$1800(org.telegram.ui.ChatActivity) -> o
+    124:124:java.util.HashMap access$1900(org.telegram.ui.ChatActivity) -> p
+    124:124:org.telegram.ui.ActionBar.ActionBar access$2000(org.telegram.ui.ChatActivity) -> q
+    124:124:org.telegram.ui.ActionBar.ActionBar access$2100(org.telegram.ui.ChatActivity) -> r
+    124:124:org.telegram.ui.Components.LayoutListView access$2200(org.telegram.ui.ChatActivity) -> s
+    124:124:float access$2302(org.telegram.ui.ChatActivity,float) -> a
+    124:124:float access$2402(org.telegram.ui.ChatActivity,float) -> b
+    124:124:java.lang.Runnable access$2502(org.telegram.ui.ChatActivity,java.lang.Runnable) -> a
+    124:124:java.lang.Runnable access$2500(org.telegram.ui.ChatActivity) -> t
+    124:124:float access$2300(org.telegram.ui.ChatActivity) -> u
+    124:124:float access$2400(org.telegram.ui.ChatActivity) -> v
+    124:124:int access$2600(org.telegram.ui.ChatActivity) -> w
+    124:124:int access$2602(org.telegram.ui.ChatActivity,int) -> a
+    124:124:boolean access$2700(org.telegram.ui.ChatActivity) -> x
+    124:124:boolean access$2800(org.telegram.ui.ChatActivity) -> y
+    124:124:java.util.HashMap access$2900(org.telegram.ui.ChatActivity) -> z
+    124:124:int access$3000(org.telegram.ui.ChatActivity) -> A
+    124:124:boolean access$3100(org.telegram.ui.ChatActivity) -> B
+    124:124:int access$3200(org.telegram.ui.ChatActivity) -> C
+    124:124:int access$3300(org.telegram.ui.ChatActivity) -> D
+    124:124:int access$3400(org.telegram.ui.ChatActivity) -> E
+    124:124:int access$3500(org.telegram.ui.ChatActivity) -> F
+    124:124:boolean access$2802(org.telegram.ui.ChatActivity,boolean) -> b
+    124:124:boolean access$3600(org.telegram.ui.ChatActivity) -> G
+    124:124:boolean access$3700(org.telegram.ui.ChatActivity) -> H
+    124:124:int access$3800(org.telegram.ui.ChatActivity) -> I
+    124:124:int access$3900(org.telegram.ui.ChatActivity) -> J
+    124:124:int access$4000(org.telegram.ui.ChatActivity) -> K
+    124:124:boolean access$3702(org.telegram.ui.ChatActivity,boolean) -> c
+    124:124:void access$4100(org.telegram.ui.ChatActivity,boolean,boolean) -> a
+    124:124:android.widget.ListView access$4200(org.telegram.ui.ChatActivity) -> L
+    124:124:org.telegram.ui.Adapters.MentionsAdapter access$4300(org.telegram.ui.ChatActivity) -> M
+    124:124:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$4400(org.telegram.ui.ChatActivity) -> N
+    124:124:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$4402(org.telegram.ui.ChatActivity,org.telegram.ui.AnimationCompat.AnimatorSetProxy) -> a
+    124:124:boolean access$4500(org.telegram.ui.ChatActivity) -> O
+    124:124:org.telegram.ui.Components.ChatActivityEnterView access$4600(org.telegram.ui.ChatActivity) -> P
+    124:124:org.telegram.ui.Adapters.StickersAdapter access$4700(org.telegram.ui.ChatActivity) -> Q
+    124:124:java.util.ArrayList access$4800(org.telegram.ui.ChatActivity) -> R
+    124:124:java.lang.Runnable access$4900(org.telegram.ui.ChatActivity) -> S
+    124:124:java.lang.Runnable access$4902(org.telegram.ui.ChatActivity,java.lang.Runnable) -> b
+    124:124:void access$5000(org.telegram.ui.ChatActivity,java.lang.CharSequence,boolean) -> a
+    124:124:int access$5100(org.telegram.ui.ChatActivity) -> T
+    124:124:org.telegram.ui.ActionBar.ActionBarMenuItem access$5200(org.telegram.ui.ChatActivity) -> U
+    124:124:org.telegram.ui.ActionBar.ActionBarMenuItem access$5300(org.telegram.ui.ChatActivity) -> V
+    124:124:boolean access$4502(org.telegram.ui.ChatActivity,boolean) -> d
+    124:124:android.widget.FrameLayout access$5400(org.telegram.ui.ChatActivity) -> W
+    124:124:java.util.ArrayList access$5500(org.telegram.ui.ChatActivity) -> X
+    124:124:org.telegram.messenger.TLRPC$WebPage access$5600(org.telegram.ui.ChatActivity) -> Y
+    124:124:org.telegram.ui.Components.RecyclerListView access$5700(org.telegram.ui.ChatActivity) -> Z
+    124:124:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$5800(org.telegram.ui.ChatActivity) -> aa
+    124:124:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$5802(org.telegram.ui.ChatActivity,org.telegram.ui.AnimationCompat.AnimatorSetProxy) -> b
+    124:124:org.telegram.messenger.TLRPC$User access$400(org.telegram.ui.ChatActivity) -> ab
+    124:124:boolean access$5900(org.telegram.ui.ChatActivity) -> ac
+    124:124:int access$6000(org.telegram.ui.ChatActivity) -> ad
+    124:124:void access$6100(org.telegram.ui.ChatActivity,int,int,boolean) -> a
+    124:124:void access$6200(org.telegram.ui.ChatActivity) -> ae
+    124:124:long access$6302(org.telegram.ui.ChatActivity,long) -> a
+    124:124:org.telegram.messenger.TLRPC$WebPage access$5602(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$WebPage) -> a
+    124:124:java.lang.String access$6402(org.telegram.ui.ChatActivity,java.lang.String) -> b
+    124:124:android.widget.ImageView access$6500(org.telegram.ui.ChatActivity) -> af
+    124:124:org.telegram.android.MessageObject access$6600(org.telegram.ui.ChatActivity) -> ag
+    124:124:int access$6700(org.telegram.ui.ChatActivity) -> ah
+    124:124:java.lang.String access$6800(org.telegram.ui.ChatActivity) -> ai
+    124:124:java.lang.String access$6802(org.telegram.ui.ChatActivity,java.lang.String) -> c
+    124:124:android.widget.FrameLayout access$6900(org.telegram.ui.ChatActivity) -> aj
+    124:124:android.widget.TextView access$7000(org.telegram.ui.ChatActivity) -> ak
+    124:124:org.telegram.ui.ActionBar.ActionBar access$7100(org.telegram.ui.ChatActivity) -> al
+    124:124:org.telegram.ui.ActionBar.ActionBar access$7200(org.telegram.ui.ChatActivity) -> am
+    124:124:android.app.AlertDialog access$7402(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> a
+    124:124:android.app.AlertDialog access$7502(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> b
+    124:124:int access$7600(org.telegram.ui.ChatActivity) -> an
+    124:124:org.telegram.ui.ActionBar.ActionBar access$7700(org.telegram.ui.ChatActivity) -> ao
+    124:124:org.telegram.ui.ActionBar.ActionBar access$7800(org.telegram.ui.ChatActivity) -> ap
+    124:124:org.telegram.ui.ActionBar.ActionBar access$7900(org.telegram.ui.ChatActivity) -> aq
+    124:124:void access$8000(org.telegram.ui.ChatActivity,java.lang.String) -> d
+    124:124:boolean access$8100(org.telegram.ui.ChatActivity) -> ar
+    124:124:void access$8200(org.telegram.ui.ChatActivity,org.telegram.android.MessageObject) -> a
+    124:124:org.telegram.ui.ActionBar.ActionBar access$8300(org.telegram.ui.ChatActivity) -> as
+    124:124:org.telegram.ui.ActionBar.ActionBar access$8400(org.telegram.ui.ChatActivity) -> at
+    124:124:org.telegram.ui.ActionBar.ActionBar access$8500(org.telegram.ui.ChatActivity) -> au
+    124:124:int access$8600(org.telegram.ui.ChatActivity) -> av
 org.telegram.ui.ChatActivity$1 -> org.telegram.ui.g$1:
     org.telegram.ui.ChatActivity this$0 -> a
-    261:264:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
+    263:266:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
 org.telegram.ui.ChatActivity$10 -> org.telegram.ui.g$2:
     org.telegram.ui.ChatActivity this$0 -> a
-    1079:1079:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+    1091:1091:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
 org.telegram.ui.ChatActivity$11 -> org.telegram.ui.g$3:
     org.telegram.ui.ChatActivity this$0 -> a
-    1229:1281:boolean onInterceptTouchEvent(android.view.MotionEvent) -> a
+    1241:1293:boolean onInterceptTouchEvent(android.view.MotionEvent) -> a
 org.telegram.ui.ChatActivity$11$1 -> org.telegram.ui.g$3$1:
     org.telegram.ui.ChatActivity$11 this$1 -> a
-    1263:1275:void run() -> run
+    1275:1287:void run() -> run
 org.telegram.ui.ChatActivity$12 -> org.telegram.ui.g$4:
     org.telegram.ui.ChatActivity this$0 -> a
-    1287:1331:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+    1299:1343:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
 org.telegram.ui.ChatActivity$12$1 -> org.telegram.ui.g$4$1:
     org.telegram.ui.ChatActivity$12 this$1 -> a
-    1292:1293:void run() -> run
+    1304:1305:void run() -> run
 org.telegram.ui.ChatActivity$12$2 -> org.telegram.ui.g$4$2:
     org.telegram.ui.ChatActivity$12 this$1 -> a
-    1308:1310:void run() -> run
+    1320:1322:void run() -> run
 org.telegram.ui.ChatActivity$13 -> org.telegram.ui.g$5:
     android.graphics.Rect scrollRect -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    1339:1343:void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
-    1347:1376:void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
+    1351:1355:void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
+    1359:1388:void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
 org.telegram.ui.ChatActivity$14 -> org.telegram.ui.g$6:
     org.telegram.ui.ChatActivity this$0 -> a
-    1427:1496:void needChangePanelVisibility(boolean) -> a
+    1439:1508:void needChangePanelVisibility(boolean) -> a
 org.telegram.ui.ChatActivity$14$1 -> org.telegram.ui.g$6$1:
     org.telegram.ui.ChatActivity$14 this$1 -> a
-    1452:1456:void onAnimationEnd(java.lang.Object) -> a
+    1464:1468:void onAnimationEnd(java.lang.Object) -> a
 org.telegram.ui.ChatActivity$14$2 -> org.telegram.ui.g$6$2:
     org.telegram.ui.ChatActivity$14 this$1 -> a
-    1482:1487:void onAnimationEnd(java.lang.Object) -> a
+    1494:1499:void onAnimationEnd(java.lang.Object) -> a
 org.telegram.ui.ChatActivity$15 -> org.telegram.ui.g$7:
     org.telegram.ui.ChatActivity this$0 -> a
-    1504:1515:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    1516:1527:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
 org.telegram.ui.ChatActivity$16 -> org.telegram.ui.g$8:
     org.telegram.ui.ChatActivity this$0 -> a
-    1521:1536:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
+    1533:1548:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
 org.telegram.ui.ChatActivity$16$1 -> org.telegram.ui.g$8$1:
     org.telegram.ui.ChatActivity$16 this$1 -> a
-    1529:1530:void onClick(android.content.DialogInterface,int) -> onClick
+    1541:1542:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$17 -> org.telegram.ui.g$9:
     org.telegram.ui.ChatActivity this$0 -> a
-    1557:1565:void onMessageSend(java.lang.String) -> a
-    1569:1593:void onTextChanged(java.lang.CharSequence,boolean) -> a
-    1597:1598:void needSendTyping() -> a
-    1602:1608:void onAttachButtonHidden() -> b
-    1612:1618:void onAttachButtonShow() -> c
-    1622:1643:void onWindowSizeChanged(int) -> a
+    1569:1577:void onMessageSend(java.lang.String) -> a
+    1581:1605:void onTextChanged(java.lang.CharSequence,boolean) -> a
+    1609:1610:void needSendTyping() -> a
+    1614:1620:void onAttachButtonHidden() -> b
+    1624:1630:void onAttachButtonShow() -> c
+    1634:1655:void onWindowSizeChanged(int) -> a
 org.telegram.ui.ChatActivity$17$1 -> org.telegram.ui.g$9$1:
     java.lang.CharSequence val$text -> a
     org.telegram.ui.ChatActivity$17 this$1 -> b
-    1585:1589:void run() -> run
+    1597:1601:void run() -> run
 org.telegram.ui.ChatActivity$18 -> org.telegram.ui.g$10:
     org.telegram.ui.ChatActivity this$0 -> a
-    1681:1685:void onClick(android.view.View) -> onClick
+    1693:1697:void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$19 -> org.telegram.ui.g$11:
     org.telegram.ui.ChatActivity this$0 -> a
-    1762:1797:void needChangePanelVisibility(boolean) -> a
+    1774:1809:void needChangePanelVisibility(boolean) -> a
 org.telegram.ui.ChatActivity$19$1 -> org.telegram.ui.g$11$1:
     boolean val$show -> a
     org.telegram.ui.ChatActivity$19 this$1 -> b
-    1783:1791:void onAnimationEnd(java.lang.Object) -> a
+    1795:1803:void onAnimationEnd(java.lang.Object) -> a
 org.telegram.ui.ChatActivity$2 -> org.telegram.ui.g$12:
     org.telegram.ui.ChatActivity this$0 -> a
-    271:276:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    273:278:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
 org.telegram.ui.ChatActivity$20 -> org.telegram.ui.g$13:
     org.telegram.ui.ChatActivity this$0 -> a
-    1802:1853:void onItemClick(android.view.View,int) -> a
+    1814:1865:void onItemClick(android.view.View,int) -> a
 org.telegram.ui.ChatActivity$21 -> org.telegram.ui.g$14:
     org.telegram.ui.ChatActivity this$0 -> a
-    1902:1927:void onClick(android.view.View) -> onClick
+    1914:1939:void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$21$1 -> org.telegram.ui.g$14$1:
     org.telegram.ui.ChatActivity$21 this$1 -> a
-    1912:1913:void onClick(android.content.DialogInterface,int) -> onClick
+    1924:1925:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$21$2 -> org.telegram.ui.g$14$2:
     org.telegram.ui.ChatActivity$21 this$1 -> a
-    1920:1922:void onClick(android.content.DialogInterface,int) -> onClick
+    1932:1934:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$22 -> org.telegram.ui.g$15:
     org.telegram.ui.ChatActivity this$0 -> a
-    1955:1960:void onClick(android.view.View) -> onClick
+    1967:1972:void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$23 -> org.telegram.ui.g$16:
     org.telegram.messenger.TLRPC$TL_messages_getWebPagePreview val$req -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    2018:2045:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    2030:2057:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.ChatActivity$23$1 -> org.telegram.ui.g$16$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.ChatActivity$23 this$1 -> c
-    2021:2043:void run() -> run
+    2033:2055:void run() -> run
 org.telegram.ui.ChatActivity$24 -> org.telegram.ui.g$17:
     org.telegram.ui.ChatActivity this$0 -> a
-    2257:2259:void run() -> run
+    2269:2271:void run() -> run
 org.telegram.ui.ChatActivity$25 -> org.telegram.ui.g$18:
     org.telegram.ui.ChatActivity this$0 -> a
-    2389:2390:void onAnimationEnd(java.lang.Object) -> a
+    2401:2402:void onAnimationEnd(java.lang.Object) -> a
 org.telegram.ui.ChatActivity$26 -> org.telegram.ui.g$19:
     org.telegram.ui.ChatActivity this$0 -> a
-    2800:2812:void didFinishEditVideo(java.lang.String,long,long,int,int,int,int,int,int,long,long) -> a
+    2812:2824:void didFinishEditVideo(java.lang.String,long,long,int,int,int,int,int,int,long,long) -> a
 org.telegram.ui.ChatActivity$27 -> org.telegram.ui.g$20:
     java.util.ArrayList val$arrayList -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    2862:2880:void sendButtonPressed(int) -> d
+    2874:2892:void sendButtonPressed(int) -> d
 org.telegram.ui.ChatActivity$28 -> org.telegram.ui.g$21:
     int val$yOffset -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    3220:3228:boolean onPreDraw() -> onPreDraw
+    3232:3240:boolean onPreDraw() -> onPreDraw
 org.telegram.ui.ChatActivity$29 -> org.telegram.ui.g$22:
     int val$lastid -> a
     int val$last_unread_date_final -> b
     boolean val$wasUnreadFinal -> c
     org.telegram.ui.ChatActivity this$0 -> d
-    3271:3276:void run() -> run
+    3283:3288:void run() -> run
 org.telegram.ui.ChatActivity$3 -> org.telegram.ui.g$23:
     int val$chatId -> a
     java.util.concurrent.Semaphore val$semaphore -> b
     org.telegram.ui.ChatActivity this$0 -> c
-    301:303:void run() -> run
+    303:305:void run() -> run
 org.telegram.ui.ChatActivity$30 -> org.telegram.ui.g$24:
     org.telegram.ui.ChatActivity this$0 -> a
-    3986:3988:void run() -> run
+    3998:4000:void run() -> run
 org.telegram.ui.ChatActivity$31 -> org.telegram.ui.g$25:
     org.telegram.ui.ChatActivity this$0 -> a
-    4074:4097:boolean onPreDraw() -> onPreDraw
+    4086:4109:boolean onPreDraw() -> onPreDraw
 org.telegram.ui.ChatActivity$32 -> org.telegram.ui.g$26:
     int val$lastPos -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    4106:4113:boolean onPreDraw() -> onPreDraw
+    4118:4125:boolean onPreDraw() -> onPreDraw
 org.telegram.ui.ChatActivity$34 -> org.telegram.ui.g$27:
     android.app.ProgressDialog val$progressDialog -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    4423:4444:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    4435:4456:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.ChatActivity$34$1 -> org.telegram.ui.g$27$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.ChatActivity$34 this$1 -> c
-    4427:4442:void run() -> run
+    4439:4454:void run() -> run
 org.telegram.ui.ChatActivity$35 -> org.telegram.ui.g$28:
     long val$reqId -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    4449:4456:void onClick(android.content.DialogInterface,int) -> onClick
+    4461:4468:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$36 -> org.telegram.ui.g$29:
     org.telegram.ui.ChatActivity this$0 -> a
-    4559:4564:void onClick(android.content.DialogInterface,int) -> onClick
+    4571:4576:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$4 -> org.telegram.ui.g$30:
     int val$userId -> a
     java.util.concurrent.Semaphore val$semaphore -> b
     org.telegram.ui.ChatActivity this$0 -> c
-    342:344:void run() -> run
+    344:346:void run() -> run
 org.telegram.ui.ChatActivity$5 -> org.telegram.ui.g$31:
     int val$encId -> a
     java.util.concurrent.Semaphore val$semaphore -> b
     org.telegram.ui.ChatActivity this$0 -> c
-    366:368:void run() -> run
+    368:370:void run() -> run
 org.telegram.ui.ChatActivity$6 -> org.telegram.ui.g$32:
     java.util.concurrent.Semaphore val$semaphore -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    387:389:void run() -> run
+    389:391:void run() -> run
 org.telegram.ui.ChatActivity$7 -> org.telegram.ui.g$33:
     org.telegram.ui.ChatActivity this$0 -> a
-    547:864:void onItemClick(int) -> a
+    559:876:void onItemClick(int) -> a
 org.telegram.ui.ChatActivity$7$1 -> org.telegram.ui.g$33$1:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    598:608:void didSelectPhotos(java.util.ArrayList,java.util.ArrayList) -> a
-    613:619:void startPhotoSelectActivity() -> a
+    610:620:void didSelectPhotos(java.util.ArrayList,java.util.ArrayList) -> a
+    625:631:void startPhotoSelectActivity() -> a
 org.telegram.ui.ChatActivity$7$2 -> org.telegram.ui.g$33$2:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    652:668:void didSelectLocation(double,double) -> a
+    664:680:void didSelectLocation(double,double) -> a
 org.telegram.ui.ChatActivity$7$3 -> org.telegram.ui.g$33$3:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    676:687:void didSelectFiles(org.telegram.ui.DocumentSelectActivity,java.util.ArrayList) -> a
-    692:698:void startDocumentSelectActivity() -> a
+    688:699:void didSelectFiles(org.telegram.ui.DocumentSelectActivity,java.util.ArrayList) -> a
+    704:710:void startDocumentSelectActivity() -> a
 org.telegram.ui.ChatActivity$7$4 -> org.telegram.ui.g$33$4:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    744:757:void onClick(android.content.DialogInterface,int) -> onClick
+    756:769:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$7$5 -> org.telegram.ui.g$33$5:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    784:786:void onClick(android.content.DialogInterface,int) -> onClick
+    796:798:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$7$6 -> org.telegram.ui.g$33$6:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    804:834:void onClick(android.content.DialogInterface,int) -> onClick
+    816:846:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$8 -> org.telegram.ui.g$34:
     org.telegram.ui.ChatActivity this$0 -> a
-    938:942:void onClick(android.view.View) -> onClick
+    950:954:void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$9 -> org.telegram.ui.g$35:
     org.telegram.ui.ChatActivity this$0 -> a
-    1036:1036:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+    1048:1048:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
 org.telegram.ui.ChatActivity$ChatAdapter -> org.telegram.ui.h:
     android.content.Context mContext -> b
     org.telegram.ui.ChatActivity this$0 -> a
-    4711:4711:boolean areAllItemsEnabled() -> areAllItemsEnabled
-    4716:4716:boolean isEnabled(int) -> isEnabled
-    4721:4730:int getCount() -> getCount
-    4735:4735:java.lang.Object getItem(int) -> getItem
-    4740:4740:long getItemId(int) -> getItemId
-    4745:4745:boolean hasStableIds() -> hasStableIds
-    4750:5076:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-    5081:5092:int getItemViewType(int) -> getItemViewType
-    5097:5097:int getViewTypeCount() -> getViewTypeCount
-    5102:5111:boolean isEmpty() -> isEmpty
+    4723:4723:boolean areAllItemsEnabled() -> areAllItemsEnabled
+    4728:4728:boolean isEnabled(int) -> isEnabled
+    4733:4742:int getCount() -> getCount
+    4747:4747:java.lang.Object getItem(int) -> getItem
+    4752:4752:long getItemId(int) -> getItemId
+    4757:4757:boolean hasStableIds() -> hasStableIds
+    4762:5088:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    5093:5104:int getItemViewType(int) -> getItemViewType
+    5109:5109:int getViewTypeCount() -> getViewTypeCount
+    5114:5123:boolean isEmpty() -> isEmpty
 org.telegram.ui.ChatActivity$ChatAdapter$1 -> org.telegram.ui.h$1:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4798:4816:void pressedUrl(java.lang.String) -> a
+    4810:4828:void pressedUrl(java.lang.String) -> a
 org.telegram.ui.ChatActivity$ChatAdapter$2 -> org.telegram.ui.h$2:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4824:4833:void didPressedUserAvatar(org.telegram.ui.Cells.ChatBaseCell,org.telegram.messenger.TLRPC$User) -> a
-    4837:4841:void didPressedCancelSendButton(org.telegram.ui.Cells.ChatBaseCell) -> a
-    4845:4846:void didLongPressed(org.telegram.ui.Cells.ChatBaseCell) -> b
-    4850:4850:boolean canPerformActions() -> a
-    4855:4862:void didPressUrl(java.lang.String) -> a
-    4866:4867:void didPressReplyMessage(org.telegram.ui.Cells.ChatBaseCell,int) -> a
+    4836:4845:void didPressedUserAvatar(org.telegram.ui.Cells.ChatBaseCell,org.telegram.messenger.TLRPC$User) -> a
+    4849:4853:void didPressedCancelSendButton(org.telegram.ui.Cells.ChatBaseCell) -> a
+    4857:4858:void didLongPressed(org.telegram.ui.Cells.ChatBaseCell) -> b
+    4862:4862:boolean canPerformActions() -> a
+    4867:4874:void didPressUrl(java.lang.String) -> a
+    4878:4879:void didPressReplyMessage(org.telegram.ui.Cells.ChatBaseCell,int) -> a
 org.telegram.ui.ChatActivity$ChatAdapter$3 -> org.telegram.ui.h$3:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4874:4956:void didClickedImage(org.telegram.ui.Cells.ChatMediaCell) -> a
-    4960:4961:void didPressedOther(org.telegram.ui.Cells.ChatMediaCell) -> b
+    4886:4968:void didClickedImage(org.telegram.ui.Cells.ChatMediaCell) -> a
+    4972:4973:void didPressedOther(org.telegram.ui.Cells.ChatMediaCell) -> b
 org.telegram.ui.ChatActivity$ChatAdapter$4 -> org.telegram.ui.h$4:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4967:4977:void didClickAddButton(org.telegram.ui.Cells.ChatContactCell,org.telegram.messenger.TLRPC$User) -> a
-    4981:5015:void didClickPhone(org.telegram.ui.Cells.ChatContactCell) -> a
+    4979:4989:void didClickAddButton(org.telegram.ui.Cells.ChatContactCell,org.telegram.messenger.TLRPC$User) -> a
+    4993:5027:void didClickPhone(org.telegram.ui.Cells.ChatContactCell) -> a
 org.telegram.ui.ChatActivity$ChatAdapter$4$1 -> org.telegram.ui.h$4$1:
     org.telegram.android.MessageObject val$messageObject -> a
     org.telegram.ui.ChatActivity$ChatAdapter$4 this$2 -> b
-    4993:5011:void onClick(android.content.DialogInterface,int) -> onClick
+    5005:5023:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$ChatAdapter$5 -> org.telegram.ui.h$5:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    5022:5025:void didClickedImage(org.telegram.ui.Cells.ChatActionCell) -> a
-    5029:5030:void didLongPressed(org.telegram.ui.Cells.ChatActionCell) -> b
-    5034:5039:void needOpenUserProfile(int) -> a
+    5034:5037:void didClickedImage(org.telegram.ui.Cells.ChatActionCell) -> a
+    5041:5042:void didLongPressed(org.telegram.ui.Cells.ChatActionCell) -> b
+    5046:5051:void needOpenUserProfile(int) -> a
 org.telegram.ui.Components.AvatarDrawable -> org.telegram.ui.Components.a:
     android.graphics.Paint paint -> a
     android.text.TextPaint namePaint -> b
