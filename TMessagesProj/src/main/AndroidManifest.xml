@@ -136,6 +136,13 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name="org.telegram.android.InstallReferrerReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
         <receiver android:name="org.telegram.android.WearReplyReceiver" android:enabled="true"/>
 
         <uses-library android:name="com.google.android.maps" android:required="false"/>

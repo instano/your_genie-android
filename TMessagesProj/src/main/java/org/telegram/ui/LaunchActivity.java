@@ -43,6 +43,7 @@ import android.widget.Toast;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
+import org.json.JSONObject;
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
@@ -308,8 +309,12 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
                         intent.putExtra(Intent.EXTRA_TEXT, ContactsController.getInstance().getInviteText());
+                        //TODO: add referrer to invite link
                         intent.putExtra(Intent.EXTRA_SUBJECT, "Try Instano - Your Personal Assistant");
                         MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_INVITE_FREINDS, null);
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put(MixPanelEvents.DISTINCT_ID, MixpanelAPI.getInstance(LaunchActivity.this, BuildVars.mixpanelToken()).getDistinctId());
+                        MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.INVITE_SENT, jsonObject);
                         startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteFriends", R.string.InviteFriends)), 500);
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);

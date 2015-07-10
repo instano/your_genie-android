@@ -46,9 +46,12 @@ import android.widget.TextView;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ContactsController;
+import org.telegram.android.InstallReferrerReceiver;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
@@ -416,6 +419,18 @@ public class LoginActivity extends BaseFragment {
             mixpanelAPI.track(MixPanelEvents.PHONE_VERIFIED, null);
 
             NetworkController.instance().registerUserIfNeeded();
+
+            SharedPreferences sharedPreferences = ApplicationLoader.applicationContext.getSharedPreferences("referrer", Context.MODE_PRIVATE);
+            if (sharedPreferences.getString(InstallReferrerReceiver.REFERRER_ID, null) != null) {
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put(MixPanelEvents.DISTINCT_ID, sharedPreferences.getString(InstallReferrerReceiver.REFERRER_ID, null));
+                    MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken()).track(MixPanelEvents.REFERRED_REGISTER, jsonObject);
+                    FileLog.d("tmessages", "registered : referrer_id " + sharedPreferences.getString(InstallReferrerReceiver.REFERRER_ID, null));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

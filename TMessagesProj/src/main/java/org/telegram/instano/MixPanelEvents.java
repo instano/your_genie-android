@@ -7,6 +7,8 @@ import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
+import org.telegram.messenger.TLRPC;
+import org.telegram.messenger.UserConfig;
 import org.telegram.ui.ChatActivity;
 import org.telegram.ui.LoginActivity;
 
@@ -108,6 +110,12 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
     public static final String URL_CLICKS = "URL clicks";
     public static final String URL_CLICKED = "URL clicked";
 
+//    Events for receiving and sending invites
+    public static final String DISTINCT_ID = "distinct_id";
+    public static final String INVITE_SENT = "invite sent";
+    public static final String REFERRED_INSTALL = "installed from referral";
+    public static final String REFERRED_REGISTER = "registered from referral";
+
     public static MixpanelAPI api(Context context) {
         if (context == null)
             return api();
@@ -130,6 +138,21 @@ public static final String INTROACTIVITY_ITEM_SCROLLED = "Introduction Icons scr
             return true;
         } catch (PackageManager.NameNotFoundException e) {
             return false;
+        }
+    }
+
+    public static void registerUser() {
+        if (UserConfig.isClientActivated()) {
+            MixpanelAPI mixpanelAPI = MixPanelEvents.api();
+            mixpanelAPI.alias(String.valueOf(UserConfig.getClientUserId()), null);
+            // we are considering the telegram's user id as a unique identifier
+            mixpanelAPI.getPeople().identify(String.valueOf(UserConfig.getClientUserId()));
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_USER_ID, UserConfig.getClientUserId());
+            TLRPC.User currentUser = UserConfig.getCurrentUser();
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_FIRST_NAME, currentUser.first_name);
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_LAST_NAME, currentUser.last_name);
+            mixpanelAPI.getPeople().set(MixPanelEvents.USER_PROPERTY_PHONE, currentUser.phone);
+
         }
     }
 }
