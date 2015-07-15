@@ -220,26 +220,30 @@ public class ApplicationLoader extends Application {
 
         startPushService();
 
-        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread thread, Throwable e) {
-                CrashlyticsCore crashlyticsCore = Crashlytics.getInstance().core;
-                if (UserConfig.isClientActivated()) {
-                    TLRPC.User currentUser = UserConfig.getCurrentUser();
-                    crashlyticsCore.setUserIdentifier(currentUser.phone);
-                    crashlyticsCore.setUserName(currentUser.fullName());
-                    crashlyticsCore.setUserEmail(currentUser.phone);
-                } else
-                    crashlyticsCore.setUserIdentifier(MixPanelEvents.getId());
-                crashlyticsCore.logException(e);
-                //        e.printStackTrace();
-                Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                System.exit(1);
-            }
-        });
+//        the current Thread.getDefaultUncaughtExceptionHandler()
+        Thread.getDefaultUncaughtExceptionHandler();
+//        create an UncaughtExceptionHandler of your own which does some work
+//        Thread.UncaughtExceptionHandler uncaughtExceptionHandler = new Thread.UncaughtExceptionHandler() {
+//            @Override
+//            public void uncaughtException(Thread thread, Throwable ex) {
+//                CrashlyticsCore crashlyticsCore = Crashlytics.getInstance().core;
+//                if (UserConfig.isClientActivated()) {
+//                    TLRPC.User currentUser = UserConfig.getCurrentUser();
+//                    crashlyticsCore.setUserIdentifier(currentUser.phone);
+//                    crashlyticsCore.setUserName(currentUser.fullName());
+//                    crashlyticsCore.setUserEmail(currentUser.phone);
+//                } else
+//                    crashlyticsCore.setUserIdentifier(MixPanelEvents.getId());
+//                crashlyticsCore.logException(ex);
+//                //        e.printStackTrace();
+//                Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
+//                System.exit(1);
+//            }
+//        };
+        Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandlerLocal());
 
     }
 
@@ -408,5 +412,27 @@ public class ApplicationLoader extends Application {
         editor.putString(PROPERTY_REG_ID, regId);
         editor.putInt(PROPERTY_APP_VERSION, appVersion);
         editor.apply();
+    }
+
+    class UncaughtExceptionHandlerLocal implements Thread.UncaughtExceptionHandler {
+
+        @Override
+        public void uncaughtException(Thread thread, Throwable ex) {
+            CrashlyticsCore crashlyticsCore = Crashlytics.getInstance().core;
+            if (UserConfig.isClientActivated()) {
+                TLRPC.User currentUser = UserConfig.getCurrentUser();
+                crashlyticsCore.setUserIdentifier(currentUser.phone);
+                crashlyticsCore.setUserName(currentUser.fullName());
+                crashlyticsCore.setUserEmail(currentUser.phone);
+            } else
+                crashlyticsCore.setUserIdentifier(MixPanelEvents.getId());
+            crashlyticsCore.logException(ex);
+            //        e.printStackTrace();
+            Intent intent = new Intent(ApplicationLoader.applicationContext, CrashActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            System.exit(1);
+        }
     }
 }

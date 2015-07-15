@@ -322,9 +322,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     drawerLayoutContainer.closeDrawer(false);
 //                    throw new RuntimeException("test crash");
                 } else if (position == 3) {
-                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_SETTINGS,null);
-                    presentFragment(new SettingsActivity());
-                    drawerLayoutContainer.closeDrawer(false);
+//                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_SETTINGS, null);
+//                    presentFragment(new SettingsActivity());
+//                    drawerLayoutContainer.closeDrawer(false);
+                    throw new RuntimeException();
                 }
 //                else if (position == 4) {
 //                    MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_ABOUT_US,null);
