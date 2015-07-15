@@ -14,6 +14,7 @@ import android.util.Log;
 import com.crashlytics.android.Crashlytics;
 
 import org.telegram.android.time.FastDateFormat;
+import org.telegram.instano.BuildVars;
 
 import java.io.File;
 import java.io.FileOutputStream;

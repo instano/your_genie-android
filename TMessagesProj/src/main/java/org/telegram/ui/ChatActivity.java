@@ -72,7 +72,7 @@ import org.telegram.android.query.ReplyMessageQuery;
 import org.telegram.instano.MixPanelEvents;
 import org.telegram.instano.network.NetworkController;
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
+import org.telegram.instano.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
