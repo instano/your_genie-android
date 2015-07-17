@@ -36,18 +36,23 @@ import android.widget.TextView;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
+import org.jivesoftware.smack.SmackException;
+import org.jivesoftware.smack.chat.Chat;
+import org.jivesoftware.smack.chat.ChatManager;
+import org.jivesoftware.smackx.receipts.DeliveryReceiptManager;
 import org.telegram.android.AndroidUtilities;
 import org.telegram.android.Emoji;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MediaController;
 import org.telegram.android.MessageObject;
 import org.telegram.android.MessagesController;
+import org.telegram.android.NotificationCenter;
 import org.telegram.android.SendMessagesHelper;
-import org.telegram.instano.MixPanelEvents;
 import org.telegram.instano.BuildVars;
+import org.telegram.instano.MixPanelEvents;
+import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLog;
-import org.telegram.android.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
@@ -56,7 +61,6 @@ import org.telegram.ui.AnimationCompat.AnimatorListenerAdapterProxy;
 import org.telegram.ui.AnimationCompat.AnimatorSetProxy;
 import org.telegram.ui.AnimationCompat.ObjectAnimatorProxy;
 import org.telegram.ui.AnimationCompat.ViewProxy;
-import org.telegram.messenger.ApplicationLoader;
 
 import java.lang.reflect.Field;
 
@@ -700,6 +704,18 @@ public class ChatActivityEnterView extends FrameLayoutFixed implements Notificat
             }
         }
         String message = messageEditText.getText().toString();
+
+        if(BuildVars.connection != null && BuildVars.connection.isAuthenticated()) {
+
+            ChatManager chatManager = ChatManager.getInstanceFor(BuildVars.connection);
+            DeliveryReceiptManager receiptManager = DeliveryReceiptManager.getInstanceFor(BuildVars.connection);
+            Chat chat = chatManager.createChat("test@instano.in");
+            try {
+                chat.sendMessage(message);
+            } catch (SmackException.NotConnectedException e) {
+                e.printStackTrace();
+            }
+        }
         if (processSendingText(message)) {
             messageEditText.setText("");
             lastTypingTimeSend = 0;

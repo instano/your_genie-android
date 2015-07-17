@@ -23,10 +23,11 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.ClipboardManager;
 import android.text.TextUtils;
@@ -265,10 +266,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private final static int id_chat_compose_panel = 1000;
 
-    private static final String HOST = "chat.instanoapp.com";
+    private static final String HOST = "172.16.0.19";
     private static final int PORT = 5222;
-    private static final String SERVICE = HOST;
-    public static final String OPERATOR_ID = "chat_operator1@chat.instanoapp.com";
+    private static final String SERVICE = "instano.in";
+    public static final String OPERATOR_ID = "test@instano.in";
 
     private AbstractXMPPConnection mConnection;
 
@@ -312,21 +313,27 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 .setConnectTimeout(6000)
                 .build();
         mConnection = new XMPPTCPConnection(connConfig);
-        try {
-            mConnection.connect();
-            mConnection.login("rohit", "rohit");
-        } catch (SmackException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (XMPPException e) {
-            e.printStackTrace();
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mConnection.connect();
+                    mConnection.login("rohit", "rohit");
+                    BuildVars.connection = mConnection;
+                } catch (SmackException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (XMPPException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
 //        ChatManager.getInstanceFor(mConnection).addChatListener(mConnectionService);
         ChatManager chatManager = ChatManager.getInstanceFor(mConnection);
         DeliveryReceiptManager receiptManager = DeliveryReceiptManager.getInstanceFor(mConnection);
-        mCurrentChat = chatManager.createChat("chat_operator1@chat.instanoapp.com");
+        mCurrentChat = chatManager.createChat("test@instano.in");
         FileLog.d(BuildVars.TAG, "onFragmentCreate()");
         if (arguments == null)
             arguments = BuildVars.args;
