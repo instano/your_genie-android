@@ -45,6 +45,7 @@ import org.telegram.android.NativeLoader;
 import org.telegram.android.NotificationsService;
 import org.telegram.android.ScreenReceiver;
 import org.telegram.android.SendMessagesHelper;
+import org.telegram.instano.BuildVars;
 import org.telegram.instano.MixPanelEvents;
 import org.telegram.instano.network.NetworkController;
 import org.telegram.ui.Components.ForegroundDetector;

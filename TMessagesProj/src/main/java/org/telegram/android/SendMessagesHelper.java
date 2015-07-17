@@ -22,7 +22,7 @@ import android.widget.Toast;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.telegram.instano.MixPanelEvents;
-import org.telegram.messenger.BuildVars;
+import org.telegram.instano.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;

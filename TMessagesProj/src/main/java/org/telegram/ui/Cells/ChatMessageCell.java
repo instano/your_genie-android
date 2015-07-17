@@ -28,7 +28,7 @@ import org.telegram.android.AndroidUtilities;
 import org.telegram.android.ImageReceiver;
 import org.telegram.android.MediaController;
 import org.telegram.android.MessageObject;
-import org.telegram.messenger.BuildVars;
+import org.telegram.instano.BuildVars;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;

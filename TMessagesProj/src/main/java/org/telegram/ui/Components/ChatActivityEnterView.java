@@ -44,7 +44,7 @@ import org.telegram.android.MessageObject;
 import org.telegram.android.MessagesController;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.instano.MixPanelEvents;
-import org.telegram.messenger.BuildVars;
+import org.telegram.instano.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLog;
 import org.telegram.android.NotificationCenter;

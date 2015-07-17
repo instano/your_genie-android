@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
 import org.telegram.ui.ChatActivity;
 import org.telegram.ui.LoginActivity;
 

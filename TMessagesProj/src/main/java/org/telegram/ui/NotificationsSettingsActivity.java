@@ -35,7 +35,7 @@ import org.telegram.android.NotificationsController;
 import org.telegram.android.NotificationCenter;
 import org.telegram.instano.MixPanelEvents;
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
+import org.telegram.instano.BuildVars;
 import org.telegram.messenger.TLObject;
 import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.ConnectionsManager;

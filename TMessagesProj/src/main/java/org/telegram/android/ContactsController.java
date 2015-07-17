@@ -22,7 +22,7 @@ import android.provider.ContactsContract;
 import android.util.SparseArray;
 
 import org.telegram.PhoneFormat.PhoneFormat;
-import org.telegram.messenger.BuildVars;
+import org.telegram.instano.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;

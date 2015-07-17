@@ -13,7 +13,7 @@ import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import org.telegram.instano.ArrayAdapterWithIcon;
-import org.telegram.messenger.BuildVars;
+import org.telegram.instano.BuildVars;
 import org.telegram.messenger.R;
 
 public class CrashActivity extends Activity {

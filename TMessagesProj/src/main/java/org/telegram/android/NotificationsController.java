@@ -33,7 +33,7 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
+import org.telegram.instano.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.DispatchQueue;
 import org.telegram.messenger.FileLog;

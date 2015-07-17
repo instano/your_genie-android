@@ -18,7 +18,7 @@ import org.telegram.android.volley.toolbox.JsonObjectRequest;
 import org.telegram.android.volley.toolbox.Volley;
 import org.telegram.instano.network.model.Order;
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
+import org.telegram.instano.BuildVars;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;

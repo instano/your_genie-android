@@ -22,6 +22,7 @@ import org.telegram.android.ContactsController;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.NotificationCenter;
+import org.telegram.instano.BuildVars;
 
 import java.io.File;
 import java.util.ArrayList;

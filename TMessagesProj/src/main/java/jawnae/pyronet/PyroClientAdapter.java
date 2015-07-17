@@ -19,7 +19,7 @@
 package jawnae.pyronet;
 
 
-import org.telegram.messenger.BuildVars;
+import org.telegram.instano.BuildVars;
 import org.telegram.messenger.FileLog;
 
 import java.io.IOException;
