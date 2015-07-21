@@ -42,12 +42,13 @@ import org.telegram.android.LocaleController;
 import org.telegram.android.MediaController;
 import org.telegram.android.MessageObject;
 import org.telegram.android.MessagesController;
+import org.telegram.android.NotificationCenter;
 import org.telegram.android.SendMessagesHelper;
+import org.telegram.instano.BuildVars;
 import org.telegram.instano.MixPanelEvents;
-import org.telegram.messenger.BuildVars;
+import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLog;
-import org.telegram.android.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.TLRPC;
 import org.telegram.messenger.UserConfig;
@@ -56,7 +57,6 @@ import org.telegram.ui.AnimationCompat.AnimatorListenerAdapterProxy;
 import org.telegram.ui.AnimationCompat.AnimatorSetProxy;
 import org.telegram.ui.AnimationCompat.ObjectAnimatorProxy;
 import org.telegram.ui.AnimationCompat.ViewProxy;
-import org.telegram.messenger.ApplicationLoader;
 
 import java.lang.reflect.Field;
 

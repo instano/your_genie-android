@@ -67,10 +67,10 @@ import org.telegram.android.NotificationCenter;
 import org.telegram.android.NotificationsController;
 import org.telegram.android.SendMessagesHelper;
 import org.telegram.android.query.ReplyMessageQuery;
+import org.telegram.instano.BuildVars;
 import org.telegram.instano.MixPanelEvents;
 import org.telegram.instano.network.NetworkController;
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ConnectionsManager;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
@@ -668,96 +668,97 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     });
                     presentFragment(fragment);
-                } else if (id == attach_document) {
-                    DocumentSelectActivity fragment = new DocumentSelectActivity();
-                    fragment.setDelegate(new DocumentSelectActivity.DocumentSelectActivityDelegate() {
-                        @Override
-                        public void didSelectFiles(DocumentSelectActivity activity, ArrayList<String> files) {
-                            activity.finishFragment();
-                            SendMessagesHelper.prepareSendingDocuments(files, files, null, null, dialog_id, replyingMessageObject);
-                            MixpanelAPI mixpanelAPI;
-                            if(getParentActivity()!=null){
-                                mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(),BuildVars.mixpanelToken());
-                            }else{
-                                mixpanelAPI = MixPanelEvents.api();
-                            }
-                            mixpanelAPI.track(MixPanelEvents.SEND_MESSAGES_ATTACH_FILE, null);
+                } else {
+                    if (id == attach_document) {
+                        DocumentSelectActivity fragment = new DocumentSelectActivity();
+                        fragment.setDelegate(new DocumentSelectActivity.DocumentSelectActivityDelegate() {
+                            @Override
+                            public void didSelectFiles(DocumentSelectActivity activity, ArrayList<String> files) {
+                                activity.finishFragment();
+                                SendMessagesHelper.prepareSendingDocuments(files, files, null, null, dialog_id, replyingMessageObject);
+                                MixpanelAPI mixpanelAPI;
+                                if (getParentActivity() != null) {
+                                    mixpanelAPI = MixpanelAPI.getInstance(getParentActivity(), BuildVars.mixpanelToken());
+                                } else {
+                                    mixpanelAPI = MixPanelEvents.api();
+                                }
+                                mixpanelAPI.track(MixPanelEvents.SEND_MESSAGES_ATTACH_FILE, null);
 
-                            showReplyPanel(false, null, null, null, false, true);
-                        }
-
-                        @Override
-                        public void startDocumentSelectActivity() {
-                            try {
-                                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                                photoPickerIntent.setType("*/*");
-                                startActivityForResult(photoPickerIntent, 21);
-                            } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                showReplyPanel(false, null, null, null, false, true);
                             }
-                        }
-                    });
-                    presentFragment(fragment);
-                } else if (id == copy) {
-                    String str = "";
-                    ArrayList<Integer> ids = new ArrayList<>(selectedMessagesCanCopyIds.keySet());
-                    if (currentEncryptedChat == null) {
-                        Collections.sort(ids);
-                    } else {
-                        Collections.sort(ids, Collections.reverseOrder());
-                    }
-                    for (Integer messageId : ids) {
-                        MessageObject messageObject = selectedMessagesCanCopyIds.get(messageId);
-                        if (str.length() != 0) {
-                            str += "\n";
-                        }
-                        if (messageObject.messageOwner.message != null) {
-                            str += messageObject.messageOwner.message;
-                        } else {
-                            str += messageObject.messageText;
-                        }
-                    }
-                    if (str.length() != 0) {
-                        if (Build.VERSION.SDK_INT < 11) {
-                            android.text.ClipboardManager clipboard = (android.text.ClipboardManager) ApplicationLoader.applicationContext.getSystemService(Context.CLIPBOARD_SERVICE);
-                            clipboard.setText(str);
-                        } else {
-                            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) ApplicationLoader.applicationContext.getSystemService(Context.CLIPBOARD_SERVICE);
-                            android.content.ClipData clip = android.content.ClipData.newPlainText("label", str);
-                            clipboard.setPrimaryClip(clip);
-                        }
-                    }
-                    selectedMessagesIds.clear();
-                    selectedMessagesCanCopyIds.clear();
-                    actionBar.hideActionMode();
-                    updateVisibleRows();
-                } else if (id == delete) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(LocaleController.formatString("AreYouSureDeleteMessages", R.string.AreYouSureDeleteMessages, LocaleController.formatPluralString("messages", selectedMessagesIds.size())));
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
-                            ArrayList<Long> random_ids = null;
-                            if (currentEncryptedChat != null) {
-                                random_ids = new ArrayList<>();
-                                for (HashMap.Entry<Integer, MessageObject> entry : selectedMessagesIds.entrySet()) {
-                                    MessageObject msg = entry.getValue();
-                                    if (msg.messageOwner.random_id != 0 && msg.type != 10) {
-                                        random_ids.add(msg.messageOwner.random_id);
-                                    }
+
+                            @Override
+                            public void startDocumentSelectActivity() {
+                                try {
+                                    Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                                    photoPickerIntent.setType("*/*");
+                                    startActivityForResult(photoPickerIntent, 21);
+                                } catch (Exception e) {
+                                    FileLog.e("tmessages", e);
                                 }
                             }
-                            MessagesController.getInstance().deleteMessages(ids, random_ids, currentEncryptedChat);
-                            actionBar.hideActionMode();
+                        });
+                        presentFragment(fragment);
+                    } else if (id == copy) {
+                        String str = "";
+                        ArrayList<Integer> ids = new ArrayList<>(selectedMessagesCanCopyIds.keySet());
+                        if (currentEncryptedChat == null) {
+                            Collections.sort(ids);
+                        } else {
+                            Collections.sort(ids, Collections.reverseOrder());
                         }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
+                        for (Integer messageId : ids) {
+                            MessageObject messageObject = selectedMessagesCanCopyIds.get(messageId);
+                            if (str.length() != 0) {
+                                str += "\n";
+                            }
+                            if (messageObject.messageOwner.message != null) {
+                                str += messageObject.messageOwner.message;
+                            } else {
+                                str += messageObject.messageText;
+                            }
+                        }
+                        if (str.length() != 0) {
+                            if (Build.VERSION.SDK_INT < 11) {
+                                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) ApplicationLoader.applicationContext.getSystemService(Context.CLIPBOARD_SERVICE);
+                                clipboard.setText(str);
+                            } else {
+                                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) ApplicationLoader.applicationContext.getSystemService(Context.CLIPBOARD_SERVICE);
+                                android.content.ClipData clip = android.content.ClipData.newPlainText("label", str);
+                                clipboard.setPrimaryClip(clip);
+                            }
+                        }
+                        selectedMessagesIds.clear();
+                        selectedMessagesCanCopyIds.clear();
+                        actionBar.hideActionMode();
+                        updateVisibleRows();
+                    } else if (id == delete) {
+                        if (getParentActivity() == null) {
+                            return;
+                        }
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                        builder.setMessage(LocaleController.formatString("AreYouSureDeleteMessages", R.string.AreYouSureDeleteMessages, LocaleController.formatPluralString("messages", selectedMessagesIds.size())));
+                        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
+                                ArrayList<Long> random_ids = null;
+                                if (currentEncryptedChat != null) {
+                                    random_ids = new ArrayList<>();
+                                    for (HashMap.Entry<Integer, MessageObject> entry : selectedMessagesIds.entrySet()) {
+                                        MessageObject msg = entry.getValue();
+                                        if (msg.messageOwner.random_id != 0 && msg.type != 10) {
+                                            random_ids.add(msg.messageOwner.random_id);
+                                        }
+                                    }
+                                }
+                                MessagesController.getInstance().deleteMessages(ids, random_ids, currentEncryptedChat);
+                                actionBar.hideActionMode();
+                            }
+                        });
+                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                        showAlertDialog(builder);
 //                } else if (id == forward) {
 //                    Bundle args = new Bundle();
 //                    args.putBoolean("onlySelect", true);
@@ -765,101 +766,102 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 //                    MessagesActivity fragment = new MessagesActivity(args);
 //                    fragment.setDelegate(ChatActivity.this);
 //                    presentFragment(fragment);
-                } else if (id == chat_enc_timer) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    showAlertDialog(AndroidUtilities.buildTTLAlert(getParentActivity(), currentEncryptedChat));
-                } else if (id == clear_history ) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    final boolean isChat = (int) dialog_id < 0 && (int) (dialog_id >> 32) != 1;
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    builder.setMessage(LocaleController.getString("AreYouSureClearHistory", R.string.AreYouSureClearHistory));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            MessagesController.getInstance().deleteDialog(dialog_id, 0, true);
-
+                    } else if (id == chat_enc_timer) {
+                        if (getParentActivity() == null) {
+                            return;
                         }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
-                } else if (id == mute) {
-                    boolean muted = MessagesController.getInstance().isDialogMuted(dialog_id);
-                    if (!muted) {
+                        showAlertDialog(AndroidUtilities.buildTTLAlert(getParentActivity(), currentEncryptedChat));
+                    } else if (id == clear_history) {
+                        if (getParentActivity() == null) {
+                            return;
+                        }
+                        final boolean isChat = (int) dialog_id < 0 && (int) (dialog_id >> 32) != 1;
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setTitle(LocaleController.getString("Notifications", R.string.Notifications));
-                        CharSequence[] items = new CharSequence[]{
-                                LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Hours", 1)),
-                                LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Hours", 8)),
-                                LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Days", 2)),
-                                LocaleController.getString("MuteDisable", R.string.MuteDisable)
-                        };
-                        builder.setItems(items, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        int untilTime = ConnectionsManager.getInstance().getCurrentTime();
-                                        if (i == 0) {
-                                            untilTime += 60 * 60;
-                                        } else if (i == 1) {
-                                            untilTime += 60 * 60 * 8;
-                                        } else if (i == 2) {
-                                            untilTime += 60 * 60 * 48;
-                                        } else if (i == 3) {
-                                            untilTime = Integer.MAX_VALUE;
-                                        }
+                        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+                        builder.setMessage(LocaleController.getString("AreYouSureClearHistory", R.string.AreYouSureClearHistory));
+                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                MessagesController.getInstance().deleteDialog(dialog_id, 0, true);
 
-                                        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                                        SharedPreferences.Editor editor = preferences.edit();
-                                        long flags = 0;
-                                        if (i == 3) {
-                                            editor.putInt("notify2_" + dialog_id, 2);
-                                            flags = 1;
-                                        } else {
-                                            editor.putInt("notify2_" + dialog_id, 3);
-                                            editor.putInt("notifyuntil_" + dialog_id, untilTime);
-                                            flags = ((long) untilTime << 32) | 1;
-                                        }
-                                        MessagesStorage.getInstance().setDialogFlags(dialog_id, flags);
-                                        editor.commit();
-                                        TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
-                                        if (dialog != null) {
-                                            dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
-                                            dialog.notify_settings.mute_until = untilTime;
-                                        }
-                                        NotificationsController.updateServerNotificationsSettings(dialog_id);
-                                    }
-                                }
-                        );
+                            }
+                        });
                         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                         showAlertDialog(builder);
-                    } else {
-                        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putInt("notify2_" + dialog_id, 0);
-                        MessagesStorage.getInstance().setDialogFlags(dialog_id, 0);
-                        editor.commit();
-                        TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
-                        if (dialog != null) {
-                            dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
+                    } else if (id == mute) {
+                        boolean muted = MessagesController.getInstance().isDialogMuted(dialog_id);
+                        if (!muted) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                            builder.setTitle(LocaleController.getString("Notifications", R.string.Notifications));
+                            CharSequence[] items = new CharSequence[]{
+                                    LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Hours", 1)),
+                                    LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Hours", 8)),
+                                    LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Days", 2)),
+                                    LocaleController.getString("MuteDisable", R.string.MuteDisable)
+                            };
+                            builder.setItems(items, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            int untilTime = ConnectionsManager.getInstance().getCurrentTime();
+                                            if (i == 0) {
+                                                untilTime += 60 * 60;
+                                            } else if (i == 1) {
+                                                untilTime += 60 * 60 * 8;
+                                            } else if (i == 2) {
+                                                untilTime += 60 * 60 * 48;
+                                            } else if (i == 3) {
+                                                untilTime = Integer.MAX_VALUE;
+                                            }
+
+                                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = preferences.edit();
+                                            long flags = 0;
+                                            if (i == 3) {
+                                                editor.putInt("notify2_" + dialog_id, 2);
+                                                flags = 1;
+                                            } else {
+                                                editor.putInt("notify2_" + dialog_id, 3);
+                                                editor.putInt("notifyuntil_" + dialog_id, untilTime);
+                                                flags = ((long) untilTime << 32) | 1;
+                                            }
+                                            MessagesStorage.getInstance().setDialogFlags(dialog_id, flags);
+                                            editor.commit();
+                                            TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
+                                            if (dialog != null) {
+                                                dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
+                                                dialog.notify_settings.mute_until = untilTime;
+                                            }
+                                            NotificationsController.updateServerNotificationsSettings(dialog_id);
+                                        }
+                                    }
+                            );
+                            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                            showAlertDialog(builder);
+                        } else {
+                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putInt("notify2_" + dialog_id, 0);
+                            MessagesStorage.getInstance().setDialogFlags(dialog_id, 0);
+                            editor.commit();
+                            TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
+                            if (dialog != null) {
+                                dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
+                            }
+                            NotificationsController.updateServerNotificationsSettings(dialog_id);
                         }
-                        NotificationsController.updateServerNotificationsSettings(dialog_id);
-                    }
-                } else if (id == reply) {
-                    if (selectedMessagesIds.size() == 1) {
-                        ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
-                        MessageObject messageObject = messagesDict.get(ids.get(0));
-                        if (messageObject != null && messageObject.messageOwner.id > 0) {
-                            showReplyPanel(true, messageObject, null, null, false, true);
+                    } else if (id == reply) {
+                        if (selectedMessagesIds.size() == 1) {
+                            ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
+                            MessageObject messageObject = messagesDict.get(ids.get(0));
+                            if (messageObject != null && messageObject.messageOwner.id > 0) {
+                                showReplyPanel(true, messageObject, null, null, false, true);
+                            }
                         }
+                        selectedMessagesIds.clear();
+                        selectedMessagesCanCopyIds.clear();
+                        actionBar.hideActionMode();
+                        updateVisibleRows();
                     }
-                    selectedMessagesIds.clear();
-                    selectedMessagesCanCopyIds.clear();
-                    actionBar.hideActionMode();
-                    updateVisibleRows();
                 }
             }
         });
