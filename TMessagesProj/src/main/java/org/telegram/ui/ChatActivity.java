@@ -23,10 +23,8 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.media.ExifInterface;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.ClipboardManager;
@@ -61,6 +59,10 @@ import org.jivesoftware.smack.SmackException;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.chat.Chat;
 import org.jivesoftware.smack.chat.ChatManager;
+import org.jivesoftware.smack.chat.ChatManagerListener;
+import org.jivesoftware.smack.chat.ChatMessageListener;
+import org.jivesoftware.smack.packet.Message;
+import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import org.jivesoftware.smackx.receipts.DeliveryReceiptManager;
@@ -131,7 +133,7 @@ import java.util.concurrent.Semaphore;
 //import org.telegram.messenger.TLRPC;
 
 public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, MessagesActivity.MessagesActivityDelegate,
-        PhotoViewer.PhotoViewerProvider {
+        PhotoViewer.PhotoViewerProvider{
 
     private static final String TAG = "ChatActivity";
 //    private TLRPC.Chat currentChat;
@@ -309,7 +311,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 .setServiceName(SERVICE)
                 .setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
                 .setDebuggerEnabled(true)
-                .setResource("smack")
+//                .setResource("smack")
                 .setConnectTimeout(6000)
                 .build();
         mConnection = new XMPPTCPConnection(connConfig);
@@ -320,6 +322,43 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     mConnection.connect();
                     mConnection.login("rohit", "rohit");
                     BuildVars.connection = mConnection;
+                    Presence subscribe = new Presence(Presence.Type.subscribe);
+                    subscribe.setTo(OPERATOR_ID);
+                    mConnection.sendStanza(subscribe);
+//                    Presence presence = new Presence(Presence.Type.available);
+//                    presence.setTo("test@instano.in");
+
+//        ChatManager.getInstanceFor(mConnection).addChatListener(mConnectionService);
+                    ChatManager chatManager = ChatManager.getInstanceFor(mConnection);
+//                    chatManager.addChatListener(ChatActivity.this);
+                    DeliveryReceiptManager receiptManager = DeliveryReceiptManager.getInstanceFor(mConnection);
+                    chatManager.addChatListener(new ChatManagerListener() {
+                        @Override
+                        public void chatCreated(Chat chat, boolean createdLocally) {
+                            chat.addMessageListener(new ChatMessageListener() {
+                                @Override
+                                public void processMessage(Chat chat, Message message) {
+                                    FileLog.d("SMACK RECIEVED", message.toString());
+                                    final Message msg = message;
+                                    getParentActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(ApplicationLoader.applicationContext,msg.toString(), Toast.LENGTH_LONG).show();
+
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                    mCurrentChat = chatManager.createChat("test@instano.in");
+//                    mCurrentChat.addMessageListener(new ChatMessageListener() {
+//                        @Override
+//                        public void processMessage(Chat chat, Message message) {
+//                            FileLog.d("SMACK RECIEVED", message.toString());
+//                            Toast.makeText(ApplicationLoader.applicationContext,message.toString(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
                 } catch (SmackException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -330,10 +369,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         }).start();
 
-//        ChatManager.getInstanceFor(mConnection).addChatListener(mConnectionService);
-        ChatManager chatManager = ChatManager.getInstanceFor(mConnection);
-        DeliveryReceiptManager receiptManager = DeliveryReceiptManager.getInstanceFor(mConnection);
-        mCurrentChat = chatManager.createChat("test@instano.in");
         FileLog.d(BuildVars.TAG, "onFragmentCreate()");
         if (arguments == null)
             arguments = BuildVars.args;
