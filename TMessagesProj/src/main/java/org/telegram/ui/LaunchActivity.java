@@ -41,6 +41,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.telegram.PhoneFormat.PhoneFormat;
@@ -1207,6 +1208,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         }
         ApplicationLoader.mainInterfacePaused = true;
         ConnectionsManager.getInstance().setAppPaused(true, false);
+        AppEventsLogger.deactivateApp(this);
     }
 
     @Override
@@ -1235,6 +1237,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         ApplicationLoader.mainInterfacePaused = false;
         ConnectionsManager.getInstance().setAppPaused(false, false);
         updateCurrentConnectionState();
+        AppEventsLogger.activateApp(this);
     }
 
     @Override

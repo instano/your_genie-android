@@ -34,6 +34,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.json.JSONException;
@@ -264,6 +265,13 @@ public class IntroActivity extends Activity {
         }
 //        Utilities.checkForCrashes(this);
 //        Utilities.checkForUpdates(this);
+        AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        AppEventsLogger.deactivateApp(this);
     }
 
     private void contactExists(final String number) {

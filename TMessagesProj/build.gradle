@@ -26,6 +26,8 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.3.0@aar') {
         transitive = true;
     }
+
+    compile 'com.facebook.android:facebook-android-sdk:4.4.0'
 }
 
 android {
@@ -83,7 +85,7 @@ android {
         applicationId "com.instano.genie"
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 34
-        versionName "1.1.7"
+        versionCode 35
+        versionName "1.1.8"
     }
 }

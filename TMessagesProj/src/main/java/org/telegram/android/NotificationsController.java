@@ -164,7 +164,6 @@ public class NotificationsController {
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
                 if (preferences.getBoolean("EnablePreviewAll", true)) {
                     if (user.phone.contains(BuildVars.PHONE)) {
-                        BuildVars.instanoUser = user;
                         if (messageObject.messageOwner instanceof TLRPC.TL_messageService) {
 //                            if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserJoined) {
 //                                msg = LocaleController.formatString("NotificationContactJoined", R.string.NotificationContactJoined, ContactsController.formatName(user.first_name, user.last_name));

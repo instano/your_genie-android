@@ -62,6 +62,20 @@ public class RecyclerListView extends RecyclerView {
         public void onTouchEvent(RecyclerView view, MotionEvent e) {
 
         }
+
+        /**
+         * Called when a child of RecyclerView does not want RecyclerView and its ancestors to
+         * intercept touch events with
+         * {@link ViewGroup#onInterceptTouchEvent(MotionEvent)}.
+         *
+         * @param disallowIntercept True if the child does not want the parent to
+         *                          intercept touch events.
+         * @see ViewParent#requestDisallowInterceptTouchEvent(boolean)
+         */
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
     }
 
     public RecyclerListView(Context context) {
