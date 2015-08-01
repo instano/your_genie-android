@@ -27,6 +27,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 
+import com.appvirality.android.AppviralityAPI;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.google.android.gms.common.ConnectionResult;
@@ -242,7 +243,7 @@ public class ApplicationLoader extends Application {
                 System.exit(1);
             }
         });
-
+        AppviralityAPI.init(this);
     }
 
     public static void startPushService() {

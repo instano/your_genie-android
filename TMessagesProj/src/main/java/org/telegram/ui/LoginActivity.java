@@ -44,6 +44,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.appvirality.android.AppviralityAPI;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.telegram.PhoneFormat.PhoneFormat;
@@ -416,6 +417,11 @@ public class LoginActivity extends BaseFragment {
             mixpanelAPI.track(MixPanelEvents.PHONE_VERIFIED, null);
 
             NetworkController.instance().registerUserIfNeeded();
+
+            AppviralityAPI.UserDetails.setInstance(getParentActivity())
+                    .isExistingUser(false)
+                    .Update();
+            AppviralityAPI.saveConversionEvent("Signup", null, null);
         }
     }
 

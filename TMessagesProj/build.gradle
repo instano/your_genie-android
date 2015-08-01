@@ -28,6 +28,7 @@ dependencies {
     }
 
     compile 'com.facebook.android:facebook-android-sdk:4.4.0'
+    compile 'com.appvirality:AppviralityUI:1.1.10'
 }
 
 android {
@@ -85,7 +86,7 @@ android {
         applicationId "com.instano.genie"
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 35
-        versionName "1.1.8"
+        versionCode 36
+        versionName "1.2.0"
     }
 }

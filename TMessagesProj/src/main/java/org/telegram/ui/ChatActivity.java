@@ -50,6 +50,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appvirality.android.AppviralityAPI;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
@@ -486,6 +487,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 //            crashlyticsCore.setUserEmail(currentUser.phone);
 //        } else
 //            crashlyticsCore.setUserIdentifier(MixPanelEvents.getId());
+
+        if (UserConfig.isClientActivated()) {
+            TLRPC.User currentUser = UserConfig.getCurrentUser();
+            AppviralityAPI.UserDetails.setInstance(getParentActivity())
+                    .setUseridInStore(String.valueOf(UserConfig.getClientUserId()))
+                    .setUserName(currentUser.fullName())
+                    .setPhoneNumber(currentUser.phone)
+                    .setPushRegID(UserConfig.pushString)
+                    .Update();
+        }
 
         return true;
     }

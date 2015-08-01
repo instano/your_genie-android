@@ -41,12 +41,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.appvirality.AppviralityUI;
 import com.facebook.appevents.AppEventsLogger;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.android.AndroidUtilities;
-import org.telegram.android.ContactsController;
 import org.telegram.android.LocaleController;
 import org.telegram.android.MessagesController;
 import org.telegram.android.MessagesStorage;
@@ -306,12 +306,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 //                else
                 if (position == 2) {
                     try {
-                        Intent intent = new Intent(Intent.ACTION_SEND);
-                        intent.setType("text/plain");
-                        intent.putExtra(Intent.EXTRA_TEXT, ContactsController.getInstance().getInviteText());
-                        intent.putExtra(Intent.EXTRA_SUBJECT, "Try Instano - Your Personal Assistant");
+                        AppviralityUI.showGrowthHack(LaunchActivity.this, AppviralityUI.GH.Word_of_Mouth);
                         MixpanelAPI.getInstance(LaunchActivity.this,BuildVars.mixpanelToken()).track(MixPanelEvents.LAUNCH_INVITE_FREINDS, null);
-                        startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteFriends", R.string.InviteFriends)), 500);
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }

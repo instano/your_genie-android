@@ -4473,6 +4473,1247 @@ android.support.v7.widget.StaggeredGridLayoutManager$Span -> android.support.v7.
     2086:2086:java.util.ArrayList access$300(android.support.v7.widget.StaggeredGridLayoutManager$Span) -> a
 bolts.AppLinks -> a.a:
     36:36:android.os.Bundle getAppLinkData(android.content.Intent) -> a
+com.appvirality.AppviralityUI -> com.appvirality.a:
+    34:35:void showGrowthHack(android.app.Activity,com.appvirality.android.AVEnums$GH) -> a
+com.appvirality.CampaignHandler -> com.appvirality.b:
+    android.app.ProgressDialog progressDialog -> a
+    com.appvirality.android.CampaignDetails userCampiagnDetails -> b
+    com.appvirality.wom.ReferrerDetails referrerDetails -> c
+    83:123:void showGrowthHack(android.app.Activity,com.appvirality.android.AVEnums$GH,com.appvirality.android.CampaignDetails) -> a
+    126:127:void setCampaignDetails(com.appvirality.android.CampaignDetails) -> a
+    130:130:com.appvirality.android.CampaignDetails getCampiagnDetails() -> a
+    138:138:com.appvirality.wom.ReferrerDetails getReferrerDetails() -> b
+    144:156:void showCampaignsNotAvailable(android.app.Activity) -> a
+    17:17:android.app.ProgressDialog access$000() -> c
+com.appvirality.CampaignHandler$3 -> com.appvirality.b$1:
+    android.app.Activity val$activity -> a
+    com.appvirality.android.AVEnums$GH val$growthType -> b
+    113:120:void onCampaignReady(com.appvirality.android.CampaignDetails) -> a
+com.appvirality.R -> com.appvirality.c:
+com.appvirality.R$drawable -> com.appvirality.d:
+    int appvirality_alert -> appvirality_alert
+    int appvirality_bell -> appvirality_bell
+    int appvirality_btnlaunchbg -> appvirality_btnlaunchbg
+    int appvirality_cbchecked -> appvirality_cbchecked
+    int appvirality_cbnormal -> appvirality_cbnormal
+    int appvirality_checkboxbackground -> appvirality_checkboxbackground
+    int appvirality_copy -> appvirality_copy
+    int appvirality_cursor_color -> appvirality_cursor_color
+    int appvirality_down -> appvirality_down
+    int appvirality_edittextbg -> appvirality_edittextbg
+    int appvirality_flag -> appvirality_flag
+    int appvirality_heartimage -> appvirality_heartimage
+    int appvirality_launchpopup_background -> appvirality_launchpopup_background
+    int appvirality_layoutbackground -> appvirality_layoutbackground
+    int appvirality_megaphone -> appvirality_megaphone
+    int appvirality_prev -> appvirality_prev
+    int appvirality_prev_grey -> appvirality_prev_grey
+    int appvirality_search -> appvirality_search
+    int appvirality_settings -> appvirality_settings
+    int appvirality_text_bg -> appvirality_text_bg
+    int appvirality_textarea -> appvirality_textarea
+    int appvirality_trofy -> appvirality_trofy
+    int appvirality_up -> appvirality_up
+    int appvirality_user_image -> appvirality_user_image
+    int appvirality_user_settings -> appvirality_user_settings
+    int appvirality_user_settings_btnsave -> appvirality_user_settings_btnsave
+    int appvirality_user_settings_text_bg -> appvirality_user_settings_text_bg
+    int appvirality_welcome_btnclaim -> appvirality_welcome_btnclaim
+    int appvirality_welcome_edemail -> appvirality_welcome_edemail
+    int appvirality_whatsapplogo -> appvirality_whatsapplogo
+    int appvirality_whatsapplogobg -> appvirality_whatsapplogobg
+    int appvirality_whatsappshare -> appvirality_whatsappshare
+    int appvirality_whitelabel -> appvirality_whitelabel
+com.appvirality.R$id -> com.appvirality.e:
+    int appvirality_btnclaim -> appvirality_btnclaim
+    int appvirality_btninvitecontacts -> appvirality_btninvitecontacts
+    int appvirality_btnlaunchbar -> appvirality_btnlaunchbar
+    int appvirality_btnmail -> appvirality_btnmail
+    int appvirality_btnremindlater -> appvirality_btnremindlater
+    int appvirality_btnsignup -> appvirality_btnsignup
+    int appvirality_btnsms -> appvirality_btnsms
+    int appvirality_campaignimage -> appvirality_campaignimage
+    int appvirality_cb -> appvirality_cb
+    int appvirality_claimed -> appvirality_claimed
+    int appvirality_contacts -> appvirality_contacts
+    int appvirality_coupon_network_message -> appvirality_coupon_network_message
+    int appvirality_coupon_reload -> appvirality_coupon_reload
+    int appvirality_coupons_layout -> appvirality_coupons_layout
+    int appvirality_custom_link -> appvirality_custom_link
+    int appvirality_custom_link_btn_layout -> appvirality_custom_link_btn_layout
+    int appvirality_custom_link_layout -> appvirality_custom_link_layout
+    int appvirality_custom_link_top -> appvirality_custom_link_top
+    int appvirality_custom_param -> appvirality_custom_param
+    int appvirality_custom_share_link -> appvirality_custom_share_link
+    int appvirality_desc -> appvirality_desc
+    int appvirality_details -> appvirality_details
+    int appvirality_divider2 -> appvirality_divider2
+    int appvirality_drop_terms -> appvirality_drop_terms
+    int appvirality_dropdown1 -> appvirality_dropdown1
+    int appvirality_dropdown2 -> appvirality_dropdown2
+    int appvirality_dropdown_coupon -> appvirality_dropdown_coupon
+    int appvirality_earnings -> appvirality_earnings
+    int appvirality_earnings_on_hold -> appvirality_earnings_on_hold
+    int appvirality_earnings_reload -> appvirality_earnings_reload
+    int appvirality_edittext_email -> appvirality_edittext_email
+    int appvirality_expandableListView -> appvirality_expandableListView
+    int appvirality_gridView -> appvirality_gridView
+    int appvirality_growth_title -> appvirality_growth_title
+    int appvirality_hold -> appvirality_hold
+    int appvirality_image -> appvirality_image
+    int appvirality_launchimage -> appvirality_launchimage
+    int appvirality_layout_terms -> appvirality_layout_terms
+    int appvirality_no_network -> appvirality_no_network
+    int appvirality_no_social_installed -> appvirality_no_social_installed
+    int appvirality_nocoupons -> appvirality_nocoupons
+    int appvirality_popup -> appvirality_popup
+    int appvirality_prev -> appvirality_prev
+    int appvirality_progress -> appvirality_progress
+    int appvirality_progress_coupon_layout -> appvirality_progress_coupon_layout
+    int appvirality_progressbar -> appvirality_progressbar
+    int appvirality_progressbar_cpn -> appvirality_progressbar_cpn
+    int appvirality_progressbar_terms -> appvirality_progressbar_terms
+    int appvirality_referral_link_title -> appvirality_referral_link_title
+    int appvirality_reward_details -> appvirality_reward_details
+    int appvirality_row_text -> appvirality_row_text
+    int appvirality_savelink -> appvirality_savelink
+    int appvirality_searchbox -> appvirality_searchbox
+    int appvirality_settings -> appvirality_settings
+    int appvirality_settings_friends -> appvirality_settings_friends
+    int appvirality_settings_reload -> appvirality_settings_reload
+    int appvirality_share_link -> appvirality_share_link
+    int appvirality_show_more -> appvirality_show_more
+    int appvirality_skip_welcome -> appvirality_skip_welcome
+    int appvirality_tblcoupons -> appvirality_tblcoupons
+    int appvirality_tblrewarded -> appvirality_tblrewarded
+    int appvirality_terms_title -> appvirality_terms_title
+    int appvirality_text -> appvirality_text
+    int appvirality_title -> appvirality_title
+    int appvirality_total_earinings -> appvirality_total_earinings
+    int appvirality_txtclaimed -> appvirality_txtclaimed
+    int appvirality_txtlaunchmessage -> appvirality_txtlaunchmessage
+    int appvirality_txtuserterms -> appvirality_txtuserterms
+    int appvirality_user_earnings -> appvirality_user_earnings
+    int appvirality_user_image -> appvirality_user_image
+    int appvirality_user_profile -> appvirality_user_profile
+    int appvirality_userearnings_network_message -> appvirality_userearnings_network_message
+    int appvirality_wom_bg -> appvirality_wom_bg
+    int appvirality_wom_terms -> appvirality_wom_terms
+    int linearLayout2 -> linearLayout2
+com.appvirality.R$layout -> com.appvirality.f:
+    int appvirality_contacts -> appvirality_contacts
+    int appvirality_group_item -> appvirality_group_item
+    int appvirality_group_list -> appvirality_group_list
+    int appvirality_lauchbar -> appvirality_lauchbar
+    int appvirality_launch_popup -> appvirality_launch_popup
+    int appvirality_rows_grid -> appvirality_rows_grid
+    int appvirality_terms -> appvirality_terms
+    int appvirality_welcomescreen -> appvirality_welcomescreen
+    int appvirality_wom_growthhackscreen -> appvirality_wom_growthhackscreen
+    int appvirality_wom_user_settings -> appvirality_wom_user_settings
+com.appvirality.android.AVEnums -> com.appvirality.a.a:
+com.appvirality.android.AVEnums$GH -> com.appvirality.a.b:
+    com.appvirality.android.AVEnums$GH Word_of_Mouth -> a
+    com.appvirality.android.AVEnums$GH[] a -> b
+    com.appvirality.android.AVEnums$GH[] values() -> values
+    com.appvirality.android.AVEnums$GH valueOf(java.lang.String) -> valueOf
+com.appvirality.android.AVEnums$Premium -> com.appvirality.a.c:
+    com.appvirality.android.AVEnums$Premium Yes -> a
+    com.appvirality.android.AVEnums$Premium No -> b
+    com.appvirality.android.AVEnums$Premium[] a -> c
+    com.appvirality.android.AVEnums$Premium[] values() -> values
+    com.appvirality.android.AVEnums$Premium valueOf(java.lang.String) -> valueOf
+com.appvirality.android.AppviralityAPI -> com.appvirality.a.d:
+    java.lang.String productID -> a
+    java.lang.String productName -> b
+    java.lang.String productURL -> c
+    java.lang.String productImageURL -> d
+    java.lang.String storeName -> e
+    com.appvirality.android.AVEnums$Premium isPremiumUser -> f
+    android.graphics.Bitmap CR_CampaignImage -> g
+    android.graphics.Bitmap CR_CampaignBGImage -> h
+    android.graphics.Bitmap WOM_CampaignImage -> i
+    android.graphics.Bitmap WOM_CampaignBGImage -> j
+    android.graphics.Bitmap ReferrerImage -> k
+    java.lang.String a -> l
+    java.lang.String b -> m
+    java.lang.String TwitterImagePath -> n
+    long Campaign_Launch_Delay -> o
+    java.lang.String e -> v
+    com.appvirality.android.AppviralityAPI$CampaignReadyListner campaignListner_Banner -> p
+    com.appvirality.android.AppviralityAPI$CampaignReadyListner campaignListner_Popup -> q
+    com.appvirality.android.AppviralityAPI$CampaignReadyListner growthHackReadyListner -> r
+    com.appvirality.android.AppviralityAPI$UserEarningsListner f -> w
+    com.appvirality.android.ConversionEventListner g -> x
+    com.appvirality.android.AppviralityAPI$CustomLinkListner h -> y
+    com.appvirality.android.AppviralityAPI$ReferrerRewardListner c -> s
+    com.appvirality.android.AppviralityAPI$RewardedDetailsListner i -> z
+    com.appvirality.android.AppviralityAPI$ReferrerDetailsListner j -> A
+    com.appvirality.android.AppviralityAPI$FriendRewardListner k -> B
+    com.appvirality.android.AppviralityAPI$CampaignTermsListner CampaignTermsListner -> t
+    com.appvirality.android.AppviralityAPI$RewardClaimed l -> C
+    boolean d -> u
+    com.appvirality.android.AppviralityAPI$UserCouponsListener m -> D
+    com.appvirality.android.AppviralityAPI$UserRewardDetailsListener n -> E
+    com.appvirality.android.AppviralityAPI o -> F
+    com.appvirality.android.AppviralityAPI$UserInstance p -> G
+    void init(android.content.Context) -> a
+    void setInstagramImagePath(java.lang.String) -> a
+    void setGrowthhackHandler(android.app.Activity,com.appvirality.android.AVEnums$GH,com.appvirality.android.AppviralityAPI$CampaignReadyListner) -> a
+    void getUserEarnings(com.appvirality.android.CampaignDetails,com.appvirality.android.AppviralityAPI$UserEarningsListner) -> a
+    void a(com.appvirality.android.CampaignDetails) -> a
+    void b(com.appvirality.android.CampaignDetails) -> b
+    void a(java.lang.String) -> b
+    void saveConversionEvent(java.lang.String,java.lang.String,java.lang.String) -> a
+    void setCustomLink(java.lang.String,com.appvirality.android.AppviralityAPI$CustomLinkListner) -> a
+    void InvokeSaveConversionEvent(org.json.JSONObject) -> a
+    void GetUserRewardDetails(com.appvirality.android.AppviralityAPI$RewardedDetailsListner,java.lang.String) -> a
+    void a(org.json.JSONObject) -> b
+    void b(org.json.JSONObject) -> c
+    void a(boolean) -> a
+    void a(com.appvirality.android.UserRewardDetails) -> a
+    void InvokeWelcomeScreen(com.appvirality.wom.ReferrerDetails) -> a
+    void getCampaignTerms(java.lang.String,com.appvirality.android.AppviralityAPI$CampaignTermsListner) -> a
+    void a(boolean,java.lang.String) -> a
+    void ClickedCampaign(java.lang.String) -> c
+    void startActvity(java.lang.String,android.content.ComponentName,android.content.Context) -> a
+    void startActvity(java.lang.String,android.content.ComponentName,android.content.Context,java.util.List,java.util.List) -> a
+    void claimRewardOnInstall(android.content.Context,java.lang.String,com.appvirality.android.AppviralityAPI$RewardClaimed) -> a
+    void b(boolean,java.lang.String) -> b
+    java.lang.String getEmailIdFromAccounts(android.content.Context) -> b
+    boolean hasGetAccountsPermission(android.content.Context) -> c
+    boolean isNetworkAvailable(android.content.Context) -> d
+    void copiedToClipBoard(android.content.Context) -> e
+    void a() -> a
+    void getUserCoupons(com.appvirality.android.AppviralityAPI$UserCouponsListener) -> a
+    void a(boolean,java.util.List) -> a
+    void c(org.json.JSONObject) -> d
+com.appvirality.android.AppviralityAPI$1 -> com.appvirality.a.d$1:
+    com.appvirality.android.CampaignDetails a -> a
+    void run() -> run
+com.appvirality.android.AppviralityAPI$2 -> com.appvirality.a.d$2:
+    com.appvirality.android.CampaignDetails a -> a
+    void run() -> run
+com.appvirality.android.AppviralityAPI$CampaignReadyListner -> com.appvirality.a.e:
+    void onCampaignReady(com.appvirality.android.CampaignDetails) -> a
+com.appvirality.android.AppviralityAPI$CampaignReadyListnerSDK -> com.appvirality.a.f:
+    void onCampaignReady(java.lang.String) -> a
+com.appvirality.android.AppviralityAPI$CampaignTermsListner -> com.appvirality.a.g:
+    void onSuccess(boolean,java.lang.String) -> a
+com.appvirality.android.AppviralityAPI$CustomLinkListner -> com.appvirality.a.h:
+    void onCustomLinkSaved(boolean) -> a
+com.appvirality.android.AppviralityAPI$FriendRewardListner -> com.appvirality.a.i:
+    void onFriendReward(org.json.JSONObject) -> a
+com.appvirality.android.AppviralityAPI$ReferrerDetailsListner -> com.appvirality.a.j:
+    void onReferrerDetailsReady(com.appvirality.wom.ReferrerDetails) -> a
+com.appvirality.android.AppviralityAPI$ReferrerRewardListner -> com.appvirality.a.k:
+    void onReferrerReward(org.json.JSONObject) -> a
+com.appvirality.android.AppviralityAPI$RewardClaimed -> com.appvirality.a.l:
+    void OnResponse(boolean,java.lang.String) -> a
+com.appvirality.android.AppviralityAPI$RewardedDetailsListner -> com.appvirality.a.m:
+    void setUserReawardDetails(com.appvirality.android.UserRewardDetails) -> a
+com.appvirality.android.AppviralityAPI$UserCouponsListener -> com.appvirality.a.n:
+    void onResponse(boolean,java.util.List) -> a
+com.appvirality.android.AppviralityAPI$UserDetails -> com.appvirality.a.o:
+    java.lang.String email -> d
+    java.lang.String name -> e
+    java.lang.String storeId -> f
+    java.lang.String pfImage -> g
+    java.lang.String usercountry -> h
+    java.lang.String userstate -> i
+    java.lang.String usercity -> j
+    java.lang.String phone -> k
+    java.lang.String pushId -> l
+    boolean userAlreadyExists -> a
+    boolean isUserExistsSetByOwner -> b
+    com.appvirality.android.AppviralityAPI$UserDetails userDetails -> c
+    com.appvirality.android.AppviralityAPI$UserDetails setInstance(android.content.Context) -> a
+    com.appvirality.android.AppviralityAPI$UserDetails setUserName(java.lang.String) -> a
+    com.appvirality.android.AppviralityAPI$UserDetails setUseridInStore(java.lang.String) -> b
+    com.appvirality.android.AppviralityAPI$UserDetails setPhoneNumber(java.lang.String) -> c
+    com.appvirality.android.AppviralityAPI$UserDetails isExistingUser(boolean) -> a
+    com.appvirality.android.AppviralityAPI$UserDetails setPushRegID(java.lang.String) -> d
+    void Update() -> a
+com.appvirality.android.AppviralityAPI$UserEarningsListner -> com.appvirality.a.p:
+    void showUserEarnings(java.lang.String) -> a
+com.appvirality.android.AppviralityAPI$UserInstance -> com.appvirality.a.q:
+    void onInstance(com.appvirality.android.AppviralityAPI) -> a
+com.appvirality.android.AppviralityAPI$UserRewardDetailsListener -> com.appvirality.a.r:
+    void onRewardDetails(org.json.JSONObject) -> a
+com.appvirality.android.CampaignDetails -> com.appvirality.a.s:
+    java.lang.String CampaignId -> a
+    java.lang.String CampaignName -> b
+    java.lang.String OfferTitle -> c
+    java.lang.String OfferTitleColor -> d
+    java.lang.String OfferDescription -> e
+    java.lang.String OfferDescriptionColor -> f
+    java.lang.String CampaignBGColor -> g
+    java.lang.String CampaignTerms -> h
+    android.graphics.Bitmap CampaignImage -> i
+    android.graphics.Bitmap CampaignBGImage -> j
+    java.lang.String LaunchMessage -> k
+    java.lang.String LaunchButtonText -> l
+    java.lang.String RemindButtonText -> m
+    java.lang.String LaunchMsgColor -> n
+    java.lang.String LaunchBGColor -> o
+    java.lang.String LaunchButtonBGColor -> p
+    java.lang.String LaunchButtonTextColor -> q
+    int LaunchIconId -> r
+    java.util.List CampaignSocialActions -> s
+    java.lang.String CustomDomin -> t
+    java.lang.String Shortcode -> u
+    java.lang.String ShareUrl -> v
+    boolean a -> w
+    java.lang.String b -> x
+    java.lang.String c -> y
+    java.lang.String d -> z
+    java.lang.String CampaignImageUrl -> A
+    java.lang.String CampaignBGImageUrl -> B
+    java.lang.String e -> C
+    java.lang.String f -> D
+    java.lang.String g -> E
+    java.lang.String h -> F
+    java.lang.String i -> G
+    java.lang.String j -> H
+    boolean showCustomLink -> I
+    java.lang.String NoSocialActionsMessage -> J
+    boolean NoSocialActionsFound -> K
+    java.lang.String UserCustomLink -> L
+    java.lang.String k -> M
+    com.appvirality.android.AVEnums$GH growthHackType -> N
+    java.lang.String l -> O
+    java.lang.String m -> P
+    java.lang.String n -> Q
+    boolean isCustomTemplete -> R
+    boolean EnableLaunchBar -> S
+    boolean EnablePopup -> T
+    boolean isRewardExists -> U
+    java.util.ArrayList AllSocialActions -> V
+    java.util.ArrayList TopSocialActions -> W
+    java.util.ArrayList CR_SocialActions -> X
+com.appvirality.android.ConversionEventListner -> com.appvirality.a.t:
+    void onConversionEventSuccess(org.json.JSONObject) -> a
+com.appvirality.android.CouponDetails -> com.appvirality.a.u:
+    java.lang.String couponCode -> a
+    java.lang.String couponExpiry -> b
+    java.lang.String couponValue -> c
+    java.lang.String couponUnit -> d
+    java.lang.String campaignID -> e
+    java.lang.String campaignName -> f
+com.appvirality.android.RedeemListner -> com.appvirality.a.v:
+    void onRedeemResponse(boolean) -> a
+com.appvirality.android.ReferredUser -> com.appvirality.a.w:
+    java.lang.String UserEmailID -> a
+    java.lang.String UserName -> b
+    java.lang.String ProfileImage -> c
+    java.lang.String RegDate -> d
+com.appvirality.android.SocialActions -> com.appvirality.a.x:
+    java.lang.String socialActionId -> a
+    java.lang.String socialActionName -> b
+    java.lang.String shareMessage -> c
+    java.lang.String shareTitle -> d
+    java.lang.String shareUrl -> e
+    java.lang.String shareImageUrl -> f
+    int displayOrder -> g
+    boolean a -> h
+com.appvirality.android.UserRewardDetails -> com.appvirality.a.y:
+    java.lang.String TotalRewarded -> a
+    java.lang.String TotalPending -> b
+    java.lang.String TotalClaimed -> c
+    java.lang.String PendingToRedeem -> d
+    java.lang.String RewardType -> e
+    java.util.List ReferredUsers -> f
+com.appvirality.android.a -> com.appvirality.a.z:
+    boolean a -> a
+    java.util.List a(java.lang.String,org.json.JSONArray) -> a
+    int b(java.lang.String,org.json.JSONArray) -> b
+    com.appvirality.android.CampaignDetails a(java.lang.String,org.json.JSONObject,java.lang.String,android.content.Context,boolean) -> a
+    void a(com.appvirality.android.g,android.content.Context) -> a
+    void a(java.lang.String,boolean) -> a
+    com.appvirality.android.CampaignDetails a(org.json.JSONArray,com.appvirality.android.CampaignDetails) -> a
+    java.util.List a(org.json.JSONArray,java.lang.String,android.content.Context,java.lang.String) -> a
+    java.lang.String a(org.json.JSONArray,java.lang.String) -> a
+    java.lang.String a(java.util.List) -> a
+    int a(java.util.List,java.lang.String) -> a
+    boolean a(java.lang.String,android.content.Context,java.lang.String,java.lang.String,java.lang.String) -> a
+    java.lang.String a(java.lang.String) -> a
+    java.lang.String b(java.lang.String) -> b
+    int c(java.lang.String) -> c
+    java.lang.String a(java.lang.String,android.content.Context) -> a
+    android.graphics.Bitmap a(java.lang.String,java.lang.String,java.lang.String,android.content.Context) -> a
+    void a(org.json.JSONObject,android.content.Context) -> a
+    void b(org.json.JSONObject,android.content.Context) -> b
+    void c(org.json.JSONObject,android.content.Context) -> c
+com.appvirality.android.b -> com.appvirality.a.aa:
+    java.lang.String a -> a
+    java.lang.String b -> b
+    boolean equals(java.lang.Object) -> equals
+com.appvirality.android.c -> com.appvirality.a.ab:
+    com.appvirality.android.CampaignDetails a -> a
+    com.appvirality.wom.ReferrerDetails b -> b
+    org.json.JSONObject e -> c
+    java.lang.String f -> d
+    java.lang.String g -> e
+    java.lang.String h -> f
+    java.lang.String i -> g
+    java.lang.String j -> h
+    java.lang.String k -> i
+    java.lang.String l -> j
+    java.lang.String m -> k
+    java.lang.String n -> l
+    java.lang.String o -> m
+    java.lang.String p -> n
+    java.lang.String q -> o
+    java.lang.String r -> p
+    void a(java.lang.String,java.lang.String,java.lang.String,org.json.JSONObject) -> a
+    void a(com.appvirality.android.CampaignDetails) -> a
+    com.appvirality.android.CampaignDetails a() -> a
+    void a(com.appvirality.wom.ReferrerDetails) -> a
+    com.appvirality.wom.ReferrerDetails b() -> b
+    com.appvirality.android.CampaignDetails c() -> c
+    void a(org.json.JSONObject) -> a
+    org.json.JSONObject f() -> d
+    void a(android.content.Context) -> a
+    void a(java.lang.String) -> a
+    void a(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
+    java.lang.String g() -> e
+    java.lang.String h() -> f
+    java.lang.String i() -> g
+    java.lang.String j() -> h
+    java.lang.String k() -> i
+    java.lang.String l() -> j
+    java.lang.String m() -> k
+    java.lang.String n() -> l
+    java.lang.String o() -> m
+    void b(java.lang.String) -> b
+    void c(java.lang.String) -> c
+    void d(java.lang.String) -> d
+    void e(java.lang.String) -> e
+    java.lang.String p() -> n
+    java.lang.String q() -> o
+    java.lang.String r() -> p
+    java.lang.String s() -> q
+com.appvirality.android.d -> com.appvirality.a.ac:
+    android.content.Context b -> b
+    java.lang.String c -> c
+    java.lang.String d -> d
+    boolean a -> a
+    java.lang.String e -> e
+    boolean a() -> a
+    java.lang.String b() -> b
+    void c() -> c
+    void d() -> d
+    boolean a(boolean,java.lang.String,java.lang.String) -> a
+    java.lang.String a(java.lang.String) -> a
+    com.appvirality.android.UserRewardDetails b(java.lang.String) -> b
+    java.lang.String e() -> e
+    java.lang.String c(java.lang.String) -> c
+    com.appvirality.android.UserRewardDetails d(java.lang.String) -> d
+    java.lang.String e(java.lang.String) -> e
+    java.lang.String f() -> f
+    boolean f(java.lang.String) -> f
+    java.util.List g() -> g
+    org.json.JSONObject h() -> h
+    org.json.JSONObject k() -> k
+    java.lang.String a(java.lang.String,java.lang.String,java.lang.String,java.lang.String,boolean,boolean) -> a
+    java.lang.String i() -> i
+    void a(java.lang.String,java.lang.String,java.lang.String) -> a
+    java.lang.String a(java.lang.String,org.json.JSONObject) -> a
+    java.lang.String a(org.apache.http.HttpResponse,java.lang.String) -> a
+    void a(com.appvirality.android.j$c,java.lang.String[]) -> a
+    org.json.JSONArray l() -> l
+    java.lang.String j() -> j
+    android.content.Context a(com.appvirality.android.d) -> a
+com.appvirality.android.d$a -> com.appvirality.a.ad:
+    com.appvirality.android.j$c a -> a
+    com.appvirality.android.UserRewardDetails b -> b
+    com.appvirality.android.RedeemListner c -> c
+    java.util.ArrayList d -> d
+    java.lang.String e -> e
+    java.util.List f -> f
+    org.json.JSONObject g -> g
+    com.appvirality.android.d h -> h
+    java.lang.String a(java.lang.String[]) -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.appvirality.android.e -> com.appvirality.a.ae:
+    android.content.Context a -> a
+    android.app.Activity b -> b
+    java.lang.String i -> i
+    com.appvirality.android.g j -> j
+    com.appvirality.android.AppviralityAPI$CampaignReadyListnerSDK c -> c
+    java.lang.String d -> d
+    com.appvirality.android.AppviralityAPI$CampaignReadyListnerSDK e -> e
+    java.lang.String f -> f
+    com.appvirality.android.AppviralityAPI$CampaignReadyListnerSDK g -> g
+    com.appvirality.android.AppviralityAPI$CampaignReadyListnerSDK h -> h
+    com.appvirality.android.g j() -> h
+    void a() -> a
+    void a(android.content.Context,java.lang.String) -> a
+    void b(boolean) -> b
+    void k() -> i
+    void a(android.app.Activity,java.lang.String) -> a
+    void a(java.lang.String,boolean,boolean) -> a
+    void a(java.lang.String) -> a
+    void b() -> b
+    java.lang.String a(java.lang.String,boolean) -> a
+    void b(java.lang.String) -> b
+    boolean a(com.appvirality.android.CampaignDetails) -> a
+    com.appvirality.android.SocialActions a(java.util.List,java.lang.String) -> a
+    java.lang.String a(java.util.ArrayList,java.lang.String) -> a
+    boolean h(java.lang.String) -> g
+    boolean a(java.lang.String,java.lang.String) -> a
+    boolean b(java.lang.String,java.lang.String) -> b
+    boolean i(java.lang.String) -> h
+    boolean j(java.lang.String) -> i
+    boolean k(java.lang.String) -> j
+    boolean a(boolean) -> a
+    boolean a(java.lang.String,boolean,int,int,int) -> a
+    boolean a(java.lang.String,boolean,java.lang.String,int,int) -> a
+    boolean a(java.lang.String,java.lang.String,java.lang.String) -> a
+    void b(java.lang.String,boolean) -> b
+    org.json.JSONObject a(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
+    org.json.JSONObject a(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
+    java.lang.String a(android.content.Context) -> a
+    void d(java.lang.String) -> c
+    void c(com.appvirality.android.CampaignDetails) -> b
+    void e(java.lang.String) -> d
+    void c() -> c
+    void f(java.lang.String) -> e
+    void d() -> d
+    void a(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
+    void e() -> e
+    void g() -> f
+    void g(java.lang.String) -> f
+    com.appvirality.android.g i() -> g
+    com.appvirality.android.CampaignDetails d(com.appvirality.android.CampaignDetails) -> c
+    com.appvirality.android.CampaignDetails e(com.appvirality.android.CampaignDetails) -> d
+com.appvirality.android.e$1 -> com.appvirality.a.ae$1:
+    void onCampaignReady(java.lang.String) -> a
+com.appvirality.android.e$2 -> com.appvirality.a.ae$2:
+    void onCampaignReady(java.lang.String) -> a
+com.appvirality.android.e$3 -> com.appvirality.a.ae$3:
+    void onReferrerDetailsReady(com.appvirality.wom.ReferrerDetails) -> a
+com.appvirality.android.e$4 -> com.appvirality.a.ae$4:
+    java.lang.String a -> a
+    java.lang.String b -> b
+    boolean c -> c
+    void run() -> run
+com.appvirality.android.e$5 -> com.appvirality.a.ae$5:
+    java.lang.String a -> a
+    void run() -> run
+com.appvirality.android.f -> com.appvirality.a.af:
+    android.content.Context a -> a
+    android.location.LocationManager b -> b
+    com.appvirality.android.f$b c -> c
+    void a() -> a
+    android.location.Location b() -> b
+    void a(java.lang.Boolean) -> a
+    boolean a(android.location.Location) -> a
+    void a(com.appvirality.android.f,java.lang.Boolean) -> a
+    android.location.LocationManager a(com.appvirality.android.f) -> a
+    com.appvirality.android.f$b b(com.appvirality.android.f) -> b
+    void a(com.appvirality.android.f,android.location.LocationManager) -> a
+    void a(com.appvirality.android.f,com.appvirality.android.f$b) -> a
+com.appvirality.android.f$a -> com.appvirality.a.ag:
+    android.location.Location a -> a
+    com.appvirality.android.f b -> b
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.appvirality.android.f$b -> com.appvirality.a.ah:
+    com.appvirality.android.f a -> a
+    void onLocationChanged(android.location.Location) -> onLocationChanged
+    void onProviderDisabled(java.lang.String) -> onProviderDisabled
+    void onProviderEnabled(java.lang.String) -> onProviderEnabled
+    void onStatusChanged(java.lang.String,int,android.os.Bundle) -> onStatusChanged
+com.appvirality.android.g -> com.appvirality.a.ai:
+    android.content.SharedPreferences a -> a
+    android.content.SharedPreferences$Editor b -> b
+    java.lang.String a() -> a
+    void a(java.lang.String) -> a
+    void a(boolean) -> a
+    java.lang.String b() -> b
+    void b(java.lang.String) -> b
+    java.lang.String c() -> c
+    void d() -> d
+    java.lang.String e() -> e
+    void d(java.lang.String) -> c
+    java.lang.String e(java.lang.String) -> d
+    void a(java.lang.String,java.lang.String) -> a
+    void f(java.lang.String) -> e
+    boolean f() -> f
+    void b(boolean) -> b
+    boolean g() -> g
+    void c(boolean) -> c
+    java.lang.String h() -> h
+    void g(java.lang.String) -> f
+    int i() -> i
+    void a(int) -> a
+    java.lang.String j() -> j
+    void h(java.lang.String) -> g
+    java.lang.String k() -> k
+    java.lang.String l() -> l
+    void i(java.lang.String) -> h
+    java.lang.String m() -> m
+    void j(java.lang.String) -> i
+    java.lang.String n() -> n
+    void k(java.lang.String) -> j
+    java.lang.String o() -> o
+    void l(java.lang.String) -> k
+    java.lang.String p() -> p
+    void m(java.lang.String) -> l
+    void n(java.lang.String) -> m
+    void o(java.lang.String) -> n
+    java.lang.String q() -> q
+    void p(java.lang.String) -> o
+    java.lang.String r() -> r
+    void q(java.lang.String) -> p
+    java.lang.String s() -> s
+    void r(java.lang.String) -> q
+    void s(java.lang.String) -> r
+    java.lang.String t() -> t
+    void t(java.lang.String) -> s
+    java.lang.String u() -> u
+    void u(java.lang.String) -> t
+    java.lang.String v() -> v
+    void v(java.lang.String) -> u
+    java.lang.String w() -> w
+    void w(java.lang.String) -> v
+    java.lang.String x() -> x
+    void x(java.lang.String) -> w
+    java.lang.String y() -> y
+    void y(java.lang.String) -> x
+    java.lang.String z() -> z
+    void z(java.lang.String) -> y
+    boolean A() -> A
+    void d(boolean) -> d
+    java.lang.String B() -> B
+    void A(java.lang.String) -> z
+    java.lang.String C() -> C
+    void B(java.lang.String) -> A
+    java.lang.String D() -> D
+    void C(java.lang.String) -> B
+    java.lang.String E() -> E
+    void D(java.lang.String) -> C
+    java.lang.String F() -> F
+    void E(java.lang.String) -> D
+    void e(boolean) -> e
+    java.lang.String H() -> G
+    void F(java.lang.String) -> E
+    java.lang.String I() -> H
+    void G(java.lang.String) -> F
+    java.lang.String J() -> I
+    void H(java.lang.String) -> G
+    java.lang.String I(java.lang.String) -> H
+    boolean J(java.lang.String) -> I
+    void b(java.lang.String,java.lang.String) -> b
+    void a(java.lang.String,boolean) -> a
+    void K(java.lang.String) -> J
+com.appvirality.android.h -> com.appvirality.a.aj:
+    android.content.Context c -> c
+    com.appvirality.android.g d -> d
+    boolean a -> a
+    java.lang.String b -> b
+    java.lang.String a(java.lang.String) -> a
+    boolean b(java.lang.String) -> b
+    boolean c(java.lang.String) -> c
+    java.lang.String d(java.lang.String) -> d
+    com.appvirality.android.UserRewardDetails e(java.lang.String) -> e
+    java.util.List f(java.lang.String) -> f
+    org.json.JSONObject g(java.lang.String) -> g
+    java.util.List a(org.json.JSONArray) -> a
+    boolean h(java.lang.String) -> h
+    void a(java.lang.String,java.util.List,com.appvirality.android.g,boolean) -> a
+    boolean a(java.lang.String,java.lang.String,java.lang.String) -> a
+    boolean b(java.lang.String,java.lang.String,java.lang.String) -> b
+    boolean a(java.lang.String,java.lang.String) -> a
+    boolean a(java.lang.String,boolean) -> a
+    java.lang.String i(java.lang.String) -> i
+    android.graphics.Bitmap j(java.lang.String) -> j
+    void a(android.graphics.Bitmap,java.lang.String) -> a
+    void a() -> a
+    void b() -> b
+    void c() -> c
+com.appvirality.android.i -> com.appvirality.a.ak:
+    android.hardware.SensorManager a -> a
+    float b -> b
+    float c -> c
+    float d -> d
+    long e -> e
+    android.content.Context f -> f
+    int g -> g
+    long h -> h
+    long i -> i
+    com.appvirality.android.i j -> j
+    boolean k -> k
+    boolean a() -> a
+    void a(android.content.Context) -> a
+    void onAccuracyChanged(android.hardware.Sensor,int) -> onAccuracyChanged
+    void onSensorChanged(android.hardware.SensorEvent) -> onSensorChanged
+com.appvirality.android.j -> com.appvirality.a.al:
+    java.lang.String w -> w
+    java.lang.String x -> x
+    java.lang.String a -> a
+    java.lang.String b -> b
+    java.lang.String c -> c
+    java.lang.String d -> d
+    java.lang.String e -> e
+    java.lang.String f -> f
+    java.lang.String g -> g
+    java.lang.String h -> h
+    java.lang.String i -> i
+    java.lang.String j -> j
+    boolean k -> k
+    java.lang.String l -> l
+    java.lang.String m -> m
+    java.lang.String n -> n
+    boolean o -> o
+    boolean p -> p
+    java.lang.String q -> q
+    long r -> r
+    long s -> s
+    long t -> t
+    long u -> u
+    long v -> v
+    java.lang.String[] y -> y
+    void a(java.lang.String,java.lang.String) -> a
+    boolean a(android.content.Context) -> a
+    java.lang.String b(android.content.Context) -> b
+    java.lang.String c(android.content.Context) -> c
+    java.lang.String a() -> a
+    java.lang.String d(android.content.Context) -> d
+    java.lang.String b() -> b
+    java.lang.String c() -> c
+    java.lang.String d() -> d
+    java.lang.String e(android.content.Context) -> e
+    java.lang.String b(java.lang.String) -> b
+    long e() -> e
+    java.lang.String a(java.util.Date) -> a
+    long a(java.lang.String) -> a
+    java.text.SimpleDateFormat g() -> g
+    java.lang.String f(android.content.Context) -> f
+    java.lang.String g(android.content.Context) -> g
+    java.lang.String h(android.content.Context) -> h
+    java.lang.String a(android.content.Context,boolean,boolean) -> a
+    boolean i(android.content.Context) -> i
+    java.lang.String j(android.content.Context) -> j
+    boolean a(android.content.Context,java.lang.String) -> a
+    java.lang.String k(android.content.Context) -> k
+    java.lang.String l(android.content.Context) -> l
+    java.lang.String m(android.content.Context) -> m
+    boolean n(android.content.Context) -> n
+    java.lang.String f() -> f
+com.appvirality.android.j$a -> com.appvirality.a.am:
+    com.appvirality.android.j$a a -> a
+    com.appvirality.android.j$a b -> b
+    com.appvirality.android.j$a c -> c
+    com.appvirality.android.j$a[] d -> d
+    com.appvirality.android.j$a[] values() -> values
+    com.appvirality.android.j$a valueOf(java.lang.String) -> valueOf
+com.appvirality.android.j$b -> com.appvirality.a.an:
+    com.appvirality.android.j$b a -> a
+    com.appvirality.android.j$b b -> b
+    com.appvirality.android.j$b c -> c
+    com.appvirality.android.j$b[] d -> d
+    com.appvirality.android.j$b[] values() -> values
+    com.appvirality.android.j$b valueOf(java.lang.String) -> valueOf
+com.appvirality.android.j$c -> com.appvirality.a.ao:
+    com.appvirality.android.j$c u -> u
+    com.appvirality.android.j$c a -> a
+    com.appvirality.android.j$c b -> b
+    com.appvirality.android.j$c c -> c
+    com.appvirality.android.j$c d -> d
+    com.appvirality.android.j$c e -> e
+    com.appvirality.android.j$c f -> f
+    com.appvirality.android.j$c g -> g
+    com.appvirality.android.j$c h -> h
+    com.appvirality.android.j$c i -> i
+    com.appvirality.android.j$c j -> j
+    com.appvirality.android.j$c k -> k
+    com.appvirality.android.j$c l -> l
+    com.appvirality.android.j$c m -> m
+    com.appvirality.android.j$c n -> n
+    com.appvirality.android.j$c o -> o
+    com.appvirality.android.j$c p -> p
+    com.appvirality.android.j$c q -> q
+    com.appvirality.android.j$c r -> r
+    com.appvirality.android.j$c s -> s
+    com.appvirality.android.j$c t -> t
+    com.appvirality.android.j$c[] v -> v
+    com.appvirality.android.j$c[] values() -> values
+    com.appvirality.android.j$c valueOf(java.lang.String) -> valueOf
+com.appvirality.android.j$d -> com.appvirality.a.ap:
+    com.appvirality.android.j$d a -> a
+    com.appvirality.android.j$d b -> b
+    com.appvirality.android.j$d c -> c
+    com.appvirality.android.j$d j -> j
+    com.appvirality.android.j$d k -> k
+    com.appvirality.android.j$d d -> d
+    com.appvirality.android.j$d e -> e
+    com.appvirality.android.j$d l -> l
+    com.appvirality.android.j$d m -> m
+    com.appvirality.android.j$d f -> f
+    com.appvirality.android.j$d g -> g
+    com.appvirality.android.j$d n -> n
+    com.appvirality.android.j$d o -> o
+    com.appvirality.android.j$d p -> p
+    com.appvirality.android.j$d h -> h
+    com.appvirality.android.j$d i -> i
+    java.lang.String q -> q
+    com.appvirality.android.j$d[] r -> r
+    java.lang.String a() -> a
+    com.appvirality.android.j$d a(java.lang.String) -> a
+    com.appvirality.android.j$d b(java.lang.String) -> b
+    com.appvirality.android.j$d[] values() -> values
+    com.appvirality.android.j$d valueOf(java.lang.String) -> valueOf
+com.appvirality.android.j$e -> com.appvirality.a.aq:
+    com.appvirality.android.j$e e -> e
+    com.appvirality.android.j$e f -> f
+    com.appvirality.android.j$e g -> g
+    com.appvirality.android.j$e h -> h
+    com.appvirality.android.j$e i -> i
+    com.appvirality.android.j$e j -> j
+    com.appvirality.android.j$e a -> a
+    com.appvirality.android.j$e b -> b
+    com.appvirality.android.j$e c -> c
+    com.appvirality.android.j$e d -> d
+    com.appvirality.android.j$e k -> k
+    com.appvirality.android.j$e l -> l
+    com.appvirality.android.j$e m -> m
+    com.appvirality.android.j$e n -> n
+    com.appvirality.android.j$e o -> o
+    int p -> p
+    com.appvirality.android.j$e[] q -> q
+    com.appvirality.android.j$e a(int) -> a
+    com.appvirality.android.j$e[] values() -> values
+    com.appvirality.android.j$e valueOf(java.lang.String) -> valueOf
+com.appvirality.wom.Contact -> com.appvirality.wom.a:
+    java.lang.String number -> a
+    boolean isChecked -> b
+    boolean isEmail -> c
+com.appvirality.wom.ExpandableAdapter -> com.appvirality.wom.b:
+    android.view.LayoutInflater layoutInflater -> d
+    android.widget.Button btnInviteFriends -> e
+    java.util.LinkedHashMap groupList -> f
+    java.util.ArrayList mainGroup -> g
+    int totalSelected -> a
+    int sizeOfRecentList -> b
+    int childLayoutResourceId -> h
+    int childTitleResourceId -> i
+    int childCheckBoxResourceId -> j
+    int parentLayoutResourceId -> k
+    int parentTitleResourceId -> l
+    int parentCheckBoxResourceId -> m
+    int parentImageResourceId -> n
+    java.util.List selectedPhoneNumbers -> o
+    java.util.List selectedEmails -> p
+    java.util.List selectedContacts -> q
+    android.widget.ExpandableListView expdListView -> c
+    android.content.Context cont -> r
+    android.widget.Button btnSMS -> s
+    android.widget.Button btnEmails -> t
+    50:53:void setChildLayoutResouces(int,int,int) -> a
+    57:61:void setParentLayoutResources(int,int,int,int) -> a
+    165:168:void clearSavedData() -> a
+    171:173:com.appvirality.wom.Contact getChild(int,int) -> a
+    177:177:long getChildId(int,int) -> getChildId
+    182:228:android.view.View getChildView(int,int,boolean,android.view.View,android.view.ViewGroup) -> getChildView
+    232:233:int getChildrenCount(int) -> getChildrenCount
+    237:237:com.appvirality.wom.Parent getGroup(int) -> a
+    241:241:int getGroupCount() -> getGroupCount
+    245:245:int getItemViewType(int) -> b
+    249:249:long getGroupId(int) -> getGroupId
+    254:309:android.view.View getGroupView(int,boolean,android.view.View,android.view.ViewGroup) -> getGroupView
+    313:320:void setSelectedItems() -> d
+    323:323:boolean hasStableIds() -> hasStableIds
+    327:327:boolean isChildSelectable(int,int) -> isChildSelectable
+    30:30:java.lang.Object getChild(int,int) -> getChild
+    30:30:java.lang.Object getGroup(int) -> getGroup
+    30:30:java.util.List access$000() -> b
+    30:30:java.util.List access$100() -> c
+    30:30:android.content.Context access$200(com.appvirality.wom.ExpandableAdapter) -> a
+    30:30:android.widget.Button access$300(com.appvirality.wom.ExpandableAdapter) -> b
+    30:30:android.widget.Button access$400(com.appvirality.wom.ExpandableAdapter) -> c
+    30:30:android.widget.Button access$500(com.appvirality.wom.ExpandableAdapter) -> d
+com.appvirality.wom.ExpandableAdapter$1 -> com.appvirality.wom.b$1:
+    com.appvirality.wom.ExpandableAdapter this$0 -> a
+    77:77:boolean onGroupClick(android.widget.ExpandableListView,android.view.View,int,long) -> onGroupClick
+com.appvirality.wom.ExpandableAdapter$2 -> com.appvirality.wom.b$2:
+    com.appvirality.wom.ExpandableAdapter this$0 -> a
+    83:93:void onGroupExpand(int) -> onGroupExpand
+com.appvirality.wom.ExpandableAdapter$3 -> com.appvirality.wom.b$3:
+    com.appvirality.wom.ExpandableAdapter this$0 -> a
+    118:121:void onClick(android.view.View) -> onClick
+com.appvirality.wom.ExpandableAdapter$4 -> com.appvirality.wom.b$4:
+    com.appvirality.wom.ExpandableAdapter this$0 -> a
+    126:129:void onClick(android.view.View) -> onClick
+com.appvirality.wom.ExpandableAdapter$5 -> com.appvirality.wom.b$5:
+    com.appvirality.wom.ExpandableAdapter this$0 -> a
+    135:159:void onClick(android.view.View) -> onClick
+com.appvirality.wom.ExpandableAdapter$6 -> com.appvirality.wom.b$6:
+    com.appvirality.wom.ExpandableAdapter$ChildHolder val$holder -> a
+    com.appvirality.wom.ExpandableAdapter this$0 -> b
+    197:198:void onClick(android.view.View) -> onClick
+com.appvirality.wom.ExpandableAdapter$7 -> com.appvirality.wom.b$7:
+    com.appvirality.wom.Contact val$child -> a
+    com.appvirality.wom.ExpandableAdapter this$0 -> b
+    203:221:void onCheckedChanged(android.widget.CompoundButton,boolean) -> onCheckedChanged
+com.appvirality.wom.ExpandableAdapter$8 -> com.appvirality.wom.b$8:
+    com.appvirality.wom.ExpandableAdapter this$0 -> a
+    300:303:void onCheckedChanged(android.widget.CompoundButton,boolean) -> onCheckedChanged
+com.appvirality.wom.ExpandableAdapter$ChildHolder -> com.appvirality.wom.c:
+    android.widget.TextView title -> a
+    android.widget.CheckBox cb -> b
+    com.appvirality.wom.ExpandableAdapter this$0 -> c
+com.appvirality.wom.ExpandableAdapter$GroupHolder -> com.appvirality.wom.d:
+    com.appvirality.wom.RoundedImageView image -> a
+    android.widget.CheckBox cb -> b
+    android.widget.TextView title -> c
+    com.appvirality.wom.ExpandableAdapter this$0 -> d
+com.appvirality.wom.ExpandableHeightGridView -> com.appvirality.wom.ExpandableHeightGridView:
+    void onMeasure(int,int) -> onMeasure
+com.appvirality.wom.GridViewAdapter -> com.appvirality.wom.e:
+    android.content.Context context -> a
+    int layoutResourceId -> b
+    boolean isCustomTemplete -> c
+    java.util.ArrayList socialActions -> d
+    33:51:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.appvirality.wom.GridViewAdapter$ViewHolder -> com.appvirality.wom.f:
+    android.widget.TextView title -> a
+    android.widget.ImageView logo -> b
+    com.appvirality.wom.GridViewAdapter this$0 -> c
+com.appvirality.wom.InviteContacts -> com.appvirality.wom.InviteContacts:
+    java.util.LinkedHashMap groupList -> f
+    java.util.LinkedHashMap searchList -> g
+    java.util.LinkedHashMap favContacts -> h
+    android.widget.ExpandableListView expandableListView -> i
+    android.graphics.Bitmap defaultImageBitmap -> a
+    java.lang.String mSearchTerm -> j
+    android.widget.Button btnInvite -> k
+    int displayRecords -> l
+    int recodsAdded -> m
+    boolean showMoreList -> n
+    boolean allrecordsdone -> o
+    android.widget.ProgressBar progressBar -> p
+    android.widget.EditText searchBox -> q
+    android.app.Activity activity -> r
+    java.util.LinkedHashMap allContactsMap -> b
+    java.util.LinkedHashMap callHashMap -> c
+    int recordsCount -> d
+    boolean status -> e
+    android.widget.Button btnSMS -> s
+    android.widget.Button btnEmails -> t
+    java.lang.String[] CONTACT_PROJECTION -> u
+    62:145:void onCreate(android.os.Bundle) -> onCreate
+    149:212:void GetContacts(boolean,int) -> a
+    218:245:boolean initContactList(boolean) -> a
+    251:253:void onBackPressed() -> onBackPressed
+    257:269:void searchContacts() -> a
+    273:320:java.util.ArrayList fetchGroups(android.graphics.Bitmap,boolean) -> a
+    325:366:java.util.LinkedHashMap fetchRecentCalls(android.graphics.Bitmap) -> a
+    370:387:android.graphics.Bitmap getContactProfileImage(java.lang.String) -> b
+    400:414:long fetchContactIdFromPhoneNumber(java.lang.String) -> a
+    419:445:java.util.ArrayList queryAllPhoneNumbersForContact(long) -> a
+    450:475:java.util.ArrayList queryAllEmailAddressesForContact(long) -> b
+    479:487:java.util.ArrayList fetchGroupMembers(long) -> c
+    38:38:boolean access$000(com.appvirality.wom.InviteContacts) -> a
+    38:38:boolean access$100(com.appvirality.wom.InviteContacts) -> b
+    38:38:java.lang.String access$200(com.appvirality.wom.InviteContacts) -> c
+    38:38:boolean access$102(com.appvirality.wom.InviteContacts,boolean) -> a
+    38:38:android.widget.EditText access$300(com.appvirality.wom.InviteContacts) -> d
+    38:38:android.widget.ProgressBar access$400(com.appvirality.wom.InviteContacts) -> e
+    38:38:java.lang.String access$202(com.appvirality.wom.InviteContacts,java.lang.String) -> a
+    38:38:java.util.LinkedHashMap access$500(com.appvirality.wom.InviteContacts) -> f
+    38:38:java.util.LinkedHashMap access$600(com.appvirality.wom.InviteContacts) -> g
+    38:38:android.app.Activity access$700(com.appvirality.wom.InviteContacts) -> h
+    38:38:android.widget.Button access$800(com.appvirality.wom.InviteContacts) -> i
+    38:38:android.widget.ExpandableListView access$900(com.appvirality.wom.InviteContacts) -> j
+    38:38:android.widget.Button access$1000(com.appvirality.wom.InviteContacts) -> k
+    38:38:android.widget.Button access$1100(com.appvirality.wom.InviteContacts) -> l
+    38:38:boolean access$1200(com.appvirality.wom.InviteContacts,boolean) -> b
+com.appvirality.wom.InviteContacts$1 -> com.appvirality.wom.InviteContacts$1:
+    com.appvirality.wom.InviteContacts this$0 -> a
+    79:79:void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
+    82:91:void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
+com.appvirality.wom.InviteContacts$2 -> com.appvirality.wom.InviteContacts$2:
+    com.appvirality.wom.InviteContacts this$0 -> a
+    97:97:void afterTextChanged(android.text.Editable) -> afterTextChanged
+    100:100:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    103:134:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+com.appvirality.wom.InviteContacts$3 -> com.appvirality.wom.InviteContacts$3:
+    com.appvirality.wom.InviteContacts this$0 -> a
+    140:142:void onClick(android.view.View) -> onClick
+com.appvirality.wom.InviteContacts$4 -> com.appvirality.wom.InviteContacts$4:
+    int val$code -> a
+    boolean val$showrect -> b
+    com.appvirality.wom.InviteContacts this$0 -> c
+    152:210:void run() -> run
+com.appvirality.wom.InviteContacts$4$1 -> com.appvirality.wom.InviteContacts$4$1:
+    com.appvirality.wom.InviteContacts$4 this$1 -> a
+    159:208:void run() -> run
+com.appvirality.wom.Items -> com.appvirality.wom.g:
+    android.graphics.drawable.Drawable image -> f
+    java.lang.String appname -> a
+    java.lang.String packagename -> b
+    java.lang.String classname -> c
+    int displayOrder -> d
+    int textColor -> e
+    android.graphics.drawable.Drawable getImage() -> a
+    java.lang.String getTitle() -> b
+    int getTitleColor() -> c
+com.appvirality.wom.Parent -> com.appvirality.wom.h:
+    java.lang.String name -> a
+    boolean isChecked -> b
+    long cid -> c
+    android.graphics.Bitmap image -> d
+com.appvirality.wom.ReferrerDetails -> com.appvirality.wom.i:
+    java.lang.String ReferrerName -> a
+    android.graphics.Bitmap ProfileImage -> b
+    java.lang.String RewardType -> c
+    java.lang.String FriendReward -> d
+    java.lang.String FriendRewardUnit -> e
+    boolean isEmailExists -> f
+    boolean isRewardExists -> g
+    java.lang.String FriendRewardEvent -> h
+    java.lang.String WelcomeMessage -> i
+    java.lang.String OfferTitleColor -> j
+    java.lang.String CampaignBGColor -> k
+    java.lang.String OfferDescriptionColor -> l
+com.appvirality.wom.RoundedImageView -> com.appvirality.wom.RoundedImageView:
+    void onDraw(android.graphics.Canvas) -> onDraw
+com.appvirality.wom.Settings -> com.appvirality.wom.Settings:
+    java.lang.String customLinkSaved -> a
+    java.lang.String ShareUrl -> b
+    com.appvirality.android.UserRewardDetails rewardDetails -> c
+    boolean campaignTermsVisible -> d
+    boolean isRewardExists -> e
+    boolean couponsVisible -> f
+    java.lang.String campaignId -> g
+    android.widget.TableRow trTotalText -> h
+    android.widget.Button btnRetry -> i
+    android.widget.EditText edUserParms -> j
+    android.webkit.WebView campaignTermsWebView -> k
+    android.graphics.drawable.GradientDrawable grdLinkBG -> l
+    android.graphics.drawable.GradientDrawable grdRefBGColor -> m
+    android.graphics.drawable.GradientDrawable grdTerm -> n
+    android.graphics.drawable.GradientDrawable grdCoupons -> o
+    android.widget.TextView txtUserEarnings -> p
+    android.widget.TextView txtPending -> q
+    android.widget.TextView txtCustomParms -> r
+    android.widget.ProgressBar progress -> s
+    android.widget.ProgressBar progressBarTerms -> t
+    android.widget.ProgressBar progressBarCoupons -> u
+    android.widget.ImageView ddCustomLink -> v
+    android.widget.ImageView ddReferredUsers -> w
+    android.widget.ImageView ddTerms -> x
+    android.widget.ImageView ddCoupon -> y
+    android.widget.TableLayout tblRewarded -> z
+    android.widget.TableLayout tblUserRewards -> A
+    android.widget.TextView txtPendingUserClaimed -> B
+    android.widget.TextView txtPendingUserEarnings -> C
+    android.widget.TextView txtCheckNetwork -> D
+    android.widget.LinearLayout linkLayout -> E
+    android.widget.LinearLayout saveLink -> F
+    android.widget.LinearLayout referrersDetails -> G
+    android.widget.LinearLayout link -> H
+    android.widget.LinearLayout termsAndConditions -> I
+    android.widget.LinearLayout couponLayout -> J
+    android.widget.LinearLayout networkFailureLayout -> K
+    android.widget.LinearLayout couponsLoading -> L
+    android.widget.LinearLayout earningsRetry -> M
+    android.widget.TableLayout tblCoupons -> N
+    65:306:void onCreate(android.os.Bundle) -> onCreate
+    310:347:void GetUserRewardDetails() -> a
+    352:391:void setUserRewardedDetails(java.util.List,android.app.Activity) -> a
+    395:424:void getCoupons() -> b
+    429:517:void setUserCoupons(java.util.List,android.app.Activity) -> b
+    521:545:void getCampaignTerms(java.lang.String) -> a
+    549:554:void setBackground(android.view.View,android.graphics.drawable.GradientDrawable) -> a
+    558:598:void collapseTabs(int) -> a
+    603:605:void onBackPressed() -> onBackPressed
+    43:43:android.widget.ProgressBar access$000(com.appvirality.wom.Settings) -> a
+    43:43:android.widget.EditText access$100(com.appvirality.wom.Settings) -> b
+    43:43:java.lang.String access$202(com.appvirality.wom.Settings,java.lang.String) -> a
+    43:43:java.lang.String access$300(com.appvirality.wom.Settings) -> c
+    43:43:android.widget.TextView access$400(com.appvirality.wom.Settings) -> d
+    43:43:void access$500(com.appvirality.wom.Settings,int) -> a
+    43:43:android.widget.LinearLayout access$600(com.appvirality.wom.Settings) -> e
+    43:43:android.graphics.drawable.GradientDrawable access$700(com.appvirality.wom.Settings) -> f
+    43:43:android.widget.ImageView access$800(com.appvirality.wom.Settings) -> g
+    43:43:android.widget.LinearLayout access$900(com.appvirality.wom.Settings) -> h
+    43:43:void access$1000(com.appvirality.wom.Settings,android.view.View,android.graphics.drawable.GradientDrawable) -> a
+    43:43:android.widget.TableLayout access$1100(com.appvirality.wom.Settings) -> i
+    43:43:android.graphics.drawable.GradientDrawable access$1200(com.appvirality.wom.Settings) -> j
+    43:43:android.widget.ImageView access$1300(com.appvirality.wom.Settings) -> k
+    43:43:com.appvirality.android.UserRewardDetails access$1400(com.appvirality.wom.Settings) -> l
+    43:43:void access$1500(com.appvirality.wom.Settings,java.util.List,android.app.Activity) -> a
+    43:43:boolean access$1600(com.appvirality.wom.Settings) -> m
+    43:43:boolean access$1602(com.appvirality.wom.Settings,boolean) -> a
+    43:43:android.graphics.drawable.GradientDrawable access$1700(com.appvirality.wom.Settings) -> n
+    43:43:android.widget.ImageView access$1800(com.appvirality.wom.Settings) -> o
+    43:43:java.lang.String access$1900(com.appvirality.wom.Settings) -> p
+    43:43:void access$2000(com.appvirality.wom.Settings,java.lang.String) -> b
+    43:43:boolean access$2100(com.appvirality.wom.Settings) -> q
+    43:43:android.graphics.drawable.GradientDrawable access$2200(com.appvirality.wom.Settings) -> r
+    43:43:android.widget.ImageView access$2300(com.appvirality.wom.Settings) -> s
+    43:43:void access$2400(com.appvirality.wom.Settings) -> t
+    43:43:android.widget.LinearLayout access$2500(com.appvirality.wom.Settings) -> u
+    43:43:android.widget.TextView access$2600(com.appvirality.wom.Settings) -> v
+    43:43:void access$2700(com.appvirality.wom.Settings) -> w
+    43:43:com.appvirality.android.UserRewardDetails access$1402(com.appvirality.wom.Settings,com.appvirality.android.UserRewardDetails) -> a
+    43:43:boolean access$2800(com.appvirality.wom.Settings) -> x
+    43:43:android.widget.TextView access$2900(com.appvirality.wom.Settings) -> y
+    43:43:android.widget.TextView access$3000(com.appvirality.wom.Settings) -> z
+    43:43:android.widget.TextView access$3100(com.appvirality.wom.Settings) -> A
+    43:43:android.widget.TableLayout access$3200(com.appvirality.wom.Settings) -> B
+    43:43:android.widget.TextView access$3300(com.appvirality.wom.Settings) -> C
+    43:43:android.widget.TableRow access$3400(com.appvirality.wom.Settings) -> D
+    43:43:android.widget.LinearLayout access$3500(com.appvirality.wom.Settings) -> E
+    43:43:android.widget.LinearLayout access$3600(com.appvirality.wom.Settings) -> F
+    43:43:android.widget.ProgressBar access$3700(com.appvirality.wom.Settings) -> G
+    43:43:void access$3800(com.appvirality.wom.Settings,java.util.List,android.app.Activity) -> b
+    43:43:android.widget.LinearLayout access$3900(com.appvirality.wom.Settings) -> H
+    43:43:android.widget.LinearLayout access$4000(com.appvirality.wom.Settings) -> I
+    43:43:android.widget.ProgressBar access$4100(com.appvirality.wom.Settings) -> J
+    43:43:android.webkit.WebView access$4200(com.appvirality.wom.Settings) -> K
+    43:43:android.widget.Button access$4300(com.appvirality.wom.Settings) -> L
+com.appvirality.wom.Settings$1 -> com.appvirality.wom.Settings$1:
+    com.appvirality.wom.Settings this$0 -> a
+    108:130:void onClick(android.view.View) -> onClick
+com.appvirality.wom.Settings$1$1 -> com.appvirality.wom.Settings$1$1:
+    com.appvirality.wom.Settings$1 this$1 -> a
+    113:128:void onCustomLinkSaved(boolean) -> a
+com.appvirality.wom.Settings$10 -> com.appvirality.wom.Settings$2:
+    com.appvirality.wom.Settings this$0 -> a
+    316:345:void setUserReawardDetails(com.appvirality.android.UserRewardDetails) -> a
+com.appvirality.wom.Settings$11 -> com.appvirality.wom.Settings$3:
+    com.appvirality.wom.Settings this$0 -> a
+    403:422:void onResponse(boolean,java.util.List) -> a
+com.appvirality.wom.Settings$12 -> com.appvirality.wom.Settings$4:
+    com.appvirality.wom.Settings this$0 -> a
+    487:499:boolean onLongClick(android.view.View) -> onLongClick
+com.appvirality.wom.Settings$13 -> com.appvirality.wom.Settings$5:
+    com.appvirality.wom.Settings this$0 -> a
+    526:543:void onSuccess(boolean,java.lang.String) -> a
+com.appvirality.wom.Settings$2 -> com.appvirality.wom.Settings$6:
+    com.appvirality.wom.Settings this$0 -> a
+    136:136:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+    140:140:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    144:145:void afterTextChanged(android.text.Editable) -> afterTextChanged
+com.appvirality.wom.Settings$3 -> com.appvirality.wom.Settings$7:
+    com.appvirality.wom.Settings this$0 -> a
+    155:166:void onClick(android.view.View) -> onClick
+com.appvirality.wom.Settings$4 -> com.appvirality.wom.Settings$8:
+    com.appvirality.wom.Settings this$0 -> a
+    181:194:void onClick(android.view.View) -> onClick
+com.appvirality.wom.Settings$5 -> com.appvirality.wom.Settings$9:
+    com.appvirality.wom.Settings this$0 -> a
+    213:224:void onClick(android.view.View) -> onClick
+com.appvirality.wom.Settings$6 -> com.appvirality.wom.Settings$10:
+    com.appvirality.wom.Settings this$0 -> a
+    236:246:void onClick(android.view.View) -> onClick
+com.appvirality.wom.Settings$7 -> com.appvirality.wom.Settings$11:
+    com.appvirality.wom.Settings this$0 -> a
+    252:258:void onClick(android.view.View) -> onClick
+com.appvirality.wom.Settings$8 -> com.appvirality.wom.Settings$12:
+    com.appvirality.wom.Settings this$0 -> a
+    264:265:void onClick(android.view.View) -> onClick
+com.appvirality.wom.Settings$9 -> com.appvirality.wom.Settings$13:
+    com.appvirality.wom.Settings this$0 -> a
+    288:289:void onClick(android.view.View) -> onClick
+com.appvirality.wom.ShowGrowthHack -> com.appvirality.wom.ShowGrowthHack:
+    com.appvirality.wom.ExpandableHeightGridView gridView -> b
+    com.appvirality.wom.GridViewAdapter customGridAdapter -> c
+    java.lang.String customLinkSaved -> d
+    java.util.ArrayList socialActions -> a
+    android.widget.TextView txtShareLink -> e
+    java.lang.String shareLink -> f
+    45:229:void onCreate(android.os.Bundle) -> onCreate
+    233:243:void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    247:250:void setSocialActions(com.appvirality.android.CampaignDetails,boolean,boolean,android.app.Activity) -> a
+    33:33:java.lang.String access$000(com.appvirality.wom.ShowGrowthHack) -> a
+    33:33:void access$100(com.appvirality.wom.ShowGrowthHack,com.appvirality.android.CampaignDetails,boolean,boolean,android.app.Activity) -> a
+com.appvirality.wom.ShowGrowthHack$1 -> com.appvirality.wom.ShowGrowthHack$1:
+    com.appvirality.android.CampaignDetails val$campaignDetails -> a
+    com.appvirality.wom.ShowGrowthHack this$0 -> b
+    81:93:void onClick(android.view.View) -> onClick
+com.appvirality.wom.ShowGrowthHack$2 -> com.appvirality.wom.ShowGrowthHack$2:
+    com.appvirality.wom.ShowGrowthHack this$0 -> a
+    109:120:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.appvirality.wom.ShowGrowthHack$3 -> com.appvirality.wom.ShowGrowthHack$3:
+    com.appvirality.android.CampaignDetails val$campaignDetails -> a
+    com.appvirality.wom.ShowGrowthHack this$0 -> b
+    127:132:void onClick(android.view.View) -> onClick
+com.appvirality.wom.ShowGrowthHack$4 -> com.appvirality.wom.ShowGrowthHack$4:
+    com.appvirality.android.CampaignDetails val$campaignDetails -> a
+    com.appvirality.wom.ShowGrowthHack this$0 -> b
+    140:157:void onClick(android.view.View) -> onClick
+com.appvirality.wom.ShowGrowthHack$5 -> com.appvirality.wom.ShowGrowthHack$5:
+    com.appvirality.android.CampaignDetails val$campaignDetails -> a
+    com.appvirality.wom.ShowGrowthHack this$0 -> b
+    163:168:void onClick(android.view.View) -> onClick
+com.appvirality.wom.ShowGrowthHack$6 -> com.appvirality.wom.ShowGrowthHack$6:
+    com.appvirality.android.CampaignDetails val$campaignDetails -> a
+    android.widget.TextView val$txtReferrals -> b
+    android.widget.TextView val$txtTotalEarnings -> c
+    com.appvirality.wom.ShowGrowthHack this$0 -> d
+    210:217:void showUserEarnings(java.lang.String) -> a
+com.appvirality.wom.Terms -> com.appvirality.wom.Terms:
+    android.webkit.WebView campaignTermsWebView -> a
+    android.widget.ProgressBar progressTerms -> b
+    android.widget.Button btnRetry -> c
+    android.widget.TextView txtCheckNetwork -> d
+    java.lang.String campaignId -> e
+    28:64:void onCreate(android.os.Bundle) -> onCreate
+    68:92:void getCampaignTerms() -> a
+    18:18:void access$000(com.appvirality.wom.Terms) -> a
+    18:18:android.webkit.WebView access$100(com.appvirality.wom.Terms) -> b
+    18:18:android.widget.Button access$200(com.appvirality.wom.Terms) -> c
+    18:18:android.widget.TextView access$300(com.appvirality.wom.Terms) -> d
+    18:18:android.widget.ProgressBar access$400(com.appvirality.wom.Terms) -> e
+com.appvirality.wom.Terms$1 -> com.appvirality.wom.Terms$1:
+    com.appvirality.wom.Terms this$0 -> a
+    46:47:void onClick(android.view.View) -> onClick
+com.appvirality.wom.Terms$2 -> com.appvirality.wom.Terms$2:
+    com.appvirality.wom.Terms this$0 -> a
+    53:54:void onClick(android.view.View) -> onClick
+com.appvirality.wom.Terms$3 -> com.appvirality.wom.Terms$3:
+    com.appvirality.wom.Terms this$0 -> a
+    75:89:void onSuccess(boolean,java.lang.String) -> a
+com.appvirality.wom.WelcomeScreenActivity -> com.appvirality.wom.WelcomeScreenActivity:
+    26:109:void onCreate(android.os.Bundle) -> onCreate
+    114:145:void setFriendRewardListner(java.lang.String) -> a
+    23:23:void access$000(com.appvirality.wom.WelcomeScreenActivity,java.lang.String) -> a
+com.appvirality.wom.WelcomeScreenActivity$1 -> com.appvirality.wom.WelcomeScreenActivity$1:
+    com.appvirality.wom.ReferrerDetails val$referrerDetails -> a
+    android.widget.EditText val$userEmail -> b
+    com.appvirality.wom.WelcomeScreenActivity this$0 -> c
+    61:70:void onClick(android.view.View) -> onClick
+com.appvirality.wom.WelcomeScreenActivity$2 -> com.appvirality.wom.WelcomeScreenActivity$2:
+    com.appvirality.wom.WelcomeScreenActivity this$0 -> a
+    76:77:void onClick(android.view.View) -> onClick
+com.appvirality.wom.WelcomeScreenActivity$3 -> com.appvirality.wom.WelcomeScreenActivity$3:
+    com.appvirality.wom.WelcomeScreenActivity this$0 -> a
+    84:102:void onClick(android.view.View) -> onClick
+com.appvirality.wom.WelcomeScreenActivity$4 -> com.appvirality.wom.WelcomeScreenActivity$4:
+    android.app.ProgressDialog val$progressDialog -> a
+    com.appvirality.wom.WelcomeScreenActivity this$0 -> b
+    123:139:void OnResponse(boolean,java.lang.String) -> a
+com.appvirality.wom.WhilteLabel -> com.appvirality.wom.WhilteLabel:
+    android.content.Context context -> a
+    boolean showimage -> b
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+com.appvirality.wom.a -> com.appvirality.wom.j:
+    com.appvirality.wom.ReferrerDetails b -> b
+    boolean a -> a
+    java.util.ArrayList a(java.util.List,java.lang.String,java.lang.String,java.lang.String,int,android.content.Context,boolean,java.lang.String,java.lang.String) -> a
+    java.lang.Boolean a() -> a
+    java.util.ArrayList a(java.util.ArrayList) -> a
+    void a(java.lang.String,android.content.ComponentName,android.content.Context,java.lang.String,java.lang.String,java.lang.String,java.util.List,java.util.List) -> a
+    void a(android.content.Context) -> a
+    void a(android.content.Context,java.lang.String) -> a
+com.appvirality.wom.a$1 -> com.appvirality.wom.j$1:
+    int compare(java.lang.Object,java.lang.Object) -> compare
 com.coremedia.iso.AbstractBoxParser -> com.a.a.a:
     java.util.logging.Logger LOG -> b
     java.lang.ThreadLocal header -> a
@@ -6650,7 +7891,9 @@ com.facebook.internal.CallbackManagerImpl$RequestCodeOffset -> com.facebook.b.j:
     91:91:com.facebook.internal.CallbackManagerImpl$RequestCodeOffset[] values() -> values
     91:91:com.facebook.internal.CallbackManagerImpl$RequestCodeOffset valueOf(java.lang.String) -> valueOf
     109:109:int toRequestCode() -> a
-com.facebook.internal.FacebookDialogFragment -> com.facebook.b.k:
+com.facebook.internal.FacebookDialogBase -> com.facebook.b.k:
+    java.lang.Object BASE_AUTOMATIC_MODE -> a
+com.facebook.internal.FacebookDialogFragment -> com.facebook.b.l:
     android.app.Dialog dialog -> aj
     50:51:void setDialog(android.app.Dialog) -> a
     55:108:void onCreate(android.os.Bundle) -> a
@@ -6661,13 +7904,13 @@ com.facebook.internal.FacebookDialogFragment -> com.facebook.b.k:
     153:160:void onCompleteWebFallbackDialog(android.os.Bundle) -> k
     40:40:void access$000(com.facebook.internal.FacebookDialogFragment,android.os.Bundle,com.facebook.FacebookException) -> a
     40:40:void access$100(com.facebook.internal.FacebookDialogFragment,android.os.Bundle) -> a
-com.facebook.internal.FacebookDialogFragment$1 -> com.facebook.b.k$1:
+com.facebook.internal.FacebookDialogFragment$1 -> com.facebook.b.l$1:
     com.facebook.internal.FacebookDialogFragment this$0 -> a
     79:80:void onComplete(android.os.Bundle,com.facebook.FacebookException) -> a
-com.facebook.internal.FacebookDialogFragment$2 -> com.facebook.b.k$2:
+com.facebook.internal.FacebookDialogFragment$2 -> com.facebook.b.l$2:
     com.facebook.internal.FacebookDialogFragment this$0 -> a
     101:102:void onComplete(android.os.Bundle,com.facebook.FacebookException) -> a
-com.facebook.internal.FacebookRequestErrorClassification -> com.facebook.b.l:
+com.facebook.internal.FacebookRequestErrorClassification -> com.facebook.b.m:
     java.util.Map otherErrors -> a
     java.util.Map transientErrors -> b
     java.util.Map loginRecoverableErrors -> c
@@ -6681,23 +7924,23 @@ com.facebook.internal.FacebookRequestErrorClassification -> com.facebook.b.l:
     141:154:com.facebook.internal.FacebookRequestErrorClassification getDefaultErrorClassificationImpl() -> b
     164:192:java.util.Map parseJSONDefinition(org.json.JSONObject) -> a
     196:226:com.facebook.internal.FacebookRequestErrorClassification createFromJSON(org.json.JSONArray) -> a
-com.facebook.internal.FacebookRequestErrorClassification$1 -> com.facebook.b.l$1:
-com.facebook.internal.FacebookRequestErrorClassification$2 -> com.facebook.b.l$2:
-com.facebook.internal.FacebookRequestErrorClassification$3 -> com.facebook.b.l$3:
+com.facebook.internal.FacebookRequestErrorClassification$1 -> com.facebook.b.m$1:
+com.facebook.internal.FacebookRequestErrorClassification$2 -> com.facebook.b.m$2:
+com.facebook.internal.FacebookRequestErrorClassification$3 -> com.facebook.b.m$3:
     int[] $SwitchMap$com$facebook$FacebookRequestError$Category -> a
-com.facebook.internal.FacebookWebFallbackDialog -> com.facebook.b.m:
+com.facebook.internal.FacebookWebFallbackDialog -> com.facebook.b.n:
     java.lang.String TAG -> a
     boolean waitingForDialogToClose -> b
     56:99:android.os.Bundle parseResponseUri(java.lang.String) -> a
     104:148:void cancel() -> cancel
     42:42:void access$001(com.facebook.internal.FacebookWebFallbackDialog) -> a
-com.facebook.internal.FacebookWebFallbackDialog$1 -> com.facebook.b.m$1:
+com.facebook.internal.FacebookWebFallbackDialog$1 -> com.facebook.b.n$1:
     com.facebook.internal.FacebookWebFallbackDialog this$0 -> a
     144:145:void run() -> run
-com.facebook.internal.InternalSettings -> com.facebook.b.n:
+com.facebook.internal.InternalSettings -> com.facebook.b.o:
     java.lang.String mCustomUserAgent -> a
     37:37:java.lang.String getCustomUserAgent() -> a
-com.facebook.internal.Logger -> com.facebook.b.o:
+com.facebook.internal.Logger -> com.facebook.b.p:
     java.util.HashMap stringsToReplace -> a
     com.facebook.LoggingBehavior behavior -> b
     java.lang.String tag -> c
@@ -6715,7 +7958,7 @@ com.facebook.internal.Logger -> com.facebook.b.o:
     138:141:void append(java.lang.String,java.lang.Object[]) -> a
     144:145:void appendKeyValue(java.lang.String,java.lang.Object) -> a
     148:148:boolean shouldLog() -> b
-com.facebook.internal.NativeProtocol -> com.facebook.b.p:
+com.facebook.internal.NativeProtocol -> com.facebook.b.q:
     com.facebook.internal.NativeProtocol$NativeAppInfo FACEBOOK_APP_INFO -> a
     java.util.List facebookAppInfoList -> b
     java.util.Map actionToAppInfoMap -> c
@@ -6744,13 +7987,13 @@ com.facebook.internal.NativeProtocol -> com.facebook.b.p:
     49:49:java.util.TreeSet access$000(com.facebook.internal.NativeProtocol$NativeAppInfo) -> a
     49:49:java.util.List access$500() -> c
     49:49:java.util.concurrent.atomic.AtomicBoolean access$700() -> d
-com.facebook.internal.NativeProtocol$1 -> com.facebook.b.p$1:
+com.facebook.internal.NativeProtocol$1 -> com.facebook.b.q$1:
     760:766:void run() -> run
-com.facebook.internal.NativeProtocol$KatanaAppInfo -> com.facebook.b.q:
+com.facebook.internal.NativeProtocol$KatanaAppInfo -> com.facebook.b.r:
     291:291:java.lang.String getPackage() -> a
-com.facebook.internal.NativeProtocol$MessengerAppInfo -> com.facebook.b.r:
+com.facebook.internal.NativeProtocol$MessengerAppInfo -> com.facebook.b.s:
     300:300:java.lang.String getPackage() -> a
-com.facebook.internal.NativeProtocol$NativeAppInfo -> com.facebook.b.s:
+com.facebook.internal.NativeProtocol$NativeAppInfo -> com.facebook.b.t:
     java.util.HashSet validAppSignatureHashes -> a
     java.util.TreeSet availableVersions -> b
     java.lang.String getPackage() -> a
@@ -6759,9 +8002,9 @@ com.facebook.internal.NativeProtocol$NativeAppInfo -> com.facebook.b.s:
     273:276:java.util.TreeSet getAvailableVersions() -> b
     280:283:void fetchAvailableVersions(boolean) -> a
     226:226:void access$600(com.facebook.internal.NativeProtocol$NativeAppInfo,boolean) -> a
-com.facebook.internal.NativeProtocol$WakizashiAppInfo -> com.facebook.b.t:
+com.facebook.internal.NativeProtocol$WakizashiAppInfo -> com.facebook.b.u:
     309:309:java.lang.String getPackage() -> a
-com.facebook.internal.PlatformServiceClient -> com.facebook.b.u:
+com.facebook.internal.PlatformServiceClient -> com.facebook.b.v:
     android.content.Context context -> a
     android.os.Handler handler -> b
     com.facebook.internal.PlatformServiceClient$CompletedListener listener -> c
@@ -6780,16 +8023,16 @@ com.facebook.internal.PlatformServiceClient -> com.facebook.b.u:
     void populateRequestBundle(android.os.Bundle) -> a
     137:147:void handleMessage(android.os.Message) -> a
     150:159:void callback(android.os.Bundle) -> b
-com.facebook.internal.PlatformServiceClient$1 -> com.facebook.b.u$1:
+com.facebook.internal.PlatformServiceClient$1 -> com.facebook.b.v$1:
     com.facebook.internal.PlatformServiceClient this$0 -> a
     62:63:void handleMessage(android.os.Message) -> handleMessage
-com.facebook.internal.PlatformServiceClient$CompletedListener -> com.facebook.b.v:
+com.facebook.internal.PlatformServiceClient$CompletedListener -> com.facebook.b.w:
     void completed(android.os.Bundle) -> a
-com.facebook.internal.ProfileInformationCache -> com.facebook.b.w:
+com.facebook.internal.ProfileInformationCache -> com.facebook.b.x:
     java.util.concurrent.ConcurrentHashMap infoCache -> a
     40:40:org.json.JSONObject getProfileInformation(java.lang.String) -> a
     44:45:void putProfileInformation(java.lang.String,org.json.JSONObject) -> a
-com.facebook.internal.ServerProtocol -> com.facebook.b.x:
+com.facebook.internal.ServerProtocol -> com.facebook.b.y:
     java.lang.String TAG -> c
     java.util.Collection errorsProxyAuthDisabled -> a
     java.util.Collection errorsUserCanceled -> b
@@ -6797,7 +8040,7 @@ com.facebook.internal.ServerProtocol -> com.facebook.b.x:
     89:89:java.lang.String getGraphUrlBase() -> b
     93:93:java.lang.String getGraphVideoUrlBase() -> c
     97:97:java.lang.String getAPIVersion() -> d
-com.facebook.internal.Utility -> com.facebook.b.y:
+com.facebook.internal.Utility -> com.facebook.b.z:
     java.lang.String[] APP_SETTING_FIELDS -> a
     java.util.Map fetchedAppSettings -> b
     java.util.concurrent.atomic.AtomicBoolean loadingSettings -> c
@@ -6860,18 +8103,18 @@ com.facebook.internal.Utility -> com.facebook.b.y:
     75:75:org.json.JSONObject access$000(java.lang.String) -> e
     75:75:com.facebook.internal.Utility$FetchedAppSettings access$100(java.lang.String,org.json.JSONObject) -> a
     75:75:java.util.concurrent.atomic.AtomicBoolean access$200() -> a
-com.facebook.internal.Utility$1 -> com.facebook.b.y$1:
+com.facebook.internal.Utility$1 -> com.facebook.b.z$1:
     java.lang.String val$applicationId -> a
     android.content.Context val$context -> b
     java.lang.String val$settingsKey -> c
     780:793:void run() -> run
-com.facebook.internal.Utility$2 -> com.facebook.b.y$2:
+com.facebook.internal.Utility$2 -> com.facebook.b.z$2:
     com.facebook.internal.Utility$GraphMeRequestWithCacheCallback val$callback -> a
     java.lang.String val$accessToken -> b
     1272:1280:void onCompleted(com.facebook.GraphResponse) -> a
-com.facebook.internal.Utility$3 -> com.facebook.b.y$3:
+com.facebook.internal.Utility$3 -> com.facebook.b.z$3:
     1341:1341:boolean accept(java.io.File,java.lang.String) -> accept
-com.facebook.internal.Utility$DialogFeatureConfig -> com.facebook.b.z:
+com.facebook.internal.Utility$DialogFeatureConfig -> com.facebook.b.aa:
     java.lang.String dialogName -> a
     java.lang.String featureName -> b
     android.net.Uri fallbackUrl -> c
@@ -6881,7 +8124,7 @@ com.facebook.internal.Utility$DialogFeatureConfig -> com.facebook.b.z:
     256:256:java.lang.String getDialogName() -> a
     260:260:java.lang.String getFeatureName() -> b
     172:172:com.facebook.internal.Utility$DialogFeatureConfig access$400(org.json.JSONObject) -> a
-com.facebook.internal.Utility$FetchedAppSettings -> com.facebook.b.aa:
+com.facebook.internal.Utility$FetchedAppSettings -> com.facebook.b.ab:
     boolean supportsImplicitLogging -> a
     java.lang.String nuxContent -> b
     boolean nuxEnabled -> c
@@ -6889,10 +8132,10 @@ com.facebook.internal.Utility$FetchedAppSettings -> com.facebook.b.aa:
     com.facebook.internal.FacebookRequestErrorClassification errorClassification -> e
     152:152:boolean supportsImplicitLogging() -> a
     168:168:com.facebook.internal.FacebookRequestErrorClassification getErrorClassification() -> b
-com.facebook.internal.Utility$GraphMeRequestWithCacheCallback -> com.facebook.b.ab:
+com.facebook.internal.Utility$GraphMeRequestWithCacheCallback -> com.facebook.b.ac:
     void onSuccess(org.json.JSONObject) -> a
     void onFailure(com.facebook.FacebookException) -> a
-com.facebook.internal.Validate -> com.facebook.b.ac:
+com.facebook.internal.Validate -> com.facebook.b.ad:
     java.lang.String TAG -> a
     66:69:void notNull(java.lang.Object,java.lang.String) -> a
     72:75:void notEmpty(java.util.Collection,java.lang.String) -> a
@@ -6903,7 +8146,7 @@ com.facebook.internal.Validate -> com.facebook.b.ac:
     135:140:void sdkInitialized() -> b
     155:164:void hasInternetPermissions(android.content.Context,boolean) -> a
     171:189:void hasFacebookActivity(android.content.Context,boolean) -> b
-com.facebook.internal.WebDialog -> com.facebook.b.ad:
+com.facebook.internal.WebDialog -> com.facebook.b.ae:
     java.lang.String url -> a
     java.lang.String expectedRedirectUrl -> b
     com.facebook.internal.WebDialog$OnCompleteListener onCompleteListener -> c
@@ -6940,19 +8183,19 @@ com.facebook.internal.WebDialog -> com.facebook.b.ad:
     55:55:android.webkit.WebView access$500(com.facebook.internal.WebDialog) -> e
     55:55:android.widget.ImageView access$600(com.facebook.internal.WebDialog) -> f
     55:55:boolean access$702(com.facebook.internal.WebDialog,boolean) -> a
-com.facebook.internal.WebDialog$1 -> com.facebook.b.ad$1:
+com.facebook.internal.WebDialog$1 -> com.facebook.b.ae$1:
     com.facebook.internal.WebDialog this$0 -> a
     226:227:void onCancel(android.content.DialogInterface) -> onCancel
-com.facebook.internal.WebDialog$2 -> com.facebook.b.ad$2:
+com.facebook.internal.WebDialog$2 -> com.facebook.b.ae$2:
     com.facebook.internal.WebDialog this$0 -> a
     367:368:void onClick(android.view.View) -> onClick
-com.facebook.internal.WebDialog$3 -> com.facebook.b.ad$3:
+com.facebook.internal.WebDialog$3 -> com.facebook.b.ae$3:
     com.facebook.internal.WebDialog this$0 -> a
     388:391:void onWindowFocusChanged(boolean) -> onWindowFocusChanged
-com.facebook.internal.WebDialog$4 -> com.facebook.b.ad$4:
+com.facebook.internal.WebDialog$4 -> com.facebook.b.ae$4:
     com.facebook.internal.WebDialog this$0 -> a
     408:412:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-com.facebook.internal.WebDialog$Builder -> com.facebook.b.ae:
+com.facebook.internal.WebDialog$Builder -> com.facebook.b.af:
     android.content.Context context -> a
     java.lang.String applicationId -> b
     java.lang.String action -> c
@@ -6969,14 +8212,14 @@ com.facebook.internal.WebDialog$Builder -> com.facebook.b.ae:
     629:629:android.os.Bundle getParameters() -> e
     633:633:com.facebook.internal.WebDialog$OnCompleteListener getListener() -> f
     637:644:void finishInit(android.content.Context,java.lang.String,android.os.Bundle) -> a
-com.facebook.internal.WebDialog$DialogWebViewClient -> com.facebook.b.af:
+com.facebook.internal.WebDialog$DialogWebViewClient -> com.facebook.b.ag:
     com.facebook.internal.WebDialog this$0 -> a
     425:473:boolean shouldOverrideUrlLoading(android.webkit.WebView,java.lang.String) -> shouldOverrideUrlLoading
     479:481:void onReceivedError(android.webkit.WebView,int,java.lang.String,java.lang.String) -> onReceivedError
     488:493:void onReceivedSslError(android.webkit.WebView,android.webkit.SslErrorHandler,android.net.http.SslError) -> onReceivedSslError
     497:502:void onPageStarted(android.webkit.WebView,java.lang.String,android.graphics.Bitmap) -> onPageStarted
     506:518:void onPageFinished(android.webkit.WebView,java.lang.String) -> onPageFinished
-com.facebook.internal.WebDialog$OnCompleteListener -> com.facebook.b.ag:
+com.facebook.internal.WebDialog$OnCompleteListener -> com.facebook.b.ah:
     void onComplete(android.os.Bundle,com.facebook.FacebookException) -> a
 com.facebook.login.DefaultAudience -> com.facebook.login.a:
     com.facebook.login.DefaultAudience NONE -> a
@@ -7264,6 +8507,7 @@ com.facebook.share.model.AppInviteContent -> com.facebook.share.model.AppInviteC
     java.lang.String previewImageUrl -> b
     57:57:int describeContents() -> describeContents
     61:63:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+com.facebook.share.model.AppInviteContent$Builder -> com.facebook.share.model.b:
 com.facebook.share.model.GameRequestContent -> com.facebook.share.model.GameRequestContent:
     java.lang.String message -> a
     java.lang.String to -> b
@@ -7279,14 +8523,14 @@ com.facebook.share.model.GameRequestContent -> com.facebook.share.model.GameRequ
     128:128:java.util.ArrayList getSuggestions() -> d
     132:132:int describeContents() -> describeContents
     136:144:void writeToParcel(android.os.Parcel,int) -> writeToParcel
-com.facebook.share.model.GameRequestContent$ActionType -> com.facebook.share.model.b:
+com.facebook.share.model.GameRequestContent$ActionType -> com.facebook.share.model.c:
     com.facebook.share.model.GameRequestContent$ActionType SEND -> a
     com.facebook.share.model.GameRequestContent$ActionType ASKFOR -> b
     com.facebook.share.model.GameRequestContent$ActionType TURN -> c
     com.facebook.share.model.GameRequestContent$ActionType[] $VALUES -> d
     31:31:com.facebook.share.model.GameRequestContent$ActionType[] values() -> values
     31:31:com.facebook.share.model.GameRequestContent$ActionType valueOf(java.lang.String) -> valueOf
-com.facebook.share.model.GameRequestContent$Filters -> com.facebook.share.model.c:
+com.facebook.share.model.GameRequestContent$Filters -> com.facebook.share.model.d:
     com.facebook.share.model.GameRequestContent$Filters APP_USERS -> a
     com.facebook.share.model.GameRequestContent$Filters APP_NON_USERS -> b
     com.facebook.share.model.GameRequestContent$Filters[] $VALUES -> c
@@ -7317,7 +8561,7 @@ com.facebook.share.model.ShareMedia -> com.facebook.share.model.ShareMedia:
     46:46:android.os.Bundle getParameters() -> a
     51:51:int describeContents() -> describeContents
     56:57:void writeToParcel(android.os.Parcel,int) -> writeToParcel
-com.facebook.share.model.ShareMedia$Builder -> com.facebook.share.model.d:
+com.facebook.share.model.ShareMedia$Builder -> com.facebook.share.model.e:
     android.os.Bundle params -> a
     80:81:com.facebook.share.model.ShareMedia$Builder setParameters(android.os.Bundle) -> a
     86:89:com.facebook.share.model.ShareMedia$Builder readFrom(com.facebook.share.model.ShareMedia) -> a
@@ -7331,7 +8575,7 @@ com.facebook.share.model.ShareOpenGraphAction$1 -> com.facebook.share.model.Shar
     63:63:com.facebook.share.model.ShareOpenGraphAction[] newArray(int) -> a
     57:57:java.lang.Object[] newArray(int) -> newArray
     57:57:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
-com.facebook.share.model.ShareOpenGraphAction$Builder -> com.facebook.share.model.e:
+com.facebook.share.model.ShareOpenGraphAction$Builder -> com.facebook.share.model.f:
     81:82:com.facebook.share.model.ShareOpenGraphAction$Builder setActionType(java.lang.String) -> a
     87:87:com.facebook.share.model.ShareOpenGraphAction build() -> a
     92:95:com.facebook.share.model.ShareOpenGraphAction$Builder readFrom(com.facebook.share.model.ShareOpenGraphAction) -> a
@@ -7361,7 +8605,7 @@ com.facebook.share.model.ShareOpenGraphValueContainer -> com.facebook.share.mode
     227:227:android.os.Bundle getBundle() -> b
     239:239:int describeContents() -> describeContents
     243:244:void writeToParcel(android.os.Parcel,int) -> writeToParcel
-com.facebook.share.model.ShareOpenGraphValueContainer$Builder -> com.facebook.share.model.f:
+com.facebook.share.model.ShareOpenGraphValueContainer$Builder -> com.facebook.share.model.g:
     android.os.Bundle bundle -> a
     395:396:com.facebook.share.model.ShareOpenGraphValueContainer$Builder putString(java.lang.String,java.lang.String) -> a
     412:415:com.facebook.share.model.ShareOpenGraphValueContainer$Builder readFrom(com.facebook.share.model.ShareOpenGraphValueContainer) -> a
@@ -7383,7 +8627,7 @@ com.facebook.share.model.SharePhoto$1 -> com.facebook.share.model.SharePhoto$1:
     114:114:com.facebook.share.model.SharePhoto[] newArray(int) -> a
     108:108:java.lang.Object[] newArray(int) -> newArray
     108:108:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
-com.facebook.share.model.SharePhoto$Builder -> com.facebook.share.model.g:
+com.facebook.share.model.SharePhoto$Builder -> com.facebook.share.model.h:
     android.graphics.Bitmap bitmap -> a
     android.net.Uri imageUrl -> b
     boolean userGenerated -> c
@@ -7425,7 +8669,7 @@ com.facebook.share.model.ShareVideo$1 -> com.facebook.share.model.ShareVideo$1:
     70:70:com.facebook.share.model.ShareVideo[] newArray(int) -> a
     64:64:java.lang.Object[] newArray(int) -> newArray
     64:64:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
-com.facebook.share.model.ShareVideo$Builder -> com.facebook.share.model.h:
+com.facebook.share.model.ShareVideo$Builder -> com.facebook.share.model.i:
     android.net.Uri localUrl -> a
     86:87:com.facebook.share.model.ShareVideo$Builder setLocalUrl(android.net.Uri) -> a
     92:92:com.facebook.share.model.ShareVideo build() -> a
@@ -7446,6 +8690,8 @@ com.facebook.share.model.ShareVideoContent$1 -> com.facebook.share.model.ShareVi
     117:117:com.facebook.share.model.ShareVideoContent[] newArray(int) -> a
     111:111:java.lang.Object[] newArray(int) -> newArray
     111:111:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+com.facebook.share.widget.AppInviteDialog -> com.facebook.share.a.a:
+    int DEFAULT_REQUEST_CODE -> b
 com.google.android.gms.R -> com.google.android.gms.a:
 com.google.android.gms.R$string -> com.google.android.gms.b:
     int auth_client_needs_enabling_title -> auth_client_needs_enabling_title
@@ -14023,40 +15269,39 @@ org.telegram.android.ContactsController -> org.telegram.android.c:
     101:110:org.telegram.android.ContactsController getInstance() -> a
     143:162:void cleanup() -> b
     165:197:void checkInviteText() -> c
-    200:200:java.lang.String getInviteText() -> d
-    204:237:void checkAppAccount() -> e
-    241:249:void deleteAllAppAccounts() -> f
-    252:261:void checkContacts() -> g
-    264:290:boolean checkContactsInternal() -> p
-    294:313:void readContacts() -> h
-    316:465:java.util.HashMap readContactsFromPhoneBook() -> q
+    204:237:void checkAppAccount() -> d
+    241:249:void deleteAllAppAccounts() -> e
+    252:261:void checkContacts() -> f
+    264:290:boolean checkContactsInternal() -> o
+    294:313:void readContacts() -> g
+    316:465:java.util.HashMap readContactsFromPhoneBook() -> p
     469:482:java.util.HashMap getContactsCopy(java.util.HashMap) -> a
     486:818:void performSyncPhoneBook(java.util.HashMap,boolean,boolean,boolean) -> a
-    821:823:boolean isLoadingContacts() -> i
+    821:823:boolean isLoadingContacts() -> h
     827:865:void loadContacts(boolean,boolean) -> a
     869:1073:void processLoadedContacts(java.util.ArrayList,java.util.ArrayList,int) -> a
-    1077:1085:void reloadContactsStatusesMaybe() -> r
-    1089:1094:void saveContactsLoadTime() -> s
+    1077:1085:void reloadContactsStatusesMaybe() -> q
+    1089:1094:void saveContactsLoadTime() -> r
     1097:1142:void updateUnregisteredContacts(java.util.ArrayList) -> c
     1145:1221:void buildContactsSectionsArrays(boolean) -> a
     1225:1244:void performWriteContactsToPhoneBookInternal(java.util.ArrayList) -> d
-    1247:1255:void performWriteContactsToPhoneBook() -> t
+    1247:1255:void performWriteContactsToPhoneBook() -> s
     1258:1382:void applyContactsUpdates(java.util.ArrayList,java.util.concurrent.ConcurrentHashMap,java.util.ArrayList,java.util.ArrayList) -> a
     1385:1420:void processContactsUpdates(java.util.ArrayList,java.util.concurrent.ConcurrentHashMap) -> a
     1423:1480:long addContactToPhoneBook(org.telegram.messenger.TLRPC$User,boolean) -> a
     1484:1497:void deleteContactFromPhoneBook(int) -> b
     1582:1646:void deleteContact(java.util.ArrayList) -> a
-    1649:1696:void reloadContactsStatuses() -> j
-    1699:1746:void loadPrivacySettings() -> k
+    1649:1696:void reloadContactsStatuses() -> i
+    1699:1746:void loadPrivacySettings() -> j
     1749:1750:void setDeleteAccountTTL(int) -> a
-    1753:1753:int getDeleteAccountTTL() -> l
-    1757:1757:boolean getLoadingDeleteInfo() -> m
-    1761:1761:boolean getLoadingLastSeenInfo() -> n
+    1753:1753:int getDeleteAccountTTL() -> k
+    1757:1757:boolean getLoadingDeleteInfo() -> l
+    1761:1761:boolean getLoadingLastSeenInfo() -> m
     1769:1772:void setPrivacyRules(java.util.ArrayList) -> b
     1775:1791:java.lang.String formatName(java.lang.String,java.lang.String) -> a
     43:43:boolean access$002(org.telegram.android.ContactsController,boolean) -> a
     43:43:boolean access$100(org.telegram.android.ContactsController) -> a
-    43:43:java.lang.Object access$200() -> o
+    43:43:java.lang.Object access$200() -> n
     43:43:boolean access$302(org.telegram.android.ContactsController,boolean) -> b
     43:43:java.util.HashMap access$400(org.telegram.android.ContactsController) -> b
     43:43:boolean access$502(org.telegram.android.ContactsController,boolean) -> c
@@ -17579,50 +18824,50 @@ org.telegram.messenger.ApplicationLoader -> org.telegram.messenger.ApplicationLo
     boolean applicationInited -> m
     boolean isScreenOn -> d
     boolean mainInterfacePaused -> e
-    84:84:boolean isCustomTheme() -> a
-    88:88:int getSelectedColor() -> b
-    92:94:void reloadWallpaper() -> c
-    97:137:void loadWallpaper() -> d
-    140:142:android.graphics.drawable.Drawable getCachedWallpaper() -> e
-    146:190:void postInitApplication() -> f
-    194:246:void onCreate() -> onCreate
-    249:267:void startPushService() -> g
-    270:275:void stopPushService() -> h
-    279:286:void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
-    289:301:void initPlayServices() -> l
-    304:305:boolean checkPlayServices() -> m
-    318:330:java.lang.String getRegistrationId() -> n
-    334:334:android.content.SharedPreferences getGCMPreferences(android.content.Context) -> a
-    339:342:int getAppVersion() -> i
-    347:383:void registerInBackground() -> o
-    386:403:void sendRegistrationIdToBackend(boolean) -> b
-    406:413:void storeRegistrationId(android.content.Context,java.lang.String) -> a
-    60:60:java.lang.Object access$000() -> j
-    60:60:android.graphics.drawable.Drawable access$102(android.graphics.drawable.Drawable) -> a
-    60:60:boolean access$202(boolean) -> a
-    60:60:android.graphics.drawable.Drawable access$100() -> k
-    60:60:com.google.android.gms.gcm.GoogleCloudMessaging access$300(org.telegram.messenger.ApplicationLoader) -> a
-    60:60:com.google.android.gms.gcm.GoogleCloudMessaging access$302(org.telegram.messenger.ApplicationLoader,com.google.android.gms.gcm.GoogleCloudMessaging) -> a
-    60:60:java.lang.String access$402(org.telegram.messenger.ApplicationLoader,java.lang.String) -> a
-    60:60:void access$500(org.telegram.messenger.ApplicationLoader,boolean) -> a
-    60:60:java.lang.String access$400(org.telegram.messenger.ApplicationLoader) -> b
-    60:60:void access$600(org.telegram.messenger.ApplicationLoader,android.content.Context,java.lang.String) -> a
+    85:85:boolean isCustomTheme() -> a
+    89:89:int getSelectedColor() -> b
+    93:95:void reloadWallpaper() -> c
+    98:138:void loadWallpaper() -> d
+    141:143:android.graphics.drawable.Drawable getCachedWallpaper() -> e
+    147:191:void postInitApplication() -> f
+    195:247:void onCreate() -> onCreate
+    250:268:void startPushService() -> g
+    271:276:void stopPushService() -> h
+    280:287:void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    290:302:void initPlayServices() -> l
+    305:306:boolean checkPlayServices() -> m
+    319:331:java.lang.String getRegistrationId() -> n
+    335:335:android.content.SharedPreferences getGCMPreferences(android.content.Context) -> a
+    340:343:int getAppVersion() -> i
+    348:384:void registerInBackground() -> o
+    387:404:void sendRegistrationIdToBackend(boolean) -> b
+    407:414:void storeRegistrationId(android.content.Context,java.lang.String) -> a
+    61:61:java.lang.Object access$000() -> j
+    61:61:android.graphics.drawable.Drawable access$102(android.graphics.drawable.Drawable) -> a
+    61:61:boolean access$202(boolean) -> a
+    61:61:android.graphics.drawable.Drawable access$100() -> k
+    61:61:com.google.android.gms.gcm.GoogleCloudMessaging access$300(org.telegram.messenger.ApplicationLoader) -> a
+    61:61:com.google.android.gms.gcm.GoogleCloudMessaging access$302(org.telegram.messenger.ApplicationLoader,com.google.android.gms.gcm.GoogleCloudMessaging) -> a
+    61:61:java.lang.String access$402(org.telegram.messenger.ApplicationLoader,java.lang.String) -> a
+    61:61:void access$500(org.telegram.messenger.ApplicationLoader,boolean) -> a
+    61:61:java.lang.String access$400(org.telegram.messenger.ApplicationLoader) -> b
+    61:61:void access$600(org.telegram.messenger.ApplicationLoader,android.content.Context,java.lang.String) -> a
 org.telegram.messenger.ApplicationLoader$1 -> org.telegram.messenger.ApplicationLoader$1:
-    103:135:void run() -> run
+    104:136:void run() -> run
 org.telegram.messenger.ApplicationLoader$2 -> org.telegram.messenger.ApplicationLoader$2:
     org.telegram.messenger.ApplicationLoader this$0 -> a
-    227:243:void uncaughtException(java.lang.Thread,java.lang.Throwable) -> uncaughtException
+    228:244:void uncaughtException(java.lang.Thread,java.lang.Throwable) -> uncaughtException
 org.telegram.messenger.ApplicationLoader$3 -> org.telegram.messenger.ApplicationLoader$3:
     org.telegram.messenger.ApplicationLoader this$0 -> a
-    350:374:java.lang.Boolean doInBackground(java.lang.String[]) -> a
-    347:347:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    351:375:java.lang.Boolean doInBackground(java.lang.String[]) -> a
+    348:348:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 org.telegram.messenger.ApplicationLoader$4 -> org.telegram.messenger.ApplicationLoader$4:
     boolean val$isNew -> a
     org.telegram.messenger.ApplicationLoader this$0 -> b
-    389:401:void run() -> run
+    390:402:void run() -> run
 org.telegram.messenger.ApplicationLoader$4$1 -> org.telegram.messenger.ApplicationLoader$4$1:
     org.telegram.messenger.ApplicationLoader$4 this$1 -> a
-    396:398:void run() -> run
+    397:399:void run() -> run
 org.telegram.messenger.BuffersStorage -> org.telegram.messenger.d:
     java.util.ArrayList freeBuffers128 -> a
     java.util.ArrayList freeBuffers1024 -> b
@@ -23989,391 +25234,391 @@ org.telegram.ui.ChatActivity -> org.telegram.ui.g:
     float startY -> be
     android.widget.AdapterView$OnItemLongClickListener onItemLongClickListener -> i
     android.widget.AdapterView$OnItemClickListener onItemClickListener -> j
-    287:490:boolean onFragmentCreate() -> d
-    495:545:void onFragmentDestroy() -> e
-    550:1987:android.view.View createView(android.content.Context,android.view.LayoutInflater) -> a
-    1991:2060:void searchLinks(java.lang.CharSequence,boolean) -> a
-    2063:2073:void forwardMessages(java.util.ArrayList,boolean) -> a
-    2076:2260:void showReplyPanel(boolean,org.telegram.android.MessageObject,java.util.ArrayList,org.telegram.messenger.TLRPC$WebPage,boolean,boolean) -> a
-    2263:2274:void moveScrollToLastMessage() -> s
-    2286:2310:void scrollToLastMessage() -> t
-    2313:2378:void scrollToMessageId(int,int,boolean) -> a
-    2381:2409:void showPagedownButton(boolean,boolean) -> a
-    2412:2445:void updateSecretStatus() -> u
-    2448:2478:void checkActionBarMenu() -> v
-    2481:2492:int updateOnlineCount() -> w
-    2496:2607:int getMessageType(org.telegram.android.MessageObject) -> a
-    2614:2634:void addToSelectedMessages(org.telegram.android.MessageObject) -> b
-    2637:2652:void processRowSelect(android.view.View) -> a
-    2655:2661:void updateActionModeTitle() -> x
-    2664:2687:void updateTitle() -> y
-    2690:2699:void updateTitleIcons() -> z
-    2702:2747:void updateSubtitle() -> A
-    2750:2774:void setTypingAnimation(boolean) -> b
-    2777:2803:void checkAndUpdateAvatar() -> B
-    2806:2833:boolean openVideoEditor(java.lang.String,boolean) -> a
-    2837:2842:void showAttachmentError() -> C
-    2846:2974:void onActivityResultFragment(int,int,android.content.Intent) -> a
-    2978:2981:void saveSelfArgs(android.os.Bundle) -> a
-    2985:2986:void restoreSelfArgs(android.os.Bundle) -> b
-    2989:3000:void removeUnreadPlane(boolean) -> c
-    3009:3844:void didReceivedNotification(int,java.lang.Object[]) -> a
-    3848:3861:void onOpenAnimationEnd() -> k
-    3864:3882:void updateBottomOverlay() -> D
-    3885:3910:void updateContactStatus() -> E
-    3914:4007:void onResume() -> f
-    4011:4013:void onBeginSlide() -> j
-    4017:4057:void onPause() -> g
-    4060:4079:void updateInformationForScreenshotDetector() -> F
-    4082:4129:void fixLayout(boolean) -> d
-    4133:4134:void onConfigurationChanged(android.content.res.Configuration) -> a
-    4137:4289:void createMenu(android.view.View,boolean) -> a
-    4416:4473:void openProfileWithUsername(java.lang.String) -> a
-    4558:4580:boolean isGoogleMapsInstalled() -> o
-    4585:4613:void updateVisibleRows() -> G
-    4616:4628:void alertUserOpenError(org.telegram.android.MessageObject) -> c
-    4633:4633:void updatePhotoAtIndex(int) -> a
-    4637:4675:org.telegram.ui.PhotoViewer$PlaceProviderObject getPlaceForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> a
-    4680:4680:android.graphics.Bitmap getThumbForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> b
-    4685:4685:void willSwitchFromPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> c
-    4689:4689:void willHidePhotoViewer() -> p
-    4693:4693:boolean isPhotoChecked(int) -> b
-    4698:4698:void setPhotoChecked(int) -> c
-    4702:4702:void cancelButtonPressed() -> q
-    4706:4706:void sendButtonPressed(int) -> d
-    4710:4710:int getSelectedCount() -> r
-    124:124:org.telegram.ui.ActionBar.ActionBar access$000(org.telegram.ui.ChatActivity) -> a
-    124:124:org.telegram.ui.ActionBar.ActionBar access$100(org.telegram.ui.ChatActivity) -> b
-    124:124:void access$200(org.telegram.ui.ChatActivity,android.view.View) -> a
-    124:124:org.telegram.messenger.TLRPC$Chat access$302(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$Chat) -> a
-    124:124:org.telegram.messenger.TLRPC$User access$402(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$User) -> a
-    124:124:org.telegram.messenger.TLRPC$EncryptedChat access$502(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$EncryptedChat) -> a
-    124:124:org.telegram.messenger.TLRPC$EncryptedChat access$500(org.telegram.ui.ChatActivity) -> c
-    124:124:org.telegram.messenger.TLRPC$Chat access$300(org.telegram.ui.ChatActivity) -> d
-    124:124:org.telegram.ui.ActionBar.ActionBarLayout access$600(org.telegram.ui.ChatActivity) -> e
-    124:124:java.util.HashMap access$700(org.telegram.ui.ChatActivity) -> f
-    124:124:java.util.HashMap access$800(org.telegram.ui.ChatActivity) -> g
-    124:124:org.telegram.ui.ActionBar.ActionBar access$900(org.telegram.ui.ChatActivity) -> h
-    124:124:void access$1000(org.telegram.ui.ChatActivity) -> i
-    124:124:java.lang.String access$1102(org.telegram.ui.ChatActivity,java.lang.String) -> a
-    124:124:long access$1200(org.telegram.ui.ChatActivity) -> j
-    124:124:org.telegram.android.MessageObject access$1300(org.telegram.ui.ChatActivity) -> k
-    124:124:void access$1400(org.telegram.ui.ChatActivity) -> l
-    124:124:boolean access$1500(org.telegram.ui.ChatActivity) -> m
-    124:124:boolean access$1602(org.telegram.ui.ChatActivity,boolean) -> a
-    124:124:org.telegram.ui.ActionBar.ActionBar access$1700(org.telegram.ui.ChatActivity) -> n
-    124:124:org.telegram.ui.ActionBar.ActionBar access$1800(org.telegram.ui.ChatActivity) -> o
-    124:124:java.util.HashMap access$1900(org.telegram.ui.ChatActivity) -> p
-    124:124:org.telegram.ui.ActionBar.ActionBar access$2000(org.telegram.ui.ChatActivity) -> q
-    124:124:org.telegram.ui.ActionBar.ActionBar access$2100(org.telegram.ui.ChatActivity) -> r
-    124:124:org.telegram.ui.Components.LayoutListView access$2200(org.telegram.ui.ChatActivity) -> s
-    124:124:float access$2302(org.telegram.ui.ChatActivity,float) -> a
-    124:124:float access$2402(org.telegram.ui.ChatActivity,float) -> b
-    124:124:java.lang.Runnable access$2502(org.telegram.ui.ChatActivity,java.lang.Runnable) -> a
-    124:124:java.lang.Runnable access$2500(org.telegram.ui.ChatActivity) -> t
-    124:124:float access$2300(org.telegram.ui.ChatActivity) -> u
-    124:124:float access$2400(org.telegram.ui.ChatActivity) -> v
-    124:124:int access$2600(org.telegram.ui.ChatActivity) -> w
-    124:124:int access$2602(org.telegram.ui.ChatActivity,int) -> a
-    124:124:boolean access$2700(org.telegram.ui.ChatActivity) -> x
-    124:124:boolean access$2800(org.telegram.ui.ChatActivity) -> y
-    124:124:java.util.HashMap access$2900(org.telegram.ui.ChatActivity) -> z
-    124:124:int access$3000(org.telegram.ui.ChatActivity) -> A
-    124:124:boolean access$3100(org.telegram.ui.ChatActivity) -> B
-    124:124:int access$3200(org.telegram.ui.ChatActivity) -> C
-    124:124:int access$3300(org.telegram.ui.ChatActivity) -> D
-    124:124:int access$3400(org.telegram.ui.ChatActivity) -> E
-    124:124:int access$3500(org.telegram.ui.ChatActivity) -> F
-    124:124:boolean access$2802(org.telegram.ui.ChatActivity,boolean) -> b
-    124:124:boolean access$3600(org.telegram.ui.ChatActivity) -> G
-    124:124:boolean access$3700(org.telegram.ui.ChatActivity) -> H
-    124:124:int access$3800(org.telegram.ui.ChatActivity) -> I
-    124:124:int access$3900(org.telegram.ui.ChatActivity) -> J
-    124:124:int access$4000(org.telegram.ui.ChatActivity) -> K
-    124:124:boolean access$3702(org.telegram.ui.ChatActivity,boolean) -> c
-    124:124:void access$4100(org.telegram.ui.ChatActivity,boolean,boolean) -> a
-    124:124:android.widget.ListView access$4200(org.telegram.ui.ChatActivity) -> L
-    124:124:org.telegram.ui.Adapters.MentionsAdapter access$4300(org.telegram.ui.ChatActivity) -> M
-    124:124:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$4400(org.telegram.ui.ChatActivity) -> N
-    124:124:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$4402(org.telegram.ui.ChatActivity,org.telegram.ui.AnimationCompat.AnimatorSetProxy) -> a
-    124:124:boolean access$4500(org.telegram.ui.ChatActivity) -> O
-    124:124:org.telegram.ui.Components.ChatActivityEnterView access$4600(org.telegram.ui.ChatActivity) -> P
-    124:124:org.telegram.ui.Adapters.StickersAdapter access$4700(org.telegram.ui.ChatActivity) -> Q
-    124:124:java.util.ArrayList access$4800(org.telegram.ui.ChatActivity) -> R
-    124:124:java.lang.Runnable access$4900(org.telegram.ui.ChatActivity) -> S
-    124:124:java.lang.Runnable access$4902(org.telegram.ui.ChatActivity,java.lang.Runnable) -> b
-    124:124:void access$5000(org.telegram.ui.ChatActivity,java.lang.CharSequence,boolean) -> a
-    124:124:int access$5100(org.telegram.ui.ChatActivity) -> T
-    124:124:org.telegram.ui.ActionBar.ActionBarMenuItem access$5200(org.telegram.ui.ChatActivity) -> U
-    124:124:org.telegram.ui.ActionBar.ActionBarMenuItem access$5300(org.telegram.ui.ChatActivity) -> V
-    124:124:boolean access$4502(org.telegram.ui.ChatActivity,boolean) -> d
-    124:124:android.widget.FrameLayout access$5400(org.telegram.ui.ChatActivity) -> W
-    124:124:java.util.ArrayList access$5500(org.telegram.ui.ChatActivity) -> X
-    124:124:org.telegram.messenger.TLRPC$WebPage access$5600(org.telegram.ui.ChatActivity) -> Y
-    124:124:org.telegram.ui.Components.RecyclerListView access$5700(org.telegram.ui.ChatActivity) -> Z
-    124:124:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$5800(org.telegram.ui.ChatActivity) -> aa
-    124:124:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$5802(org.telegram.ui.ChatActivity,org.telegram.ui.AnimationCompat.AnimatorSetProxy) -> b
-    124:124:org.telegram.messenger.TLRPC$User access$400(org.telegram.ui.ChatActivity) -> ab
-    124:124:boolean access$5900(org.telegram.ui.ChatActivity) -> ac
-    124:124:int access$6000(org.telegram.ui.ChatActivity) -> ad
-    124:124:void access$6100(org.telegram.ui.ChatActivity,int,int,boolean) -> a
-    124:124:void access$6200(org.telegram.ui.ChatActivity) -> ae
-    124:124:long access$6302(org.telegram.ui.ChatActivity,long) -> a
-    124:124:org.telegram.messenger.TLRPC$WebPage access$5602(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$WebPage) -> a
-    124:124:java.lang.String access$6402(org.telegram.ui.ChatActivity,java.lang.String) -> b
-    124:124:android.widget.ImageView access$6500(org.telegram.ui.ChatActivity) -> af
-    124:124:org.telegram.android.MessageObject access$6600(org.telegram.ui.ChatActivity) -> ag
-    124:124:int access$6700(org.telegram.ui.ChatActivity) -> ah
-    124:124:java.lang.String access$6800(org.telegram.ui.ChatActivity) -> ai
-    124:124:java.lang.String access$6802(org.telegram.ui.ChatActivity,java.lang.String) -> c
-    124:124:android.widget.FrameLayout access$6900(org.telegram.ui.ChatActivity) -> aj
-    124:124:android.widget.TextView access$7000(org.telegram.ui.ChatActivity) -> ak
-    124:124:org.telegram.ui.ActionBar.ActionBar access$7100(org.telegram.ui.ChatActivity) -> al
-    124:124:org.telegram.ui.ActionBar.ActionBar access$7200(org.telegram.ui.ChatActivity) -> am
-    124:124:android.app.AlertDialog access$7402(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> a
-    124:124:android.app.AlertDialog access$7502(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> b
-    124:124:int access$7600(org.telegram.ui.ChatActivity) -> an
-    124:124:org.telegram.ui.ActionBar.ActionBar access$7700(org.telegram.ui.ChatActivity) -> ao
-    124:124:org.telegram.ui.ActionBar.ActionBar access$7800(org.telegram.ui.ChatActivity) -> ap
-    124:124:org.telegram.ui.ActionBar.ActionBar access$7900(org.telegram.ui.ChatActivity) -> aq
-    124:124:void access$8000(org.telegram.ui.ChatActivity,java.lang.String) -> d
-    124:124:boolean access$8100(org.telegram.ui.ChatActivity) -> ar
-    124:124:void access$8200(org.telegram.ui.ChatActivity,org.telegram.android.MessageObject) -> a
-    124:124:org.telegram.ui.ActionBar.ActionBar access$8300(org.telegram.ui.ChatActivity) -> as
-    124:124:org.telegram.ui.ActionBar.ActionBar access$8400(org.telegram.ui.ChatActivity) -> at
-    124:124:org.telegram.ui.ActionBar.ActionBar access$8500(org.telegram.ui.ChatActivity) -> au
-    124:124:int access$8600(org.telegram.ui.ChatActivity) -> av
+    288:501:boolean onFragmentCreate() -> d
+    506:556:void onFragmentDestroy() -> e
+    561:1998:android.view.View createView(android.content.Context,android.view.LayoutInflater) -> a
+    2002:2071:void searchLinks(java.lang.CharSequence,boolean) -> a
+    2074:2084:void forwardMessages(java.util.ArrayList,boolean) -> a
+    2087:2271:void showReplyPanel(boolean,org.telegram.android.MessageObject,java.util.ArrayList,org.telegram.messenger.TLRPC$WebPage,boolean,boolean) -> a
+    2274:2285:void moveScrollToLastMessage() -> s
+    2297:2321:void scrollToLastMessage() -> t
+    2324:2389:void scrollToMessageId(int,int,boolean) -> a
+    2392:2420:void showPagedownButton(boolean,boolean) -> a
+    2423:2456:void updateSecretStatus() -> u
+    2459:2489:void checkActionBarMenu() -> v
+    2492:2503:int updateOnlineCount() -> w
+    2507:2618:int getMessageType(org.telegram.android.MessageObject) -> a
+    2625:2645:void addToSelectedMessages(org.telegram.android.MessageObject) -> b
+    2648:2663:void processRowSelect(android.view.View) -> a
+    2666:2672:void updateActionModeTitle() -> x
+    2675:2698:void updateTitle() -> y
+    2701:2710:void updateTitleIcons() -> z
+    2713:2758:void updateSubtitle() -> A
+    2761:2785:void setTypingAnimation(boolean) -> b
+    2788:2814:void checkAndUpdateAvatar() -> B
+    2817:2844:boolean openVideoEditor(java.lang.String,boolean) -> a
+    2848:2853:void showAttachmentError() -> C
+    2857:2985:void onActivityResultFragment(int,int,android.content.Intent) -> a
+    2989:2992:void saveSelfArgs(android.os.Bundle) -> a
+    2996:2997:void restoreSelfArgs(android.os.Bundle) -> b
+    3000:3011:void removeUnreadPlane(boolean) -> c
+    3020:3855:void didReceivedNotification(int,java.lang.Object[]) -> a
+    3859:3872:void onOpenAnimationEnd() -> k
+    3875:3893:void updateBottomOverlay() -> D
+    3896:3921:void updateContactStatus() -> E
+    3925:4018:void onResume() -> f
+    4022:4024:void onBeginSlide() -> j
+    4028:4068:void onPause() -> g
+    4071:4090:void updateInformationForScreenshotDetector() -> F
+    4093:4140:void fixLayout(boolean) -> d
+    4144:4145:void onConfigurationChanged(android.content.res.Configuration) -> a
+    4148:4300:void createMenu(android.view.View,boolean) -> a
+    4427:4484:void openProfileWithUsername(java.lang.String) -> a
+    4569:4591:boolean isGoogleMapsInstalled() -> o
+    4596:4624:void updateVisibleRows() -> G
+    4627:4639:void alertUserOpenError(org.telegram.android.MessageObject) -> c
+    4644:4644:void updatePhotoAtIndex(int) -> a
+    4648:4686:org.telegram.ui.PhotoViewer$PlaceProviderObject getPlaceForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> a
+    4691:4691:android.graphics.Bitmap getThumbForPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> b
+    4696:4696:void willSwitchFromPhoto(org.telegram.android.MessageObject,org.telegram.messenger.TLRPC$FileLocation,int) -> c
+    4700:4700:void willHidePhotoViewer() -> p
+    4704:4704:boolean isPhotoChecked(int) -> b
+    4709:4709:void setPhotoChecked(int) -> c
+    4713:4713:void cancelButtonPressed() -> q
+    4717:4717:void sendButtonPressed(int) -> d
+    4721:4721:int getSelectedCount() -> r
+    125:125:org.telegram.ui.ActionBar.ActionBar access$000(org.telegram.ui.ChatActivity) -> a
+    125:125:org.telegram.ui.ActionBar.ActionBar access$100(org.telegram.ui.ChatActivity) -> b
+    125:125:void access$200(org.telegram.ui.ChatActivity,android.view.View) -> a
+    125:125:org.telegram.messenger.TLRPC$Chat access$302(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$Chat) -> a
+    125:125:org.telegram.messenger.TLRPC$User access$402(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$User) -> a
+    125:125:org.telegram.messenger.TLRPC$EncryptedChat access$502(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$EncryptedChat) -> a
+    125:125:org.telegram.messenger.TLRPC$EncryptedChat access$500(org.telegram.ui.ChatActivity) -> c
+    125:125:org.telegram.messenger.TLRPC$Chat access$300(org.telegram.ui.ChatActivity) -> d
+    125:125:org.telegram.ui.ActionBar.ActionBarLayout access$600(org.telegram.ui.ChatActivity) -> e
+    125:125:java.util.HashMap access$700(org.telegram.ui.ChatActivity) -> f
+    125:125:java.util.HashMap access$800(org.telegram.ui.ChatActivity) -> g
+    125:125:org.telegram.ui.ActionBar.ActionBar access$900(org.telegram.ui.ChatActivity) -> h
+    125:125:void access$1000(org.telegram.ui.ChatActivity) -> i
+    125:125:java.lang.String access$1102(org.telegram.ui.ChatActivity,java.lang.String) -> a
+    125:125:long access$1200(org.telegram.ui.ChatActivity) -> j
+    125:125:org.telegram.android.MessageObject access$1300(org.telegram.ui.ChatActivity) -> k
+    125:125:void access$1400(org.telegram.ui.ChatActivity) -> l
+    125:125:boolean access$1500(org.telegram.ui.ChatActivity) -> m
+    125:125:boolean access$1602(org.telegram.ui.ChatActivity,boolean) -> a
+    125:125:org.telegram.ui.ActionBar.ActionBar access$1700(org.telegram.ui.ChatActivity) -> n
+    125:125:org.telegram.ui.ActionBar.ActionBar access$1800(org.telegram.ui.ChatActivity) -> o
+    125:125:java.util.HashMap access$1900(org.telegram.ui.ChatActivity) -> p
+    125:125:org.telegram.ui.ActionBar.ActionBar access$2000(org.telegram.ui.ChatActivity) -> q
+    125:125:org.telegram.ui.ActionBar.ActionBar access$2100(org.telegram.ui.ChatActivity) -> r
+    125:125:org.telegram.ui.Components.LayoutListView access$2200(org.telegram.ui.ChatActivity) -> s
+    125:125:float access$2302(org.telegram.ui.ChatActivity,float) -> a
+    125:125:float access$2402(org.telegram.ui.ChatActivity,float) -> b
+    125:125:java.lang.Runnable access$2502(org.telegram.ui.ChatActivity,java.lang.Runnable) -> a
+    125:125:java.lang.Runnable access$2500(org.telegram.ui.ChatActivity) -> t
+    125:125:float access$2300(org.telegram.ui.ChatActivity) -> u
+    125:125:float access$2400(org.telegram.ui.ChatActivity) -> v
+    125:125:int access$2600(org.telegram.ui.ChatActivity) -> w
+    125:125:int access$2602(org.telegram.ui.ChatActivity,int) -> a
+    125:125:boolean access$2700(org.telegram.ui.ChatActivity) -> x
+    125:125:boolean access$2800(org.telegram.ui.ChatActivity) -> y
+    125:125:java.util.HashMap access$2900(org.telegram.ui.ChatActivity) -> z
+    125:125:int access$3000(org.telegram.ui.ChatActivity) -> A
+    125:125:boolean access$3100(org.telegram.ui.ChatActivity) -> B
+    125:125:int access$3200(org.telegram.ui.ChatActivity) -> C
+    125:125:int access$3300(org.telegram.ui.ChatActivity) -> D
+    125:125:int access$3400(org.telegram.ui.ChatActivity) -> E
+    125:125:int access$3500(org.telegram.ui.ChatActivity) -> F
+    125:125:boolean access$2802(org.telegram.ui.ChatActivity,boolean) -> b
+    125:125:boolean access$3600(org.telegram.ui.ChatActivity) -> G
+    125:125:boolean access$3700(org.telegram.ui.ChatActivity) -> H
+    125:125:int access$3800(org.telegram.ui.ChatActivity) -> I
+    125:125:int access$3900(org.telegram.ui.ChatActivity) -> J
+    125:125:int access$4000(org.telegram.ui.ChatActivity) -> K
+    125:125:boolean access$3702(org.telegram.ui.ChatActivity,boolean) -> c
+    125:125:void access$4100(org.telegram.ui.ChatActivity,boolean,boolean) -> a
+    125:125:android.widget.ListView access$4200(org.telegram.ui.ChatActivity) -> L
+    125:125:org.telegram.ui.Adapters.MentionsAdapter access$4300(org.telegram.ui.ChatActivity) -> M
+    125:125:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$4400(org.telegram.ui.ChatActivity) -> N
+    125:125:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$4402(org.telegram.ui.ChatActivity,org.telegram.ui.AnimationCompat.AnimatorSetProxy) -> a
+    125:125:boolean access$4500(org.telegram.ui.ChatActivity) -> O
+    125:125:org.telegram.ui.Components.ChatActivityEnterView access$4600(org.telegram.ui.ChatActivity) -> P
+    125:125:org.telegram.ui.Adapters.StickersAdapter access$4700(org.telegram.ui.ChatActivity) -> Q
+    125:125:java.util.ArrayList access$4800(org.telegram.ui.ChatActivity) -> R
+    125:125:java.lang.Runnable access$4900(org.telegram.ui.ChatActivity) -> S
+    125:125:java.lang.Runnable access$4902(org.telegram.ui.ChatActivity,java.lang.Runnable) -> b
+    125:125:void access$5000(org.telegram.ui.ChatActivity,java.lang.CharSequence,boolean) -> a
+    125:125:int access$5100(org.telegram.ui.ChatActivity) -> T
+    125:125:org.telegram.ui.ActionBar.ActionBarMenuItem access$5200(org.telegram.ui.ChatActivity) -> U
+    125:125:org.telegram.ui.ActionBar.ActionBarMenuItem access$5300(org.telegram.ui.ChatActivity) -> V
+    125:125:boolean access$4502(org.telegram.ui.ChatActivity,boolean) -> d
+    125:125:android.widget.FrameLayout access$5400(org.telegram.ui.ChatActivity) -> W
+    125:125:java.util.ArrayList access$5500(org.telegram.ui.ChatActivity) -> X
+    125:125:org.telegram.messenger.TLRPC$WebPage access$5600(org.telegram.ui.ChatActivity) -> Y
+    125:125:org.telegram.ui.Components.RecyclerListView access$5700(org.telegram.ui.ChatActivity) -> Z
+    125:125:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$5800(org.telegram.ui.ChatActivity) -> aa
+    125:125:org.telegram.ui.AnimationCompat.AnimatorSetProxy access$5802(org.telegram.ui.ChatActivity,org.telegram.ui.AnimationCompat.AnimatorSetProxy) -> b
+    125:125:org.telegram.messenger.TLRPC$User access$400(org.telegram.ui.ChatActivity) -> ab
+    125:125:boolean access$5900(org.telegram.ui.ChatActivity) -> ac
+    125:125:int access$6000(org.telegram.ui.ChatActivity) -> ad
+    125:125:void access$6100(org.telegram.ui.ChatActivity,int,int,boolean) -> a
+    125:125:void access$6200(org.telegram.ui.ChatActivity) -> ae
+    125:125:long access$6302(org.telegram.ui.ChatActivity,long) -> a
+    125:125:org.telegram.messenger.TLRPC$WebPage access$5602(org.telegram.ui.ChatActivity,org.telegram.messenger.TLRPC$WebPage) -> a
+    125:125:java.lang.String access$6402(org.telegram.ui.ChatActivity,java.lang.String) -> b
+    125:125:android.widget.ImageView access$6500(org.telegram.ui.ChatActivity) -> af
+    125:125:org.telegram.android.MessageObject access$6600(org.telegram.ui.ChatActivity) -> ag
+    125:125:int access$6700(org.telegram.ui.ChatActivity) -> ah
+    125:125:java.lang.String access$6800(org.telegram.ui.ChatActivity) -> ai
+    125:125:java.lang.String access$6802(org.telegram.ui.ChatActivity,java.lang.String) -> c
+    125:125:android.widget.FrameLayout access$6900(org.telegram.ui.ChatActivity) -> aj
+    125:125:android.widget.TextView access$7000(org.telegram.ui.ChatActivity) -> ak
+    125:125:org.telegram.ui.ActionBar.ActionBar access$7100(org.telegram.ui.ChatActivity) -> al
+    125:125:org.telegram.ui.ActionBar.ActionBar access$7200(org.telegram.ui.ChatActivity) -> am
+    125:125:android.app.AlertDialog access$7402(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> a
+    125:125:android.app.AlertDialog access$7502(org.telegram.ui.ChatActivity,android.app.AlertDialog) -> b
+    125:125:int access$7600(org.telegram.ui.ChatActivity) -> an
+    125:125:org.telegram.ui.ActionBar.ActionBar access$7700(org.telegram.ui.ChatActivity) -> ao
+    125:125:org.telegram.ui.ActionBar.ActionBar access$7800(org.telegram.ui.ChatActivity) -> ap
+    125:125:org.telegram.ui.ActionBar.ActionBar access$7900(org.telegram.ui.ChatActivity) -> aq
+    125:125:void access$8000(org.telegram.ui.ChatActivity,java.lang.String) -> d
+    125:125:boolean access$8100(org.telegram.ui.ChatActivity) -> ar
+    125:125:void access$8200(org.telegram.ui.ChatActivity,org.telegram.android.MessageObject) -> a
+    125:125:org.telegram.ui.ActionBar.ActionBar access$8300(org.telegram.ui.ChatActivity) -> as
+    125:125:org.telegram.ui.ActionBar.ActionBar access$8400(org.telegram.ui.ChatActivity) -> at
+    125:125:org.telegram.ui.ActionBar.ActionBar access$8500(org.telegram.ui.ChatActivity) -> au
+    125:125:int access$8600(org.telegram.ui.ChatActivity) -> av
 org.telegram.ui.ChatActivity$1 -> org.telegram.ui.g$1:
     org.telegram.ui.ChatActivity this$0 -> a
-    263:266:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
+    264:267:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
 org.telegram.ui.ChatActivity$10 -> org.telegram.ui.g$2:
     org.telegram.ui.ChatActivity this$0 -> a
-    1091:1091:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+    1102:1102:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
 org.telegram.ui.ChatActivity$11 -> org.telegram.ui.g$3:
     org.telegram.ui.ChatActivity this$0 -> a
-    1241:1293:boolean onInterceptTouchEvent(android.view.MotionEvent) -> a
+    1252:1304:boolean onInterceptTouchEvent(android.view.MotionEvent) -> a
 org.telegram.ui.ChatActivity$11$1 -> org.telegram.ui.g$3$1:
     org.telegram.ui.ChatActivity$11 this$1 -> a
-    1275:1287:void run() -> run
+    1286:1298:void run() -> run
 org.telegram.ui.ChatActivity$12 -> org.telegram.ui.g$4:
     org.telegram.ui.ChatActivity this$0 -> a
-    1299:1343:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+    1310:1354:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
 org.telegram.ui.ChatActivity$12$1 -> org.telegram.ui.g$4$1:
     org.telegram.ui.ChatActivity$12 this$1 -> a
-    1304:1305:void run() -> run
+    1315:1316:void run() -> run
 org.telegram.ui.ChatActivity$12$2 -> org.telegram.ui.g$4$2:
     org.telegram.ui.ChatActivity$12 this$1 -> a
-    1320:1322:void run() -> run
+    1331:1333:void run() -> run
 org.telegram.ui.ChatActivity$13 -> org.telegram.ui.g$5:
     android.graphics.Rect scrollRect -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    1351:1355:void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
-    1359:1388:void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
+    1362:1366:void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
+    1370:1399:void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
 org.telegram.ui.ChatActivity$14 -> org.telegram.ui.g$6:
     org.telegram.ui.ChatActivity this$0 -> a
-    1439:1508:void needChangePanelVisibility(boolean) -> a
+    1450:1519:void needChangePanelVisibility(boolean) -> a
 org.telegram.ui.ChatActivity$14$1 -> org.telegram.ui.g$6$1:
     org.telegram.ui.ChatActivity$14 this$1 -> a
-    1464:1468:void onAnimationEnd(java.lang.Object) -> a
+    1475:1479:void onAnimationEnd(java.lang.Object) -> a
 org.telegram.ui.ChatActivity$14$2 -> org.telegram.ui.g$6$2:
     org.telegram.ui.ChatActivity$14 this$1 -> a
-    1494:1499:void onAnimationEnd(java.lang.Object) -> a
+    1505:1510:void onAnimationEnd(java.lang.Object) -> a
 org.telegram.ui.ChatActivity$15 -> org.telegram.ui.g$7:
     org.telegram.ui.ChatActivity this$0 -> a
-    1516:1527:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    1527:1538:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
 org.telegram.ui.ChatActivity$16 -> org.telegram.ui.g$8:
     org.telegram.ui.ChatActivity this$0 -> a
-    1533:1548:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
+    1544:1559:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
 org.telegram.ui.ChatActivity$16$1 -> org.telegram.ui.g$8$1:
     org.telegram.ui.ChatActivity$16 this$1 -> a
-    1541:1542:void onClick(android.content.DialogInterface,int) -> onClick
+    1552:1553:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$17 -> org.telegram.ui.g$9:
     org.telegram.ui.ChatActivity this$0 -> a
-    1569:1577:void onMessageSend(java.lang.String) -> a
-    1581:1605:void onTextChanged(java.lang.CharSequence,boolean) -> a
-    1609:1610:void needSendTyping() -> a
-    1614:1620:void onAttachButtonHidden() -> b
-    1624:1630:void onAttachButtonShow() -> c
-    1634:1655:void onWindowSizeChanged(int) -> a
+    1580:1588:void onMessageSend(java.lang.String) -> a
+    1592:1616:void onTextChanged(java.lang.CharSequence,boolean) -> a
+    1620:1621:void needSendTyping() -> a
+    1625:1631:void onAttachButtonHidden() -> b
+    1635:1641:void onAttachButtonShow() -> c
+    1645:1666:void onWindowSizeChanged(int) -> a
 org.telegram.ui.ChatActivity$17$1 -> org.telegram.ui.g$9$1:
     java.lang.CharSequence val$text -> a
     org.telegram.ui.ChatActivity$17 this$1 -> b
-    1597:1601:void run() -> run
+    1608:1612:void run() -> run
 org.telegram.ui.ChatActivity$18 -> org.telegram.ui.g$10:
     org.telegram.ui.ChatActivity this$0 -> a
-    1693:1697:void onClick(android.view.View) -> onClick
+    1704:1708:void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$19 -> org.telegram.ui.g$11:
     org.telegram.ui.ChatActivity this$0 -> a
-    1774:1809:void needChangePanelVisibility(boolean) -> a
+    1785:1820:void needChangePanelVisibility(boolean) -> a
 org.telegram.ui.ChatActivity$19$1 -> org.telegram.ui.g$11$1:
     boolean val$show -> a
     org.telegram.ui.ChatActivity$19 this$1 -> b
-    1795:1803:void onAnimationEnd(java.lang.Object) -> a
+    1806:1814:void onAnimationEnd(java.lang.Object) -> a
 org.telegram.ui.ChatActivity$2 -> org.telegram.ui.g$12:
     org.telegram.ui.ChatActivity this$0 -> a
-    273:278:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    274:279:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
 org.telegram.ui.ChatActivity$20 -> org.telegram.ui.g$13:
     org.telegram.ui.ChatActivity this$0 -> a
-    1814:1865:void onItemClick(android.view.View,int) -> a
+    1825:1876:void onItemClick(android.view.View,int) -> a
 org.telegram.ui.ChatActivity$21 -> org.telegram.ui.g$14:
     org.telegram.ui.ChatActivity this$0 -> a
-    1914:1939:void onClick(android.view.View) -> onClick
+    1925:1950:void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$21$1 -> org.telegram.ui.g$14$1:
     org.telegram.ui.ChatActivity$21 this$1 -> a
-    1924:1925:void onClick(android.content.DialogInterface,int) -> onClick
+    1935:1936:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$21$2 -> org.telegram.ui.g$14$2:
     org.telegram.ui.ChatActivity$21 this$1 -> a
-    1932:1934:void onClick(android.content.DialogInterface,int) -> onClick
+    1943:1945:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$22 -> org.telegram.ui.g$15:
     org.telegram.ui.ChatActivity this$0 -> a
-    1967:1972:void onClick(android.view.View) -> onClick
+    1978:1983:void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$23 -> org.telegram.ui.g$16:
     org.telegram.messenger.TLRPC$TL_messages_getWebPagePreview val$req -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    2030:2057:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    2041:2068:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.ChatActivity$23$1 -> org.telegram.ui.g$16$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.ChatActivity$23 this$1 -> c
-    2033:2055:void run() -> run
+    2044:2066:void run() -> run
 org.telegram.ui.ChatActivity$24 -> org.telegram.ui.g$17:
     org.telegram.ui.ChatActivity this$0 -> a
-    2269:2271:void run() -> run
+    2280:2282:void run() -> run
 org.telegram.ui.ChatActivity$25 -> org.telegram.ui.g$18:
     org.telegram.ui.ChatActivity this$0 -> a
-    2401:2402:void onAnimationEnd(java.lang.Object) -> a
+    2412:2413:void onAnimationEnd(java.lang.Object) -> a
 org.telegram.ui.ChatActivity$26 -> org.telegram.ui.g$19:
     org.telegram.ui.ChatActivity this$0 -> a
-    2812:2824:void didFinishEditVideo(java.lang.String,long,long,int,int,int,int,int,int,long,long) -> a
+    2823:2835:void didFinishEditVideo(java.lang.String,long,long,int,int,int,int,int,int,long,long) -> a
 org.telegram.ui.ChatActivity$27 -> org.telegram.ui.g$20:
     java.util.ArrayList val$arrayList -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    2874:2892:void sendButtonPressed(int) -> d
+    2885:2903:void sendButtonPressed(int) -> d
 org.telegram.ui.ChatActivity$28 -> org.telegram.ui.g$21:
     int val$yOffset -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    3232:3240:boolean onPreDraw() -> onPreDraw
+    3243:3251:boolean onPreDraw() -> onPreDraw
 org.telegram.ui.ChatActivity$29 -> org.telegram.ui.g$22:
     int val$lastid -> a
     int val$last_unread_date_final -> b
     boolean val$wasUnreadFinal -> c
     org.telegram.ui.ChatActivity this$0 -> d
-    3283:3288:void run() -> run
+    3294:3299:void run() -> run
 org.telegram.ui.ChatActivity$3 -> org.telegram.ui.g$23:
     int val$chatId -> a
     java.util.concurrent.Semaphore val$semaphore -> b
     org.telegram.ui.ChatActivity this$0 -> c
-    303:305:void run() -> run
+    304:306:void run() -> run
 org.telegram.ui.ChatActivity$30 -> org.telegram.ui.g$24:
     org.telegram.ui.ChatActivity this$0 -> a
-    3998:4000:void run() -> run
+    4009:4011:void run() -> run
 org.telegram.ui.ChatActivity$31 -> org.telegram.ui.g$25:
     org.telegram.ui.ChatActivity this$0 -> a
-    4086:4109:boolean onPreDraw() -> onPreDraw
+    4097:4120:boolean onPreDraw() -> onPreDraw
 org.telegram.ui.ChatActivity$32 -> org.telegram.ui.g$26:
     int val$lastPos -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    4118:4125:boolean onPreDraw() -> onPreDraw
+    4129:4136:boolean onPreDraw() -> onPreDraw
 org.telegram.ui.ChatActivity$34 -> org.telegram.ui.g$27:
     android.app.ProgressDialog val$progressDialog -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    4435:4456:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    4446:4467:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.ChatActivity$34$1 -> org.telegram.ui.g$27$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.ChatActivity$34 this$1 -> c
-    4439:4454:void run() -> run
+    4450:4465:void run() -> run
 org.telegram.ui.ChatActivity$35 -> org.telegram.ui.g$28:
     long val$reqId -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    4461:4468:void onClick(android.content.DialogInterface,int) -> onClick
+    4472:4479:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$36 -> org.telegram.ui.g$29:
     org.telegram.ui.ChatActivity this$0 -> a
-    4571:4576:void onClick(android.content.DialogInterface,int) -> onClick
+    4582:4587:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$4 -> org.telegram.ui.g$30:
     int val$userId -> a
     java.util.concurrent.Semaphore val$semaphore -> b
     org.telegram.ui.ChatActivity this$0 -> c
-    344:346:void run() -> run
+    345:347:void run() -> run
 org.telegram.ui.ChatActivity$5 -> org.telegram.ui.g$31:
     int val$encId -> a
     java.util.concurrent.Semaphore val$semaphore -> b
     org.telegram.ui.ChatActivity this$0 -> c
-    368:370:void run() -> run
+    369:371:void run() -> run
 org.telegram.ui.ChatActivity$6 -> org.telegram.ui.g$32:
     java.util.concurrent.Semaphore val$semaphore -> a
     org.telegram.ui.ChatActivity this$0 -> b
-    389:391:void run() -> run
+    390:392:void run() -> run
 org.telegram.ui.ChatActivity$7 -> org.telegram.ui.g$33:
     org.telegram.ui.ChatActivity this$0 -> a
-    559:876:void onItemClick(int) -> a
+    570:887:void onItemClick(int) -> a
 org.telegram.ui.ChatActivity$7$1 -> org.telegram.ui.g$33$1:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    610:620:void didSelectPhotos(java.util.ArrayList,java.util.ArrayList) -> a
-    625:631:void startPhotoSelectActivity() -> a
+    621:631:void didSelectPhotos(java.util.ArrayList,java.util.ArrayList) -> a
+    636:642:void startPhotoSelectActivity() -> a
 org.telegram.ui.ChatActivity$7$2 -> org.telegram.ui.g$33$2:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    664:680:void didSelectLocation(double,double) -> a
+    675:691:void didSelectLocation(double,double) -> a
 org.telegram.ui.ChatActivity$7$3 -> org.telegram.ui.g$33$3:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    688:699:void didSelectFiles(org.telegram.ui.DocumentSelectActivity,java.util.ArrayList) -> a
-    704:710:void startDocumentSelectActivity() -> a
+    699:710:void didSelectFiles(org.telegram.ui.DocumentSelectActivity,java.util.ArrayList) -> a
+    715:721:void startDocumentSelectActivity() -> a
 org.telegram.ui.ChatActivity$7$4 -> org.telegram.ui.g$33$4:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    756:769:void onClick(android.content.DialogInterface,int) -> onClick
+    767:780:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$7$5 -> org.telegram.ui.g$33$5:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    796:798:void onClick(android.content.DialogInterface,int) -> onClick
+    807:809:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$7$6 -> org.telegram.ui.g$33$6:
     org.telegram.ui.ChatActivity$7 this$1 -> a
-    816:846:void onClick(android.content.DialogInterface,int) -> onClick
+    827:857:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$8 -> org.telegram.ui.g$34:
     org.telegram.ui.ChatActivity this$0 -> a
-    950:954:void onClick(android.view.View) -> onClick
+    961:965:void onClick(android.view.View) -> onClick
 org.telegram.ui.ChatActivity$9 -> org.telegram.ui.g$35:
     org.telegram.ui.ChatActivity this$0 -> a
-    1048:1048:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+    1059:1059:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
 org.telegram.ui.ChatActivity$ChatAdapter -> org.telegram.ui.h:
     android.content.Context mContext -> b
     org.telegram.ui.ChatActivity this$0 -> a
-    4723:4723:boolean areAllItemsEnabled() -> areAllItemsEnabled
-    4728:4728:boolean isEnabled(int) -> isEnabled
-    4733:4742:int getCount() -> getCount
-    4747:4747:java.lang.Object getItem(int) -> getItem
-    4752:4752:long getItemId(int) -> getItemId
-    4757:4757:boolean hasStableIds() -> hasStableIds
-    4762:5088:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-    5093:5104:int getItemViewType(int) -> getItemViewType
-    5109:5109:int getViewTypeCount() -> getViewTypeCount
-    5114:5123:boolean isEmpty() -> isEmpty
+    4734:4734:boolean areAllItemsEnabled() -> areAllItemsEnabled
+    4739:4739:boolean isEnabled(int) -> isEnabled
+    4744:4753:int getCount() -> getCount
+    4758:4758:java.lang.Object getItem(int) -> getItem
+    4763:4763:long getItemId(int) -> getItemId
+    4768:4768:boolean hasStableIds() -> hasStableIds
+    4773:5099:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    5104:5115:int getItemViewType(int) -> getItemViewType
+    5120:5120:int getViewTypeCount() -> getViewTypeCount
+    5125:5134:boolean isEmpty() -> isEmpty
 org.telegram.ui.ChatActivity$ChatAdapter$1 -> org.telegram.ui.h$1:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4810:4828:void pressedUrl(java.lang.String) -> a
+    4821:4839:void pressedUrl(java.lang.String) -> a
 org.telegram.ui.ChatActivity$ChatAdapter$2 -> org.telegram.ui.h$2:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4836:4845:void didPressedUserAvatar(org.telegram.ui.Cells.ChatBaseCell,org.telegram.messenger.TLRPC$User) -> a
-    4849:4853:void didPressedCancelSendButton(org.telegram.ui.Cells.ChatBaseCell) -> a
-    4857:4858:void didLongPressed(org.telegram.ui.Cells.ChatBaseCell) -> b
-    4862:4862:boolean canPerformActions() -> a
-    4867:4874:void didPressUrl(java.lang.String) -> a
-    4878:4879:void didPressReplyMessage(org.telegram.ui.Cells.ChatBaseCell,int) -> a
+    4847:4856:void didPressedUserAvatar(org.telegram.ui.Cells.ChatBaseCell,org.telegram.messenger.TLRPC$User) -> a
+    4860:4864:void didPressedCancelSendButton(org.telegram.ui.Cells.ChatBaseCell) -> a
+    4868:4869:void didLongPressed(org.telegram.ui.Cells.ChatBaseCell) -> b
+    4873:4873:boolean canPerformActions() -> a
+    4878:4885:void didPressUrl(java.lang.String) -> a
+    4889:4890:void didPressReplyMessage(org.telegram.ui.Cells.ChatBaseCell,int) -> a
 org.telegram.ui.ChatActivity$ChatAdapter$3 -> org.telegram.ui.h$3:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4886:4968:void didClickedImage(org.telegram.ui.Cells.ChatMediaCell) -> a
-    4972:4973:void didPressedOther(org.telegram.ui.Cells.ChatMediaCell) -> b
+    4897:4979:void didClickedImage(org.telegram.ui.Cells.ChatMediaCell) -> a
+    4983:4984:void didPressedOther(org.telegram.ui.Cells.ChatMediaCell) -> b
 org.telegram.ui.ChatActivity$ChatAdapter$4 -> org.telegram.ui.h$4:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    4979:4989:void didClickAddButton(org.telegram.ui.Cells.ChatContactCell,org.telegram.messenger.TLRPC$User) -> a
-    4993:5027:void didClickPhone(org.telegram.ui.Cells.ChatContactCell) -> a
+    4990:5000:void didClickAddButton(org.telegram.ui.Cells.ChatContactCell,org.telegram.messenger.TLRPC$User) -> a
+    5004:5038:void didClickPhone(org.telegram.ui.Cells.ChatContactCell) -> a
 org.telegram.ui.ChatActivity$ChatAdapter$4$1 -> org.telegram.ui.h$4$1:
     org.telegram.android.MessageObject val$messageObject -> a
     org.telegram.ui.ChatActivity$ChatAdapter$4 this$2 -> b
-    5005:5023:void onClick(android.content.DialogInterface,int) -> onClick
+    5016:5034:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.ChatActivity$ChatAdapter$5 -> org.telegram.ui.h$5:
     org.telegram.ui.ChatActivity$ChatAdapter this$1 -> a
-    5034:5037:void didClickedImage(org.telegram.ui.Cells.ChatActionCell) -> a
-    5041:5042:void didLongPressed(org.telegram.ui.Cells.ChatActionCell) -> b
-    5046:5051:void needOpenUserProfile(int) -> a
+    5045:5048:void didClickedImage(org.telegram.ui.Cells.ChatActionCell) -> a
+    5052:5053:void didLongPressed(org.telegram.ui.Cells.ChatActionCell) -> b
+    5057:5062:void needOpenUserProfile(int) -> a
 org.telegram.ui.Components.AvatarDrawable -> org.telegram.ui.Components.a:
     android.graphics.Paint paint -> a
     android.text.TextPaint namePaint -> b
@@ -26510,34 +27755,34 @@ org.telegram.ui.LaunchActivity -> org.telegram.ui.LaunchActivity:
     boolean passcodeSaveIntentIsRestore -> y
     boolean tabletFullSize -> z
     java.lang.Runnable lockRunnable -> A
-    120:474:void onCreate(android.os.Bundle) -> onCreate
-    477:503:void showPasscodeActivity() -> d
-    514:976:boolean handleIntent(android.content.Intent,boolean,boolean,boolean) -> a
-    981:983:void onNewIntent(android.content.Intent) -> onNewIntent
-    1059:1076:void onFinish() -> e
-    1079:1080:void presentFragment(org.telegram.ui.ActionBar.BaseFragment) -> a
-    1083:1083:boolean presentFragment(org.telegram.ui.ActionBar.BaseFragment,boolean,boolean) -> a
-    1087:1154:void needLayout() -> b
-    1157:1175:void fixLayout() -> c
-    1179:1198:void onActivityResult(int,int,android.content.Intent) -> onActivityResult
-    1202:1212:void onPause() -> onPause
-    1216:1222:void onDestroy() -> onDestroy
-    1226:1241:void onResume() -> onResume
-    1245:1248:void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
-    1253:1300:void didReceivedNotification(int,java.lang.Object[]) -> a
-    1303:1332:void onPasscodePause() -> f
-    1335:1346:void onPasscodeResume() -> g
-    1349:1358:void updateCurrentConnectionState() -> h
-    1363:1400:void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
-    1404:1428:void onBackPressed() -> onBackPressed
-    1432:1438:void onLowMemory() -> onLowMemory
-    1442:1448:void onActionModeStarted(android.view.ActionMode) -> onActionModeStarted
-    1452:1458:void onActionModeFinished(android.view.ActionMode) -> onActionModeFinished
-    1462:1466:boolean onPreIme() -> a
-    1471:1495:boolean onKeyUp(int,android.view.KeyEvent) -> onKeyUp
-    1500:1600:boolean needPresentFragment(org.telegram.ui.ActionBar.BaseFragment,boolean,boolean,org.telegram.ui.ActionBar.ActionBarLayout) -> a
-    1606:1665:boolean needAddFragmentToStack(org.telegram.ui.ActionBar.BaseFragment,org.telegram.ui.ActionBar.ActionBarLayout) -> a
-    1671:1692:boolean needCloseLastFragment(org.telegram.ui.ActionBar.ActionBarLayout) -> a
+    120:470:void onCreate(android.os.Bundle) -> onCreate
+    473:499:void showPasscodeActivity() -> d
+    510:972:boolean handleIntent(android.content.Intent,boolean,boolean,boolean) -> a
+    977:979:void onNewIntent(android.content.Intent) -> onNewIntent
+    1055:1072:void onFinish() -> e
+    1075:1076:void presentFragment(org.telegram.ui.ActionBar.BaseFragment) -> a
+    1079:1079:boolean presentFragment(org.telegram.ui.ActionBar.BaseFragment,boolean,boolean) -> a
+    1083:1150:void needLayout() -> b
+    1153:1171:void fixLayout() -> c
+    1175:1194:void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    1198:1208:void onPause() -> onPause
+    1212:1218:void onDestroy() -> onDestroy
+    1222:1237:void onResume() -> onResume
+    1241:1244:void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    1249:1296:void didReceivedNotification(int,java.lang.Object[]) -> a
+    1299:1328:void onPasscodePause() -> f
+    1331:1342:void onPasscodeResume() -> g
+    1345:1354:void updateCurrentConnectionState() -> h
+    1359:1396:void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
+    1400:1424:void onBackPressed() -> onBackPressed
+    1428:1434:void onLowMemory() -> onLowMemory
+    1438:1444:void onActionModeStarted(android.view.ActionMode) -> onActionModeStarted
+    1448:1454:void onActionModeFinished(android.view.ActionMode) -> onActionModeFinished
+    1458:1462:boolean onPreIme() -> a
+    1467:1491:boolean onKeyUp(int,android.view.KeyEvent) -> onKeyUp
+    1496:1596:boolean needPresentFragment(org.telegram.ui.ActionBar.BaseFragment,boolean,boolean,org.telegram.ui.ActionBar.ActionBarLayout) -> a
+    1602:1661:boolean needAddFragmentToStack(org.telegram.ui.ActionBar.BaseFragment,org.telegram.ui.ActionBar.ActionBarLayout) -> a
+    1667:1688:boolean needCloseLastFragment(org.telegram.ui.ActionBar.ActionBarLayout) -> a
     84:84:org.telegram.ui.ActionBar.ActionBarLayout access$000(org.telegram.ui.LaunchActivity) -> a
     84:84:org.telegram.ui.ActionBar.ActionBarLayout access$100(org.telegram.ui.LaunchActivity) -> b
     84:84:org.telegram.ui.ActionBar.DrawerLayoutContainer access$200(org.telegram.ui.LaunchActivity) -> c
@@ -26558,32 +27803,32 @@ org.telegram.ui.LaunchActivity$2 -> org.telegram.ui.LaunchActivity$2:
     241:241:void onClick(android.view.View) -> onClick
 org.telegram.ui.LaunchActivity$3 -> org.telegram.ui.LaunchActivity$3:
     org.telegram.ui.LaunchActivity this$0 -> a
-    307:368:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    307:364:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
 org.telegram.ui.LaunchActivity$3$1 -> org.telegram.ui.LaunchActivity$3$1:
     org.telegram.ui.LaunchActivity$3 this$1 -> a
-    343:363:void onClick(android.content.DialogInterface,int) -> onClick
+    339:359:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.LaunchActivity$4 -> org.telegram.ui.LaunchActivity$4:
     org.telegram.ui.LaunchActivity this$0 -> a
-    490:501:void didAcceptedPassword() -> a
+    486:497:void didAcceptedPassword() -> a
 org.telegram.ui.LaunchActivity$5 -> org.telegram.ui.LaunchActivity$5:
     android.app.ProgressDialog val$progressDialog -> a
     org.telegram.ui.LaunchActivity this$0 -> b
-    769:793:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    765:789:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.LaunchActivity$5$1 -> org.telegram.ui.LaunchActivity$5$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LaunchActivity$5 this$1 -> c
-    772:791:void run() -> run
+    768:787:void run() -> run
 org.telegram.ui.LaunchActivity$6 -> org.telegram.ui.LaunchActivity$6:
     long val$reqId -> a
     org.telegram.ui.LaunchActivity this$0 -> b
-    799:805:void onClick(android.content.DialogInterface,int) -> onClick
+    795:801:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.LaunchActivity$7 -> org.telegram.ui.LaunchActivity$7:
     org.telegram.ui.LaunchActivity this$0 -> a
-    1164:1172:void onGlobalLayout() -> onGlobalLayout
+    1160:1168:void onGlobalLayout() -> onGlobalLayout
 org.telegram.ui.LaunchActivity$8 -> org.telegram.ui.LaunchActivity$8:
     org.telegram.ui.LaunchActivity this$0 -> a
-    1312:1321:void run() -> run
+    1308:1317:void run() -> run
 org.telegram.ui.LocationActivity -> org.telegram.ui.r:
     com.google.android.gms.maps.GoogleMap googleMap -> i
     android.widget.TextView distanceTextView -> j
@@ -26638,39 +27883,39 @@ org.telegram.ui.LoginActivity -> org.telegram.ui.t:
     int currentViewNum -> i
     org.telegram.ui.Components.SlideView[] views -> j
     android.app.ProgressDialog progressDialog -> k
-    99:113:void onFragmentDestroy() -> e
-    117:182:android.view.View createView(android.content.Context,android.view.LayoutInflater) -> a
-    187:191:void onPause() -> g
-    195:199:void onResume() -> f
-    203:233:android.os.Bundle loadCurrentState() -> r
-    237:241:void clearCurrentState() -> s
-    244:263:void putBundleToEditor(android.os.Bundle,android.content.SharedPreferences$Editor,java.lang.String) -> a
-    267:282:boolean onBackPressed() -> h
-    286:294:void needShowAlert(java.lang.String,java.lang.String) -> a
-    297:305:void needShowProgress() -> o
-    308:317:void needHideProgress() -> p
-    320:376:void setPage(int,boolean,android.os.Bundle,boolean) -> a
-    381:397:void saveSelfArgs(android.os.Bundle) -> a
-    403:420:void needFinishActivity() -> q
-    89:89:org.telegram.ui.Components.SlideView[] access$000(org.telegram.ui.LoginActivity) -> a
-    89:89:int access$100(org.telegram.ui.LoginActivity) -> b
+    100:114:void onFragmentDestroy() -> e
+    118:183:android.view.View createView(android.content.Context,android.view.LayoutInflater) -> a
+    188:192:void onPause() -> g
+    196:200:void onResume() -> f
+    204:234:android.os.Bundle loadCurrentState() -> r
+    238:242:void clearCurrentState() -> s
+    245:264:void putBundleToEditor(android.os.Bundle,android.content.SharedPreferences$Editor,java.lang.String) -> a
+    268:283:boolean onBackPressed() -> h
+    287:295:void needShowAlert(java.lang.String,java.lang.String) -> a
+    298:306:void needShowProgress() -> o
+    309:318:void needHideProgress() -> p
+    321:377:void setPage(int,boolean,android.os.Bundle,boolean) -> a
+    382:398:void saveSelfArgs(android.os.Bundle) -> a
+    404:426:void needFinishActivity() -> q
+    90:90:org.telegram.ui.Components.SlideView[] access$000(org.telegram.ui.LoginActivity) -> a
+    90:90:int access$100(org.telegram.ui.LoginActivity) -> b
 org.telegram.ui.LoginActivity$1 -> org.telegram.ui.t$1:
     org.telegram.ui.LoginActivity this$0 -> a
-    122:127:void onItemClick(int) -> a
+    123:128:void onItemClick(int) -> a
 org.telegram.ui.LoginActivity$2 -> org.telegram.ui.t$2:
     org.telegram.ui.Components.SlideView val$outView -> a
     org.telegram.ui.LoginActivity this$0 -> b
-    333:333:void onAnimationStart(android.animation.Animator) -> onAnimationStart
-    337:339:void onAnimationEnd(android.animation.Animator) -> onAnimationEnd
-    343:343:void onAnimationCancel(android.animation.Animator) -> onAnimationCancel
-    347:347:void onAnimationRepeat(android.animation.Animator) -> onAnimationRepeat
+    334:334:void onAnimationStart(android.animation.Animator) -> onAnimationStart
+    338:340:void onAnimationEnd(android.animation.Animator) -> onAnimationEnd
+    344:344:void onAnimationCancel(android.animation.Animator) -> onAnimationCancel
+    348:348:void onAnimationRepeat(android.animation.Animator) -> onAnimationRepeat
 org.telegram.ui.LoginActivity$3 -> org.telegram.ui.t$3:
     org.telegram.ui.Components.SlideView val$newView -> a
     org.telegram.ui.LoginActivity this$0 -> b
-    352:353:void onAnimationStart(android.animation.Animator) -> onAnimationStart
-    357:357:void onAnimationEnd(android.animation.Animator) -> onAnimationEnd
-    361:361:void onAnimationCancel(android.animation.Animator) -> onAnimationCancel
-    365:365:void onAnimationRepeat(android.animation.Animator) -> onAnimationRepeat
+    353:354:void onAnimationStart(android.animation.Animator) -> onAnimationStart
+    358:358:void onAnimationEnd(android.animation.Animator) -> onAnimationEnd
+    362:362:void onAnimationCancel(android.animation.Animator) -> onAnimationCancel
+    366:366:void onAnimationRepeat(android.animation.Animator) -> onAnimationRepeat
 org.telegram.ui.LoginActivity$LoginActivityPasswordView -> org.telegram.ui.u:
     android.widget.EditText codeField -> b
     android.widget.TextView confirmTextView -> c
@@ -26686,69 +27931,69 @@ org.telegram.ui.LoginActivity$LoginActivityPasswordView -> org.telegram.ui.u:
     java.lang.String phoneHash -> m
     java.lang.String phoneCode -> n
     org.telegram.ui.LoginActivity this$0 -> a
-    1590:1590:java.lang.String getHeaderName() -> getHeaderName
-    1595:1625:void setParams(android.os.Bundle) -> setParams
-    1628:1639:void onPasscodeError(boolean) -> a
-    1643:1717:void onNextPressed() -> a
-    1721:1721:boolean needBackButton() -> e
-    1726:1727:void onBackPressed() -> b
-    1731:1736:void onShow() -> d
-    1740:1747:void saveStateParams(android.os.Bundle) -> a
-    1751:1759:void restoreStateParams(android.os.Bundle) -> b
-    1380:1380:boolean access$3000(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> a
-    1380:1380:android.widget.TextView access$3100(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> b
-    1380:1380:android.widget.TextView access$3200(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> c
-    1380:1380:android.widget.EditText access$3300(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> d
-    1380:1380:java.lang.String access$3400(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> e
-    1380:1380:java.lang.String access$3500(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> f
-    1380:1380:java.lang.String access$3600(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> g
-    1380:1380:boolean access$3702(org.telegram.ui.LoginActivity$LoginActivityPasswordView,boolean) -> a
-    1380:1380:void access$3800(org.telegram.ui.LoginActivity$LoginActivityPasswordView,boolean) -> b
+    1596:1596:java.lang.String getHeaderName() -> getHeaderName
+    1601:1631:void setParams(android.os.Bundle) -> setParams
+    1634:1645:void onPasscodeError(boolean) -> a
+    1649:1723:void onNextPressed() -> a
+    1727:1727:boolean needBackButton() -> e
+    1732:1733:void onBackPressed() -> b
+    1737:1742:void onShow() -> d
+    1746:1753:void saveStateParams(android.os.Bundle) -> a
+    1757:1765:void restoreStateParams(android.os.Bundle) -> b
+    1386:1386:boolean access$3000(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> a
+    1386:1386:android.widget.TextView access$3100(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> b
+    1386:1386:android.widget.TextView access$3200(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> c
+    1386:1386:android.widget.EditText access$3300(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> d
+    1386:1386:java.lang.String access$3400(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> e
+    1386:1386:java.lang.String access$3500(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> f
+    1386:1386:java.lang.String access$3600(org.telegram.ui.LoginActivity$LoginActivityPasswordView) -> g
+    1386:1386:boolean access$3702(org.telegram.ui.LoginActivity$LoginActivityPasswordView,boolean) -> a
+    1386:1386:void access$3800(org.telegram.ui.LoginActivity$LoginActivityPasswordView,boolean) -> b
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$1 -> org.telegram.ui.u$1:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityPasswordView this$1 -> b
-    1437:1441:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
+    1443:1447:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$2 -> org.telegram.ui.u$2:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityPasswordView this$1 -> b
-    1461:1513:void onClick(android.view.View) -> onClick
+    1467:1519:void onClick(android.view.View) -> onClick
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1 -> org.telegram.ui.u$2$1:
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$2 this$2 -> a
-    1467:1505:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    1473:1511:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1$1 -> org.telegram.ui.u$2$1$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1 this$3 -> c
-    1470:1503:void run() -> run
+    1476:1509:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1$1$1 -> org.telegram.ui.u$2$1$1$1:
     org.telegram.messenger.TLRPC$TL_auth_passwordRecovery val$res -> a
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$2$1$1 this$4 -> b
-    1479:1482:void onClick(android.content.DialogInterface,int) -> onClick
+    1485:1488:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$3 -> org.telegram.ui.u$3:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityPasswordView this$1 -> b
-    1535:1568:void onClick(android.view.View) -> onClick
+    1541:1574:void onClick(android.view.View) -> onClick
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1 -> org.telegram.ui.u$3$1:
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$3 this$2 -> a
-    1541:1564:void onClick(android.content.DialogInterface,int) -> onClick
+    1547:1570:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1$1 -> org.telegram.ui.u$3$1$1:
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1 this$3 -> a
-    1547:1562:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    1553:1568:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1$1$1 -> org.telegram.ui.u$3$1$1$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$3$1$1 this$4 -> b
-    1550:1560:void run() -> run
+    1556:1566:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$4 -> org.telegram.ui.u$4:
     org.telegram.ui.LoginActivity$LoginActivityPasswordView this$1 -> a
-    1671:1715:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    1677:1721:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$4$1 -> org.telegram.ui.u$4$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$4 this$2 -> c
-    1674:1713:void run() -> run
+    1680:1719:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivityPasswordView$4$1$1 -> org.telegram.ui.u$4$1$1:
     org.telegram.ui.LoginActivity$LoginActivityPasswordView$4$1 this$3 -> a
-    1694:1695:void run() -> run
+    1700:1701:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivityRecoverView -> org.telegram.ui.v:
     android.widget.EditText codeField -> b
     android.widget.TextView confirmTextView -> c
@@ -26757,39 +28002,39 @@ org.telegram.ui.LoginActivity$LoginActivityRecoverView -> org.telegram.ui.v:
     boolean nextPressed -> f
     java.lang.String email_unconfirmed_pattern -> g
     org.telegram.ui.LoginActivity this$0 -> a
-    1856:1856:boolean needBackButton() -> e
-    1861:1861:java.lang.String getHeaderName() -> getHeaderName
-    1866:1876:void setParams(android.os.Bundle) -> setParams
-    1879:1890:void onPasscodeError(boolean) -> a
-    1894:1968:void onNextPressed() -> a
-    1972:1973:void onBackPressed() -> b
-    1977:1982:void onShow() -> d
-    1986:1993:void saveStateParams(android.os.Bundle) -> a
-    1997:2005:void restoreStateParams(android.os.Bundle) -> b
-    1762:1762:boolean access$3902(org.telegram.ui.LoginActivity$LoginActivityRecoverView,boolean) -> a
-    1762:1762:void access$4000(org.telegram.ui.LoginActivity$LoginActivityRecoverView,boolean) -> b
+    1862:1862:boolean needBackButton() -> e
+    1867:1867:java.lang.String getHeaderName() -> getHeaderName
+    1872:1882:void setParams(android.os.Bundle) -> setParams
+    1885:1896:void onPasscodeError(boolean) -> a
+    1900:1974:void onNextPressed() -> a
+    1978:1979:void onBackPressed() -> b
+    1983:1988:void onShow() -> d
+    1992:1999:void saveStateParams(android.os.Bundle) -> a
+    2003:2011:void restoreStateParams(android.os.Bundle) -> b
+    1768:1768:boolean access$3902(org.telegram.ui.LoginActivity$LoginActivityRecoverView,boolean) -> a
+    1768:1768:void access$4000(org.telegram.ui.LoginActivity$LoginActivityRecoverView,boolean) -> b
 org.telegram.ui.LoginActivity$LoginActivityRecoverView$1 -> org.telegram.ui.v$1:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityRecoverView this$1 -> b
-    1812:1816:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
+    1818:1822:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
 org.telegram.ui.LoginActivity$LoginActivityRecoverView$2 -> org.telegram.ui.v$2:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityRecoverView this$1 -> b
-    1836:1850:void onClick(android.view.View) -> onClick
+    1842:1856:void onClick(android.view.View) -> onClick
 org.telegram.ui.LoginActivity$LoginActivityRecoverView$2$1 -> org.telegram.ui.v$2$1:
     org.telegram.ui.LoginActivity$LoginActivityRecoverView$2 this$2 -> a
-    1842:1843:void onClick(android.content.DialogInterface,int) -> onClick
+    1848:1849:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.LoginActivity$LoginActivityRecoverView$3 -> org.telegram.ui.v$3:
     org.telegram.ui.LoginActivity$LoginActivityRecoverView this$1 -> a
-    1922:1966:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    1928:1972:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.LoginActivity$LoginActivityRecoverView$3$1 -> org.telegram.ui.v$3$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivityRecoverView$3 this$2 -> c
-    1925:1964:void run() -> run
+    1931:1970:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivityRecoverView$3$1$1 -> org.telegram.ui.v$3$1$1:
     org.telegram.ui.LoginActivity$LoginActivityRecoverView$3$1 this$3 -> a
-    1945:1946:void run() -> run
+    1951:1952:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivityRegisterView -> org.telegram.ui.w:
     android.widget.EditText firstNameField -> b
     android.widget.EditText lastNameField -> c
@@ -26799,37 +28044,37 @@ org.telegram.ui.LoginActivity$LoginActivityRegisterView -> org.telegram.ui.w:
     android.os.Bundle currentParams -> g
     boolean nextPressed -> h
     org.telegram.ui.LoginActivity this$0 -> a
-    2121:2122:void onBackPressed() -> b
-    2126:2126:java.lang.String getHeaderName() -> getHeaderName
-    2131:2136:void onShow() -> d
-    2140:2149:void setParams(android.os.Bundle) -> setParams
-    2153:2214:void onNextPressed() -> a
-    2218:2229:void saveStateParams(android.os.Bundle) -> a
-    2233:2245:void restoreStateParams(android.os.Bundle) -> b
-    2008:2008:android.widget.EditText access$4100(org.telegram.ui.LoginActivity$LoginActivityRegisterView) -> a
-    2008:2008:boolean access$4202(org.telegram.ui.LoginActivity$LoginActivityRegisterView,boolean) -> a
+    2127:2128:void onBackPressed() -> b
+    2132:2132:java.lang.String getHeaderName() -> getHeaderName
+    2137:2142:void onShow() -> d
+    2146:2155:void setParams(android.os.Bundle) -> setParams
+    2159:2220:void onNextPressed() -> a
+    2224:2235:void saveStateParams(android.os.Bundle) -> a
+    2239:2251:void restoreStateParams(android.os.Bundle) -> b
+    2014:2014:android.widget.EditText access$4100(org.telegram.ui.LoginActivity$LoginActivityRegisterView) -> a
+    2014:2014:boolean access$4202(org.telegram.ui.LoginActivity$LoginActivityRegisterView,boolean) -> a
 org.telegram.ui.LoginActivity$LoginActivityRegisterView$1 -> org.telegram.ui.w$1:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityRegisterView this$1 -> b
-    2054:2058:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
+    2060:2064:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
 org.telegram.ui.LoginActivity$LoginActivityRegisterView$2 -> org.telegram.ui.w$2:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivityRegisterView this$1 -> b
-    2103:2115:void onClick(android.view.View) -> onClick
+    2109:2121:void onClick(android.view.View) -> onClick
 org.telegram.ui.LoginActivity$LoginActivityRegisterView$2$1 -> org.telegram.ui.w$2$1:
     org.telegram.ui.LoginActivity$LoginActivityRegisterView$2 this$2 -> a
-    2109:2111:void onClick(android.content.DialogInterface,int) -> onClick
+    2115:2117:void onClick(android.content.DialogInterface,int) -> onClick
 org.telegram.ui.LoginActivity$LoginActivityRegisterView$3 -> org.telegram.ui.w$3:
     org.telegram.ui.LoginActivity$LoginActivityRegisterView this$1 -> a
-    2167:2212:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    2173:2218:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.LoginActivity$LoginActivityRegisterView$3$1 -> org.telegram.ui.w$3$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivityRegisterView$3 this$2 -> c
-    2170:2210:void run() -> run
+    2176:2216:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivityRegisterView$3$1$1 -> org.telegram.ui.w$3$1$1:
     org.telegram.ui.LoginActivity$LoginActivityRegisterView$3$1 this$3 -> a
-    2192:2193:void run() -> run
+    2198:2199:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivitySmsView -> org.telegram.ui.x:
     java.lang.String phoneHash -> b
     java.lang.String requestPhone -> c
@@ -26850,96 +28095,96 @@ org.telegram.ui.LoginActivity$LoginActivitySmsView -> org.telegram.ui.x:
     boolean nextPressed -> r
     java.lang.String lastError -> s
     org.telegram.ui.LoginActivity this$0 -> a
-    1045:1045:java.lang.String getHeaderName() -> getHeaderName
-    1050:1091:void setParams(android.os.Bundle) -> setParams
-    1094:1118:void createCodeTimer() -> f
-    1122:1131:void destroyCodeTimer() -> g
-    1134:1177:void createTimer() -> h
-    1181:1190:void destroyTimer() -> i
-    1194:1300:void onNextPressed() -> a
-    1304:1310:void onBackPressed() -> b
-    1314:1320:void onDestroyActivity() -> c
-    1324:1329:void onShow() -> d
-    1333:1347:void didReceivedNotification(int,java.lang.Object[]) -> a
-    1351:1361:void saveStateParams(android.os.Bundle) -> a
-    1365:1377:void restoreStateParams(android.os.Bundle) -> b
-    898:898:java.lang.String access$1300(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> a
-    898:898:java.lang.String access$1400(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> b
-    898:898:java.lang.String access$1500(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> c
-    898:898:double access$1600(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> d
-    898:898:int access$1700(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> e
-    898:898:int access$1702(org.telegram.ui.LoginActivity$LoginActivitySmsView,int) -> a
-    898:898:double access$1602(org.telegram.ui.LoginActivity$LoginActivitySmsView,double) -> a
-    898:898:android.widget.TextView access$1800(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> f
-    898:898:void access$1900(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> g
-    898:898:double access$2000(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> h
-    898:898:int access$2100(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> i
-    898:898:int access$2102(org.telegram.ui.LoginActivity$LoginActivitySmsView,int) -> b
-    898:898:double access$2002(org.telegram.ui.LoginActivity$LoginActivitySmsView,double) -> b
-    898:898:android.widget.TextView access$2200(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> j
-    898:898:void access$2300(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> k
-    898:898:void access$2400(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> l
-    898:898:java.lang.String access$2500(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> m
-    898:898:java.lang.String access$1502(org.telegram.ui.LoginActivity$LoginActivitySmsView,java.lang.String) -> a
-    898:898:boolean access$2602(org.telegram.ui.LoginActivity$LoginActivitySmsView,boolean) -> a
-    898:898:void access$2700(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> n
-    898:898:boolean access$2800(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> o
-    898:898:android.widget.EditText access$2900(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> p
+    1051:1051:java.lang.String getHeaderName() -> getHeaderName
+    1056:1097:void setParams(android.os.Bundle) -> setParams
+    1100:1124:void createCodeTimer() -> f
+    1128:1137:void destroyCodeTimer() -> g
+    1140:1183:void createTimer() -> h
+    1187:1196:void destroyTimer() -> i
+    1200:1306:void onNextPressed() -> a
+    1310:1316:void onBackPressed() -> b
+    1320:1326:void onDestroyActivity() -> c
+    1330:1335:void onShow() -> d
+    1339:1353:void didReceivedNotification(int,java.lang.Object[]) -> a
+    1357:1367:void saveStateParams(android.os.Bundle) -> a
+    1371:1383:void restoreStateParams(android.os.Bundle) -> b
+    904:904:java.lang.String access$1300(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> a
+    904:904:java.lang.String access$1400(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> b
+    904:904:java.lang.String access$1500(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> c
+    904:904:double access$1600(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> d
+    904:904:int access$1700(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> e
+    904:904:int access$1702(org.telegram.ui.LoginActivity$LoginActivitySmsView,int) -> a
+    904:904:double access$1602(org.telegram.ui.LoginActivity$LoginActivitySmsView,double) -> a
+    904:904:android.widget.TextView access$1800(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> f
+    904:904:void access$1900(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> g
+    904:904:double access$2000(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> h
+    904:904:int access$2100(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> i
+    904:904:int access$2102(org.telegram.ui.LoginActivity$LoginActivitySmsView,int) -> b
+    904:904:double access$2002(org.telegram.ui.LoginActivity$LoginActivitySmsView,double) -> b
+    904:904:android.widget.TextView access$2200(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> j
+    904:904:void access$2300(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> k
+    904:904:void access$2400(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> l
+    904:904:java.lang.String access$2500(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> m
+    904:904:java.lang.String access$1502(org.telegram.ui.LoginActivity$LoginActivitySmsView,java.lang.String) -> a
+    904:904:boolean access$2602(org.telegram.ui.LoginActivity$LoginActivitySmsView,boolean) -> a
+    904:904:void access$2700(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> n
+    904:904:boolean access$2800(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> o
+    904:904:android.widget.EditText access$2900(org.telegram.ui.LoginActivity$LoginActivitySmsView) -> p
 org.telegram.ui.LoginActivity$LoginActivitySmsView$1 -> org.telegram.ui.x$1:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> b
-    957:961:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
+    963:967:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
 org.telegram.ui.LoginActivity$LoginActivitySmsView$2 -> org.telegram.ui.x$2:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> b
-    997:1009:void onClick(android.view.View) -> onClick
+    1003:1015:void onClick(android.view.View) -> onClick
 org.telegram.ui.LoginActivity$LoginActivitySmsView$3 -> org.telegram.ui.x$3:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> b
-    1037:1039:void onClick(android.view.View) -> onClick
+    1043:1045:void onClick(android.view.View) -> onClick
 org.telegram.ui.LoginActivity$LoginActivitySmsView$4 -> org.telegram.ui.x$4:
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> a
-    1103:1116:void run() -> run
+    1109:1122:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivitySmsView$4$1 -> org.telegram.ui.x$4$1:
     org.telegram.ui.LoginActivity$LoginActivitySmsView$4 this$2 -> a
-    1110:1114:void run() -> run
+    1116:1120:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivitySmsView$5 -> org.telegram.ui.x$5:
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> a
-    1141:1175:void run() -> run
+    1147:1181:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1 -> org.telegram.ui.x$5$1:
     org.telegram.ui.LoginActivity$LoginActivitySmsView$5 this$2 -> a
-    1148:1173:void run() -> run
+    1154:1179:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1$1 -> org.telegram.ui.x$5$1$1:
     org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1 this$3 -> a
-    1162:1170:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    1168:1176:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1$1$1 -> org.telegram.ui.x$5$1$1$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView$5$1$1 this$4 -> b
-    1166:1167:void run() -> run
+    1172:1173:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivitySmsView$6 -> org.telegram.ui.x$6:
     org.telegram.messenger.TLRPC$TL_auth_signIn val$req -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> b
-    1210:1298:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    1216:1304:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1 -> org.telegram.ui.x$6$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivitySmsView$6 this$2 -> c
-    1213:1296:void run() -> run
+    1219:1302:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$1 -> org.telegram.ui.x$6$1$1:
     org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1 this$3 -> a
-    1236:1237:void run() -> run
+    1242:1243:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$2 -> org.telegram.ui.x$6$1$2:
     org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1 this$3 -> a
-    1256:1276:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    1262:1282:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$2$1 -> org.telegram.ui.x$6$1$2$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$LoginActivitySmsView$6$1$2 this$4 -> c
-    1259:1274:void run() -> run
+    1265:1280:void run() -> run
 org.telegram.ui.LoginActivity$LoginActivitySmsView$7 -> org.telegram.ui.x$7:
     java.lang.Object[] val$args -> a
     org.telegram.ui.LoginActivity$LoginActivitySmsView this$1 -> b
-    1337:1344:void run() -> run
+    1343:1350:void run() -> run
 org.telegram.ui.LoginActivity$PhoneView -> org.telegram.ui.y:
     android.widget.EditText codeField -> b
     android.widget.EditText phoneField -> c
@@ -26953,69 +28198,69 @@ org.telegram.ui.LoginActivity$PhoneView -> org.telegram.ui.y:
     boolean ignoreOnPhoneChange -> k
     boolean nextPressed -> l
     org.telegram.ui.LoginActivity this$0 -> a
-    730:737:void selectCountry(java.lang.String) -> a
-    740:764:void updatePhoneField() -> f
-    768:776:void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
-    781:781:void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
-    785:857:void onNextPressed() -> a
-    861:866:void onShow() -> d
-    870:870:java.lang.String getHeaderName() -> getHeaderName
-    875:883:void saveStateParams(android.os.Bundle) -> a
-    887:895:void restoreStateParams(android.os.Bundle) -> b
-    425:425:android.widget.EditText access$200(org.telegram.ui.LoginActivity$PhoneView) -> a
-    425:425:boolean access$300(org.telegram.ui.LoginActivity$PhoneView) -> b
-    425:425:boolean access$302(org.telegram.ui.LoginActivity$PhoneView,boolean) -> a
-    425:425:android.widget.EditText access$400(org.telegram.ui.LoginActivity$PhoneView) -> c
-    425:425:android.widget.TextView access$500(org.telegram.ui.LoginActivity$PhoneView) -> d
-    425:425:int access$602(org.telegram.ui.LoginActivity$PhoneView,int) -> a
-    425:425:java.util.HashMap access$700(org.telegram.ui.LoginActivity$PhoneView) -> e
-    425:425:java.util.ArrayList access$800(org.telegram.ui.LoginActivity$PhoneView) -> f
-    425:425:boolean access$902(org.telegram.ui.LoginActivity$PhoneView,boolean) -> b
-    425:425:void access$1000(org.telegram.ui.LoginActivity$PhoneView) -> g
-    425:425:boolean access$1100(org.telegram.ui.LoginActivity$PhoneView) -> h
-    425:425:boolean access$1102(org.telegram.ui.LoginActivity$PhoneView,boolean) -> c
-    425:425:boolean access$1202(org.telegram.ui.LoginActivity$PhoneView,boolean) -> d
+    736:743:void selectCountry(java.lang.String) -> a
+    746:770:void updatePhoneField() -> f
+    774:782:void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    787:787:void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+    791:863:void onNextPressed() -> a
+    867:872:void onShow() -> d
+    876:876:java.lang.String getHeaderName() -> getHeaderName
+    881:889:void saveStateParams(android.os.Bundle) -> a
+    893:901:void restoreStateParams(android.os.Bundle) -> b
+    431:431:android.widget.EditText access$200(org.telegram.ui.LoginActivity$PhoneView) -> a
+    431:431:boolean access$300(org.telegram.ui.LoginActivity$PhoneView) -> b
+    431:431:boolean access$302(org.telegram.ui.LoginActivity$PhoneView,boolean) -> a
+    431:431:android.widget.EditText access$400(org.telegram.ui.LoginActivity$PhoneView) -> c
+    431:431:android.widget.TextView access$500(org.telegram.ui.LoginActivity$PhoneView) -> d
+    431:431:int access$602(org.telegram.ui.LoginActivity$PhoneView,int) -> a
+    431:431:java.util.HashMap access$700(org.telegram.ui.LoginActivity$PhoneView) -> e
+    431:431:java.util.ArrayList access$800(org.telegram.ui.LoginActivity$PhoneView) -> f
+    431:431:boolean access$902(org.telegram.ui.LoginActivity$PhoneView,boolean) -> b
+    431:431:void access$1000(org.telegram.ui.LoginActivity$PhoneView) -> g
+    431:431:boolean access$1100(org.telegram.ui.LoginActivity$PhoneView) -> h
+    431:431:boolean access$1102(org.telegram.ui.LoginActivity$PhoneView,boolean) -> c
+    431:431:boolean access$1202(org.telegram.ui.LoginActivity$PhoneView,boolean) -> d
 org.telegram.ui.LoginActivity$PhoneView$1 -> org.telegram.ui.y$1:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
-    465:474:void onClick(android.view.View) -> onClick
+    471:480:void onClick(android.view.View) -> onClick
 org.telegram.ui.LoginActivity$PhoneView$1$1 -> org.telegram.ui.y$1$1:
     org.telegram.ui.LoginActivity$PhoneView$1 this$2 -> a
-    469:471:void didSelectCountry(java.lang.String) -> a
+    475:477:void didSelectCountry(java.lang.String) -> a
 org.telegram.ui.LoginActivity$PhoneView$2 -> org.telegram.ui.y$2:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
-    531:531:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
-    536:536:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
-    540:570:void afterTextChanged(android.text.Editable) -> afterTextChanged
+    537:537:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    542:542:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+    546:576:void afterTextChanged(android.text.Editable) -> afterTextChanged
 org.telegram.ui.LoginActivity$PhoneView$3 -> org.telegram.ui.y$3:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
-    575:579:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
+    581:585:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
 org.telegram.ui.LoginActivity$PhoneView$4 -> org.telegram.ui.y$4:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
-    601:630:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
-    635:635:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
-    639:643:void afterTextChanged(android.text.Editable) -> afterTextChanged
+    607:636:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    641:641:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+    645:649:void afterTextChanged(android.text.Editable) -> afterTextChanged
 org.telegram.ui.LoginActivity$PhoneView$5 -> org.telegram.ui.y$5:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
-    648:652:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
+    654:658:boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
 org.telegram.ui.LoginActivity$PhoneView$6 -> org.telegram.ui.y$6:
     org.telegram.ui.LoginActivity val$this$0 -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
-    690:690:int compare(java.lang.String,java.lang.String) -> a
-    687:687:int compare(java.lang.Object,java.lang.Object) -> compare
+    696:696:int compare(java.lang.String,java.lang.String) -> a
+    693:693:int compare(java.lang.Object,java.lang.Object) -> compare
 org.telegram.ui.LoginActivity$PhoneView$7 -> org.telegram.ui.y$7:
     android.os.Bundle val$params -> a
     org.telegram.ui.LoginActivity$PhoneView this$1 -> b
-    828:855:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
+    834:861:void run(org.telegram.messenger.TLObject,org.telegram.messenger.TLRPC$TL_error) -> a
 org.telegram.ui.LoginActivity$PhoneView$7$1 -> org.telegram.ui.y$7$1:
     org.telegram.messenger.TLRPC$TL_error val$error -> a
     org.telegram.messenger.TLObject val$response -> b
     org.telegram.ui.LoginActivity$PhoneView$7 this$2 -> c
-    831:853:void run() -> run
+    837:859:void run() -> run
 org.telegram.ui.MediaActivity -> org.telegram.ui.z:
     org.telegram.ui.MediaActivity$SharedPhotoVideoAdapter photoVideoAdapter -> i
     org.telegram.ui.MediaActivity$SharedDocumentsAdapter documentsAdapter -> j
