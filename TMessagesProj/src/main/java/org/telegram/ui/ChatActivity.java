@@ -3180,7 +3180,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (UserConfig.isClientActivated())
                         first_name = ' ' + UserConfig.getCurrentUser().first_name;
                     else first_name = "";
-                    message.message = String.format("Hey%s, Instano is your personal assistant. You can" +
+                    message.message = String.format("Hey%s, Instano is your private assistant. You can" +
                             " order anything including food, grocery, cab booking, movie ticket, home services," +
                             " stationary, bill payment or just anything.", first_name);
                     message.media = new TLRPC.TL_messageMediaEmpty();
